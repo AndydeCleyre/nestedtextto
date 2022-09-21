@@ -1,0 +1,6 @@
+-c ../nt2/requirements.txt
+-c ../nt2/toml-requirements.txt
+
+nestedtext
+plumbum
+ward

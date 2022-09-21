@@ -1,0 +1,5 @@
+-e .[dev,test,toml]
+-c dev-requirements.txt
+-c nt2/requirements.txt
+-c nt2/toml-requirements.txt
+-c test/test-requirements.txt

@@ -1,0 +1,7 @@
+null:
+  - /People/purpose
+  - /People/"nullable number"
+number:
+  - /People/age
+  - /People/"temp in celsius"
+  - /People/"nullable number"

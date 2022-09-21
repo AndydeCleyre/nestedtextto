@@ -1,0 +1,11 @@
+arrow==1.2.3              # via inform
+attrs==22.1.0             # via cattrs
+cattrs==22.1.0            # via -r nt2/requirements.in
+exceptiongroup==1.0.0rc9  # via cattrs
+inform==1.27.0            # via nestedtext
+nestedtext==3.4.0         # via -r nt2/requirements.in
+plumbum==1.7.2            # via -r nt2/requirements.in
+python-dateutil==2.8.2    # via arrow
+ruamel-yaml==0.17.17      # via -r nt2/requirements.in, yamlpath
+six==1.16.0               # via inform, python-dateutil
+yamlpath==3.6.5           # via -r nt2/requirements.in

@@ -1,0 +1,3 @@
+[submodule ".zpy"]
+	path = .zpy
+	url = https://github.com/andydecleyre/zpy

@@ -1,0 +1,14 @@
+-r test/test-requirements.in
+-c test/test-requirements.txt
+
+-c nt2/requirements.txt
+-c nt2/toml-requirements.txt
+
+black    # format code
+flit     # publish package
+ipython  # manually debug
+isort    # format imports
+rich     # pretty print exceptions
+ruff     # lint code
+ssort    # reorder functions
+taskipy  # run tasks
