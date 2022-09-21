@@ -1,0 +1,27 @@
+---
+People:
+  - name: Flinderson Dorf
+    age: 106
+    purpose: ''
+    temp in celsius: 37.1
+    is a wizard: yes
+    is awake: no
+    favorite word: 'True'
+    second favorite word: 'false'
+    nullable number: 6
+    notes:
+      - first note
+      - second note
+  - name: Juminy Biscuit
+    age: 103
+    purpose: unknown
+    temp in celsius: 36.9
+    is a wizard: 'False'
+    is awake: 'True'
+    favorite word: '0789'
+    second favorite word: '98.6'
+    nullable number: ''
+    notes:
+      - a
+      - b
+      - c

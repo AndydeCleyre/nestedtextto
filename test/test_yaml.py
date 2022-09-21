@@ -1,31 +1,33 @@
 from nestedtext import load as ntload
 from plumbum import local
-from plumbum.cmd import json2nt, nt2json
+from plumbum.cmd import nt2yaml, yaml2nt
 from ward import test
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'json'
+SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
 
 
 # TODO: use programmatic invocations rather than plumbum.cmd,
 # so that coverage can be tracked.
 
+# TODO: add dates to tests
 
-@test("convert NestedText to untyped JSON")
+
+@test("convert NestedText to untyped YAML")
 def _():
-    expected_file = SAMPLES / 'untyped.json'
-    output = nt2json(SAMPLES / 'base.nt')
+    expected_file = SAMPLES / 'untyped.yml'
+    output = nt2yaml(SAMPLES / 'base.nt')
     assert output == expected_file.read()
 
 
-for input_json_name, output_nt_name in {
+for input_yaml_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
 }.items():
 
-    @test(f"convert {input_json_name} JSON to NestedText")
-    def _(input_json_name=input_json_name, output_nt_name=output_nt_name):
+    @test(f"convert {input_yaml_name} YAML to NestedText")
+    def _(input_yaml_name=input_yaml_name, output_nt_name=output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
-        output = json2nt(SAMPLES / f"{input_json_name}.json")
+        output = yaml2nt(SAMPLES / f"{input_yaml_name}.yml")
         assert output == expected_file.read()
 
 
@@ -41,29 +43,29 @@ def casting_args_from_schema_file(schema_file):
 
 for schema_file in SAMPLES // 'base.*.types.nt':
 
-    @test(f"convert NestedText to typed JSON, using schema file [{schema_file.name}]")
+    @test(f"convert NestedText to typed YAML, using schema file [{schema_file.name}]")
     def _(schema_file=schema_file):
-        expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.json"
-        output = nt2json(SAMPLES / 'base.nt', '--schema', schema_file)
+        expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
+        output = nt2yaml(SAMPLES / 'base.nt', '--schema', schema_file)
         assert output == expected_file.read()
 
     casting_args = casting_args_from_schema_file(schema_file)
 
     @test(
-        "convert NestedText to typed JSON, using casting args ["
+        "convert NestedText to typed YAML, using casting args ["
         + ', '.join(set(arg.lstrip('-') for arg in casting_args[::2]))
         + "]"
     )
     def _(schema_file=schema_file, casting_args=casting_args):
-        expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.json"
-        output = nt2json(SAMPLES / 'base.nt', *casting_args)
+        expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
+        output = nt2yaml(SAMPLES / 'base.nt', *casting_args)
         assert output == expected_file.read()
 
 
-@test("convert NestedText to typed JSON, combining schema file and casting args")
+@test("convert NestedText to typed YAML, combining schema file and casting args")
 def _():
-    expected_file = SAMPLES / 'typed_all.json'
-    output = nt2json(
+    expected_file = SAMPLES / 'typed_all.yml'
+    output = nt2yaml(
         SAMPLES / 'base.nt',
         '--schema',
         SAMPLES / 'base.bool_null.types.nt',
@@ -72,10 +74,10 @@ def _():
     assert output == expected_file.read()
 
 
-@test("convert NestedText to typed JSON, combining multiple schema files")
+@test("convert NestedText to typed YAML, combining multiple schema files")
 def _():
-    expected_file = SAMPLES / 'typed_all.json'
-    output = nt2json(
+    expected_file = SAMPLES / 'typed_all.yml'
+    output = nt2yaml(
         SAMPLES / 'base.nt',
         '--schema',
         SAMPLES / 'base.bool_null.types.nt',
