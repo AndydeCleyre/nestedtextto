@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: develop
+          submodules: recursive
 
       - name: install build tools from distro repos
         run: sudo apt -yqq --no-install-recommends install ca-certificates zsh
