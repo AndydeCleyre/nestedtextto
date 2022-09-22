@@ -9,7 +9,7 @@ root="$(git -C $0:P:h rev-parse --show-toplevel)"
 cd "$root"
 
 . ./.zpy/zpy.plugin.zsh
-activate
+envin /dev/null
 
 for reqsfile (
   nt2/requirements.in
