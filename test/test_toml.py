@@ -12,22 +12,22 @@ SAMPLES = local.path(__file__).up() / 'samples' / 'toml'
 # TODO: add dates to tests
 
 
-@test("NestedText -> YAML [untyped]")
+@test("NestedText -> TOML [untyped]")
 def _():
     expected_file = SAMPLES / 'untyped.toml'
     output = nt2toml(SAMPLES / 'base.nt')
     assert output == expected_file.read()
 
 
-for input_yaml_name, output_nt_name in {
+for input_toml_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
 }.items():
 
-    @test(f"YAML -> NestedText [{input_yaml_name}]")
-    def _(input_yaml_name=input_yaml_name, output_nt_name=output_nt_name):
+    @test(f"TOML -> NestedText [{input_toml_name}]")
+    def _(input_toml_name=input_toml_name, output_nt_name=output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
-        output = toml2nt(SAMPLES / f"{input_yaml_name}.toml")
+        output = toml2nt(SAMPLES / f"{input_toml_name}.toml")
         assert output == expected_file.read()
 
 
@@ -43,7 +43,7 @@ def casting_args_from_schema_file(schema_file):
 
 for schema_file in SAMPLES // 'base.*.types.nt':
 
-    @test(f"NestedText -> YAML [schema file: {schema_file.name}]")
+    @test(f"NestedText -> TOML [schema file: {schema_file.name}]")
     def _(schema_file=schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.toml"
         output = nt2toml(SAMPLES / 'base.nt', '--schema', schema_file)
@@ -52,7 +52,7 @@ for schema_file in SAMPLES // 'base.*.types.nt':
     casting_args = casting_args_from_schema_file(schema_file)
 
     @test(
-        "NestedText -> YAML [casting args: "
+        "NestedText -> TOML [casting args: "
         + ', '.join(set(arg.lstrip('-') for arg in casting_args[::2]))
         + "]"
     )
@@ -62,7 +62,7 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         assert output == expected_file.read()
 
 
-@test("NestedText -> YAML [blend schema file with casting args]")
+@test("NestedText -> TOML [blend schema file with casting args]")
 def _():
     expected_file = SAMPLES / 'typed_all.toml'
     output = nt2toml(
@@ -74,7 +74,7 @@ def _():
     assert output == expected_file.read()
 
 
-@test("NestedText -> YAML [blend schema files]")
+@test("NestedText -> TOML [blend schema files]")
 def _():
     expected_file = SAMPLES / 'typed_all.toml'
     output = nt2toml(
