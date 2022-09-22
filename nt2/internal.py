@@ -263,16 +263,13 @@ def dump_nestedtext_to_yaml(
         ydump(data, sys.stdout)
 
 
-def dump_nestedtext_to_toml(
-    *input_files, bool_paths=(), null_paths=(), num_paths=(), date_paths=()
-):
+def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_paths=()):
     require_toml_support()
     for src in input_files or (sys.stdin,):
         data = ntload(src)
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
-            null_paths=null_paths,
             num_paths=num_paths,
             date_paths=date_paths,
             converter=mk_yaml_types_converter(),
