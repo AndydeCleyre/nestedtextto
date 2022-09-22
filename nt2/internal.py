@@ -25,7 +25,7 @@ else:
     rich_tb_install()
 
 try:
-    from rtoml import load as tload
+    from rtoml import dump as tdump, load as tload
 except ImportError:
     TOML_SUPPORT = False
 else:
@@ -194,9 +194,13 @@ def dump_yaml_to_nestedtext(*input_files):
                 ntdump(data, sys.stdout, indent=2)
 
 
-def dump_toml_to_nestedtext(*input_files):
+def require_toml_support():
     if not TOML_SUPPORT:
         raise ImportError("TOML support for nt2 is not installed. Try reinstalling as 'nt2[toml]'")
+
+
+def dump_toml_to_nestedtext(*input_files):
+    require_toml_support()
     converter = mk_stringy_converter()
     if not input_files:
         data = tload(sys.stdin)
@@ -223,6 +227,25 @@ def dump_nestedtext_to_yaml(
             converter=mk_yaml_types_converter(),
         )
         ydump(data, sys.stdout)
+
+
+def dump_nestedtext_to_toml(
+    *input_files, bool_paths=(), null_paths=(), num_paths=(), date_paths=()
+):
+    require_toml_support()
+    for src in input_files or (sys.stdin,):
+        data = ntload(src)
+        data = cast_stringy_data(
+            data,
+            bool_paths=bool_paths,
+            null_paths=null_paths,
+            num_paths=num_paths,
+            date_paths=date_paths,
+            converter=mk_yaml_types_converter(),
+        )
+        # TODO: do we need a toml types converter, or will the yaml one do?
+        # TODO: date support
+        tdump(data, sys.stdout, pretty=True)
 
 
 def dump_nestedtext_to_json(*input_files, bool_paths=(), null_paths=(), num_paths=()):
