@@ -51,7 +51,6 @@ taskipy==1.10.3           # via -r dev-requirements.in
 tomli==2.0.1              # via -c test/test-requirements.txt, black, flit, taskipy, ward
 tomli-w==1.0.0            # via flit
 traitlets==5.4.0          # via ipython, matplotlib-inline
-typing-extensions==4.3.0  # via -c test/test-requirements.txt, black, rich
 urllib3==1.26.12          # via requests
 ward==0.66.1b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.5            # via prompt-toolkit
