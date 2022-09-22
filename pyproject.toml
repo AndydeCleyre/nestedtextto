@@ -31,6 +31,7 @@ toml2nt = "nt2.ui:TOMLToNestedText"
 dev = ["black", "flit", "ipython", "isort", "nestedtext", "plumbum", "rich", "rtoml", "ruff", "ssort", "taskipy", "ward"]
 test = ["nestedtext", "plumbum", "rtoml", "ward"]
 toml = ["rtoml"]
+fmt = ["black", "isort", "ruff", "ssort"]
 
 [tool.black]
 line-length = 99

@@ -19,6 +19,7 @@ for reqsfile (
   nt2/requirements.in
   nt2/toml-requirements.in
   test/test-requirements.in
+  fmt-requirements.in
   dev-requirements.in
 )  pipc -U $reqsfile
 

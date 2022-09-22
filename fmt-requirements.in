@@ -1,0 +1,9 @@
+-c test/test-requirements.txt
+
+-c nt2/requirements.txt
+-c nt2/toml-requirements.txt
+
+black    # format code
+isort    # format imports
+ruff     # lint code
+ssort    # reorder functions
