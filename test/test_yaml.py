@@ -22,6 +22,7 @@ def _():
 for input_yaml_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
+    'typed_all_verbose_null': 'typed_round_trip',
 }.items():
 
     @test(f"convert {input_yaml_name} YAML to NestedText")
