@@ -7,7 +7,7 @@ name = "nt2"
 authors = [{name = "Andy Kluger"}]
 dynamic = ["version", "description"]
 license = {file = "LICENSE"}
-keywords = ["NestedText", "json"]
+keywords = ["NestedText", "JSON", "YAML", "TOML"]
 classifiers = []
 dependencies = ["cattrs", "nestedtext", "plumbum", "ruamel.yaml", "yamlpath"]
 requires-python = ">=3.10"
@@ -20,6 +20,8 @@ nt2json = "nt2.ui:NestedTextToJSON"
 nt2yaml = "nt2.ui:NestedTextToYAML"
 json2nt = "nt2.ui:JSONToNestedText"
 yaml2nt = "nt2.ui:YAMLToNestedText"
+toml2nt = "nt2.ui:TOMLToNestedText"
+# nt2toml = "nt2.ui:NestedTextToTOML"
 
 [project.optional-dependencies]
 dev = ["black", "flit", "ipython", "isort", "nestedtext", "plumbum", "rich", "rtoml", "ruff", "ssort", "taskipy", "ward"]

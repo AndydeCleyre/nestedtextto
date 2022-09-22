@@ -5,7 +5,8 @@ from plumbum.colors import blue, green, magenta, yellow
 from . import __version__
 from .internal import (
     dump_json_to_nestedtext, dump_nestedtext_to_json,
-    dump_nestedtext_to_yaml, dump_yaml_to_nestedtext
+    dump_nestedtext_to_yaml, dump_yaml_to_nestedtext,
+    dump_toml_to_nestedtext
 )
 
 
@@ -129,9 +130,6 @@ class JSONToNestedText(ColorApp):
         cat example.json | json2nt
     """
 
-    # VERSION = __version__
-    # SUBCOMMAND_HELPMSG = False
-
     # --make-schema ? --gen-schema ? --only-schema ? separate command?
 
     def main(self, *input_files: ExistingFile):
@@ -148,8 +146,19 @@ class YAMLToNestedText(ColorApp):
         cat example.yml | yaml2nt
     """
 
-    # VERSION = __version__
-    # SUBCOMMAND_HELPMSG = False
-
     def main(self, *input_files: ExistingFile):
         dump_yaml_to_nestedtext(*input_files)
+
+
+class TOMLToNestedText(ColorApp):
+    """
+    Read TOML and output its content as NestedText.
+
+    Examples:
+        toml2nt example.yml
+        toml2nt <example.yml
+        cat example.yml | toml2nt
+    """
+
+    def main(self, *input_files: ExistingFile):
+        dump_toml_to_nestedtext(*input_files)

@@ -24,9 +24,18 @@ except ImportError:
 else:
     rich_tb_install()
 
+try:
+    from rtoml import load as tload
+except ImportError:
+    TOML_SUPPORT = False
+else:
+    TOML_SUPPORT = True
+    from pathlib import Path
+
 YAML_EDITOR = YPParsers.get_yaml_editor()
 YAML_EDITOR.indent(mapping=2, sequence=4, offset=2)
 ydump = YAML_EDITOR.dump
+yload = YAML_EDITOR.load
 
 
 def str_to_bool(value: str) -> bool:
@@ -174,15 +183,30 @@ def dump_json_to_nestedtext(*input_files):
 def dump_yaml_to_nestedtext(*input_files):
     converter = mk_stringy_converter()
     if not input_files:
-        data = YAML_EDITOR.load(sys.stdin)
+        data = yload(sys.stdin)
         data = converter.unstructure(data)
         ntdump(data, sys.stdout, indent=2)
     else:
         for f in input_files:
             with open(f) as ifile:
-                data = YAML_EDITOR.load(ifile)
+                data = yload(ifile)
                 data = converter.unstructure(data)
                 ntdump(data, sys.stdout, indent=2)
+
+
+def dump_toml_to_nestedtext(*input_files):
+    if not TOML_SUPPORT:
+        raise ImportError("TOML support for nt2 is not installed. Try reinstalling as 'nt2[toml]'")
+    converter = mk_stringy_converter()
+    if not input_files:
+        data = tload(sys.stdin)
+        data = converter.unstructure(data)
+        ntdump(data, sys.stdout, indent=2)
+    else:
+        for f in input_files:
+            data = tload(Path(f))
+            data = converter.unstructure(data)
+            ntdump(data, sys.stdout, indent=2)
 
 
 def dump_nestedtext_to_yaml(
