@@ -14,6 +14,7 @@ from ruamel.yaml.scalarstring import DoubleQuotedScalarString
 from ruamel.yaml.timestamp import TimeStamp
 from yamlpath import Processor as YPProcessor
 from yamlpath.common import Parsers as YPParsers
+from yamlpath.exceptions import YAMLPathException
 # from yamlpath.enums import YAMLValueFormats
 from yamlpath.wrappers import ConsolePrinter as YPConsolePrinter
 
@@ -139,19 +140,34 @@ def cast_stringy_data(
     surgeon = YPProcessor(log, doc)
 
     for query_path in null_paths:
-        for match in surgeon.get_nodes(query_path):
+        try:
+            matches = [*surgeon.get_nodes(query_path)]
+        except YAMLPathException as e:
+            print(*e.args, sep='\n', file=sys.stderr)
+            continue
+        for match in matches:
             if not match.node:
                 surgeon.set_value(match.path, None)
 
     for query_path in bool_paths:
-        for match in surgeon.get_nodes(query_path):
+        try:
+            matches = [*surgeon.get_nodes(query_path)]
+        except YAMLPathException as e:
+            print(*e.args, sep='\n', file=sys.stderr)
+            continue
+        for match in matches:
             if match.node is not None:
                 try:
                     surgeon.set_value(match.path, str_to_bool(match.node))
                 except ValueError as e:
                     raise ValueError(': '.join((*e.args, str(match.path))))
     for query_path in num_paths:
-        for match in surgeon.get_nodes(query_path):
+        try:
+            matches = [*surgeon.get_nodes(query_path)]
+        except YAMLPathException as e:
+            print(*e.args, sep='\n', file=sys.stderr)
+            continue
+        for match in matches:
             if match.node is not None:
                 try:
                     num = float(match.node)
@@ -166,7 +182,12 @@ def cast_stringy_data(
 
     # TODO: We can't yet manage setting a date/datetime object with surgeon.set_value...
     for query_path in date_paths:
-        for match in surgeon.get_nodes(query_path):
+        try:
+            matches = [*surgeon.get_nodes(query_path)]
+        except YAMLPathException as e:
+            print(*e.args, sep='\n', file=sys.stderr)
+            continue
+        for match in matches:
             if match.node is not None:
                 try:
                     timey_wimey = date.fromisoformat(match.node)
