@@ -13,7 +13,7 @@ if [[ $GITHUB_ACTIONS ]] {
   envin dev-requirements.txt
 } else {
   activate
-  pipi -r dev-requirements.txt
+  pipi -qr dev-requirements.txt
 }
 
 ssort .
