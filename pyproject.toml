@@ -22,8 +22,8 @@ json2nt = "nt2.ui:JSONToNestedText"
 yaml2nt = "nt2.ui:YAMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "flit", "ipython", "isort", "nestedtext", "plumbum", "rich", "ruff", "ssort", "taskipy", "ward"]
-test = ["nestedtext", "plumbum", "ward"]
+dev = ["black", "flit", "ipython", "isort", "nestedtext", "plumbum", "rich", "rtoml", "ruff", "ssort", "taskipy", "ward"]
+test = ["nestedtext", "plumbum", "rtoml", "ward"]
 toml = ["rtoml"]
 
 [tool.black]
