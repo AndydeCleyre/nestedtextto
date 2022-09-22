@@ -23,4 +23,4 @@ for reqsfile (
   dev-requirements.in
 )  pipc -U $reqsfile
 
-pypc
+pypc -y
