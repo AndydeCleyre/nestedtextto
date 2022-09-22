@@ -12,7 +12,7 @@ SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
 # TODO: add dates to tests
 
 
-@test("convert NestedText to untyped YAML")
+@test("NestedText -> YAML [untyped]")
 def _():
     expected_file = SAMPLES / 'untyped.yml'
     output = nt2yaml(SAMPLES / 'base.nt')
@@ -25,7 +25,7 @@ for input_yaml_name, output_nt_name in {
     'typed_all_verbose_null': 'typed_round_trip',
 }.items():
 
-    @test(f"convert {input_yaml_name} YAML to NestedText")
+    @test(f"YAML -> NestedText [{input_yaml_name}]")
     def _(input_yaml_name=input_yaml_name, output_nt_name=output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = yaml2nt(SAMPLES / f"{input_yaml_name}.yml")
@@ -44,7 +44,7 @@ def casting_args_from_schema_file(schema_file):
 
 for schema_file in SAMPLES // 'base.*.types.nt':
 
-    @test(f"convert NestedText to typed YAML, using schema file [{schema_file.name}]")
+    @test(f"NestedText -> YAML [schema file: {schema_file.name}]")
     def _(schema_file=schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
         output = nt2yaml(SAMPLES / 'base.nt', '--schema', schema_file)
@@ -53,7 +53,7 @@ for schema_file in SAMPLES // 'base.*.types.nt':
     casting_args = casting_args_from_schema_file(schema_file)
 
     @test(
-        "convert NestedText to typed YAML, using casting args ["
+        "NestedText -> YAML [casting args: "
         + ', '.join(set(arg.lstrip('-') for arg in casting_args[::2]))
         + "]"
     )
@@ -63,7 +63,7 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         assert output == expected_file.read()
 
 
-@test("convert NestedText to typed YAML, combining schema file and casting args")
+@test("NestedText -> YAML [blend schema file with casting args]")
 def _():
     expected_file = SAMPLES / 'typed_all.yml'
     output = nt2yaml(
@@ -75,7 +75,7 @@ def _():
     assert output == expected_file.read()
 
 
-@test("convert NestedText to typed YAML, combining multiple schema files")
+@test("NestedText -> YAML [blend schema files]")
 def _():
     expected_file = SAMPLES / 'typed_all.yml'
     output = nt2yaml(
