@@ -8,7 +8,11 @@ authors = [{name = "Andy Kluger"}]
 dynamic = ["version", "description"]
 license = {file = "LICENSE"}
 keywords = ["NestedText", "JSON", "YAML", "TOML"]
-classifiers = []
+classifiers = [
+    "Environment :: Console",
+    "Topic :: Text Processing :: Markup",
+    "Topic :: Utilities",
+]
 dependencies = ["cattrs", "nestedtext", "plumbum", "ruamel.yaml", "yamlpath"]
 requires-python = ">=3.10"
 
