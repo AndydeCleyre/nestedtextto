@@ -10,14 +10,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: develop
-          submodules: recursive
 
-      - name: install build tools from PyPI
+      - name: install Python versions
+        uses: asdf-vm/actions/install@v1
+
+      - name: install nox tools from PyPI
         run: pip3 install nox
         env:
           DEBIAN_FRONTEND: noninteractive
-
-      # TODO: install Python versions for nox to find
 
       - name: hit it
         run: nox
