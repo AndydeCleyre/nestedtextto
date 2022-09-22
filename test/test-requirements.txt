@@ -18,5 +18,4 @@ rtoml==0.8.0              # via -r test/../nt2/toml-requirements.in
 shellingham==1.5.0        # via click-completion
 six==1.16.0               # via -c test/../nt2/requirements.txt, click-completion, inform, python-dateutil
 tomli==2.0.1              # via ward
-typing-extensions==4.3.0  # via rich
-ward==0.66.1b0            # via -r test/test-requirements.in
+ward @ git+https://github.com/andydecleyre/ward@bugfix/243  # via -r test/test-requirements.in
