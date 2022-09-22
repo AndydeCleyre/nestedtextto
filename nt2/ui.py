@@ -144,7 +144,6 @@ class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDa
     def main(self, *input_files: ExistingFile):
         for schema_file in self.schema_files:
             schema = ntload(schema_file)
-            self.null_paths = [*schema.get('null', ()), *self.null_paths]
             self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
             self.num_paths = [*schema.get('number', ()), *self.num_paths]
             self.date_paths = [*schema.get('date', ()), *self.date_paths]
@@ -153,7 +152,6 @@ class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDa
         dump_nestedtext_to_toml(
             *input_files,
             bool_paths=self.bool_paths,
-            null_paths=self.null_paths,
             num_paths=self.num_paths,
             date_paths=self.date_paths
         )
