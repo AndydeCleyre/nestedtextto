@@ -9,7 +9,11 @@ root="$(git -C $0:P:h rev-parse --show-toplevel)"
 cd "$root"
 
 . ./.zpy/zpy.plugin.zsh
-envin /dev/null
+if [[ $GITHUB_ACTIONS ]] {
+  envin /dev/null
+} else {
+  activate
+}
 
 for reqsfile (
   nt2/requirements.in
