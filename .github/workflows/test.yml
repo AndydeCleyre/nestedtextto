@@ -11,7 +11,7 @@ jobs:
         with:
           ref: develop
 
-      - name: set up nox and pythons
+      - name: get nox
         uses: excitedleigh/setup-nox@v2.0.0
 
       - name: hit it
