@@ -29,8 +29,8 @@ class NestedTextToTypedFormat(ColorApp):
         argname='NESTEDTEXTFILE',
         help=(
             "Cast nodes matching YAML Path queries specified in a NestedText document. "
-            "It must be a map with one or more of the keys 'null', 'boolean', 'number',"
-            "and each key's value is a list of YAML Paths. TOML and YAML also support 'date'."
+            "It must be a map with one or more of the keys: 'null', 'boolean', 'number', 'date'."
+            "Each key's value is a list of YAML Paths."
         ),
     )
     bool_paths = SwitchAttr(
@@ -38,12 +38,6 @@ class NestedTextToTypedFormat(ColorApp):
         list=True,
         argname='YAMLPATH',
         help="Cast each node matching the given YAML Path query as boolean",
-    )
-    null_paths = SwitchAttr(
-        ('null', 'n'),
-        list=True,
-        argname='YAMLPATH',
-        help="Cast each node matching the given YAML Path query as null, if it is an empty string",
     )
     num_paths = SwitchAttr(
         ('number', 'int', 'float', 'i', 'f'),
@@ -53,7 +47,17 @@ class NestedTextToTypedFormat(ColorApp):
     )
 
 
-class NestedTextToTypedFormatSupportDate(NestedTextToTypedFormat):
+class NestedTextToTypedFormatSupportNull(ColorApp):
+
+    null_paths = SwitchAttr(
+        ('null', 'n'),
+        list=True,
+        argname='YAMLPATH',
+        help="Cast each node matching the given YAML Path query as null, if it is an empty string",
+    )
+
+
+class NestedTextToTypedFormatSupportDate(ColorApp):
 
     date_paths = SwitchAttr(
         ('date', 'd'),
@@ -63,7 +67,7 @@ class NestedTextToTypedFormatSupportDate(NestedTextToTypedFormat):
     )
 
 
-class NestedTextToJSON(NestedTextToTypedFormat):
+class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull):
     """
     Read NestedText and output its content as JSON.
     By default, generated JSON values will only contain strings, arrays, and maps,
@@ -91,7 +95,9 @@ class NestedTextToJSON(NestedTextToTypedFormat):
         )
 
 
-class NestedTextToYAML(NestedTextToTypedFormatSupportDate):
+class NestedTextToYAML(
+    NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull, NestedTextToTypedFormatSupportDate
+):
     """
     Read NestedText and output its content as YAML.
     By default, generated YAML values will only contain strings, arrays, and maps,
@@ -122,7 +128,7 @@ class NestedTextToYAML(NestedTextToTypedFormatSupportDate):
         )
 
 
-class NestedTextToTOML(NestedTextToTypedFormatSupportDate):
+class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDate):
     """
     Read NestedText and output its content as TOML.
     By default, generated TOML values will only contain strings, arrays, and maps,
