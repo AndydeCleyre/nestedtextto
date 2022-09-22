@@ -1,0 +1,29 @@
+name: Bump PyPI requirements
+on:
+  push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: get up on this
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+          submodules: recursive
+
+      - name: install build tools from PyPI
+        run: pip3 install nox
+        env:
+          DEBIAN_FRONTEND: noninteractive
+
+      # TODO: install Python versions for nox to find
+
+      - name: hit it
+        run: nox
+
+      - name: push it
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git commit -am 'Bump PyPI requirements [Automated]' && git push || true
