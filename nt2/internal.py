@@ -146,11 +146,17 @@ def cast_stringy_data(
     for query_path in bool_paths:
         for match in surgeon.get_nodes(query_path):
             if match.node is not None:
-                surgeon.set_value(match.path, str_to_bool(match.node))
+                try:
+                    surgeon.set_value(match.path, str_to_bool(match.node))
+                except ValueError as e:
+                    raise ValueError(': '.join((*e.args, str(match.path))))
     for query_path in num_paths:
         for match in surgeon.get_nodes(query_path):
             if match.node is not None:
-                num = float(match.node)
+                try:
+                    num = float(match.node)
+                except ValueError as e:
+                    raise ValueError(': '.join((*e.args, str(match.path))))
                 try:
                     inum = int(num)
                 except ValueError:
@@ -165,7 +171,10 @@ def cast_stringy_data(
                 try:
                     timey_wimey = date.fromisoformat(match.node)
                 except ValueError:
-                    timey_wimey = TimeStamp.fromisoformat(match.node)
+                    try:
+                        timey_wimey = TimeStamp.fromisoformat(match.node)
+                    except ValueError as e:
+                        raise ValueError(': '.join((*e.args, str(match.path))))
                 surgeon.set_value(match.path, timey_wimey)
                 # surgeon.set_value(match.path, timey_wimey, value_format=YAMLValueFormats.BARE)
 
