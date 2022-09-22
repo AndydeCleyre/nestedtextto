@@ -151,8 +151,12 @@ def cast_stringy_data(
         for match in surgeon.get_nodes(query_path):
             if match.node is not None:
                 num = float(match.node)
-                inum = int(num)
-                surgeon.set_value(match.path, inum if num == inum else num)
+                try:
+                    inum = int(num)
+                except ValueError:
+                    surgeon.set_value(match.path, num)
+                else:
+                    surgeon.set_value(match.path, inum if num == inum else num)
 
     # TODO: We can't yet manage setting a date/datetime object with surgeon.set_value...
     for query_path in date_paths:
