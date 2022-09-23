@@ -1,6 +1,6 @@
 import sys
 from datetime import date, datetime, time
-from json import dump as jdump, dumps as jdumps, load as jload
+from json import dump as jdump, load as jload
 from types import NoneType, SimpleNamespace
 from typing import Sequence
 
@@ -130,13 +130,12 @@ def cast_stringy_data(
     date_paths: Sequence[str] = (),
     converter: None | CAConverter = None,
 ) -> dict | list:
+    doc = dict(data) if isinstance(data, dict) else list(data)
+
     if not any((bool_paths, null_paths, num_paths, date_paths)):
-        return dict(data) if isinstance(data, dict) else list(data)
+        return doc
 
     log = YPConsolePrinter(SimpleNamespace(quiet=True, verbose=False, debug=False))
-    doc, success = YPParsers.get_yaml_data(YAML_EDITOR, log, jdumps(data), literal=True)
-    if not success:
-        raise ValueError
     surgeon = YPProcessor(log, doc)
 
     for query_path in null_paths:
