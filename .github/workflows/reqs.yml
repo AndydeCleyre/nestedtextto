@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: get up on this
+      - name: fetch code (develop) and zpy submodule
         uses: actions/checkout@v2
         with:
           ref: develop
           submodules: recursive
 
-      - name: install build tools from distro repos
+      - name: install tools from distro repo
         run: sudo apt -yqq --no-install-recommends install ca-certificates zsh
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -23,10 +23,10 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: hit it
+      - name: upgrade lockfiles
         run: ./mk/reqs.zsh
 
-      - name: push it
+      - name: push any changes
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'

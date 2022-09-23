@@ -6,10 +6,8 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
 
-      - name: get up on this
+      - name: fetch code and zpy submodule
         uses: actions/checkout@v2
-        with:
-          ref: develop
 
       - name: get nox
         uses: excitedleigh/setup-nox@v2.0.0
