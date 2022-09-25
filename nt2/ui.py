@@ -3,10 +3,17 @@ from plumbum.cli import Application, ExistingFile, SwitchAttr
 from plumbum.colors import blue, green, magenta, yellow
 
 from . import __version__
-from .internal import (
+from .dumpers import (
     dump_json_to_nestedtext, dump_nestedtext_to_json, dump_nestedtext_to_toml,
     dump_nestedtext_to_yaml, dump_toml_to_nestedtext, dump_yaml_to_nestedtext
 )
+
+try:
+    from rich.traceback import install as rich_tb_install
+except ImportError:
+    pass
+else:
+    rich_tb_install()
 
 
 class ColorApp(Application):
@@ -29,7 +36,7 @@ class NestedTextToTypedFormat(ColorApp):
         argname='NESTEDTEXTFILE',
         help=(
             "Cast nodes matching YAML Path queries specified in a NestedText document. "
-            "It must be a map with one or more of the keys: 'null', 'boolean', 'number', 'date'."
+            "It must be a map with one or more of the keys: 'null', 'boolean', 'number'"
             "Each key's value is a list of YAML Paths."
         ),
     )
@@ -91,17 +98,15 @@ class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNu
             *input_files,
             bool_paths=self.bool_paths,
             null_paths=self.null_paths,
-            num_paths=self.num_paths
+            num_paths=self.num_paths,
         )
 
 
-class NestedTextToYAML(
-    NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull, NestedTextToTypedFormatSupportDate
-):
+class NestedTextToYAML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull):
     """
     Read NestedText and output its content as YAML.
     By default, generated YAML values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean, null, number, or date.
+    but you can cast nodes matching YAML Paths to boolean, null, or number.
 
     Examples:
         nt2yaml example.nt
@@ -116,7 +121,7 @@ class NestedTextToYAML(
             self.null_paths = [*schema.get('null', ()), *self.null_paths]
             self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
             self.num_paths = [*schema.get('number', ()), *self.num_paths]
-            self.date_paths = [*schema.get('date', ()), *self.date_paths]
+            # self.date_paths = [*schema.get('date', ()), *self.date_paths]
 
         # TODO: YAML date support
         dump_nestedtext_to_yaml(
@@ -124,15 +129,15 @@ class NestedTextToYAML(
             bool_paths=self.bool_paths,
             null_paths=self.null_paths,
             num_paths=self.num_paths,
-            date_paths=self.date_paths
+            # date_paths=self.date_paths
         )
 
 
-class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDate):
+class NestedTextToTOML(NestedTextToTypedFormat):
     """
     Read NestedText and output its content as TOML.
     By default, generated TOML values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean, null, number, or date.
+    but you can cast nodes matching YAML Paths to boolean or number.
 
     Examples:
         nt2toml example.nt
@@ -146,14 +151,14 @@ class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDa
             schema = ntload(schema_file)
             self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
             self.num_paths = [*schema.get('number', ()), *self.num_paths]
-            self.date_paths = [*schema.get('date', ()), *self.date_paths]
+            # self.date_paths = [*schema.get('date', ()), *self.date_paths]
 
         # TODO: TOML date support
         dump_nestedtext_to_toml(
             *input_files,
             bool_paths=self.bool_paths,
             num_paths=self.num_paths,
-            date_paths=self.date_paths
+            # date_paths=self.date_paths
         )
 
 
