@@ -2,7 +2,7 @@ name: Run tests
 on:
   push
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-22.04
     steps:
 
