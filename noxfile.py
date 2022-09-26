@@ -3,5 +3,5 @@ import nox
 
 @nox.session(python=['3.10'])
 def tests(session):
-    session.install('.[test,toml]')
-    session.run('ward', *session.posargs)
+    session.install('.[test,toml]', 'coverage')
+    session.run('coverage', 'run', '-m', 'ward', *session.posargs)
