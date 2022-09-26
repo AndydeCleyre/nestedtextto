@@ -12,5 +12,5 @@ jobs:
       - name: get nox
         uses: excitedleigh/setup-nox@v2.0.0
 
-      - name: hit it
+      - name: run ward tests in nox environment
         run: nox --force-color
