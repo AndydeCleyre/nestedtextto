@@ -14,3 +14,6 @@ jobs:
 
       - name: run ward tests in nox environment
         run: nox --force-color
+
+      - name: upload coverage data
+        uses: codecov/codecov-action@v3
