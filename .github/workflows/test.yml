@@ -13,4 +13,4 @@ jobs:
         uses: excitedleigh/setup-nox@v2.0.0
 
       - name: hit it
-        run: nox
+        run: nox --force-color
