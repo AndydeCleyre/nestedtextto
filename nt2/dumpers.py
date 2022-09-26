@@ -10,13 +10,6 @@ from .converters import (
 )
 
 try:
-    from rich.traceback import install as rich_tb_install
-except ImportError:
-    pass
-else:
-    rich_tb_install()
-
-try:
     from rtoml import dump as tdump, load as tload
 except ImportError:
     TOML_SUPPORT = False
