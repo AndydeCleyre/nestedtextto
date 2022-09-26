@@ -35,6 +35,7 @@ fmt = ["black", "isort", "ruff", "ssort"]
 
 [tool.black]
 line-length = 99
+skip-magic-trailing-comma = true
 skip-string-normalization = true
 
 [tool.isort]

@@ -20,8 +20,7 @@ def mk_deep_converter() -> Converter:
 
     c.register_unstructure_hook(CommentedSeq, lambda cs: [c.unstructure(e) for e in cs])
     c.register_unstructure_hook(
-        CommentedMap,
-        lambda cm: {c.unstructure(k): c.unstructure(v) for k, v in cm.items()},
+        CommentedMap, lambda cm: {c.unstructure(k): c.unstructure(v) for k, v in cm.items()}
     )
 
     return c
