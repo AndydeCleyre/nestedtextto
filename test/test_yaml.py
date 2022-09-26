@@ -1,6 +1,6 @@
-from nestedtext import load as ntload
+from commands import nt2yaml, yaml2nt
 from plumbum import local
-from plumbum.cmd import nt2yaml, yaml2nt
+from utils import casting_args_from_schema_file
 from ward import test
 
 SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
@@ -32,34 +32,20 @@ for input_yaml_name, output_nt_name in {
         assert output == expected_file.read()
 
 
-def casting_args_from_schema_file(schema_file):
-    casting_args = []
-    schema_data = ntload(schema_file)
-    for cast_type in ('null', 'number', 'boolean'):
-        if yamlpaths := schema_data.get(cast_type):
-            for yp in yamlpaths:
-                casting_args.extend((f"--{cast_type}", yp))
-    return casting_args
-
-
 for schema_file in SAMPLES // 'base.*.types.nt':
 
     @test(f"NestedText -> YAML [schema file: {schema_file.name}]")
     def _(schema_file=schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
-        output = nt2yaml(SAMPLES / 'base.nt', '--schema', schema_file)
+        output = nt2yaml(SAMPLES / 'base.nt', schema_files=(schema_file,))
         assert output == expected_file.read()
 
     casting_args = casting_args_from_schema_file(schema_file)
 
-    @test(
-        "NestedText -> YAML [casting args: "
-        + ', '.join(set(arg.lstrip('-') for arg in casting_args[::2]))
-        + "]"
-    )
+    @test(f"NestedText -> YAML [casting args: {', '.join(casting_args)}]")
     def _(schema_file=schema_file, casting_args=casting_args):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
-        output = nt2yaml(SAMPLES / 'base.nt', *casting_args)
+        output = nt2yaml(SAMPLES / 'base.nt', **casting_args)
         assert output == expected_file.read()
 
 
@@ -68,9 +54,8 @@ def _():
     expected_file = SAMPLES / 'typed_all.yml'
     output = nt2yaml(
         SAMPLES / 'base.nt',
-        '--schema',
-        SAMPLES / 'base.bool_null.types.nt',
-        *casting_args_from_schema_file(SAMPLES / 'base.num.types.nt'),
+        schema_files=(SAMPLES / 'base.bool_null.types.nt',),
+        **casting_args_from_schema_file(SAMPLES / 'base.num.types.nt'),
     )
     assert output == expected_file.read()
 
@@ -80,9 +65,6 @@ def _():
     expected_file = SAMPLES / 'typed_all.yml'
     output = nt2yaml(
         SAMPLES / 'base.nt',
-        '--schema',
-        SAMPLES / 'base.bool_null.types.nt',
-        '--schema',
-        SAMPLES / 'base.num.types.nt',
+        schema_files=(SAMPLES / 'base.bool_null.types.nt', SAMPLES / 'base.num.types.nt'),
     )
     assert output == expected_file.read()
