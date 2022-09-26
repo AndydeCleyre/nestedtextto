@@ -10,4 +10,6 @@
 flit     # publish package
 ipython  # manually debug
 rich     # pretty print exceptions
+
 taskipy  # run tasks
+nox      # run tasks in clean venvs

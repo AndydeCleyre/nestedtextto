@@ -18,13 +18,11 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
 
-      - name: configure Python version
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+      - name: get nox
+        uses: excitedleigh/setup-nox@v2.0.0
 
       - name: upgrade lockfiles
-        run: ./mk/reqs.zsh
+        run: nox -s lock
 
       - name: push any changes
         run: |

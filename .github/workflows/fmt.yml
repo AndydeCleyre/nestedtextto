@@ -6,18 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: fetch code and zpy submodule
+      - name: fetch code
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
 
-      - name: install tools from distro repo
-        run: sudo apt -yqq --no-install-recommends install ca-certificates zsh
-        env:
-          DEBIAN_FRONTEND: noninteractive
+      - name: get nox
+        uses: excitedleigh/setup-nox@v2.0.0
 
       - name: format and lint
-        run: ./mk/fmt.zsh
+        run: nox -s fmt
 
       - name: push any changes
         run: |

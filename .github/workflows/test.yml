@@ -9,6 +9,11 @@ jobs:
       - name: fetch code
         uses: actions/checkout@v2
 
+      - name: install tools from distro repo
+        run: sudo apt -yqq --no-install-recommends install ca-certificates zsh
+        env:
+          DEBIAN_FRONTEND: noninteractive
+
       - name: get nox
         uses: excitedleigh/setup-nox@v2.0.0
 

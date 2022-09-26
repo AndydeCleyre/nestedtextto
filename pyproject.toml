@@ -28,7 +28,7 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "flit", "ipython", "isort", "nestedtext", "plumbum", "rich", "rtoml", "ruff", "ssort", "taskipy", "ward"]
+dev = ["black", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "rich", "rtoml", "ruff", "ssort", "taskipy", "ward"]
 test = ["nestedtext", "plumbum", "rtoml", "ward"]
 toml = ["rtoml"]
 fmt = ["black", "isort", "ruff", "ssort"]
@@ -49,11 +49,10 @@ use_parentheses = true
 line-length = 99
 
 [tool.taskipy.tasks]
-fmt = "./mk/fmt.zsh"
-lock = "./mk/reqs.zsh"
+fmt = "nox -s fmt"
+lock = "nox -s lock"
 install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
-test = "ward"
-# TODO: extended form, with descriptions
+test = "nox -s tests"
 
 [tool.ward]
 path = ["test"]
