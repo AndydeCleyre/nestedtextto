@@ -16,6 +16,8 @@ if [[ $GITHUB_ACTIONS ]] {
   pipi -qr dev-requirements.txt
 }
 
+set -x
+
 ssort .
 black .
 isort .
