@@ -6,14 +6,14 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
 
-      - name: fetch code and zpy submodule
+      - name: fetch code
         uses: actions/checkout@v2
 
       - name: get nox
         uses: excitedleigh/setup-nox@v2.0.0
 
       - name: run ward tests in nox environment
-        run: nox --force-color
+        run: nox -s tests --force-color
 
       - name: upload coverage data
         uses: codecov/codecov-action@v3
