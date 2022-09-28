@@ -26,7 +26,7 @@ def mk_deep_converter() -> Converter:
     return c
 
 
-def mk_stringy_converter():  # mk_nt_types_converter
+def mk_stringy_converter() -> Converter:  # mk_nt_types_converter
     c = mk_deep_converter()
 
     c.register_unstructure_hook(bool, str)
@@ -48,7 +48,7 @@ def mk_stringy_converter():  # mk_nt_types_converter
     return c
 
 
-def mk_json_types_converter():
+def mk_json_types_converter() -> Converter:
     c = mk_deep_converter()
 
     c.register_unstructure_hook(DoubleQuotedScalarString, str)
@@ -65,11 +65,11 @@ def mk_json_types_converter():
     return c
 
 
-def mk_yaml_types_converter():
+def mk_yaml_types_converter() -> Converter:
     return mk_json_types_converter()
     # TODO: date support
 
 
-def mk_toml_types_converter():
+def mk_toml_types_converter() -> Converter:
     return mk_json_types_converter()
     # TODO: date/time support
