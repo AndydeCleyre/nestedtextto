@@ -1,12 +1,15 @@
 import sys
+from collections.abc import Sequence
 from types import SimpleNamespace
-from typing import Sequence
 
 from yamlpath import Processor as YPProcessor
 from yamlpath.exceptions import YAMLPathException
 from yamlpath.wrappers import ConsolePrinter as YPConsolePrinter
 
 from .converters import Converter, mk_json_types_converter
+
+StringyDatum = str | list | dict
+StringyData = list[StringyDatum] | dict[str, StringyDatum]
 
 
 def str_to_bool(value: str) -> bool:
@@ -18,13 +21,13 @@ def str_to_bool(value: str) -> bool:
 
 
 def cast_stringy_data(
-    data: dict | list,
+    data: StringyData,
     bool_paths: Sequence[str] = (),
     null_paths: Sequence[str] = (),
     num_paths: Sequence[str] = (),
     date_paths: Sequence[str] = (),
-    converter: None | Converter = None,
-) -> dict | list:
+    converter: Converter | None = None,
+) -> list | dict:
     doc = dict(data) if isinstance(data, dict) else list(data)
 
     if not any((bool_paths, null_paths, num_paths, date_paths)):
