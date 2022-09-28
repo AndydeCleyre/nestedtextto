@@ -1,6 +1,6 @@
 import sys
 from collections.abc import Sequence
-from datetime import date, datetime, time
+from datetime import date, datetime
 from types import SimpleNamespace
 
 from yamlpath import Processor as YPProcessor
