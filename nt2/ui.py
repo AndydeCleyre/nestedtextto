@@ -102,11 +102,13 @@ class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNu
         )
 
 
-class NestedTextToYAML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull):
+class NestedTextToYAML(
+    NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull, NestedTextToTypedFormatSupportDate
+):
     """
     Read NestedText and output its content as YAML.
     By default, generated YAML values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean, null, or number.
+    but you can cast nodes matching YAML Paths to boolean, null, number, or date.
 
     Examples:
         nt2yaml example.nt
@@ -121,15 +123,14 @@ class NestedTextToYAML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNu
             self.null_paths = [*schema.get('null', ()), *self.null_paths]
             self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
             self.num_paths = [*schema.get('number', ()), *self.num_paths]
-            # self.date_paths = [*schema.get('date', ()), *self.date_paths]
+            self.date_paths = [*schema.get('date', ()), *self.date_paths]
 
-        # TODO: YAML date support
         dump_nestedtext_to_yaml(
             *input_files,
             bool_paths=self.bool_paths,
             null_paths=self.null_paths,
             num_paths=self.num_paths,
-            # date_paths=self.date_paths
+            date_paths=self.date_paths,
         )
 
 

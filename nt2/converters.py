@@ -8,6 +8,13 @@ from ruamel.yaml.scalarfloat import ScalarFloat
 from ruamel.yaml.scalarint import ScalarInt
 from ruamel.yaml.scalarstring import DoubleQuotedScalarString
 from ruamel.yaml.timestamp import TimeStamp
+from yamlpath.patches.timestamp import AnchoredDate
+
+
+def timestamp_to_datey(ts: TimeStamp) -> date | datetime:
+    if isinstance(ts, AnchoredDate):
+        return ts.date()
+    return datetime.fromisoformat(ts.isoformat())
 
 
 def mk_deep_converter() -> Converter:
@@ -43,6 +50,7 @@ def mk_stringy_converter() -> Converter:  # mk_nt_types_converter
     c.register_unstructure_hook(date, date.isoformat)
     c.register_unstructure_hook(time, time.isoformat)
 
+    c.register_unstructure_hook(AnchoredDate, lambda ad: timestamp_to_datey(ad).isoformat())
     c.register_unstructure_hook(TimeStamp, TimeStamp.isoformat)
 
     return c
@@ -60,14 +68,23 @@ def mk_json_types_converter() -> Converter:
     c.register_unstructure_hook(date, date.isoformat)
     c.register_unstructure_hook(time, time.isoformat)
 
+    c.register_unstructure_hook(AnchoredDate, lambda ad: timestamp_to_datey(ad).isoformat())
     c.register_unstructure_hook(TimeStamp, TimeStamp.isoformat)
 
     return c
 
 
 def mk_yaml_types_converter() -> Converter:
-    return mk_json_types_converter()
-    # TODO: date support
+    c = mk_deep_converter()
+
+    c.register_unstructure_hook(DoubleQuotedScalarString, str)
+    c.register_unstructure_hook(ScalarBoolean, bool)
+    c.register_unstructure_hook(ScalarInt, int)
+    c.register_unstructure_hook(ScalarFloat, float)
+
+    c.register_unstructure_hook(TimeStamp, timestamp_to_datey)
+
+    return c
 
 
 def mk_toml_types_converter() -> Converter:

@@ -1,5 +1,6 @@
 import sys
 from collections.abc import Sequence
+from datetime import date, datetime, time
 from types import SimpleNamespace
 
 from yamlpath import Processor as YPProcessor
@@ -43,43 +44,53 @@ def cast_stringy_data(
             print(*e.args, sep='\n', file=sys.stderr)
             continue
         for match in matches:
-            if not match.node:
+            if match.node == '':
                 surgeon.set_value(match.path, None)
 
     for query_path in bool_paths:
         try:
-            matches = [*surgeon.get_nodes(query_path)]
+            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
         except YAMLPathException as e:
             print(*e.args, sep='\n', file=sys.stderr)
             continue
         for match in matches:
-            if match.node is not None:
-                try:
-                    surgeon.set_value(match.path, str_to_bool(match.node))
-                except ValueError as e:
-                    raise ValueError(': '.join((*e.args, str(match.path))))
+            try:
+                surgeon.set_value(match.path, str_to_bool(match.node))
+            except ValueError as e:
+                raise ValueError(': '.join((*e.args, str(match.path))))
+
     for query_path in num_paths:
         try:
-            matches = [*surgeon.get_nodes(query_path)]
+            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
         except YAMLPathException as e:
             print(*e.args, sep='\n', file=sys.stderr)
             continue
         for match in matches:
-            if match.node is not None:
-                try:
-                    num = float(match.node)
-                except ValueError as e:
-                    raise ValueError(': '.join((*e.args, str(match.path))))
-                try:
-                    inum = int(num)
-                except ValueError:
-                    surgeon.set_value(match.path, num)
-                else:
-                    surgeon.set_value(match.path, inum if num == inum else num)
+            try:
+                num = float(match.node)
+            except ValueError as e:
+                raise ValueError(': '.join((*e.args, str(match.path))))
+            try:
+                inum = int(num)
+            except ValueError:
+                surgeon.set_value(match.path, num)
+            else:
+                surgeon.set_value(match.path, inum if num == inum else num)
 
     # TODO: maybe pull some logic out of this method to a smaller reusable snippet:
     # something(query_path, )
 
-    # TODO: We can't yet manage setting a date/datetime object with surgeon.set_value...
+    for query_path in date_paths:
+        try:
+            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
+        except YAMLPathException as e:
+            print(*e.args, sep='\n', file=sys.stderr)
+            continue
+        for match in matches:
+            try:
+                val = date.fromisoformat(match.node)
+            except ValueError:
+                val = datetime.fromisoformat(match.node)
+            surgeon.set_value(match.path, val)
 
     return (converter or mk_json_types_converter()).unstructure(doc)
