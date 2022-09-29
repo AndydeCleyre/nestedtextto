@@ -10,12 +10,12 @@ from .converters import (
 )
 
 try:
-    from rtoml import dump as tdump, load as tload
+    from tomli import load as tload, loads as tloads
+    from tomli_w import dumps as tdumps
 except ImportError:
     TOML_SUPPORT = False
 else:
     TOML_SUPPORT = True
-    from pathlib import Path
 
 YAML_EDITOR = YPParsers.get_yaml_editor()
 YAML_EDITOR.indent(mapping=2, sequence=4, offset=2)
@@ -32,7 +32,7 @@ def dump_json_to_nestedtext(*input_files):
         for f in input_files:
             with open(f) as ifile:
                 typed_data = jload(ifile)
-                ntdump(typed_data, sys.stdout, indent=2)
+            ntdump(typed_data, sys.stdout, indent=2)
 
 
 def dump_yaml_to_nestedtext(*input_files):
@@ -45,8 +45,8 @@ def dump_yaml_to_nestedtext(*input_files):
         for f in input_files:
             with open(f) as ifile:
                 data = yload(ifile)
-                data = converter.unstructure(data)
-                ntdump(data, sys.stdout, indent=2)
+            data = converter.unstructure(data)
+            ntdump(data, sys.stdout, indent=2)
 
 
 def require_toml_support():
@@ -58,12 +58,13 @@ def dump_toml_to_nestedtext(*input_files):
     require_toml_support()
     converter = mk_stringy_converter()
     if not input_files:
-        data = tload(sys.stdin)
+        data = tloads(sys.stdin.read())
         data = converter.unstructure(data)
         ntdump(data, sys.stdout, indent=2)
     else:
         for f in input_files:
-            data = tload(Path(f))
+            with open(f, 'rb') as ifile:
+                data = tload(ifile)
             data = converter.unstructure(data)
             ntdump(data, sys.stdout, indent=2)
 
@@ -95,8 +96,7 @@ def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_path
             date_paths=date_paths,
             converter=mk_toml_types_converter(),
         )
-        # TODO: date support
-        tdump(data, sys.stdout, pretty=True)
+        print(tdumps(data, multiline_strings=True), end='')
 
 
 def dump_nestedtext_to_json(*input_files, bool_paths=(), null_paths=(), num_paths=()):

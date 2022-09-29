@@ -1,6 +1,6 @@
 import sys
 from collections.abc import Sequence
-from datetime import date, datetime
+from datetime import date, datetime, time
 from types import SimpleNamespace
 
 from yamlpath import Processor as YPProcessor
@@ -90,7 +90,13 @@ def cast_stringy_data(
             try:
                 val = date.fromisoformat(match.node)
             except ValueError:
-                val = datetime.fromisoformat(match.node)
+                try:
+                    val = datetime.fromisoformat(match.node)
+                except ValueError:
+                    # val = time.fromisoformat(match.node)
+                    # We can't currently store a time type in the
+                    # intermediary YAML doc object, so:
+                    val = str(time.fromisoformat(match.node))
             surgeon.set_value(match.path, val)
 
     return (converter or mk_json_types_converter()).unstructure(doc)

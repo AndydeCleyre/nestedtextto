@@ -11,7 +11,9 @@ from ruamel.yaml.timestamp import TimeStamp
 from yamlpath.patches.timestamp import AnchoredDate
 
 
-def timestamp_to_datey(ts: TimeStamp) -> date | datetime:
+def timestamp_to_datey(ts: TimeStamp) -> date | time | datetime:
+    # time isn't really supported for now
+    # - can't store time objects in ruamel.yaml/yamlpath doc (probably forever)
     if isinstance(ts, AnchoredDate):
         return ts.date()
     return datetime.fromisoformat(ts.isoformat())
@@ -88,5 +90,4 @@ def mk_yaml_types_converter() -> Converter:
 
 
 def mk_toml_types_converter() -> Converter:
-    return mk_json_types_converter()
-    # TODO: date/time support
+    return mk_yaml_types_converter()

@@ -28,9 +28,9 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "rich", "rtoml", "ruff", "ssort", "taskipy", "ward"]
-test = ["nestedtext", "plumbum", "rtoml", "ward"]
-toml = ["rtoml"]
+dev = ["black", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "rich", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
+test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
+toml = ["tomli", "tomli-w"]
 fmt = ["black", "isort", "ruff", "ssort"]
 
 [tool.black]

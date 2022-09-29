@@ -134,11 +134,11 @@ class NestedTextToYAML(
         )
 
 
-class NestedTextToTOML(NestedTextToTypedFormat):
+class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDate):
     """
     Read NestedText and output its content as TOML.
     By default, generated TOML values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean or number.
+    but you can cast nodes matching YAML Paths to boolean, number, or date.
 
     Examples:
         nt2toml example.nt
@@ -152,14 +152,13 @@ class NestedTextToTOML(NestedTextToTypedFormat):
             schema = ntload(schema_file)
             self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
             self.num_paths = [*schema.get('number', ()), *self.num_paths]
-            # self.date_paths = [*schema.get('date', ()), *self.date_paths]
+            self.date_paths = [*schema.get('date', ()), *self.date_paths]
 
-        # TODO: TOML date support
         dump_nestedtext_to_toml(
             *input_files,
             bool_paths=self.bool_paths,
             num_paths=self.num_paths,
-            # date_paths=self.date_paths
+            date_paths=self.date_paths,
         )
 
 

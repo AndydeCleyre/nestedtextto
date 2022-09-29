@@ -6,22 +6,18 @@ from ward import test
 SAMPLES = local.path(__file__).up() / 'samples' / 'toml'
 
 
-# TODO: use programmatic invocations rather than plumbum.cmd,
-# so that coverage can be tracked.
-
-# TODO: add dates to tests
-
-
 @test("NestedText -> TOML [untyped]")
 def _():
     expected_file = SAMPLES / 'untyped.toml'
     output = nt2toml(SAMPLES / 'base.nt')
+    # print(repr(output))
     assert output == expected_file.read()
 
 
 for input_toml_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
+    'typed_dates': 'dates_round_trip',
 }.items():
 
     @test(f"TOML -> NestedText [{input_toml_name}]")
@@ -46,6 +42,23 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.toml"
         output = nt2toml(SAMPLES / 'base.nt', **casting_args)
         assert output == expected_file.read()
+
+
+@test("NestedText -> TOML [schema file: dates.types.nt]")
+def _():
+    expected_file = SAMPLES / 'typed_dates.toml'
+    output = nt2toml(SAMPLES / 'dates.nt', schema_files=(SAMPLES / 'dates.types.nt',))
+    assert output == expected_file.read()
+
+
+casting_args = casting_args_from_schema_file(SAMPLES / 'dates.types.nt', ('date',))
+
+
+@test(f"NestedText -> TOML [casting args: {', '.join(casting_args)}]")
+def _(casting_args=casting_args):
+    expected_file = SAMPLES / 'typed_dates.toml'
+    output = nt2toml(SAMPLES / 'dates.nt', **casting_args)
+    assert output == expected_file.read()
 
 
 @test("NestedText -> TOML [blend schema file with casting args]")

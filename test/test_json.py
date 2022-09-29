@@ -6,10 +6,6 @@ from ward import test
 SAMPLES = local.path(__file__).up() / 'samples' / 'json'
 
 
-# TODO: use programmatic invocations rather than plumbum.cmd,
-# so that coverage can be tracked.
-
-
 @test("NestedText -> JSON [untyped]")
 def _():
     expected_file = SAMPLES / 'untyped.json'
