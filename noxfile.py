@@ -11,10 +11,8 @@ def test(session):
 @nox.session(python=['3.10'])
 def fmt(session):
     session.install('-r', 'fmt-requirements.txt')
-    session.run('ssort', '.')
-    session.run('black', '.')
-    session.run('isort', '.')
-    session.run('ruff', '.')
+    for tool in ('ssort', 'black', 'isort', 'ruff'):
+        session.run(tool, '.')
 
 
 @nox.session(python=['3.10'])
