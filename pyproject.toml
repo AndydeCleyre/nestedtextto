@@ -52,7 +52,7 @@ line-length = 99
 fmt = "nox -s fmt"
 lock = "nox -s lock"
 install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
-test = "nox -s tests"
+test = "nox -s test"
 
 [tool.ward]
 path = ["test"]
