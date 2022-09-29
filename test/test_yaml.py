@@ -35,10 +35,9 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         output = nt2yaml(SAMPLES / 'base.nt', schema_files=(schema_file,))
         assert output == expected_file.read()
 
-    casting_args = casting_args_from_schema_file(schema_file)
-
-    @test(f"NestedText -> YAML [casting args: {', '.join(casting_args)}]")
-    def _(schema_file=schema_file, casting_args=casting_args):
+    @test(f"NestedText -> YAML [casting args from schema: {schema_file.name}]")
+    def _(schema_file=schema_file):
+        casting_args = casting_args_from_schema_file(schema_file)
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
         output = nt2yaml(SAMPLES / 'base.nt', **casting_args)
         assert output == expected_file.read()
@@ -51,11 +50,9 @@ def _():
     assert output == expected_file.read()
 
 
-casting_args = casting_args_from_schema_file(SAMPLES / 'dates.types.nt', ('date',))
-
-
-@test(f"NestedText -> YAML [casting args: {', '.join(casting_args)}]")
-def _(casting_args=casting_args):
+@test("NestedText -> YAML [casting args from schema: dates.types.nt]")
+def _():
+    casting_args = casting_args_from_schema_file(SAMPLES / 'dates.types.nt', ('date',))
     expected_file = SAMPLES / 'typed_dates_round_trip.yml'
     output = nt2yaml(SAMPLES / 'dates.nt', **casting_args)
     assert output == expected_file.read()

@@ -35,10 +35,9 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         output = nt2toml(SAMPLES / 'base.nt', schema_files=(schema_file,))
         assert output == expected_file.read()
 
-    casting_args = casting_args_from_schema_file(schema_file, ('number', 'boolean'))
-
-    @test(f"NestedText -> TOML [casting args: {', '.join(casting_args)}]")
-    def _(schema_file=schema_file, casting_args=casting_args):
+    @test(f"NestedText -> TOML [casting args from schema: {schema_file.name}]")
+    def _(schema_file=schema_file):
+        casting_args = casting_args_from_schema_file(schema_file, ('number', 'boolean'))
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.toml"
         output = nt2toml(SAMPLES / 'base.nt', **casting_args)
         assert output == expected_file.read()
