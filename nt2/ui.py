@@ -77,8 +77,11 @@ class NestedTextToTypedFormatSupportDate(ColorApp):
 class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull):
     """
     Read NestedText and output its content as JSON.
+
     By default, generated JSON values will only contain strings, arrays, and maps,
     but you can cast nodes matching YAML Paths to boolean, null, or number.
+
+    Casting switches may be before or after file arguments.
 
     Examples:
         nt2json example.nt
@@ -107,8 +110,11 @@ class NestedTextToYAML(
 ):
     """
     Read NestedText and output its content as YAML.
+
     By default, generated YAML values will only contain strings, arrays, and maps,
     but you can cast nodes matching YAML Paths to boolean, null, number, or date.
+
+    Casting switches may be before or after file arguments.
 
     Examples:
         nt2yaml example.nt
@@ -137,8 +143,11 @@ class NestedTextToYAML(
 class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDate):
     """
     Read NestedText and output its content as TOML.
+
     By default, generated TOML values will only contain strings, arrays, and maps,
     but you can cast nodes matching YAML Paths to boolean, number, or date.
+
+    Casting switches may be before or after file arguments.
 
     Examples:
         nt2toml example.nt
