@@ -6,12 +6,6 @@ from ward import test
 SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
 
 
-# TODO: use programmatic invocations rather than plumbum.cmd,
-# so that coverage can be tracked.
-
-# TODO: add dates to tests
-
-
 @test("NestedText -> YAML [untyped]")
 def _():
     expected_file = SAMPLES / 'untyped.yml'
@@ -50,21 +44,18 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         assert output == expected_file.read()
 
 
-schema_file = SAMPLES / 'dates.types.nt'
-
-
-@test(f"NestedText -> YAML [schema file: {schema_file.name}]")
-def _(schema_file=schema_file):
+@test("NestedText -> YAML [schema file: dates.types.nt]")
+def _():
     expected_file = SAMPLES / 'typed_dates_round_trip.yml'
-    output = nt2yaml(SAMPLES / 'dates.nt', schema_files=(schema_file,))
+    output = nt2yaml(SAMPLES / 'dates.nt', schema_files=(SAMPLES / 'dates.types.nt',))
     assert output == expected_file.read()
 
 
-casting_args = casting_args_from_schema_file(schema_file, ('date',))
+casting_args = casting_args_from_schema_file(SAMPLES / 'dates.types.nt', ('date',))
 
 
 @test(f"NestedText -> YAML [casting args: {', '.join(casting_args)}]")
-def _(schema_file=schema_file, casting_args=casting_args):
+def _(casting_args=casting_args):
     expected_file = SAMPLES / 'typed_dates_round_trip.yml'
     output = nt2yaml(SAMPLES / 'dates.nt', **casting_args)
     assert output == expected_file.read()
