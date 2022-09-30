@@ -21,6 +21,17 @@ def str_to_bool(value: str) -> bool:
     raise ValueError
 
 
+def non_null_matches(surgeon, *query_paths):
+    for query_path in query_paths:
+        try:
+            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
+        except YAMLPathException as e:
+            print(*e.args, sep='\n', file=sys.stderr)
+            continue
+        else:
+            yield from matches
+
+
 def cast_stringy_data(
     data: StringyData,
     bool_paths: Sequence[str] = (),
@@ -37,66 +48,39 @@ def cast_stringy_data(
     log = YPConsolePrinter(SimpleNamespace(quiet=True, verbose=False, debug=False))
     surgeon = YPProcessor(log, doc)
 
-    for query_path in null_paths:
-        try:
-            matches = [*surgeon.get_nodes(query_path)]
-        except YAMLPathException as e:
-            print(*e.args, sep='\n', file=sys.stderr)
-            continue
-        for match in matches:
-            if match.node == '':
-                surgeon.set_value(match.path, None)
+    for match in non_null_matches(surgeon, *null_paths):
+        if match.node == '':
+            surgeon.set_value(match.path, None)
 
-    for query_path in bool_paths:
+    for match in non_null_matches(surgeon, *bool_paths):
         try:
-            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
-        except YAMLPathException as e:
-            print(*e.args, sep='\n', file=sys.stderr)
-            continue
-        for match in matches:
-            try:
-                surgeon.set_value(match.path, str_to_bool(match.node))
-            except ValueError as e:
-                raise ValueError(': '.join((*e.args, str(match.path))))
+            surgeon.set_value(match.path, str_to_bool(match.node))
+        except ValueError as e:
+            raise ValueError(': '.join((*e.args, str(match.path))))
 
-    for query_path in num_paths:
+    for match in non_null_matches(surgeon, *num_paths):
         try:
-            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
-        except YAMLPathException as e:
-            print(*e.args, sep='\n', file=sys.stderr)
-            continue
-        for match in matches:
+            num = float(match.node)
+        except ValueError as e:
+            raise ValueError(': '.join((*e.args, str(match.path))))
+        try:
+            inum = int(num)
+        except ValueError:
+            surgeon.set_value(match.path, num)
+        else:
+            surgeon.set_value(match.path, inum if num == inum else num)
+
+    for match in non_null_matches(surgeon, *date_paths):
+        try:
+            val = date.fromisoformat(match.node)
+        except ValueError:
             try:
-                num = float(match.node)
-            except ValueError as e:
-                raise ValueError(': '.join((*e.args, str(match.path))))
-            try:
-                inum = int(num)
+                val = datetime.fromisoformat(match.node)
             except ValueError:
-                surgeon.set_value(match.path, num)
-            else:
-                surgeon.set_value(match.path, inum if num == inum else num)
-
-    # TODO: maybe pull some logic out of this method to a smaller reusable snippet:
-    # something(query_path, )
-
-    for query_path in date_paths:
-        try:
-            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
-        except YAMLPathException as e:
-            print(*e.args, sep='\n', file=sys.stderr)
-            continue
-        for match in matches:
-            try:
-                val = date.fromisoformat(match.node)
-            except ValueError:
-                try:
-                    val = datetime.fromisoformat(match.node)
-                except ValueError:
-                    # val = time.fromisoformat(match.node)
-                    # We can't currently store a time type in the
-                    # intermediary YAML doc object, so:
-                    val = str(time.fromisoformat(match.node))
-            surgeon.set_value(match.path, val)
+                # val = time.fromisoformat(match.node)
+                # We can't currently store a time type in the
+                # intermediary YAML doc object, so:
+                val = str(time.fromisoformat(match.node))
+        surgeon.set_value(match.path, val)
 
     return (converter or mk_json_types_converter()).unstructure(doc)
