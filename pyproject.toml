@@ -13,7 +13,7 @@ classifiers = [
     "Topic :: Text Processing :: Markup",
     "Topic :: Utilities",
 ]
-dependencies = ["cattrs", "nestedtext", "plumbum", "ruamel.yaml", "yamlpath>=3.6.7"]
+dependencies = ["cattrs", "nestedtext", "plumbum", "ruamel.yaml", "yamlpath==3.6.7"]
 requires-python = ">=3.10"
 
 [project.urls]
