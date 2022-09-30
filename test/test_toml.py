@@ -10,7 +10,6 @@ SAMPLES = local.path(__file__).up() / 'samples' / 'toml'
 def _():
     expected_file = SAMPLES / 'untyped.toml'
     output = nt2toml(SAMPLES / 'base.nt')
-    # print(repr(output))
     assert output == expected_file.read()
 
 
@@ -18,6 +17,7 @@ for input_toml_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
     'typed_dates': 'dates_round_trip',
+    'typed_times': 'times',
 }.items():
 
     @test(f"TOML -> NestedText [{input_toml_name}]")
@@ -43,23 +43,6 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         assert output == expected_file.read()
 
 
-@test("NestedText -> TOML [schema file: dates.types.nt]")
-def _():
-    expected_file = SAMPLES / 'typed_dates.toml'
-    output = nt2toml(SAMPLES / 'dates.nt', schema_files=(SAMPLES / 'dates.types.nt',))
-    assert output == expected_file.read()
-
-
-casting_args = casting_args_from_schema_file(SAMPLES / 'dates.types.nt', ('date',))
-
-
-@test(f"NestedText -> TOML [casting args: {', '.join(casting_args)}]")
-def _(casting_args=casting_args):
-    expected_file = SAMPLES / 'typed_dates.toml'
-    output = nt2toml(SAMPLES / 'dates.nt', **casting_args)
-    assert output == expected_file.read()
-
-
 @test("NestedText -> TOML [blend schema file with casting args]")
 def _():
     expected_file = SAMPLES / 'typed_all.toml'
@@ -79,3 +62,21 @@ def _():
         schema_files=(SAMPLES / 'base.bool.types.nt', SAMPLES / 'base.num.types.nt'),
     )
     assert output == expected_file.read()
+
+
+for input_file, expected_file, schema_file in (
+    (SAMPLES / 'dates.nt', SAMPLES / 'typed_dates.toml', SAMPLES / 'dates.types.nt'),
+    (SAMPLES / 'times.nt', SAMPLES / 'typed_times.toml', SAMPLES / 'times.types.nt'),
+):
+
+    @test(f"NestedText -> TOML [schema file: {schema_file.name}]")
+    def _(input_file=input_file, expected_file=expected_file, schema_file=schema_file):
+        output = nt2toml(input_file, schema_files=(schema_file,))
+        assert output == expected_file.read()
+
+    casting_args = casting_args_from_schema_file(schema_file, ('date',))
+
+    @test(f"NestedText -> TOML [casting args: {', '.join(casting_args)}]")
+    def _(input_file=input_file, expected_file=expected_file, casting_args=casting_args):
+        output = nt2toml(input_file, **casting_args)
+        assert output == expected_file.read()
