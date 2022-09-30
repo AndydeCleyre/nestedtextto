@@ -2,12 +2,13 @@ import sys
 from collections.abc import Sequence
 from datetime import date, datetime, time
 from types import SimpleNamespace
+from uuid import uuid4
 
 from yamlpath import Processor as YPProcessor
 from yamlpath.exceptions import YAMLPathException
 from yamlpath.wrappers import ConsolePrinter as YPConsolePrinter
 
-from .converters import Converter, mk_json_types_converter
+from .converters import Converter, mk_json_types_converter, mk_marked_string_converter
 
 StringyDatum = str | list | dict
 StringyData = list[StringyDatum] | dict[str, StringyDatum]
@@ -53,12 +54,16 @@ def cast_stringy_data(
             surgeon.set_value(match.path, None)
 
     for match in non_null_matches(surgeon, *bool_paths):
+        if not isinstance(match.node, str):
+            continue
         try:
             surgeon.set_value(match.path, str_to_bool(match.node))
         except ValueError as e:
             raise ValueError(': '.join((*e.args, str(match.path))))
 
     for match in non_null_matches(surgeon, *num_paths):
+        if not isinstance(match.node, str):
+            continue
         try:
             num = float(match.node)
         except ValueError as e:
@@ -70,17 +75,31 @@ def cast_stringy_data(
         else:
             surgeon.set_value(match.path, inum if num == inum else num)
 
+    # We can't currently store a time type in the
+    # intermediary YAML doc object, so:
+    marked_times_present = False
+    time_marker = str(uuid4())
+    marked_time_converter = mk_marked_string_converter(time_marker=time_marker)
+
     for match in non_null_matches(surgeon, *date_paths):
+        if not isinstance(match.node, str) or match.node.startswith(time_marker):
+            continue
         try:
             val = date.fromisoformat(match.node)
         except ValueError:
             try:
                 val = datetime.fromisoformat(match.node)
             except ValueError:
-                # val = time.fromisoformat(match.node)
-                # We can't currently store a time type in the
-                # intermediary YAML doc object, so:
-                val = str(time.fromisoformat(match.node))
+                try:
+                    val = time.fromisoformat(match.node)
+                except Exception as e:
+                    raise e
+                else:
+                    val = f"{time_marker}{val.isoformat()}"
+                    marked_times_present = True
         surgeon.set_value(match.path, val)
+
+    if marked_times_present:
+        doc = marked_time_converter.unstructure(doc)
 
     return (converter or mk_json_types_converter()).unstructure(doc)
