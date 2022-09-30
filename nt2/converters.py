@@ -6,7 +6,7 @@ from ruamel.yaml.comments import CommentedMap, CommentedSeq
 from ruamel.yaml.scalarbool import ScalarBoolean
 from ruamel.yaml.scalarfloat import ScalarFloat
 from ruamel.yaml.scalarint import ScalarInt
-from ruamel.yaml.scalarstring import DoubleQuotedScalarString
+from ruamel.yaml.scalarstring import ScalarString
 from ruamel.yaml.timestamp import TimeStamp
 from yamlpath.patches.timestamp import AnchoredDate
 
@@ -43,7 +43,7 @@ def mk_stringy_converter() -> Converter:  # mk_nt_types_converter
     c.register_unstructure_hook(float, str)
     c.register_unstructure_hook(NoneType, lambda _: '')
 
-    c.register_unstructure_hook(DoubleQuotedScalarString, str)
+    c.register_unstructure_hook(ScalarString, str)
     c.register_unstructure_hook(ScalarBoolean, lambda sb: str(bool(sb)))
     c.register_unstructure_hook(ScalarInt, lambda si: str(int(si)))
     c.register_unstructure_hook(ScalarFloat, lambda sf: str(float(sf)))
@@ -61,7 +61,7 @@ def mk_stringy_converter() -> Converter:  # mk_nt_types_converter
 def mk_json_types_converter() -> Converter:
     c = mk_deep_converter()
 
-    c.register_unstructure_hook(DoubleQuotedScalarString, str)
+    c.register_unstructure_hook(ScalarString, str)
     c.register_unstructure_hook(ScalarBoolean, bool)
     c.register_unstructure_hook(ScalarInt, int)
     c.register_unstructure_hook(ScalarFloat, float)
