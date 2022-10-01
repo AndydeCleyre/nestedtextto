@@ -1,5 +1,5 @@
 /_
-/.coverage
+/.coverage*
 /coverage.json
 __pycache__
 pyrightconfig.json
