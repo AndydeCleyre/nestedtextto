@@ -18,7 +18,7 @@ jobs:
         uses: excitedleigh/setup-nox@v2.0.0
 
       - name: run ward tests in nox environment
-        run: nox -s test --force-color
+        run: nox -s test test_without_toml combine_coverage --force-color
 
       - name: upload coverage data
         uses: codecov/codecov-action@v3
