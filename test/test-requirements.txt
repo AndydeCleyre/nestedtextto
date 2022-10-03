@@ -13,7 +13,7 @@ plumbum==1.7.2            # via -r test/test-requirements.in
 pprintpp==0.4.0           # via ward
 pygments==2.13.0          # via rich
 python-dateutil==2.8.2    # via -c test/../nt2/requirements.txt, arrow
-rich==12.5.1              # via ward
+rich==12.6.0              # via ward
 shellingham==1.5.0        # via click-completion
 six==1.16.0               # via -c test/../nt2/requirements.txt, click-completion, inform, python-dateutil
 tomli==2.0.1              # via -r test/../nt2/toml-requirements.in, ward
