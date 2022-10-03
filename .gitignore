@@ -1,0 +1,7 @@
+/_
+/.coverage*
+/coverage.json
+/dist
+__pycache__
+pyrightconfig.json
+*.sublime-project

@@ -1,0 +1,5 @@
+-c ../nt2/requirements.txt
+
+nestedtext
+plumbum
+ward

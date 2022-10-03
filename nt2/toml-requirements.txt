@@ -1,0 +1,2 @@
+tomli==2.0.1              # via -r nt2/toml-requirements.in
+tomli-w==1.0.0            # via -r nt2/toml-requirements.in

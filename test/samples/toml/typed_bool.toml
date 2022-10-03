@@ -1,0 +1,28 @@
+[[People]]
+name = "Flinderson Dorf"
+age = "106"
+purpose = ""
+"temp in celsius" = "37.1"
+"is a wizard" = true
+"is awake" = false
+"favorite word" = "True"
+"second favorite word" = "false"
+notes = [
+    "first note",
+    "second note",
+]
+
+[[People]]
+name = "Juminy Biscuit"
+age = "103"
+purpose = "unknown"
+"temp in celsius" = "36.9"
+"is a wizard" = false
+"is awake" = true
+"favorite word" = "0789"
+"second favorite word" = "98.6"
+notes = [
+    "a",
+    "b",
+    "c",
+]

@@ -1,0 +1,6 @@
+null:
+  - /People/purpose
+  - /People/"nullable number"
+boolean:
+  - /People/"is a wizard"
+  - /People/"is awake"

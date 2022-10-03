@@ -1,0 +1,26 @@
+name: Run tests
+on:
+  push
+jobs:
+  tests:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: fetch code
+        uses: actions/checkout@v2
+
+      - name: install tools from distro repo
+        run: sudo apt -yqq --no-install-recommends install ca-certificates zsh
+        env:
+          DEBIAN_FRONTEND: noninteractive
+
+      - name: get nox
+        uses: excitedleigh/setup-nox@v2.0.0
+
+      - name: run ward tests in nox environment
+        run: nox -s test test_without_toml combine_coverage --force-color
+
+      - name: upload coverage data
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.json

@@ -1,0 +1,4 @@
+number:
+  - /People/age
+  - /People/"temp in celsius"
+  - /People/"nullable number"[. != ""]

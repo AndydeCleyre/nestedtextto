@@ -1,0 +1,15 @@
+-r test/test-requirements.in
+-c test/test-requirements.txt
+
+-r fmt-requirements.in
+-c fmt-requirements.txt
+
+-c nt2/requirements.txt
+-c nt2/toml-requirements.txt
+
+flit     # publish package
+ipython  # manually debug
+rich     # pretty print exceptions
+
+taskipy  # run tasks
+nox      # run tasks in clean venvs

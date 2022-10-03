@@ -1,0 +1,7 @@
+boolean:
+  - /People/"is a wizard"
+  - /People/"is awake"
+number:
+  - /People/age
+  - /People/"temp in celsius"
+  - /People/"nullable number"[. != ""]
