@@ -92,7 +92,7 @@ $ nt2json example.nt -b /debug -i /database/port
 }
 ```
 
-You may instead store these type mapping in a NestedText file.
+You may instead store these type mappings in a NestedText file.
 
 `example.types.nt`:
 ```yaml
