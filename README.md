@@ -9,8 +9,9 @@
 
 This project was created in appreciation for the design of [NestedText](https://nestedtext.org/),
 the readability of [yamlpath](https://github.com/wwkimball/yamlpath) queries,
-the utility of [cattrs](cattrs.readthedocs.io/),
-and the joy of [plumbum](plumbum.readthedocs.io/) and [ward](ward.readthedocs.io/) --
+the utility of [cattrs](https://cattrs.readthedocs.io/),
+and the joy of [plumbum](https://plumbum.readthedocs.io/)
+and [ward](https://ward.readthedocs.io/) --
 none of which are this author's projects.
 
 From the NestedText docs:
