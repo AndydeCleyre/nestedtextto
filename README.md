@@ -102,7 +102,7 @@ number:
   - /database/port
 ```
 
-The following command will also yield the above JSON:
+The following command will now also yield the above JSON:
 
 ```console
 $ nt2json example.nt -s example.types.nt
