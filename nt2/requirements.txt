@@ -1,6 +1,6 @@
 arrow==1.2.3              # via inform
 attrs==22.1.0             # via cattrs
-cattrs==22.1.0            # via -r nt2/requirements.in
+cattrs==22.2.0            # via -r nt2/requirements.in
 exceptiongroup==1.0.0rc9  # via cattrs
 inform==1.27.0            # via nestedtext
 nestedtext==3.4.0         # via -r nt2/requirements.in
