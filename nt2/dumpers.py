@@ -1,5 +1,6 @@
 import sys
-from json import dump as jdump, load as jload
+from json import dump as jdump, loads as jloads
+from json.decoder import JSONDecodeError
 
 from nestedtext import dump as ntdump, load as ntload
 from yamlpath.common import Parsers as YPParsers
@@ -26,12 +27,23 @@ yload = YAML_EDITOR.load
 def dump_json_to_nestedtext(*input_files):
     # We may need to use a converter.unstructure here; We'll see.
     if not input_files:
-        typed_data = jload(sys.stdin)
+
+        content = sys.stdin.read()
+        try:
+            typed_data = jloads(content)
+        except JSONDecodeError:
+            typed_data = [jloads(line) for line in content.splitlines()]
+
         ntdump(typed_data, sys.stdout, indent=2)
     else:
         for f in input_files:
-            with open(f) as ifile:
-                typed_data = jload(ifile)
+
+            content = f.read()
+            try:
+                typed_data = jloads(content)
+            except JSONDecodeError:
+                typed_data = [jloads(line) for line in content.splitlines()]
+
             ntdump(typed_data, sys.stdout, indent=2)
 
 
