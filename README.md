@@ -4,6 +4,7 @@
 [![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
 [![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 [![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
+[![PyPI version](https://badge.fury.io/py/nt2.svg)](https://pypi.org/project/nt2/)
 
 ---
 
@@ -33,6 +34,8 @@ all plain values will be strings by default.
 But you can provide options to cast any values as numbers, booleans, nulls, or dates,
 if the target language supports it, using the powerful and concise YAML Path query syntax.
 These YAML Paths may alternatively be stored in a simple "schema" NestedText file.
+
+![screenshot](https://user-images.githubusercontent.com/1787385/193654318-43c2bd5f-5a88-4751-a759-71ec757d701d.png)
 
 ## Installation
 
@@ -116,7 +119,7 @@ $ nt2json example.nt -s example.types.nt
 $ nt2json --help
 ```
 ```
-nt2json 0.0.2
+nt2json 0.0.3
 
 Read NestedText and output its content as JSON.
 
@@ -150,7 +153,7 @@ Switches:
 $ nt2yaml --help
 ```
 ```
-nt2yaml 0.0.2
+nt2yaml 0.0.3
 
 Read NestedText and output its content as YAML.
 
@@ -186,7 +189,7 @@ Switches:
 $ nt2toml --help
 ```
 ```
-nt2toml 0.0.2
+nt2toml 0.0.3
 
 Read NestedText and output its content as TOML.
 
@@ -220,7 +223,7 @@ Switches:
 $ json2nt --help
 ```
 ```
-json2nt 0.0.2
+json2nt 0.0.3
 
 Read JSON and output its content as NestedText.
 
@@ -239,7 +242,7 @@ Usage:
 $ yaml2nt --help
 ```
 ```
-yaml2nt 0.0.2
+yaml2nt 0.0.3
 
 Read YAML and output its content as NestedText.
 
@@ -258,7 +261,7 @@ Usage:
 $ toml2nt --help
 ```
 ```
-toml2nt 0.0.2
+toml2nt 0.0.3
 
 Read TOML and output its content as NestedText.
 

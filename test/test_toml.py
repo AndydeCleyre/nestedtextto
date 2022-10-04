@@ -15,14 +15,6 @@ else:
 SAMPLES = local.path(__file__).up() / 'samples' / 'toml'
 
 
-@skip("TOML support not enabled", when=TOML_DISABLED)
-@test("NestedText -> TOML [untyped]")
-def _():
-    expected_file = SAMPLES / 'untyped.toml'
-    output = nt2toml(SAMPLES / 'base.nt')
-    assert output == expected_file.read()
-
-
 for input_toml_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
@@ -36,6 +28,22 @@ for input_toml_name, output_nt_name in {
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = toml2nt(SAMPLES / f"{input_toml_name}.toml")
         assert output == expected_file.read()
+
+
+@skip("TOML support not enabled", when=TOML_DISABLED)
+@test("NestedText -> TOML [untyped]")
+def _():
+    expected_file = SAMPLES / 'untyped.toml'
+    output = nt2toml(SAMPLES / 'base.nt')
+    assert output == expected_file.read()
+
+
+@skip("TOML support not enabled", when=TOML_DISABLED)
+@test("NestedText -> TOML [top level array (kludged)]")
+def _():
+    expected_file = SAMPLES / 'lines.toml'
+    output = nt2toml(SAMPLES / 'lines.nt')
+    assert output == expected_file.read()
 
 
 for schema_file in SAMPLES // 'base.*.types.nt':

@@ -1,5 +1,6 @@
 import sys
-from json import dump as jdump, load as jload
+from json import dump as jdump, loads as jloads
+from json.decoder import JSONDecodeError
 
 from nestedtext import dump as ntdump, load as ntload
 from yamlpath.common import Parsers as YPParsers
@@ -26,12 +27,23 @@ yload = YAML_EDITOR.load
 def dump_json_to_nestedtext(*input_files):
     # We may need to use a converter.unstructure here; We'll see.
     if not input_files:
-        typed_data = jload(sys.stdin)
+
+        content = sys.stdin.read()
+        try:
+            typed_data = jloads(content)
+        except JSONDecodeError:
+            typed_data = [jloads(line) for line in content.splitlines()]
+
         ntdump(typed_data, sys.stdout, indent=2)
     else:
         for f in input_files:
-            with open(f) as ifile:
-                typed_data = jload(ifile)
+
+            content = f.read()
+            try:
+                typed_data = jloads(content)
+            except JSONDecodeError:
+                typed_data = [jloads(line) for line in content.splitlines()]
+
             ntdump(typed_data, sys.stdout, indent=2)
 
 
@@ -73,7 +85,7 @@ def dump_nestedtext_to_yaml(
     *input_files, bool_paths=(), null_paths=(), num_paths=(), date_paths=()
 ):
     for src in input_files or (sys.stdin,):
-        data = ntload(src)
+        data = ntload(src, 'any')
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
@@ -88,7 +100,7 @@ def dump_nestedtext_to_yaml(
 def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_paths=()):
     require_toml_support()
     for src in input_files or (sys.stdin,):
-        data = ntload(src)
+        data = ntload(src, 'any')
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
@@ -96,12 +108,14 @@ def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_path
             date_paths=date_paths,
             converter=mk_toml_types_converter(),
         )
+        if isinstance(data, list):
+            data = {'TOML does not allow top-level arrays': data}
         print(tdumps(data, multiline_strings=True), end='')
 
 
 def dump_nestedtext_to_json(*input_files, bool_paths=(), null_paths=(), num_paths=()):
     for src in input_files or (sys.stdin,):
-        data = ntload(src)
+        data = ntload(src, 'any')
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
