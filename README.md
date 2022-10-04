@@ -119,7 +119,7 @@ $ nt2json example.nt -s example.types.nt
 $ nt2json --help
 ```
 ```
-nt2json 0.0.3
+nt2json 0.0.4
 
 Read NestedText and output its content as JSON.
 
@@ -153,7 +153,7 @@ Switches:
 $ nt2yaml --help
 ```
 ```
-nt2yaml 0.0.3
+nt2yaml 0.0.4
 
 Read NestedText and output its content as YAML.
 
@@ -189,7 +189,7 @@ Switches:
 $ nt2toml --help
 ```
 ```
-nt2toml 0.0.3
+nt2toml 0.0.4
 
 Read NestedText and output its content as TOML.
 
@@ -223,7 +223,7 @@ Switches:
 $ json2nt --help
 ```
 ```
-json2nt 0.0.3
+json2nt 0.0.4
 
 Read JSON and output its content as NestedText.
 
@@ -242,7 +242,7 @@ Usage:
 $ yaml2nt --help
 ```
 ```
-yaml2nt 0.0.3
+yaml2nt 0.0.4
 
 Read YAML and output its content as NestedText.
 
@@ -261,7 +261,7 @@ Usage:
 $ toml2nt --help
 ```
 ```
-toml2nt 0.0.3
+toml2nt 0.0.4
 
 Read TOML and output its content as NestedText.
 
