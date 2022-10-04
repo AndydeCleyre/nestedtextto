@@ -4,7 +4,7 @@
 [![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
 [![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 [![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
-[![PyPI version](https://badge.fury.io/py/nt2.svg)](https://pypi.org/project/nt2/)
+[![PyPI version](https://img.shields.io/pypi/v/nt2?color=green&style=plastic)](https://pypi.org/project/nt2/)
 
 ---
 
