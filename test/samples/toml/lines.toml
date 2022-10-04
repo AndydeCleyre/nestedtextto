@@ -1,0 +1,38 @@
+[["TOML does not allow top-level arrays"]]
+name = "Twoflower"
+wins = [
+    [
+        "two pair",
+        "4♠",
+    ],
+    [
+        "two pair",
+        "9♠",
+    ],
+]
+
+[["TOML does not allow top-level arrays"]]
+name = "Vorbis"
+wins = [
+    [
+        "straight",
+        "7♣",
+    ],
+    [
+        "one pair",
+        "10♥",
+    ],
+]
+
+[["TOML does not allow top-level arrays"]]
+name = "Victor"
+wins = [
+    [
+        "three of a kind",
+        "5♣",
+    ],
+]
+
+[["TOML does not allow top-level arrays"]]
+name = "One Man Bucket"
+wins = []

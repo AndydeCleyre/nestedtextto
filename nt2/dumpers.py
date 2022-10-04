@@ -85,7 +85,7 @@ def dump_nestedtext_to_yaml(
     *input_files, bool_paths=(), null_paths=(), num_paths=(), date_paths=()
 ):
     for src in input_files or (sys.stdin,):
-        data = ntload(src)
+        data = ntload(src, 'any')
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
@@ -100,7 +100,7 @@ def dump_nestedtext_to_yaml(
 def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_paths=()):
     require_toml_support()
     for src in input_files or (sys.stdin,):
-        data = ntload(src)
+        data = ntload(src, 'any')
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
@@ -108,12 +108,14 @@ def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_path
             date_paths=date_paths,
             converter=mk_toml_types_converter(),
         )
+        if isinstance(data, list):
+            data = {'TOML does not allow top-level arrays': data}
         print(tdumps(data, multiline_strings=True), end='')
 
 
 def dump_nestedtext_to_json(*input_files, bool_paths=(), null_paths=(), num_paths=()):
     for src in input_files or (sys.stdin,):
-        data = ntload(src)
+        data = ntload(src, 'any')
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,

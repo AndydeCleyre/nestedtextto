@@ -6,10 +6,10 @@ from ward import test
 SAMPLES = local.path(__file__).up() / 'samples' / 'json'
 
 
-@test("NestedText -> JSON [untyped]")
+@test("JSON Lines -> NestedText")
 def _():
-    expected_file = SAMPLES / 'untyped.json'
-    output = nt2json(SAMPLES / 'base.nt')
+    expected_file = SAMPLES / 'lines.nt'
+    output = json2nt(SAMPLES / 'lines.jsonl')
     assert output == expected_file.read()
 
 
@@ -23,6 +23,20 @@ for input_json_name, output_nt_name in {
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = json2nt(SAMPLES / f"{input_json_name}.json")
         assert output == expected_file.read()
+
+
+@test("NestedText -> JSON [untyped]")
+def _():
+    expected_file = SAMPLES / 'untyped.json'
+    output = nt2json(SAMPLES / 'base.nt')
+    assert output == expected_file.read()
+
+
+@test("NestedText -> JSON [top level array]")
+def _():
+    expected_file = SAMPLES / 'lines.json'
+    output = nt2json(SAMPLES / 'lines.nt')
+    assert output == expected_file.read()
 
 
 for schema_file in SAMPLES // 'base.*.types.nt':

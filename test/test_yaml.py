@@ -6,13 +6,6 @@ from ward import test
 SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
 
 
-@test("NestedText -> YAML [untyped]")
-def _():
-    expected_file = SAMPLES / 'untyped.yml'
-    output = nt2yaml(SAMPLES / 'base.nt')
-    assert output == expected_file.read()
-
-
 for input_yaml_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
@@ -25,6 +18,20 @@ for input_yaml_name, output_nt_name in {
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = yaml2nt(SAMPLES / f"{input_yaml_name}.yml")
         assert output == expected_file.read()
+
+
+@test("NestedText -> YAML [untyped]")
+def _():
+    expected_file = SAMPLES / 'untyped.yml'
+    output = nt2yaml(SAMPLES / 'base.nt')
+    assert output == expected_file.read()
+
+
+@test("NestedText -> YAML [top level array]")
+def _():
+    expected_file = SAMPLES / 'lines.yml'
+    output = nt2yaml(SAMPLES / 'lines.nt')
+    assert output == expected_file.read()
 
 
 for schema_file in SAMPLES // 'base.*.types.nt':
