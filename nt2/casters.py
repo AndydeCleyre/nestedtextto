@@ -25,7 +25,9 @@ def str_to_bool(value: str) -> bool:
 def non_null_matches(surgeon, *query_paths):
     for query_path in query_paths:
         try:
-            matches = [m for m in surgeon.get_nodes(query_path) if m.node is not None]
+            matches = [
+                m for m in surgeon.get_nodes(query_path, mustexist=True) if m.node is not None
+            ]
         except YAMLPathException as e:
             print(*e.args, sep='\n', file=sys.stderr)
             continue
