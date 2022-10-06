@@ -37,7 +37,7 @@ pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 platformdirs==2.5.2       # via -c fmt-requirements.txt, black, virtualenv
 pluggy==1.0.0             # via -c test/test-requirements.txt, ward
-plumbum==1.7.2            # via -c nt2/requirements.txt, -r test/test-requirements.in
+plumbum==1.8.0            # via -c nt2/requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via -c test/test-requirements.txt, ward
 prompt-toolkit==3.0.31    # via ipython
 psutil==5.9.2             # via taskipy

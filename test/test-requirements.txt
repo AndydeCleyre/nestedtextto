@@ -9,7 +9,7 @@ jinja2==3.1.2             # via click-completion
 markupsafe==2.1.1         # via jinja2
 nestedtext==3.4.0         # via -r test/test-requirements.in
 pluggy==1.0.0             # via ward
-plumbum==1.7.2            # via -r test/test-requirements.in
+plumbum==1.8.0            # via -r test/test-requirements.in
 pprintpp==0.4.0           # via ward
 pygments==2.13.0          # via rich
 python-dateutil==2.8.2    # via -c test/../nt2/requirements.txt, arrow
