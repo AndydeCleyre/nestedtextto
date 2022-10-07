@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import nox
 
 
@@ -38,14 +40,16 @@ def lock(session):
         'fmt-requirements.in',
         'dev-requirements.in',
     ):
-        session.run(
-            'pip-compile',
-            '--upgrade',
-            '--no-header',
-            '--annotation-style=line',
-            '--strip-extras',
-            '--allow-unsafe',
-            '--resolver=backtracking',
-            reqsfile,
-        )
+        rf = Path.cwd() / reqsfile
+        with session.chdir(rf.parent):
+            session.run(
+                'pip-compile',
+                '--upgrade',
+                '--no-header',
+                '--annotation-style=line',
+                '--strip-extras',
+                '--allow-unsafe',
+                '--resolver=backtracking',
+                rf.name,
+            )
     session.run('zsh', '-c', '. ./.zpy/zpy.plugin.zsh; pypc -y', external=True)
