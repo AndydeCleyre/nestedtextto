@@ -5,6 +5,7 @@
 [![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 [![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
 [![PyPI version](https://img.shields.io/pypi/v/nt2?color=green&style=plastic)](https://pypi.org/project/nt2/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nt2?color=green&style=plastic)
 
 ---
 
