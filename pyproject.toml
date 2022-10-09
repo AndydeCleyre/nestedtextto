@@ -11,6 +11,10 @@ readme = "README.md"
 keywords = ["NestedText", "JSON", "YAML", "TOML"]
 classifiers = [
     "Environment :: Console",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Topic :: Text Processing :: Markup",
     "Topic :: Utilities",
 ]
