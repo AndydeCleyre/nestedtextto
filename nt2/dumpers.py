@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 from json import dump as jdump, loads as jloads
 from json.decoder import JSONDecodeError

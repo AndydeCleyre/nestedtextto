@@ -3,13 +3,13 @@ from pathlib import Path
 import nox
 
 
-@nox.session(python=['3.10'])
+@nox.session(python=['3.7', '3.8', '3.9', '3.10'])
 def test(session):
     session.install('.[test,toml]', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
-@nox.session(python=['3.10'])
+@nox.session(python=['3.7', '3.8', '3.9', '3.10'])
 def test_without_toml(session):
     session.install('.[test-without-toml]', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)

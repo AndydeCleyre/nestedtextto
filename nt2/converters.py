@@ -1,6 +1,11 @@
-from datetime import date, datetime, time
-from types import NoneType
+from __future__ import annotations
 
+from datetime import date, datetime, time
+
+try:
+    from types import NoneType
+except ImportError:
+    NoneType = type(None)
 from cattrs import Converter
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
 from ruamel.yaml.scalarbool import ScalarBoolean
