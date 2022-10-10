@@ -38,6 +38,7 @@ test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
 fmt = ["black", "isort", "ruff", "ssort"]
 test-without-toml = ["nestedtext", "plumbum", "ward"]
+doc = ["file:..", "plumbum", "wheezy.template"]
 
 [tool.black]
 line-length = 99
