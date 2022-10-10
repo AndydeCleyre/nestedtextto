@@ -1,19 +1,13 @@
 from nestedtext import load as ntload
 from plumbum.cli import Application, ExistingFile, SwitchAttr
 from plumbum.colors import blue, green, magenta, yellow
+from rich import inspect as rich_inspect
 
 from . import __version__
 from .dumpers import (
     dump_json_to_nestedtext, dump_nestedtext_to_json, dump_nestedtext_to_toml,
     dump_nestedtext_to_yaml, dump_toml_to_nestedtext, dump_yaml_to_nestedtext
 )
-
-try:
-    from rich.traceback import install as rich_tb_install
-except ImportError:
-    pass
-else:
-    rich_tb_install()
 
 
 class ColorApp(Application):
@@ -91,18 +85,22 @@ class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNu
     """
 
     def main(self, *input_files: ExistingFile):
-        for schema_file in self.schema_files:
-            schema = ntload(schema_file)
-            self.null_paths = [*schema.get('null', ()), *self.null_paths]
-            self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
-            self.num_paths = [*schema.get('number', ()), *self.num_paths]
+        try:
+            for schema_file in self.schema_files:
+                schema = ntload(schema_file)
+                self.null_paths = [*schema.get('null', ()), *self.null_paths]
+                self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
+                self.num_paths = [*schema.get('number', ()), *self.num_paths]
 
-        dump_nestedtext_to_json(
-            *input_files,
-            bool_paths=self.bool_paths,
-            null_paths=self.null_paths,
-            num_paths=self.num_paths,
-        )
+            dump_nestedtext_to_json(
+                *input_files,
+                bool_paths=self.bool_paths,
+                null_paths=self.null_paths,
+                num_paths=self.num_paths,
+            )
+        except Exception as e:
+            rich_inspect(e)
+            return 1
 
 
 class NestedTextToYAML(
@@ -124,20 +122,24 @@ class NestedTextToYAML(
     """
 
     def main(self, *input_files: ExistingFile):
-        for schema_file in self.schema_files:
-            schema = ntload(schema_file)
-            self.null_paths = [*schema.get('null', ()), *self.null_paths]
-            self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
-            self.num_paths = [*schema.get('number', ()), *self.num_paths]
-            self.date_paths = [*schema.get('date', ()), *self.date_paths]
+        try:
+            for schema_file in self.schema_files:
+                schema = ntload(schema_file)
+                self.null_paths = [*schema.get('null', ()), *self.null_paths]
+                self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
+                self.num_paths = [*schema.get('number', ()), *self.num_paths]
+                self.date_paths = [*schema.get('date', ()), *self.date_paths]
 
-        dump_nestedtext_to_yaml(
-            *input_files,
-            bool_paths=self.bool_paths,
-            null_paths=self.null_paths,
-            num_paths=self.num_paths,
-            date_paths=self.date_paths,
-        )
+            dump_nestedtext_to_yaml(
+                *input_files,
+                bool_paths=self.bool_paths,
+                null_paths=self.null_paths,
+                num_paths=self.num_paths,
+                date_paths=self.date_paths,
+            )
+        except Exception as e:
+            rich_inspect(e)
+            return 1
 
 
 class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDate):
@@ -157,18 +159,22 @@ class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDa
     """
 
     def main(self, *input_files: ExistingFile):
-        for schema_file in self.schema_files:
-            schema = ntload(schema_file)
-            self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
-            self.num_paths = [*schema.get('number', ()), *self.num_paths]
-            self.date_paths = [*schema.get('date', ()), *self.date_paths]
+        try:
+            for schema_file in self.schema_files:
+                schema = ntload(schema_file)
+                self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
+                self.num_paths = [*schema.get('number', ()), *self.num_paths]
+                self.date_paths = [*schema.get('date', ()), *self.date_paths]
 
-        dump_nestedtext_to_toml(
-            *input_files,
-            bool_paths=self.bool_paths,
-            num_paths=self.num_paths,
-            date_paths=self.date_paths,
-        )
+            dump_nestedtext_to_toml(
+                *input_files,
+                bool_paths=self.bool_paths,
+                num_paths=self.num_paths,
+                date_paths=self.date_paths,
+            )
+        except Exception as e:
+            rich_inspect(e)
+            return 1
 
 
 class JSONToNestedText(ColorApp):
@@ -184,7 +190,11 @@ class JSONToNestedText(ColorApp):
     # --make-schema ? --gen-schema ? --only-schema ? separate command?
 
     def main(self, *input_files: ExistingFile):
-        dump_json_to_nestedtext(*input_files)
+        try:
+            dump_json_to_nestedtext(*input_files)
+        except Exception as e:
+            rich_inspect(e)
+            return 1
 
 
 class YAMLToNestedText(ColorApp):
@@ -198,7 +208,11 @@ class YAMLToNestedText(ColorApp):
     """
 
     def main(self, *input_files: ExistingFile):
-        dump_yaml_to_nestedtext(*input_files)
+        try:
+            dump_yaml_to_nestedtext(*input_files)
+        except Exception as e:
+            rich_inspect(e)
+            return 1
 
 
 class TOMLToNestedText(ColorApp):
@@ -212,4 +226,8 @@ class TOMLToNestedText(ColorApp):
     """
 
     def main(self, *input_files: ExistingFile):
-        dump_toml_to_nestedtext(*input_files)
+        try:
+            dump_toml_to_nestedtext(*input_files)
+        except Exception as e:
+            rich_inspect(e)
+            return 1
