@@ -46,7 +46,6 @@ def lock(session):
         'test/test-without-toml-requirements.in',
         'fmt-requirements.in',
         'dev-requirements.in',
-        'doc/doc-requirements.in',
     ):
         rf = Path.cwd() / reqsfile
         with session.chdir(rf.parent):
