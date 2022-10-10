@@ -1,5 +1,6 @@
 cattrs
 nestedtext
 plumbum
+rich
 ruamel.yaml      # but if yamlpath ever supports a different backend, reconsider
 yamlpath==3.6.7  # better date support from this version on

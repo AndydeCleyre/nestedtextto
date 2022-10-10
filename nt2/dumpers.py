@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sys
-from json import dump as jdump, loads as jloads
+from json import dump as jdump, loads as _jloads
 from json.decoder import JSONDecodeError
 
 from nestedtext import dump as ntdump, load as ntload
@@ -26,27 +26,21 @@ ydump = YAML_EDITOR.dump
 yload = YAML_EDITOR.load
 
 
+def jloads(content):
+    try:
+        return _jloads(content)
+    except JSONDecodeError:
+        return [_jloads(line) for line in content.splitlines()]
+
+
 def dump_json_to_nestedtext(*input_files):
     # We may need to use a converter.unstructure here; We'll see.
-    if not input_files:
+    for f in input_files or (sys.stdin,):
 
-        content = sys.stdin.read()
-        try:
-            typed_data = jloads(content)
-        except JSONDecodeError:
-            typed_data = [jloads(line) for line in content.splitlines()]
+        content = f.read()
+        typed_data = jloads(content)
 
         ntdump(typed_data, sys.stdout, indent=2)
-    else:
-        for f in input_files:
-
-            content = f.read()
-            try:
-                typed_data = jloads(content)
-            except JSONDecodeError:
-                typed_data = [jloads(line) for line in content.splitlines()]
-
-            ntdump(typed_data, sys.stdout, indent=2)
 
 
 def dump_yaml_to_nestedtext(*input_files):
