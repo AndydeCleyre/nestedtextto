@@ -139,17 +139,27 @@ Usage:
     nt2json [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help                                         Prints this help message and quits
-    -v, --version                                      Prints the program's version and quits
+    -h, --help                      Prints this help message and quits
+    -v, --version                   Prints the program's version and quits
 
 Switches:
-    --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
-    --null, -n YAMLPATH:str                            Cast each node matching the given YAML Path query as null, if it is an empty string; may be given
-                                                       multiple times
-    --number, --int, --float, -i, -f YAMLPATH:str      Cast each node matching the given YAML Path query as a number; may be given multiple times
-    --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
-                                                       more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
-                                                       multiple times
+    --boolean, -b YAMLPATH:str      Cast each node matching the given YAML Path
+                                    query as boolean; may be given multiple
+                                    times
+    --null, -n YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as null, if it is an empty string; may
+                                    be given multiple times
+    --number, --int, --float, -i, -f YAMLPATH:str
+                                    Cast each node matching the given YAML Path
+                                    query as a number; may be given multiple
+                                    times
+    --schema, -s NESTEDTEXTFILE:ExistingFile
+                                    Cast nodes matching YAML Path queries
+                                    specified in a NestedText document. It must
+                                    be a map with one or more of the keys:
+                                    'null', 'boolean', 'number'Each key's value
+                                    is a list of YAML Paths.; may be given
+                                    multiple times
 
 
 ```
@@ -180,19 +190,30 @@ Usage:
     nt2yaml [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help                                         Prints this help message and quits
-    -v, --version                                      Prints the program's version and quits
+    -h, --help                      Prints this help message and quits
+    -v, --version                   Prints the program's version and quits
 
 Switches:
-    --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
-    --date, -d YAMLPATH:str                            Cast each node matching the given YAML Path query as a date, assuming it's ISO 8601; may be given
-                                                       multiple times
-    --null, -n YAMLPATH:str                            Cast each node matching the given YAML Path query as null, if it is an empty string; may be given
-                                                       multiple times
-    --number, --int, --float, -i, -f YAMLPATH:str      Cast each node matching the given YAML Path query as a number; may be given multiple times
-    --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
-                                                       more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
-                                                       multiple times
+    --boolean, -b YAMLPATH:str      Cast each node matching the given YAML Path
+                                    query as boolean; may be given multiple
+                                    times
+    --date, -d YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as a date, assuming it's ISO 8601; may
+                                    be given multiple times
+    --null, -n YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as null, if it is an empty string; may
+                                    be given multiple times
+    --number, --int, --float, -i, -f YAMLPATH:str
+                                    Cast each node matching the given YAML Path
+                                    query as a number; may be given multiple
+                                    times
+    --schema, -s NESTEDTEXTFILE:ExistingFile
+                                    Cast nodes matching YAML Path queries
+                                    specified in a NestedText document. It must
+                                    be a map with one or more of the keys:
+                                    'null', 'boolean', 'number'Each key's value
+                                    is a list of YAML Paths.; may be given
+                                    multiple times
 
 
 ```
@@ -223,17 +244,27 @@ Usage:
     nt2toml [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help                                         Prints this help message and quits
-    -v, --version                                      Prints the program's version and quits
+    -h, --help                      Prints this help message and quits
+    -v, --version                   Prints the program's version and quits
 
 Switches:
-    --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
-    --date, -d YAMLPATH:str                            Cast each node matching the given YAML Path query as a date, assuming it's ISO 8601; may be given
-                                                       multiple times
-    --number, --int, --float, -i, -f YAMLPATH:str      Cast each node matching the given YAML Path query as a number; may be given multiple times
-    --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
-                                                       more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
-                                                       multiple times
+    --boolean, -b YAMLPATH:str      Cast each node matching the given YAML Path
+                                    query as boolean; may be given multiple
+                                    times
+    --date, -d YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as a date, assuming it's ISO 8601; may
+                                    be given multiple times
+    --number, --int, --float, -i, -f YAMLPATH:str
+                                    Cast each node matching the given YAML Path
+                                    query as a number; may be given multiple
+                                    times
+    --schema, -s NESTEDTEXTFILE:ExistingFile
+                                    Cast nodes matching YAML Path queries
+                                    specified in a NestedText document. It must
+                                    be a map with one or more of the keys:
+                                    'null', 'boolean', 'number'Each key's value
+                                    is a list of YAML Paths.; may be given
+                                    multiple times
 
 
 ```
