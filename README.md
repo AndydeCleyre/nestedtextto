@@ -116,11 +116,9 @@ $ nt2json example.nt -s example.types.nt
 
 ## Usage Docs
 
-### nt2json
+<details>
+  <summary>nt2json</summary>
 
-```console
-$ nt2json --help
-```
 ```
 nt2json 0.0.4
 
@@ -140,6 +138,10 @@ Examples:
 Usage:
     nt2json [SWITCHES] input_files...
 
+Meta-switches:
+    -h, --help                                         Prints this help message and quits
+    -v, --version                                      Prints the program's version and quits
+
 Switches:
     --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
     --null, -n YAMLPATH:str                            Cast each node matching the given YAML Path query as null, if it is an empty string; may be given
@@ -148,13 +150,16 @@ Switches:
     --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
                                                        more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
                                                        multiple times
+
+
 ```
 
-### nt2yaml
+</details>
 
-```console
-$ nt2yaml --help
-```
+
+<details>
+  <summary>nt2yaml</summary>
+
 ```
 nt2yaml 0.0.4
 
@@ -174,6 +179,10 @@ Examples:
 Usage:
     nt2yaml [SWITCHES] input_files...
 
+Meta-switches:
+    -h, --help                                         Prints this help message and quits
+    -v, --version                                      Prints the program's version and quits
+
 Switches:
     --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
     --date, -d YAMLPATH:str                            Cast each node matching the given YAML Path query as a date, assuming it's ISO 8601; may be given
@@ -184,13 +193,16 @@ Switches:
     --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
                                                        more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
                                                        multiple times
+
+
 ```
 
-### nt2toml
+</details>
 
-```console
-$ nt2toml --help
-```
+
+<details>
+  <summary>nt2toml</summary>
+
 ```
 nt2toml 0.0.4
 
@@ -210,6 +222,10 @@ Examples:
 Usage:
     nt2toml [SWITCHES] input_files...
 
+Meta-switches:
+    -h, --help                                         Prints this help message and quits
+    -v, --version                                      Prints the program's version and quits
+
 Switches:
     --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
     --date, -d YAMLPATH:str                            Cast each node matching the given YAML Path query as a date, assuming it's ISO 8601; may be given
@@ -218,13 +234,16 @@ Switches:
     --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
                                                        more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
                                                        multiple times
+
+
 ```
 
-### json2nt
+</details>
 
-```console
-$ json2nt --help
-```
+
+<details>
+  <summary>json2nt</summary>
+
 ```
 json2nt 0.0.4
 
@@ -236,14 +255,21 @@ Examples:
     cat example.json | json2nt
 
 Usage:
-    json2nt input_files...
+    json2nt [SWITCHES] input_files...
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    -v, --version      Prints the program's version and quits
+
+
 ```
 
-### yaml2nt
+</details>
 
-```console
-$ yaml2nt --help
-```
+
+<details>
+  <summary>yaml2nt</summary>
+
 ```
 yaml2nt 0.0.4
 
@@ -255,14 +281,21 @@ Examples:
     cat example.yml | yaml2nt
 
 Usage:
-    yaml2nt input_files...
+    yaml2nt [SWITCHES] input_files...
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    -v, --version      Prints the program's version and quits
+
+
 ```
 
-### toml2nt
+</details>
 
-```console
-$ toml2nt --help
-```
+
+<details>
+  <summary>toml2nt</summary>
+
 ```
 toml2nt 0.0.4
 
@@ -274,5 +307,14 @@ Examples:
     cat example.yml | toml2nt
 
 Usage:
-    toml2nt input_files...
+    toml2nt [SWITCHES] input_files...
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    -v, --version      Prints the program's version and quits
+
+
 ```
+
+</details>
+

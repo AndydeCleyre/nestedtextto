@@ -30,6 +30,14 @@ def fmt(session):
 
 
 @nox.session(python=['3.10'])
+def render_readme(session):
+    with session.chdir('doc'):
+        session.install('-r', 'doc-requirements.txt')
+    content = session.run('wheezy.template', 'templates/README.md.wz', silent=True)
+    Path('README.md').write_text(content)
+
+
+@nox.session(python=['3.10'])
 def lock(session):
     session.install('pip-tools')
     for reqsfile in (
@@ -39,6 +47,7 @@ def lock(session):
         'test/test-without-toml-requirements.in',
         'fmt-requirements.in',
         'dev-requirements.in',
+        'doc/doc-requirements.in',
     ):
         rf = Path.cwd() / reqsfile
         with session.chdir(rf.parent):
