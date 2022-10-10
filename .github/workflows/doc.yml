@@ -1,0 +1,22 @@
+name: Generate docs from templates
+on:
+  push
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: fetch code
+        uses: actions/checkout@v2
+
+      - name: get nox
+        uses: excitedleigh/setup-nox@v2.0.0
+
+      - name: render documents
+        run: nox -s render_readme
+
+      - name: push any changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git commit -am 'Generate Documentation [Automated]' && git push || true

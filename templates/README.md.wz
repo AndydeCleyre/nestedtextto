@@ -1,0 +1,132 @@
+# NestedTextTo (nt2)
+
+[![tests badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml/badge.svg?branch=develop)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
+[![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
+[![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
+[![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
+[![PyPI version](https://img.shields.io/pypi/v/nt2?color=green&style=plastic)](https://pypi.org/project/nt2/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nt2?color=green&style=plastic)
+
+---
+
+This project was created in appreciation for the design of [NestedText](https://nestedtext.org/),
+the readability of [yamlpath](https://github.com/wwkimball/yamlpath) queries,
+the utility of [cattrs](https://cattrs.readthedocs.io/),
+and the joy of [plumbum](https://plumbum.readthedocs.io/)
+and [ward](https://ward.readthedocs.io/) --
+none of which are this author's projects.
+
+From the NestedText docs:
+
+> NestedText is a file format for holding structured data to be entered, edited, or viewed by people. It organizes the data into a nested collection of dictionaries, lists, and strings without the need for quoting or escaping. A unique feature of this file format is that it only supports one scalar type: strings.  While the decision to eschew integer, real, date, etc. types may seem counter intuitive, it leads to simpler data files and applications that are more robust.
+
+This project, NestedTextTo ("nt2"), provides six command line tools
+for convenient conversion between NestedText and other formats:
+
+- `nt2json`
+- `nt2yaml`
+- `nt2toml`
+- `json2nt`
+- `yaml2nt`
+- `toml2nt`
+
+When converting from NestedText to the others, which support more value types,
+all plain values will be strings by default.
+But you can provide options to cast any values as numbers, booleans, nulls, or dates,
+if the target language supports it, using the powerful and concise YAML Path query syntax.
+These YAML Paths may alternatively be stored in a simple "schema" NestedText file.
+
+![screenshot](https://user-images.githubusercontent.com/1787385/193654318-43c2bd5f-5a88-4751-a759-71ec757d701d.png)
+
+## Installation
+
+If you don't need TOML support, you can omit the `[toml]` bits below.
+
+Here are some ways to install it:
+
+```console
+$ pip install 'nt2[toml]'         # Install in current environment
+$ pip install --user 'nt2[toml]'  # Install in your user's environment
+$ pipx install 'nt2[toml]'        # Install using pipx (Python app manager)
+$ pipz install 'nt2[toml]'        # Install using zpy (ZSH Python app and environment manager)
+```
+
+## Example
+
+This sample document is taken from the NestedText docs.
+
+`example.nt`:
+```yaml
+debug: false
+secret_key: t=)40**y&883y9gdpuw%aiig+wtc033(ui@@^1ur72w#zhw3_ch
+
+allowed_hosts:
+  - www.example.com
+
+database:
+  engine: django.db.backends.mysql
+  host: db.example.com
+  port: 3306
+  user: www
+
+webmaster_email: admin@@example.com
+```
+
+To create a corresponding JSON document wherein `debug` and `port` are boolean and int, respectively,
+you can run:
+
+```console
+$ nt2json example.nt -b /debug -i /database/port
+```
+
+```json
+{
+  "debug": false,  # <-- would be a quoted string if not for '--boolean /debug'
+  "secret_key": "t=)40**y&883y9gdpuw%aiig+wtc033(ui@@^1ur72w#zhw3_ch",
+  "allowed_hosts": [
+    "www.example.com"
+  ],
+  "database": {
+    "engine": "django.db.backends.mysql",
+    "host": "db.example.com",
+    "port": 3306,  # <-- would be a quoted string if not for '--number /database/port'
+    "user": "www"
+  },
+  "webmaster_email": "admin@@example.com"
+}
+```
+
+Those comments are for the sake of this README and don't reflect real output.
+
+You may instead store these type mappings in a NestedText file.
+
+`example.types.nt`:
+```yaml
+boolean:
+  - /debug
+number:
+  - /database/port
+```
+
+The following command will now also yield the above JSON:
+
+```console
+$ nt2json example.nt -s example.types.nt
+```
+
+## Usage Docs
+@(from plumbum import local)\
+@for cmd in ('nt2json', 'nt2yaml', 'nt2toml', 'json2nt', 'yaml2nt', 'toml2nt'):
+@(
+output = local[cmd]('--help')
+)
+<details>
+  <summary>@cmd</summary>
+
+```
+@output
+```
+
+</details>
+
+@end

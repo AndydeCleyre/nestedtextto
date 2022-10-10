@@ -4,7 +4,8 @@
 [![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
 [![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 [![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
-[![PyPI version](https://badge.fury.io/py/nt2.svg)](https://pypi.org/project/nt2/)
+[![PyPI version](https://img.shields.io/pypi/v/nt2?color=green&style=plastic)](https://pypi.org/project/nt2/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nt2?color=green&style=plastic)
 
 ---
 
@@ -80,7 +81,7 @@ $ nt2json example.nt -b /debug -i /database/port
 
 ```json
 {
-  "debug": false,
+  "debug": false,  # <-- would be a quoted string if not for '--boolean /debug'
   "secret_key": "t=)40**y&883y9gdpuw%aiig+wtc033(ui@^1ur72w#zhw3_ch",
   "allowed_hosts": [
     "www.example.com"
@@ -88,12 +89,14 @@ $ nt2json example.nt -b /debug -i /database/port
   "database": {
     "engine": "django.db.backends.mysql",
     "host": "db.example.com",
-    "port": 3306,
+    "port": 3306,  # <-- would be a quoted string if not for '--number /database/port'
     "user": "www"
   },
   "webmaster_email": "admin@example.com"
 }
 ```
+
+Those comments are for the sake of this README and don't reflect real output.
 
 You may instead store these type mappings in a NestedText file.
 
@@ -113,13 +116,11 @@ $ nt2json example.nt -s example.types.nt
 
 ## Usage Docs
 
-### nt2json
+<details>
+  <summary>nt2json</summary>
 
-```console
-$ nt2json --help
 ```
-```
-nt2json 0.0.4
+nt2json 0.0.5
 
 Read NestedText and output its content as JSON.
 
@@ -137,23 +138,40 @@ Examples:
 Usage:
     nt2json [SWITCHES] input_files...
 
+Meta-switches:
+    -h, --help                      Prints this help message and quits
+    -v, --version                   Prints the program's version and quits
+
 Switches:
-    --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
-    --null, -n YAMLPATH:str                            Cast each node matching the given YAML Path query as null, if it is an empty string; may be given
-                                                       multiple times
-    --number, --int, --float, -i, -f YAMLPATH:str      Cast each node matching the given YAML Path query as a number; may be given multiple times
-    --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
-                                                       more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
-                                                       multiple times
+    --boolean, -b YAMLPATH:str      Cast each node matching the given YAML Path
+                                    query as boolean; may be given multiple
+                                    times
+    --null, -n YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as null, if it is an empty string; may
+                                    be given multiple times
+    --number, --int, --float, -i, -f YAMLPATH:str
+                                    Cast each node matching the given YAML Path
+                                    query as a number; may be given multiple
+                                    times
+    --schema, -s NESTEDTEXTFILE:ExistingFile
+                                    Cast nodes matching YAML Path queries
+                                    specified in a NestedText document. It must
+                                    be a map with one or more of the keys:
+                                    'null', 'boolean', 'number'Each key's value
+                                    is a list of YAML Paths.; may be given
+                                    multiple times
+
+
 ```
 
-### nt2yaml
+</details>
 
-```console
-$ nt2yaml --help
+
+<details>
+  <summary>nt2yaml</summary>
+
 ```
-```
-nt2yaml 0.0.4
+nt2yaml 0.0.5
 
 Read NestedText and output its content as YAML.
 
@@ -171,25 +189,43 @@ Examples:
 Usage:
     nt2yaml [SWITCHES] input_files...
 
+Meta-switches:
+    -h, --help                      Prints this help message and quits
+    -v, --version                   Prints the program's version and quits
+
 Switches:
-    --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
-    --date, -d YAMLPATH:str                            Cast each node matching the given YAML Path query as a date, assuming it's ISO 8601; may be given
-                                                       multiple times
-    --null, -n YAMLPATH:str                            Cast each node matching the given YAML Path query as null, if it is an empty string; may be given
-                                                       multiple times
-    --number, --int, --float, -i, -f YAMLPATH:str      Cast each node matching the given YAML Path query as a number; may be given multiple times
-    --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
-                                                       more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
-                                                       multiple times
+    --boolean, -b YAMLPATH:str      Cast each node matching the given YAML Path
+                                    query as boolean; may be given multiple
+                                    times
+    --date, -d YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as a date, assuming it's ISO 8601; may
+                                    be given multiple times
+    --null, -n YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as null, if it is an empty string; may
+                                    be given multiple times
+    --number, --int, --float, -i, -f YAMLPATH:str
+                                    Cast each node matching the given YAML Path
+                                    query as a number; may be given multiple
+                                    times
+    --schema, -s NESTEDTEXTFILE:ExistingFile
+                                    Cast nodes matching YAML Path queries
+                                    specified in a NestedText document. It must
+                                    be a map with one or more of the keys:
+                                    'null', 'boolean', 'number'Each key's value
+                                    is a list of YAML Paths.; may be given
+                                    multiple times
+
+
 ```
 
-### nt2toml
+</details>
 
-```console
-$ nt2toml --help
+
+<details>
+  <summary>nt2toml</summary>
+
 ```
-```
-nt2toml 0.0.4
+nt2toml 0.0.5
 
 Read NestedText and output its content as TOML.
 
@@ -207,23 +243,40 @@ Examples:
 Usage:
     nt2toml [SWITCHES] input_files...
 
+Meta-switches:
+    -h, --help                      Prints this help message and quits
+    -v, --version                   Prints the program's version and quits
+
 Switches:
-    --boolean, -b YAMLPATH:str                         Cast each node matching the given YAML Path query as boolean; may be given multiple times
-    --date, -d YAMLPATH:str                            Cast each node matching the given YAML Path query as a date, assuming it's ISO 8601; may be given
-                                                       multiple times
-    --number, --int, --float, -i, -f YAMLPATH:str      Cast each node matching the given YAML Path query as a number; may be given multiple times
-    --schema, -s NESTEDTEXTFILE:ExistingFile           Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map with one or
-                                                       more of the keys: 'null', 'boolean', 'number'Each key's value is a list of YAML Paths.; may be given
-                                                       multiple times
+    --boolean, -b YAMLPATH:str      Cast each node matching the given YAML Path
+                                    query as boolean; may be given multiple
+                                    times
+    --date, -d YAMLPATH:str         Cast each node matching the given YAML Path
+                                    query as a date, assuming it's ISO 8601; may
+                                    be given multiple times
+    --number, --int, --float, -i, -f YAMLPATH:str
+                                    Cast each node matching the given YAML Path
+                                    query as a number; may be given multiple
+                                    times
+    --schema, -s NESTEDTEXTFILE:ExistingFile
+                                    Cast nodes matching YAML Path queries
+                                    specified in a NestedText document. It must
+                                    be a map with one or more of the keys:
+                                    'null', 'boolean', 'number'Each key's value
+                                    is a list of YAML Paths.; may be given
+                                    multiple times
+
+
 ```
 
-### json2nt
+</details>
 
-```console
-$ json2nt --help
+
+<details>
+  <summary>json2nt</summary>
+
 ```
-```
-json2nt 0.0.4
+json2nt 0.0.5
 
 Read JSON and output its content as NestedText.
 
@@ -233,16 +286,23 @@ Examples:
     cat example.json | json2nt
 
 Usage:
-    json2nt input_files...
+    json2nt [SWITCHES] input_files...
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    -v, --version      Prints the program's version and quits
+
+
 ```
 
-### yaml2nt
+</details>
 
-```console
-$ yaml2nt --help
+
+<details>
+  <summary>yaml2nt</summary>
+
 ```
-```
-yaml2nt 0.0.4
+yaml2nt 0.0.5
 
 Read YAML and output its content as NestedText.
 
@@ -252,16 +312,23 @@ Examples:
     cat example.yml | yaml2nt
 
 Usage:
-    yaml2nt input_files...
+    yaml2nt [SWITCHES] input_files...
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    -v, --version      Prints the program's version and quits
+
+
 ```
 
-### toml2nt
+</details>
 
-```console
-$ toml2nt --help
+
+<details>
+  <summary>toml2nt</summary>
+
 ```
-```
-toml2nt 0.0.4
+toml2nt 0.0.5
 
 Read TOML and output its content as NestedText.
 
@@ -271,5 +338,14 @@ Examples:
     cat example.yml | toml2nt
 
 Usage:
-    toml2nt input_files...
+    toml2nt [SWITCHES] input_files...
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    -v, --version      Prints the program's version and quits
+
+
 ```
+
+</details>
+

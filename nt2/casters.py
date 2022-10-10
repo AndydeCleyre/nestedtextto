@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 from collections.abc import Sequence
 from datetime import date, datetime, time
@@ -10,8 +12,8 @@ from yamlpath.wrappers import ConsolePrinter as YPConsolePrinter
 
 from .converters import Converter, mk_json_types_converter, mk_marked_string_converter
 
-StringyDatum = str | list | dict
-StringyData = list[StringyDatum] | dict[str, StringyDatum]
+StringyDatum = 'str | list | dict'
+StringyData = 'list[StringyDatum] | dict[str, StringyDatum]'
 
 
 def str_to_bool(value: str) -> bool:

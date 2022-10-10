@@ -1,6 +1,7 @@
 null:
   - /People/purpose
   - /People/"nullable number"
+  - /this/will/never/match
 boolean:
   - /People/"is a wizard"
   - /People/"is awake"

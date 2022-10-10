@@ -1,0 +1,14 @@
+-e file:..                # via -r doc-requirements.in
+arrow==1.2.3              # via inform
+attrs==22.1.0             # via cattrs
+cattrs==22.2.0            # via nt2
+exceptiongroup==1.0.0rc9  # via cattrs
+inform==1.27.0            # via nestedtext
+nestedtext==3.4.0         # via nt2
+plumbum==1.8.0            # via -r doc-requirements.in, nt2
+python-dateutil==2.8.2    # via arrow, yamlpath
+ruamel-yaml==0.17.21      # via nt2, yamlpath
+ruamel-yaml-clib==0.2.6   # via ruamel-yaml
+six==1.16.0               # via inform, python-dateutil
+wheezy-template==3.1.0    # via -r doc-requirements.in
+yamlpath==3.6.7           # via nt2

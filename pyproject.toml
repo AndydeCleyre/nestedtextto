@@ -11,11 +11,15 @@ readme = "README.md"
 keywords = ["NestedText", "JSON", "YAML", "TOML"]
 classifiers = [
     "Environment :: Console",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Topic :: Text Processing :: Markup",
     "Topic :: Utilities",
 ]
 dependencies = ["cattrs", "nestedtext", "plumbum", "ruamel.yaml", "yamlpath==3.6.7"]
-requires-python = ">=3.10"
+requires-python = ">=3.7"
 
 [project.urls]
 Home = "https://github.com/andydecleyre/nt2"
