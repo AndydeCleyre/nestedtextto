@@ -81,7 +81,7 @@ $ nt2json example.nt -b /debug -i /database/port
 
 ```json
 {
-  "debug": false,
+  "debug": false,  # <-- would be a quoted string if not for '--boolean /debug'
   "secret_key": "t=)40**y&883y9gdpuw%aiig+wtc033(ui@^1ur72w#zhw3_ch",
   "allowed_hosts": [
     "www.example.com"
@@ -89,12 +89,14 @@ $ nt2json example.nt -b /debug -i /database/port
   "database": {
     "engine": "django.db.backends.mysql",
     "host": "db.example.com",
-    "port": 3306,
+    "port": 3306,  # <-- would be a quoted string if not for '--number /database/port'
     "user": "www"
   },
   "webmaster_email": "admin@example.com"
 }
 ```
+
+Those comments are for the sake of this README and don't reflect real output.
 
 You may instead store these type mappings in a NestedText file.
 
