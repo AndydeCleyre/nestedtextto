@@ -31,8 +31,7 @@ def fmt(session):
 
 @nox.session(python=['3.10'])
 def render_readme(session):
-    with session.chdir('doc'):
-        session.install('-r', 'doc-requirements.txt')
+    session.install('-e', '.[doc]')
     content = session.run('wheezy.template', 'templates/README.md.wz', silent=True)
     Path('README.md').write_text(content)
 
