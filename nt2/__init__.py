@@ -1,3 +1,3 @@
 """CLI to convert between NestedText and JSON, YAML or TOML"""
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
