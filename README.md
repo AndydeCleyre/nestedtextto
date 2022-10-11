@@ -81,7 +81,7 @@ $ nt2json example.nt -b /debug -i /database/port
 
 ```json
 {
-  "debug": false,  # <-- would be a quoted string if not for '--boolean /debug'
+  "debug": false,  // <-- would be a quoted string if not for '--boolean /debug'
   "secret_key": "t=)40**y&883y9gdpuw%aiig+wtc033(ui@^1ur72w#zhw3_ch",
   "allowed_hosts": [
     "www.example.com"
@@ -89,7 +89,7 @@ $ nt2json example.nt -b /debug -i /database/port
   "database": {
     "engine": "django.db.backends.mysql",
     "host": "db.example.com",
-    "port": 3306,  # <-- would be a quoted string if not for '--number /database/port'
+    "port": 3306,  // <-- would be a quoted string if not for '--number /database/port'
     "user": "www"
   },
   "webmaster_email": "admin@example.com"
@@ -120,7 +120,7 @@ $ nt2json example.nt -s example.types.nt
   <summary>nt2json</summary>
 
 ```
-nt2json 0.0.7
+nt2json 0.0.8
 
 Read NestedText and output its content as JSON.
 
@@ -171,7 +171,7 @@ Switches:
   <summary>nt2yaml</summary>
 
 ```
-nt2yaml 0.0.7
+nt2yaml 0.0.8
 
 Read NestedText and output its content as YAML.
 
@@ -225,7 +225,7 @@ Switches:
   <summary>nt2toml</summary>
 
 ```
-nt2toml 0.0.7
+nt2toml 0.0.8
 
 Read NestedText and output its content as TOML.
 
@@ -276,7 +276,7 @@ Switches:
   <summary>json2nt</summary>
 
 ```
-json2nt 0.0.7
+json2nt 0.0.8
 
 Read JSON and output its content as NestedText.
 
@@ -302,7 +302,7 @@ Meta-switches:
   <summary>yaml2nt</summary>
 
 ```
-yaml2nt 0.0.7
+yaml2nt 0.0.8
 
 Read YAML and output its content as NestedText.
 
@@ -328,7 +328,7 @@ Meta-switches:
   <summary>toml2nt</summary>
 
 ```
-toml2nt 0.0.7
+toml2nt 0.0.8
 
 Read TOML and output its content as NestedText.
 

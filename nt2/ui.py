@@ -1,3 +1,5 @@
+import sys
+
 from nestedtext import load as ntload
 from plumbum.cli import Application, ExistingFile, SwitchAttr
 from plumbum.colors import blue, green, magenta, yellow
@@ -13,8 +15,14 @@ from .dumpers import (
 RICH = RichConsole(stderr=True)
 
 
-def rich_inspect(*args, **kwargs):
-    return _rich_inspect(*args, **kwargs, console=RICH)
+def inspect_exception(exc):
+    _rich_inspect(exc, console=RICH)
+    try:
+        items = exc.get_codicil()
+    except AttributeError:
+        pass
+    else:
+        print(*items, file=sys.stderr)
 
 
 class ColorApp(Application):
@@ -106,7 +114,7 @@ class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNu
                 num_paths=self.num_paths,
             )
         except Exception as e:
-            rich_inspect(e)
+            inspect_exception(e)
             return 1
 
 
@@ -145,7 +153,7 @@ class NestedTextToYAML(
                 date_paths=self.date_paths,
             )
         except Exception as e:
-            rich_inspect(e)
+            inspect_exception(e)
             return 1
 
 
@@ -180,7 +188,7 @@ class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDa
                 date_paths=self.date_paths,
             )
         except Exception as e:
-            rich_inspect(e)
+            inspect_exception(e)
             return 1
 
 
@@ -200,7 +208,7 @@ class JSONToNestedText(ColorApp):
         try:
             dump_json_to_nestedtext(*input_files)
         except Exception as e:
-            rich_inspect(e)
+            inspect_exception(e)
             return 1
 
 
@@ -218,7 +226,7 @@ class YAMLToNestedText(ColorApp):
         try:
             dump_yaml_to_nestedtext(*input_files)
         except Exception as e:
-            rich_inspect(e)
+            inspect_exception(e)
             return 1
 
 
@@ -236,5 +244,5 @@ class TOMLToNestedText(ColorApp):
         try:
             dump_toml_to_nestedtext(*input_files)
         except Exception as e:
-            rich_inspect(e)
+            inspect_exception(e)
             return 1
