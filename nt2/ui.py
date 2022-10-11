@@ -1,13 +1,20 @@
 from nestedtext import load as ntload
 from plumbum.cli import Application, ExistingFile, SwitchAttr
 from plumbum.colors import blue, green, magenta, yellow
-from rich import inspect as rich_inspect
+from rich import inspect as _rich_inspect
+from rich.console import Console as RichConsole
 
 from . import __version__
 from .dumpers import (
     dump_json_to_nestedtext, dump_nestedtext_to_json, dump_nestedtext_to_toml,
     dump_nestedtext_to_yaml, dump_toml_to_nestedtext, dump_yaml_to_nestedtext
 )
+
+RICH = RichConsole(stderr=True)
+
+
+def rich_inspect(*args, **kwargs):
+    return _rich_inspect(*args, **kwargs, console=RICH)
 
 
 class ColorApp(Application):
