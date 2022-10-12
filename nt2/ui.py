@@ -22,7 +22,7 @@ def inspect_exception(exc):
     except AttributeError:
         pass
     else:
-        print(*items, file=sys.stderr)
+        print(*items, sep='\n', file=sys.stderr)
 
 
 class ColorApp(Application):
