@@ -30,6 +30,12 @@ def fmt(session):
 
 
 @nox.session(python=['3.10'])
+def publish(session):
+    session.install('.[dev]')
+    session.run('flit', 'publish')
+
+
+@nox.session(python=['3.10'])
 def render_readme(session):
     session.install('-e', '.[doc]')
     content = session.run('wheezy.template', 'templates/README.md.wz', silent=True)
