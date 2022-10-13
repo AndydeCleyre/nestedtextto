@@ -1,3 +1,14 @@
+"""
+These functions return `cattrs.Converter` instances.
+
+Each `Converter` has an `unstructure` method,
+which takes an object (usually a `dict` or YAML equivalent),
+and returns a new one whose elements have been traversed and transformed.
+
+The purpose is usually to prepare data for export into a given format,
+with its particular type support.
+"""
+
 from __future__ import annotations
 
 from datetime import date, datetime, time
@@ -16,13 +27,34 @@ from ruamel.yaml.timestamp import TimeStamp
 from yamlpath.patches.timestamp import AnchoredDate
 
 
-def timestamp_to_datey(ts: TimeStamp) -> date | datetime:
+def _timestamp_to_datey(ts: TimeStamp) -> date | datetime:
+    """
+    Create a plain Python `datetime.date` or `datetime.datetime`.
+
+    Args:
+        ts: a `ruamel.yaml.timestamp.TimeStamp`,
+            which may correspond to a date or time.
+
+    Returns:
+        A new `datetime.date` or `datetime.datetime`,
+            representing the value of `ts`.
+    """
     if isinstance(ts, AnchoredDate):
         return ts.date()
     return datetime.fromisoformat(ts.isoformat())
 
 
 def mk_deep_converter() -> Converter:
+    """
+    Create a new recursively unstructuring `cattrs.Converter`.
+
+    It can traverse `dict`s, `list`s, and their `ruamel.yaml` equivalents.
+    The other `Converter`s here use this as a starting point,
+    before adding more unstructuring hooks.
+
+    Returns:
+        A new, recursively unstructuring `cattrs.Converter`.
+    """
     c = Converter()
 
     c.register_unstructure_hook(list, lambda lst: [c.unstructure(e) for e in lst])
@@ -39,6 +71,18 @@ def mk_deep_converter() -> Converter:
 
 
 def mk_marked_string_converter(time_marker: str) -> Converter:
+    """
+    Create a recursive `Converter` which replaces marked `str`s with `time` instances.
+
+    Args:
+        time_marker: An arbitrary prefix (such as a UUID) which, when encountered,
+            indicates the remainder of the containing `str` should be processed
+            as ISO 8601 and the element replaced by a `datetime.time` instance.
+
+    Returns:
+        A `Converter` whose `unstructure` method replaces marked `str`s with
+            `datetime.time` instances.
+    """
     c = mk_deep_converter()
 
     c.register_unstructure_hook(
@@ -51,7 +95,15 @@ def mk_marked_string_converter(time_marker: str) -> Converter:
     return c
 
 
-def mk_stringy_converter() -> Converter:  # mk_nt_types_converter
+def mk_stringy_converter() -> Converter:
+    """
+    Create a `Converter` which `unstructure`s into plain `str`/`list`/`dict` objects.
+
+    This might alternatively have been named `mk_nestedtext_types_converter`.
+
+    Returns:
+        A `Converter` ready to `unstructure` nested data into only `dict`/`list`/`str` types.
+    """
     c = mk_deep_converter()
 
     c.register_unstructure_hook(bool, str)
@@ -68,13 +120,20 @@ def mk_stringy_converter() -> Converter:  # mk_nt_types_converter
     c.register_unstructure_hook(date, date.isoformat)
     c.register_unstructure_hook(time, time.isoformat)
 
-    c.register_unstructure_hook(AnchoredDate, lambda ad: timestamp_to_datey(ad).isoformat())
+    c.register_unstructure_hook(AnchoredDate, lambda ad: _timestamp_to_datey(ad).isoformat())
     c.register_unstructure_hook(TimeStamp, TimeStamp.isoformat)
 
     return c
 
 
 def mk_json_types_converter() -> Converter:
+    """
+    Create a `Converter` which `unstructure`s into JSON-supported types.
+
+    Returns:
+        A `Converter` whose `unstructure` method results in nested objects of type:
+            `str`/`int`/`float`/`bool`/`dict`/`list`
+    """
     c = mk_deep_converter()
 
     c.register_unstructure_hook(ScalarString, str)
@@ -86,13 +145,20 @@ def mk_json_types_converter() -> Converter:
     c.register_unstructure_hook(date, date.isoformat)
     c.register_unstructure_hook(time, time.isoformat)
 
-    c.register_unstructure_hook(AnchoredDate, lambda ad: timestamp_to_datey(ad).isoformat())
+    c.register_unstructure_hook(AnchoredDate, lambda ad: _timestamp_to_datey(ad).isoformat())
     c.register_unstructure_hook(TimeStamp, TimeStamp.isoformat)
 
     return c
 
 
 def mk_yaml_types_converter() -> Converter:
+    """
+    Create a `Converter` which `unstructure`s into YAML-supported types.
+
+    Returns:
+        A `Converter` whose `unstructure` method results in nested objects of type:
+            `str`/`int`/`float`/`bool`/`dict`/`list`/`None`/`datetime`/`date`
+    """
     c = mk_deep_converter()
 
     c.register_unstructure_hook(ScalarString, str)
@@ -102,12 +168,19 @@ def mk_yaml_types_converter() -> Converter:
 
     c.register_unstructure_hook(time, time.isoformat)
 
-    c.register_unstructure_hook(TimeStamp, timestamp_to_datey)
+    c.register_unstructure_hook(TimeStamp, _timestamp_to_datey)
 
     return c
 
 
 def mk_toml_types_converter() -> Converter:
+    """
+    Create a `Converter` which `unstructure`s into TOML-supported types.
+
+    Returns:
+        A `Converter` whose `unstructure` method results in nested objects of type:
+            `str`/`int`/`float`/`bool`/`dict`/`list`/`datetime`/`date`/`time`
+    """
     c = mk_deep_converter()
 
     c.register_unstructure_hook(ScalarString, str)
@@ -115,6 +188,6 @@ def mk_toml_types_converter() -> Converter:
     c.register_unstructure_hook(ScalarInt, int)
     c.register_unstructure_hook(ScalarFloat, float)
 
-    c.register_unstructure_hook(TimeStamp, timestamp_to_datey)
+    c.register_unstructure_hook(TimeStamp, _timestamp_to_datey)
 
     return c
