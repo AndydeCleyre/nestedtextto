@@ -18,7 +18,7 @@ try:
 except ImportError:
     NoneType = type(None)
 from cattrs import Converter
-from ruamel.yaml.comments import CommentedMap, CommentedSeq
+from ruamel.yaml.comments import CommentedMap, CommentedSeq, TaggedScalar
 from ruamel.yaml.scalarbool import ScalarBoolean
 from ruamel.yaml.scalarfloat import ScalarFloat
 from ruamel.yaml.scalarint import ScalarInt
@@ -115,6 +115,7 @@ def mk_stringy_converter() -> Converter:
     c.register_unstructure_hook(ScalarBoolean, lambda sb: str(bool(sb)))
     c.register_unstructure_hook(ScalarInt, lambda si: str(int(si)))
     c.register_unstructure_hook(ScalarFloat, lambda sf: str(float(sf)))
+    c.register_unstructure_hook(TaggedScalar, str)
 
     c.register_unstructure_hook(datetime, datetime.isoformat)
     c.register_unstructure_hook(date, date.isoformat)
@@ -140,6 +141,7 @@ def mk_json_types_converter() -> Converter:
     c.register_unstructure_hook(ScalarBoolean, bool)
     c.register_unstructure_hook(ScalarInt, int)
     c.register_unstructure_hook(ScalarFloat, float)
+    c.register_unstructure_hook(TaggedScalar, str)
 
     c.register_unstructure_hook(datetime, datetime.isoformat)
     c.register_unstructure_hook(date, date.isoformat)
@@ -165,6 +167,7 @@ def mk_yaml_types_converter() -> Converter:
     c.register_unstructure_hook(ScalarBoolean, bool)
     c.register_unstructure_hook(ScalarInt, int)
     c.register_unstructure_hook(ScalarFloat, float)
+    c.register_unstructure_hook(TaggedScalar, str)
 
     c.register_unstructure_hook(time, time.isoformat)
 
@@ -187,6 +190,7 @@ def mk_toml_types_converter() -> Converter:
     c.register_unstructure_hook(ScalarBoolean, bool)
     c.register_unstructure_hook(ScalarInt, int)
     c.register_unstructure_hook(ScalarFloat, float)
+    c.register_unstructure_hook(TaggedScalar, str)
 
     c.register_unstructure_hook(TimeStamp, _timestamp_to_datey)
 
