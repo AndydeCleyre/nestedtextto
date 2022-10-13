@@ -1,4 +1,6 @@
 """A place for any shared functions used in tests."""
+from __future__ import annotations
+
 from collections.abc import Sequence
 
 from nestedtext import load as ntload
