@@ -1,3 +1,8 @@
+"""
+CLI definitions, parsing, and entry points.
+
+After argument processing, these call into the `dumpers` functions to get the job done.
+"""
 import sys
 
 from nestedtext import load as ntload
@@ -15,7 +20,13 @@ from .dumpers import (
 RICH = RichConsole(stderr=True)
 
 
-def inspect_exception(exc):
+def inspect_exception(exc: Exception):
+    """
+    Pretty-print an exception to stderr for the user to see.
+
+    Args:
+        exc: Any `Exception`. After printing, it is swallowed, not raised.
+    """
     _rich_inspect(exc, console=RICH)
     try:
         items = exc.get_codicil()
@@ -25,7 +36,7 @@ def inspect_exception(exc):
         print(*items, sep='\n', file=sys.stderr)
 
 
-class ColorApp(Application):
+class _ColorApp(Application):
     PROGNAME = green
     VERSION = __version__ | blue
     COLOR_USAGE = green
@@ -33,10 +44,10 @@ class ColorApp(Application):
     ALLOW_ABBREV = True
 
 
-ColorApp.unbind_switches('help-all')
+_ColorApp.unbind_switches('help-all')
 
 
-class NestedTextToTypedFormat(ColorApp):
+class _NestedTextToTypedFormat(_ColorApp):
 
     schema_files = SwitchAttr(
         ('schema', 's'),
@@ -63,7 +74,7 @@ class NestedTextToTypedFormat(ColorApp):
     )
 
 
-class NestedTextToTypedFormatSupportNull(ColorApp):
+class _NestedTextToTypedFormatSupportNull(_ColorApp):
 
     null_paths = SwitchAttr(
         ('null', 'n'),
@@ -73,7 +84,7 @@ class NestedTextToTypedFormatSupportNull(ColorApp):
     )
 
 
-class NestedTextToTypedFormatSupportDate(ColorApp):
+class _NestedTextToTypedFormatSupportDate(_ColorApp):
 
     date_paths = SwitchAttr(
         ('date', 'd'),
@@ -83,7 +94,7 @@ class NestedTextToTypedFormatSupportDate(ColorApp):
     )
 
 
-class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull):
+class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportNull):
     """
     Read NestedText and output its content as JSON.
 
@@ -99,7 +110,7 @@ class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNu
         nt2json -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):
+    def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             for schema_file in self.schema_files:
                 schema = ntload(schema_file)
@@ -119,7 +130,9 @@ class NestedTextToJSON(NestedTextToTypedFormat, NestedTextToTypedFormatSupportNu
 
 
 class NestedTextToYAML(
-    NestedTextToTypedFormat, NestedTextToTypedFormatSupportNull, NestedTextToTypedFormatSupportDate
+    _NestedTextToTypedFormat,
+    _NestedTextToTypedFormatSupportNull,
+    _NestedTextToTypedFormatSupportDate,
 ):
     """
     Read NestedText and output its content as YAML.
@@ -136,7 +149,7 @@ class NestedTextToYAML(
         nt2yaml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):
+    def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             for schema_file in self.schema_files:
                 schema = ntload(schema_file)
@@ -157,7 +170,7 @@ class NestedTextToYAML(
             return 1
 
 
-class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDate):
+class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportDate):
     """
     Read NestedText and output its content as TOML.
 
@@ -173,7 +186,7 @@ class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDa
         nt2toml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):
+    def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             for schema_file in self.schema_files:
                 schema = ntload(schema_file)
@@ -192,7 +205,7 @@ class NestedTextToTOML(NestedTextToTypedFormat, NestedTextToTypedFormatSupportDa
             return 1
 
 
-class JSONToNestedText(ColorApp):
+class JSONToNestedText(_ColorApp):
     """
     Read JSON and output its content as NestedText.
 
@@ -204,7 +217,7 @@ class JSONToNestedText(ColorApp):
 
     # --make-schema ? --gen-schema ? --only-schema ? separate command?
 
-    def main(self, *input_files: ExistingFile):
+    def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             dump_json_to_nestedtext(*input_files)
         except Exception as e:
@@ -212,7 +225,7 @@ class JSONToNestedText(ColorApp):
             return 1
 
 
-class YAMLToNestedText(ColorApp):
+class YAMLToNestedText(_ColorApp):
     """
     Read YAML and output its content as NestedText.
 
@@ -222,7 +235,7 @@ class YAMLToNestedText(ColorApp):
         cat example.yml | yaml2nt
     """
 
-    def main(self, *input_files: ExistingFile):
+    def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             dump_yaml_to_nestedtext(*input_files)
         except Exception as e:
@@ -230,7 +243,7 @@ class YAMLToNestedText(ColorApp):
             return 1
 
 
-class TOMLToNestedText(ColorApp):
+class TOMLToNestedText(_ColorApp):
     """
     Read TOML and output its content as NestedText.
 
@@ -240,7 +253,7 @@ class TOMLToNestedText(ColorApp):
         cat example.yml | toml2nt
     """
 
-    def main(self, *input_files: ExistingFile):
+    def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             dump_toml_to_nestedtext(*input_files)
         except Exception as e:
