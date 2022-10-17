@@ -132,3 +132,21 @@ output = local[cmd]('--help')
 </details>
 
 @end
+
+
+## Development Docs
+
+For local development, it's recommended to activate a venv, then
+
+```console
+$ pip install -r local-requirements.txt
+```
+
+From there, you may want to look at common task definitions:
+
+```console
+$ task -l
+```
+
+And you may wish to browse the structure and in-code documentation as rendered HTML,
+at [the GitHub Pages site](https://andydecleyre.github.io/nestedtextto/moduleIndex.html).

@@ -45,6 +45,12 @@ def render_readme(session):
 
 
 @nox.session(python=['3.10'])
+def render_api_docs(session):
+    session.install('-r', 'doc/doc-requirements.txt')
+    session.run('pydoctor', 'nt2')
+
+
+@nox.session(python=['3.10'])
 def lock(session):
     session.install('pip-tools')
     for reqsfile in (
@@ -54,6 +60,7 @@ def lock(session):
         'test/test-without-toml-requirements.in',
         'fmt-requirements.in',
         'dev-requirements.in',
+        'doc/doc-requirements.in',
     ):
         rf = Path.cwd() / reqsfile
         with session.chdir(rf.parent):
