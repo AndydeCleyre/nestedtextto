@@ -1,7 +1,12 @@
+"""
+Provide any functions for transforming a "stringy" `dict`/`list` to one with more types.
+
+In practice, this is just `cast_stringy_data` and any support functions it needs.
+"""
 from __future__ import annotations
 
 import sys
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 from datetime import date, datetime, time
 from types import SimpleNamespace
 from uuid import uuid4
@@ -9,6 +14,7 @@ from uuid import uuid4
 from yamlpath import Processor as YPProcessor
 from yamlpath.exceptions import YAMLPathException
 from yamlpath.wrappers import ConsolePrinter as YPConsolePrinter
+from yamlpath.wrappers.nodecoords import NodeCoords
 
 from .converters import Converter, mk_json_types_converter, mk_marked_string_converter
 
@@ -16,15 +22,38 @@ StringyDatum = 'str | list | dict'
 StringyData = 'list[StringyDatum] | dict[str, StringyDatum]'
 
 
-def str_to_bool(value: str) -> bool:
-    if value.lower() in ('true', 'yes', 'y', 'on', '1'):
+def _str_to_bool(informal_bool: str) -> bool:
+    """
+    Translate a commonly used boolean `str` into a real `bool`.
+
+    Args:
+        informal_bool: A boolean represented as `str`, like "true", "no", "off", etc.
+
+    Returns:
+        `True` or `False` to match the intent of `informal_bool`
+
+    Raises:
+        ValueError: This doesn't look like enough like a `bool` to translate
+    """
+    if informal_bool.lower() in ('true', 'yes', 'y', 'on', '1'):
         return True
-    if value.lower() in ('false', 'no', 'n', 'off', '0'):
+    if informal_bool.lower() in ('false', 'no', 'n', 'off', '0'):
         return False
     raise ValueError
 
 
-def non_null_matches(surgeon, *query_paths):
+def _non_null_matches(surgeon: YPProcessor, *query_paths: str) -> Iterable[NodeCoords]:
+    """
+    Generate `NodeCoords` matching any `query_paths`, omitting those whose `node` attr is `None`.
+
+    Args:
+        surgeon: A `yamlpath.Processor`, already storing the YAML document to be queried.
+        query_paths: YAMLPath query `str`s to find matches for in the document.
+
+    Yields:
+        Matching `NodeCoords` items from the document,
+            each having a `node` (value) attribute and `path` (YAMLPath) attribute.
+    """
     for query_path in query_paths:
         try:
             matches = [
@@ -45,6 +74,25 @@ def cast_stringy_data(
     date_paths: Sequence[str] = (),
     converter: Converter | None = None,
 ) -> list | dict:
+    """
+    Take nested `StringyData` (`str`/`list`/`dict`) and return a copy with matching nodes up-typed.
+
+    Args:
+        data: A `dict` or `list` composed of `str`, `dict` and `list` items all the way down.
+        bool_paths: YAMLPath queries indicating nodes to be up-typed to `bool`.
+        null_paths: YAMLPath queries indicating nodes to be up-typed to `None`.
+        num_paths: YAMLPath queries indicating nodes to be up-typed to `int`/`float`.
+        date_paths: YAMLPath queries indicating nodes to be up-typed to `date`/`datetime`/`time`.
+        converter: A `Converter` used to `unstructure` the result to match specific type support,
+            defaulting to one created with `mk_json_types_converter`.
+
+    Returns:
+        A nested `dict` or `list` containing some "up-typed" (casted) items in addition to `str`s.
+
+    Raises:
+        ValueError: Up-typing a `str` failed due to an unexpected format.
+        Exception: An unexpected problem.
+    """
     doc = dict(data) if isinstance(data, dict) else list(data)
 
     if not any((bool_paths, null_paths, num_paths, date_paths)):
@@ -53,19 +101,19 @@ def cast_stringy_data(
     log = YPConsolePrinter(SimpleNamespace(quiet=True, verbose=False, debug=False))
     surgeon = YPProcessor(log, doc)
 
-    for match in non_null_matches(surgeon, *null_paths):
+    for match in _non_null_matches(surgeon, *null_paths):
         if match.node == '':
             surgeon.set_value(match.path, None)
 
-    for match in non_null_matches(surgeon, *bool_paths):
+    for match in _non_null_matches(surgeon, *bool_paths):
         if not isinstance(match.node, str):
             continue
         try:
-            surgeon.set_value(match.path, str_to_bool(match.node))
+            surgeon.set_value(match.path, _str_to_bool(match.node))
         except ValueError as e:
             raise ValueError(': '.join((*e.args, str(match.path))))
 
-    for match in non_null_matches(surgeon, *num_paths):
+    for match in _non_null_matches(surgeon, *num_paths):
         if not isinstance(match.node, str):
             continue
         try:
@@ -85,7 +133,7 @@ def cast_stringy_data(
     time_marker = str(uuid4())
     marked_time_converter = mk_marked_string_converter(time_marker=time_marker)
 
-    for match in non_null_matches(surgeon, *date_paths):
+    for match in _non_null_matches(surgeon, *date_paths):
         if not isinstance(match.node, str) or match.node.startswith(time_marker):
             continue
         try:

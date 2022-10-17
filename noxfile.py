@@ -27,6 +27,8 @@ def fmt(session):
     session.install('-r', 'fmt-requirements.txt')
     for tool in ('ssort', 'black', 'isort', 'ruff'):
         session.run(tool, '.')
+    for tool in ('darglint', 'pydocstyle'):
+        session.run(tool, 'nt2', 'test')
 
 
 @nox.session(python=['3.10'])
