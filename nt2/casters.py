@@ -1,5 +1,5 @@
 """
-Provide any functions for transforming a "stringy" `dict`/`list` to one with more types.
+Provide any functions for transforming a "stringy" ``dict``/``list`` to one with more types.
 
 In practice, this is just `cast_stringy_data` and any support functions it needs.
 """
@@ -24,16 +24,16 @@ StringyData = 'list[StringyDatum] | dict[str, StringyDatum]'
 
 def _str_to_bool(informal_bool: str) -> bool:
     """
-    Translate a commonly used boolean `str` into a real `bool`.
+    Translate a commonly used boolean ``str`` into a real ``bool``.
 
     Args:
-        informal_bool: A boolean represented as `str`, like "true", "no", "off", etc.
+        informal_bool: A boolean represented as ``str``, like ``"true"``, ``"no"``, ``"off"``, etc.
 
     Returns:
-        `True` or `False` to match the intent of `informal_bool`
+        ``True`` or ``False`` to match the intent of ``informal_bool``.
 
     Raises:
-        ValueError: This doesn't look like enough like a `bool` to translate
+        ValueError: This doesn't look like enough like a ``bool`` to translate.
     """
     if informal_bool.lower() in ('true', 'yes', 'y', 'on', '1'):
         return True
@@ -43,16 +43,18 @@ def _str_to_bool(informal_bool: str) -> bool:
 
 
 def _non_null_matches(surgeon: YPProcessor, *query_paths: str) -> Iterable[NodeCoords]:
-    """
-    Generate `NodeCoords` matching any `query_paths`, omitting those whose `node` attr is `None`.
+    r"""
+    Generate ``NodeCoords`` matching any ``query_paths``.
+
+    Omit any matches whose ``node`` attr is ``None``.
 
     Args:
-        surgeon: A `yamlpath.Processor`, already storing the YAML document to be queried.
-        query_paths: YAMLPath query `str`s to find matches for in the document.
+        surgeon: A ``yamlpath.Processor``, already storing the YAML document to be queried.
+        query_paths: YAMLPath query ``str``\ s to find matches for in the document.
 
     Yields:
-        Matching `NodeCoords` items from the document,
-            each having a `node` (value) attribute and `path` (YAMLPath) attribute.
+        Matching ``NodeCoords`` items from the document,
+            each having a ``node`` (value) attribute and ``path`` (YAMLPath) attribute.
     """
     for query_path in query_paths:
         try:
@@ -74,23 +76,27 @@ def cast_stringy_data(
     date_paths: Sequence[str] = (),
     converter: Converter | None = None,
 ) -> list | dict:
-    """
-    Take nested `StringyData` (`str`/`list`/`dict`) and return a copy with matching nodes up-typed.
+    r"""
+    Take nested ``StringyData`` and return a copy with matching nodes up-typed.
 
     Args:
-        data: A `dict` or `list` composed of `str`, `dict` and `list` items all the way down.
-        bool_paths: YAMLPath queries indicating nodes to be up-typed to `bool`.
-        null_paths: YAMLPath queries indicating nodes to be up-typed to `None`.
-        num_paths: YAMLPath queries indicating nodes to be up-typed to `int`/`float`.
-        date_paths: YAMLPath queries indicating nodes to be up-typed to `date`/`datetime`/`time`.
-        converter: A `Converter` used to `unstructure` the result to match specific type support,
+        data: A ``dict`` or ``list`` composed of ``str``, ``dict`` and ``list`` items
+            all the way down.
+        bool_paths: YAMLPath queries indicating nodes to be up-typed to ``bool``.
+        null_paths: YAMLPath queries indicating nodes to be up-typed to ``None``.
+        num_paths: YAMLPath queries indicating nodes to be up-typed to ``int``/``float``.
+        date_paths: YAMLPath queries indicating nodes to be up-typed to
+            ``date``/``datetime``/``time``.
+        converter: A ``Converter`` used to ``unstructure`` the result
+            to match specific type support,
             defaulting to one created with `mk_json_types_converter`.
 
     Returns:
-        A nested `dict` or `list` containing some "up-typed" (casted) items in addition to `str`s.
+        A nested ``dict`` or ``list`` containing some "up-typed" (casted) items
+            in addition to ``str``\ s.
 
     Raises:
-        ValueError: Up-typing a `str` failed due to an unexpected format.
+        ValueError: Up-typing a ``str`` failed due to an unexpected format.
         Exception: An unexpected problem.
     """
     doc = dict(data) if isinstance(data, dict) else list(data)

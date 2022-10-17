@@ -25,7 +25,7 @@ def inspect_exception(exc: Exception):
     Pretty-print an exception to stderr for the user to see.
 
     Args:
-        exc: Any `Exception`. After printing, it is swallowed, not raised.
+        exc: Any ``Exception``. After printing, it is swallowed, not raised.
     """
     _rich_inspect(exc, console=RICH)
     try:
