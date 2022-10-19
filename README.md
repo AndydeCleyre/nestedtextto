@@ -1,4 +1,4 @@
-# NestedTextTo: `nt2{json,toml,yaml}` + `{json,toml,yaml}2nt`
+# NestedTextTo
 ## CLI to convert between NestedText and JSON, YAML or TOML, with explicit type casting
 
 [![PyPI version](https://img.shields.io/pypi/v/nt2?color=blue)](https://pypi.org/project/nt2/)
@@ -19,27 +19,83 @@ and the joy of [plumbum](https://plumbum.readthedocs.io/)
 and [ward](https://ward.readthedocs.io/) --
 none of which are this author's projects.
 
-From the NestedText docs:
-
-> NestedText is a file format for holding structured data to be entered, edited, or viewed by people. It organizes the data into a nested collection of dictionaries, lists, and strings without the need for quoting or escaping. A unique feature of this file format is that it only supports one scalar type: strings.  While the decision to eschew integer, real, date, etc. types may seem counter intuitive, it leads to simpler data files and applications that are more robust.
-
 This project, NestedTextTo, provides six command line tools
 for convenient conversion between NestedText and other formats:
+- `nt2json`, `nt2toml`, `nt2yaml`
+- `json2nt`, `toml2nt`, `yaml2nt`
 
-- `nt2json`
-- `nt2yaml`
-- `nt2toml`
-- `json2nt`
-- `yaml2nt`
-- `toml2nt`
+### What's NestedText?
 
-When converting from NestedText to the others, which support more value types,
+From the NestedText docs, with emphasis added:
+
+> NestedText is a file format for holding structured data to be entered, edited, or viewed by people. It organizes the data into a nested collection of *dictionaries*, *lists*, and *strings* **without the need for quoting or escaping**. A unique feature of this file format is that it only supports *one scalar type:* **strings**.  While the decision to eschew integer, real, date, etc. types may seem counter intuitive, it leads to simpler data files and applications that are more robust.
+
+### How does this translate to formats with more value types?
+
+When converting from NestedText to formats supporting more value types,
 all plain values will be strings by default.
-But you can provide options to cast any values as numbers, booleans, nulls, or dates,
-if the target language supports it, using the powerful and concise YAML Path query syntax.
-These YAML Paths may alternatively be stored in a simple "schema" NestedText file.
+But you can provide options to cast any values as numbers, booleans, nulls, or dates/times,
+if the target format supports it, using the powerful and concise YAML Path query syntax.
 
-![screenshot](https://user-images.githubusercontent.com/1787385/193654318-43c2bd5f-5a88-4751-a759-71ec757d701d.png)
+```console
+$ cat example.nt
+```
+```yaml
+people:
+  -
+    name: Bill Sky
+    problems: 99
+    happy: False
+  -
+    name: Vorbis Florbis
+    problems: 6
+    happy: yes
+```
+```console
+$ nt2json example.nt --number /people/problems --boolean /people/happy
+```
+```json
+{
+  "people": [
+    {
+      "name": "Bill Sky",
+      "problems": 99,
+      "happy": false
+    },
+    {
+      "name": "Vorbis Florbis",
+      "problems": 6,
+      "happy": true
+    }
+  ]
+}
+```
+
+You may instead store these type mappings in a NestedText "schema" file.
+
+```console
+$ cat example.types.nt
+```
+```yaml
+boolean:
+  - /people/happy
+number:
+  - /people/problems
+```
+
+The following command will then also yield the above JSON:
+
+```console
+$ nt2json example.nt --schema example.types.nt
+```
+
+Options may be provided before or after the document,
+and content may be piped directly to the command instead of specifying a file.
+
+For more YAML Path syntax information see
+[the YAML Path wiki](https://github.com/wwkimball/yamlpath/wiki/Segments-of-a-YAML-Path).
+
+For example, you could match all items which are *probably* intended as booleans with `--boolean '/**[.=~/^(?i)(yes|no|true|false)$/]'`.
 
 ### Installation
 
@@ -48,74 +104,14 @@ If you don't need TOML support, you can omit the `[toml]` bits below.
 Here are some ways to install it:
 
 ```console
-$ pip install 'nt2[toml]'         # Install in current environment
-$ pip install --user 'nt2[toml]'  # Install in your user's environment
 $ pipx install 'nt2[toml]'        # Install using pipx (Python app manager)
-$ pipz install 'nt2[toml]'        # Install using zpy (ZSH Python app and environment manager)
+$ pipz install 'nt2[toml]'        # Install using zpy (Python app and environment manager for Zsh)
+$ pip install --user 'nt2[toml]'  # Install in your user's environment
+$ pip install 'nt2[toml]'         # Install in current environment
 ```
 
-### Example
-
-This sample document is taken from the NestedText docs.
-
-`example.nt`:
-```yaml
-debug: false
-secret_key: t=)40**y&883y9gdpuw%aiig+wtc033(ui@^1ur72w#zhw3_ch
-
-allowed_hosts:
-  - www.example.com
-
-database:
-  engine: django.db.backends.mysql
-  host: db.example.com
-  port: 3306
-  user: www
-
-webmaster_email: admin@example.com
-```
-
-To create a corresponding JSON document wherein `debug` and `port` are boolean and int, respectively,
-you can run:
-
-```console
-$ nt2json example.nt -b /debug -i /database/port
-```
-
-```json
-{
-  "debug": false,  // <-- would be a quoted string if not for '--boolean /debug'
-  "secret_key": "t=)40**y&883y9gdpuw%aiig+wtc033(ui@^1ur72w#zhw3_ch",
-  "allowed_hosts": [
-    "www.example.com"
-  ],
-  "database": {
-    "engine": "django.db.backends.mysql",
-    "host": "db.example.com",
-    "port": 3306,  // <-- would be a quoted string if not for '--number /database/port'
-    "user": "www"
-  },
-  "webmaster_email": "admin@example.com"
-}
-```
-
-Those comments are for the sake of this README and don't reflect real output.
-
-You may instead store these type mappings in a NestedText file.
-
-`example.types.nt`:
-```yaml
-boolean:
-  - /debug
-number:
-  - /database/port
-```
-
-The following command will now also yield the above JSON:
-
-```console
-$ nt2json example.nt -s example.types.nt
-```
+I recommend using [pipx](https://github.com/pypa/pipx)
+or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 
 ### Usage Docs
 
@@ -366,6 +362,7 @@ From there, you may want to look at common task definitions:
 
 ```console
 $ task -l
+$ nox -l
 ```
 
 And you may wish to browse the structure and in-code documentation as rendered HTML,
