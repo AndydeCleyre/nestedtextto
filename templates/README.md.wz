@@ -93,7 +93,7 @@ Options may be provided before or after the document,
 and content may be piped directly to the command instead of specifying a file.
 
 For more YAML Path syntax information see
-[the YAML Path wiki](https://github.com/wwkimball/yamlpath/wiki/Segments-of-a-YAML-Path).
+[the YAML Path wiki](https://github.com/wwkimball/yamlpath/wiki/Search-Expressions).
 
 For example, you could match all items which are *probably* intended as booleans with `--boolean '/**[.=~/^(?i)(yes|no|true|false)$/]'`.
 
