@@ -1,4 +1,5 @@
-# NestedTextTo (nt2)
+# NestedTextTo: `nt2{json,toml,yaml}` + `{json,toml,yaml}2nt`
+## CLI to convert between NestedText and JSON, YAML or TOML, with explicit type casting
 
 [![PyPI version](https://img.shields.io/pypi/v/nt2?color=blue)](https://pypi.org/project/nt2/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nt2)
@@ -22,7 +23,7 @@ From the NestedText docs:
 
 > NestedText is a file format for holding structured data to be entered, edited, or viewed by people. It organizes the data into a nested collection of dictionaries, lists, and strings without the need for quoting or escaping. A unique feature of this file format is that it only supports one scalar type: strings.  While the decision to eschew integer, real, date, etc. types may seem counter intuitive, it leads to simpler data files and applications that are more robust.
 
-This project, NestedTextTo ("nt2"), provides six command line tools
+This project, NestedTextTo, provides six command line tools
 for convenient conversion between NestedText and other formats:
 
 - `nt2json`
@@ -40,7 +41,7 @@ These YAML Paths may alternatively be stored in a simple "schema" NestedText fil
 
 ![screenshot](https://user-images.githubusercontent.com/1787385/193654318-43c2bd5f-5a88-4751-a759-71ec757d701d.png)
 
-## Installation
+### Installation
 
 If you don't need TOML support, you can omit the `[toml]` bits below.
 
@@ -53,7 +54,7 @@ $ pipx install 'nt2[toml]'        # Install using pipx (Python app manager)
 $ pipz install 'nt2[toml]'        # Install using zpy (ZSH Python app and environment manager)
 ```
 
-## Example
+### Example
 
 This sample document is taken from the NestedText docs.
 
@@ -116,7 +117,7 @@ The following command will now also yield the above JSON:
 $ nt2json example.nt -s example.types.nt
 ```
 
-## Usage Docs
+### Usage Docs
 @(from plumbum import local)\
 @for cmd in ('nt2json', 'nt2yaml', 'nt2toml', 'json2nt', 'yaml2nt', 'toml2nt'):
 @(
@@ -134,7 +135,7 @@ output = local[cmd]('--help')
 @end
 
 
-## Development Docs
+### Development Docs
 
 For local development, it's recommended to activate a venv, then
 
