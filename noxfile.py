@@ -1,3 +1,5 @@
+"""Tasks using Python environments."""
+
 from pathlib import Path
 
 import nox
@@ -5,18 +7,21 @@ import nox
 
 @nox.session(python=['3.7', '3.8', '3.9', '3.10'])
 def test(session):
+    """Run all tests."""
     session.install('.[test,toml]', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=['3.7', '3.8', '3.9', '3.10'])
 def test_without_toml(session):
+    """Run tests without optional TOML support installed."""
     session.install('.[test-without-toml]', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=['3.10'])
 def combine_coverage(session):
+    """Prepare a combined coverage report for uploading."""
     session.install('coverage')
     session.run('coverage', 'combine')
     session.run('coverage', 'json')
@@ -24,21 +29,25 @@ def combine_coverage(session):
 
 @nox.session(python=['3.10'])
 def fmt(session):
+    """Format and lint code and docs."""
     session.install('-r', 'fmt-requirements.txt')
     for tool in ('ssort', 'black', 'isort', 'ruff'):
         session.run(tool, '.')
     for tool in ('darglint', 'pydocstyle'):
         session.run(tool, 'nt2', 'test')
+    session.run('pydocstyle', 'noxfile.py')
 
 
 @nox.session(python=['3.10'])
 def publish(session):
+    """Package and upload to PyPI."""
     session.install('.[dev]')
     session.run('flit', 'publish')
 
 
 @nox.session(python=['3.10'])
 def render_readme(session):
+    """Generate README.md from templates/README.md.wz."""
     session.install('-e', '.[doc]')
     content = session.run('wheezy.template', 'templates/README.md.wz', silent=True)
     Path('README.md').write_text(content)
@@ -46,12 +55,14 @@ def render_readme(session):
 
 @nox.session(python=['3.10'])
 def render_api_docs(session):
+    """Generate doc/api HTML documentation from docstrings."""
     session.install('-r', 'doc/doc-requirements.txt')
     session.run('pydoctor', 'nt2')
 
 
 @nox.session(python=['3.10'])
 def lock(session):
+    """Generate updated requirements.txt lock files and pyproject.toml."""
     session.install('pip-tools')
     for reqsfile in (
         'nt2/requirements.in',
