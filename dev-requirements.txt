@@ -41,7 +41,7 @@ pluggy==1.0.0             # via -c test/test-requirements.txt, ward
 plumbum==1.8.0            # via -c nt2/requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via -c test/test-requirements.txt, ward
 prompt-toolkit==3.0.31    # via ipython
-psutil==5.9.2             # via taskipy
+psutil==5.9.3             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 py==1.11.0                # via nox
@@ -60,7 +60,7 @@ stack-data==0.5.1         # via ipython
 taskipy==1.10.3           # via -r dev-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, black, flit, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, flit
-traitlets==5.4.0          # via ipython, matplotlib-inline
+traitlets==5.5.0          # via ipython, matplotlib-inline
 urllib3==1.26.12          # via requests
 virtualenv==20.16.5       # via nox
 ward==0.66.1b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
