@@ -38,7 +38,7 @@ test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
 fmt = ["black", "darglint", "isort", "pydocstyle", "ruff", "ssort"]
 test-without-toml = ["nestedtext", "plumbum", "ward"]
-doc = ["plumbum", "wheezy.template"]
+doc = ["plumbum", "pydoctor", "wheezy.template"]
 
 [tool.black]
 line-length = 99
@@ -60,6 +60,16 @@ fmt = "nox -s fmt"
 lock = "nox -s lock"
 install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
 test = "nox -s test"
+docs = "nox -s render_readme render_api_docs"
 
 [tool.ward]
 path = ["test"]
+test-output-style = "dots-module"
+
+[tool.pydoctor]
+docformat = "google"
+theme = "readthedocs"
+project-url = "https://github.com/andydecleyre/nestedtextto"
+project-name = "NestedTextTo"
+html-output = "doc/api"
+html-viewsource-base = "https://github.com/AndydeCleyre/nestedtextto/tree/develop"
