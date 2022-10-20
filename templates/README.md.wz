@@ -95,7 +95,8 @@ and content may be piped directly to the command instead of specifying a file.
 For more YAML Path syntax information see
 [the YAML Path wiki](https://github.com/wwkimball/yamlpath/wiki/Search-Expressions).
 
-For example, you could match all items which are *probably* intended as booleans with `--boolean '/**[.=~/^(?i)(yes|no|true|false)$/]'`.
+For example, you could match all items which are *probably* intended as booleans,
+at any depth, with `--boolean '/**[.=~/^(?i)(yes|no|true|false)$/]'`.
 
 ### Installation
 
@@ -129,6 +130,76 @@ output = local[cmd]('--help')
 </details>
 
 @end
+
+
+### More Examples
+
+`json2nt` can be useful for viewing JSON Lines logs in a more readable format:
+
+```console
+$ cat log.jsonl
+```
+<details>
+  <summary>Output</summary>
+
+```json
+{"chat_id": 651321, "event": "receiving code", "user_first_name": "Andy", "user_id": 651321}
+{"event": "guessed syntax", "ext": null, "probability": 0.05201493203639984, "probability_min": 0.12, "syntax": "Matlab"}
+{"chat_id": 651321, "event": "colorizing code", "syntax": "py3", "user_first_name": "Andy", "user_id": 651321}
+{"event": "Got deletion request", "reply_to_msg_user_id": 651321, "user_id": 651321}
+{"chat_id": 651321, "event": "failed to delete message (it's probably gone already)", "exception": "Traceback (most recent call last):\n  File \"/home/andy/Code/colorcodebot/app/colorcodebot.py\", line 278, in delete_after_delay\n    bot.delete_message(message.chat.id, message.message_id)\n  File \"/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/__init__.py\", line 1081, in delete_message\n    return apihelper.delete_message(self.token, chat_id, message_id, timeout)\n  File \"/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/apihelper.py\", line 1299, in delete_message\n    return _make_request(token, method_url, params=payload, method='post')\n  File \"/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/apihelper.py\", line 152, in _make_request\n    json_result = _check_result(method_name, result)\n  File \"/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/apihelper.py\", line 179, in _check_result\n    raise ApiTelegramException(method_name, result, result_json)\ntelebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: message to delete not found"}
+```
+
+</details>
+
+```console
+$ json2nt log.jsonl
+```
+
+<details>
+  <summary>Output</summary>
+
+```yaml
+-
+  chat_id: 651321
+  event: receiving code
+  user_first_name: Andy
+  user_id: 651321
+-
+  event: guessed syntax
+  ext:
+  probability: 0.05201493203639984
+  probability_min: 0.12
+  syntax: Matlab
+-
+  chat_id: 651321
+  event: colorizing code
+  syntax: py3
+  user_first_name: Andy
+  user_id: 651321
+-
+  event: Got deletion request
+  reply_to_msg_user_id: 651321
+  user_id: 651321
+-
+  chat_id: 651321
+  event: failed to delete message (it's probably gone already)
+  exception:
+    > Traceback (most recent call last):
+    >   File "/home/andy/Code/colorcodebot/app/colorcodebot.py", line 278, in delete_after_delay
+    >     bot.delete_message(message.chat.id, message.message_id)
+    >   File "/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/__init__.py", line 1081, in delete_message
+    >     return apihelper.delete_message(self.token, chat_id, message_id, timeout)
+    >   File "/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/apihelper.py", line 1299, in delete_message
+    >     return _make_request(token, method_url, params=payload, method='post')
+    >   File "/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/apihelper.py", line 152, in _make_request
+    >     json_result = _check_result(method_name, result)
+    >   File "/home/andy/.local/share/venvs/84f7fb558856f9ccc2c54e3d122862b6/venv/lib/python3.10/site-packages/telebot/apihelper.py", line 179, in _check_result
+    >     raise ApiTelegramException(method_name, result, result_json)
+    > telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: message to delete not found
+```
+
+</details>
 
 
 ### Development Docs
