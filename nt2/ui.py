@@ -10,7 +10,8 @@ from plumbum.cli import Application, ExistingFile, SwitchAttr
 from plumbum.colors import blue, green, magenta, yellow
 from rich import inspect as _rich_inspect
 from rich.console import Console as RichConsole
-from ruamel.yaml.parser import ParserError
+from ruamel.yaml.parser import ParserError as YAMLParserError
+from ruamel.yaml.scanner import ScannerError as YAMLScannerError
 
 from . import __version__
 from .dumpers import (
@@ -28,8 +29,8 @@ def inspect_exception(exc: Exception):
     Args:
         exc: Any ``Exception``. After printing, it is swallowed, not raised.
     """
-    if isinstance(exc, ParserError):
-        print(exc, file=sys.stderr)
+    if isinstance(exc, (YAMLParserError, YAMLScannerError)):
+        print("This YAML couldn't be parsed", exc, sep='\n', file=sys.stderr)
         return
 
     _rich_inspect(exc, console=RICH)
