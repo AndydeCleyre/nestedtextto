@@ -42,6 +42,36 @@ def _str_to_bool(informal_bool: str) -> bool:
     raise ValueError
 
 
+def _str_to_num(informal_num: str) -> int | float:
+    """
+    Translate a number as ``str`` into a real ``int`` or ``float``.
+
+    Args:
+        informal_num: A number represented as ``str``, like ``"5.5"``, ``"1e3"``, or ``"0xdecaf"``
+
+    Returns:
+        An ``int`` or ``float`` equivalent of ``informal_num``.
+
+    Raises:
+        ValueError: This doesn't look like enough like a number to translate.
+    """
+    try:
+        num = float(informal_num)
+    except ValueError as e:
+        try:
+            num = int(informal_num, 16)
+        except Exception:
+            raise ValueError(': '.join(e.args))
+        else:
+            return num
+    try:
+        inum = int(num)
+    except ValueError:
+        return num
+    else:
+        return inum if num == inum else num
+
+
 def _non_null_matches(surgeon: YPProcessor, *query_paths: str) -> Iterable[NodeCoords]:
     r"""
     Generate ``NodeCoords`` matching any ``query_paths``.
@@ -123,15 +153,11 @@ def cast_stringy_data(
         if not isinstance(match.node, str):
             continue
         try:
-            num = float(match.node)
+            num = _str_to_num(match.node)
         except ValueError as e:
-            raise ValueError(': '.join((*e.args, str(match.path))))
-        try:
-            inum = int(num)
-        except ValueError:
-            surgeon.set_value(match.path, num)
+            raise ValueError(': '.join(e.args + (str(match.path),)))
         else:
-            surgeon.set_value(match.path, inum if num == inum else num)
+            surgeon.set_value(match.path, num)
 
     # We can't currently store a time type in the
     # intermediary YAML doc object, so:
