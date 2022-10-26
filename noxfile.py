@@ -12,6 +12,8 @@ nox.options.reuse_existing_virtualenvs = True
 def test(session):
     """Run all tests."""
     session.install('.[test,toml]', 'coverage')
+    session.run('pip', 'freeze')
+    session.run('coverage', 'debug', 'sys')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
