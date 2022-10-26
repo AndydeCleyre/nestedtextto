@@ -40,7 +40,9 @@ def _syntax_print(content: str, syntax: str, console: RichConsole = RICH):
         syntax: A syntax name recognized by pygments (via rich).
         console: An initialized Rich Console object used to print with.
     """
-    console.print(RichSyntax(content, syntax, theme='ansi_dark'))
+    console.print(
+        RichSyntax(content, syntax, theme='ansi_dark', word_wrap=True, indent_guides=True)
+    )
 
 
 def ntdump(data: dict | list):
