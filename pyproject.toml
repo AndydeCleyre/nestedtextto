@@ -10,12 +10,15 @@ license = {file = "LICENSE"}
 readme = "README.md"
 keywords = ["NestedText", "JSON", "YAML", "TOML"]
 classifiers = [
-    "Environment :: Console",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Environment :: Console",
+    "Operating System :: MacOS",
+    # "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
     "Topic :: Text Processing :: Markup",
     "Topic :: Utilities",
 ]
