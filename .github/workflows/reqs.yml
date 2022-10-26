@@ -8,7 +8,7 @@ jobs:
     steps:
 
       - name: fetch code (develop) and zpy submodule
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: develop
           submodules: recursive
@@ -19,7 +19,7 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
 
       - name: get nox
-        uses: excitedleigh/setup-nox@v2.0.0
+        uses: excitedleigh/setup-nox@v2.1.0
 
       - name: upgrade lockfiles
         run: nox -s lock

@@ -8,14 +8,14 @@ nox.options.default_venv_backend = 'venv'
 nox.options.reuse_existing_virtualenvs = True
 
 
-@nox.session(python=['3.7', '3.8', '3.9', '3.10'])
+@nox.session(python=['3.7', '3.8', '3.9', '3.10', '3.11'])
 def test(session):
     """Run all tests."""
     session.install('.[test,toml]', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
-@nox.session(python=['3.7', '3.8', '3.9', '3.10'])
+@nox.session(python=['3.7', '3.8', '3.9', '3.10', '3.11'])
 def test_without_toml(session):
     """Run tests without optional TOML support installed."""
     session.install('.[test-without-toml]', 'coverage')

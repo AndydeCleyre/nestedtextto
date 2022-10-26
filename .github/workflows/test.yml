@@ -3,19 +3,20 @@ on:
   push
 jobs:
   tests:
-    runs-on: ubuntu-22.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-12, windows-2022]
+    runs-on: ${{ matrix.os }}
+
     steps:
 
       - name: fetch code
-        uses: actions/checkout@v2
-
-      - name: install tools from distro repo
-        run: sudo apt -yqq --no-install-recommends install ca-certificates zsh
-        env:
-          DEBIAN_FRONTEND: noninteractive
+        uses: actions/checkout@v3
 
       - name: get nox
-        uses: excitedleigh/setup-nox@v2.0.0
+        uses: excitedleigh/setup-nox@v2.1.0
 
       - name: run ward tests in nox environment
         run: nox -s test test_without_toml combine_coverage --force-color
