@@ -22,7 +22,7 @@ def test_without_toml(session):
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
-@nox.session(python=['3.11'])
+@nox.session(python=['3.10'])
 def combine_coverage(session):
     """Prepare a combined coverage report for uploading."""
     session.install('coverage')
@@ -30,7 +30,7 @@ def combine_coverage(session):
     session.run('coverage', 'json')
 
 
-@nox.session(python=['3.11'])
+@nox.session(python=['3.10'])
 def fmt(session):
     """Format and lint code and docs."""
     session.install('-r', 'fmt-requirements.txt')
@@ -41,14 +41,14 @@ def fmt(session):
     session.run('pydocstyle', 'noxfile.py')
 
 
-@nox.session(python=['3.11'])
+@nox.session(python=['3.10'])
 def publish(session):
     """Package and upload to PyPI."""
     session.install('.[dev]')
     session.run('flit', 'publish')
 
 
-@nox.session(python=['3.11'])
+@nox.session(python=['3.10'])
 def render_readme(session):
     """Generate README.md from templates/README.md.wz."""
     session.install('-e', '.[doc]')
@@ -56,14 +56,14 @@ def render_readme(session):
     Path('README.md').write_text(content)
 
 
-@nox.session(python=['3.11'])
+@nox.session(python=['3.10'])
 def render_api_docs(session):
     """Generate doc/api HTML documentation from docstrings."""
     session.install('-r', 'doc/doc-requirements.txt')
     session.run('pydoctor', 'nt2')
 
 
-@nox.session(python=['3.11'])
+@nox.session(python=['3.10'])
 def lock(session):
     """Generate updated requirements.txt lock files and pyproject.toml."""
     session.install('pip-tools')
