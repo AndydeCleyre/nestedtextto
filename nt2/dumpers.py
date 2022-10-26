@@ -1,6 +1,7 @@
 """Main functions to be called by the UI Application classes, after CLI option parsing."""
 from __future__ import annotations
 
+import io
 import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
@@ -25,7 +26,6 @@ else:
 
 YAML_EDITOR = YPParsers.get_yaml_editor()
 YAML_EDITOR.indent(mapping=2, sequence=4, offset=2)
-ydump = YAML_EDITOR.dump
 yload = YAML_EDITOR.load
 
 RICH = RichConsole()
@@ -69,6 +69,30 @@ def jdump(data: dict | list):
         _syntax_print(_jdumps(data, indent=2), 'json')
     else:
         _jdump(data, sys.stdout, indent=2)
+
+
+def ydump(data: dict | list):
+    """
+    Pretty-print the data as YAML, with color if interactive, to stdout.
+
+    Args:
+        data: A ``dict`` or ``list`` to dump as YAML.
+
+    Raises:
+        Exception: Unexpected problem dumping or highlighting data.
+    """
+    if sys.stdout.isatty():
+        out_stream = io.StringIO()
+        try:
+            YAML_EDITOR.dump(data, out_stream)
+        except Exception as e:
+            raise e
+        else:
+            _syntax_print(out_stream.getvalue(), 'yaml')
+        finally:
+            out_stream.close()
+    else:
+        YAML_EDITOR.dump(data, sys.stdout)
 
 
 def _require_toml_support():
@@ -193,7 +217,7 @@ def dump_nestedtext_to_yaml(
             date_paths=date_paths,
             converter=mk_yaml_types_converter(),
         )
-        ydump(data, sys.stdout)
+        ydump(data)
 
 
 def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_paths=()):
