@@ -165,7 +165,7 @@ def dump_yaml_to_nestedtext(*input_files):
         ntdump(data)
     else:
         for f in input_files:
-            with open(f) as ifile:
+            with open(f, encoding='utf-8') as ifile:
                 data = yload(ifile)
             data = converter.unstructure(data)
             ntdump(data)
