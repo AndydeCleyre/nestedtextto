@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: get nox
-        uses: excitedleigh/setup-nox@v2.0.0
+        uses: excitedleigh/setup-nox@v2.1.0
 
       - name: flit publish
         run: nox -s publish
