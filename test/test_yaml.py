@@ -11,6 +11,7 @@ for input_yaml_name, output_nt_name in {
     'typed_all': 'typed_round_trip',
     'typed_all_verbose_null': 'typed_round_trip',
     'typed_dates': 'dates',
+    'typed_floats': 'floats',
 }.items():
 
     @test(f"YAML -> NestedText [{input_yaml_name}]")
@@ -48,6 +49,13 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
         output = nt2yaml(SAMPLES / 'base.nt', **casting_args)
         assert_file_content(expected_file, output)
+
+
+@test("NestedText -> YAML [schema file: floats.types.nt]")
+def _():
+    expected_file = SAMPLES / 'typed_floats.yml'
+    output = nt2yaml(SAMPLES / 'floats.nt', schema_files=(SAMPLES / 'floats.types.nt',))
+    assert_file_content(expected_file, output)
 
 
 @test("NestedText -> YAML [schema file: dates.types.nt]")

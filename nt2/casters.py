@@ -66,7 +66,7 @@ def _str_to_num(informal_num: str) -> int | float:
             return num
     try:
         inum = int(num)
-    except ValueError:
+    except (ValueError, OverflowError):
         return num
     else:
         return inum if num == inum else num

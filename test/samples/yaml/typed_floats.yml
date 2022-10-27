@@ -1,0 +1,4 @@
+---
+positive infinity: .inf
+negative infinity: -.inf
+not a number: .nan
