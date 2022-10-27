@@ -39,7 +39,7 @@ def _str_to_bool(informal_bool: str) -> bool:
         return True
     if informal_bool.lower() in ('false', 'no', 'n', 'off', '0'):
         return False
-    raise ValueError
+    raise ValueError  # pragma: no cover
 
 
 def _str_to_num(informal_num: str) -> int | float:
@@ -60,7 +60,7 @@ def _str_to_num(informal_num: str) -> int | float:
     except ValueError as e:
         try:
             num = int(informal_num, 16)
-        except Exception:
+        except Exception:  # pragma: no cover
             raise ValueError(': '.join(e.args))
         else:
             return num
@@ -146,7 +146,7 @@ def cast_stringy_data(
             continue
         try:
             surgeon.set_value(match.path, _str_to_bool(match.node))
-        except ValueError as e:
+        except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path))))
 
     for match in _non_null_matches(surgeon, *num_paths):
@@ -154,7 +154,7 @@ def cast_stringy_data(
             continue
         try:
             num = _str_to_num(match.node)
-        except ValueError as e:
+        except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join(e.args + (str(match.path),)))
         else:
             surgeon.set_value(match.path, num)
@@ -176,7 +176,7 @@ def cast_stringy_data(
             except ValueError:
                 try:
                     val = time.fromisoformat(match.node)
-                except Exception as e:
+                except Exception as e:  # pragma: no cover
                     raise e
                 else:
                     val = f"{time_marker}{val.isoformat()}"
