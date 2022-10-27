@@ -26,17 +26,8 @@ def test_without_toml(session):
 def combine_coverage(session):
     """Prepare a combined coverage report for uploading."""
     session.install('coverage')
-    session.run('coverage', 'combine', success_codes=(0, 1))
+    session.run('coverage', 'combine')
     session.run('coverage', 'json')
-
-
-@nox.session(python=['3.10'])
-def low_coverage(session):
-    """Prepare a combined HTML low coverage report and fail if it's too low."""
-    session.install('coverage')
-    session.run('coverage', 'combine', success_codes=(0, 1))
-    session.run('coverage', 'html', '--skip-covered', '--skip-empty', '--ignore-errors')
-    session.run('coverage', 'report', '--fail-under=90')
 
 
 @nox.session(python=['3.10'])

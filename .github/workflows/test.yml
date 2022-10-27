@@ -24,7 +24,7 @@ jobs:
         env:
           PYTHONIOENCODING: utf-8
 
-      - name: upload coverage data
+      - name: upload coverage data as temporary artifact
         uses: actions/upload-artifact@v3
         with:
           name: coverage-data
@@ -40,37 +40,18 @@ jobs:
       - name: fetch code
         uses: actions/checkout@v3
 
-      - name: get nox
-        uses: excitedleigh/setup-nox@v2.1.0
-
-      - name: get coverage data from recent tests
+      - name: get coverage data artifacts from recent tests
         uses: actions/download-artifact@v3
         with:
           name: coverage-data
 
-      - name: combine and judge coverage data
-        run: nox -s low_coverage --force-color
+      - name: get nox
+        uses: excitedleigh/setup-nox@v2.1.0
 
-      - name: upload HTML report if coverage is low
-        uses: actions/upload-artifact@v3
+      - name: combine coverage
+        run: nox -s combine_coverage --force-color
+
+      - name: upload coverage data to codecov.io
+        uses: codecov/codecov-action@v3
         with:
-          name: html-report
-          path: htmlcov
-        if: ${{ failure() }}
-
-      - name: extract coverage rating for badge
-        run: |
-          COV_PERCENT="$(python -c "import json;print(json.load(open('coverage.json'))['totals']['percent_covered_display'])")"
-          printf '%s\n' "COV_PERCENT=$COV_PERCENT" >>"$GITHUB_ENV"
-
-      - name: make badge
-        uses: schneegans/dynamic-badges-action@v1.6.0
-        with:
-          auth: ${{ secrets.GIST_TOKEN }}
-          gistID: a4994f49b7d543e25bc29b07d2309a5f
-          filename: covbadge.json
-          label: Coverage
-          message: ${{ env.COV_PERCENT }}%
-          minColorRange: 50
-          maxColorRange: 90
-          valColorRange: ${{ env.COV_PERCENT }}
+          files: ./coverage.json
