@@ -68,6 +68,7 @@ docs = "nox -s render_readme render_api_docs"
 
 [tool.ward]
 path = ["test"]
+show-diff-symbols = true
 test-output-style = "dots-module"
 
 [tool.pydoctor]
