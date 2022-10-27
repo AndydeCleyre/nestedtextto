@@ -16,7 +16,7 @@ from yamlpath.exceptions import YAMLPathException
 from yamlpath.wrappers import ConsolePrinter as YPConsolePrinter
 from yamlpath.wrappers.nodecoords import NodeCoords
 
-from .converters import Converter, mk_json_types_converter, mk_marked_string_converter
+from .converters import Converter, mk_json_types_converter, mk_unyamlable_converter
 
 StringyDatum = 'str | list | dict'
 StringyData = 'list[StringyDatum] | dict[str, StringyDatum]'
@@ -39,7 +39,7 @@ def _str_to_bool(informal_bool: str) -> bool:
         return True
     if informal_bool.lower() in ('false', 'no', 'n', 'off', '0'):
         return False
-    raise ValueError  # pragma: no cover
+    raise ValueError(f"{informal_bool} doesn't look like a boolean")  # pragma: no cover
 
 
 def _str_to_num(informal_num: str) -> int | float:
@@ -73,6 +73,36 @@ def _str_to_num(informal_num: str) -> int | float:
         return num
     else:
         return inum if num == inum else num
+
+
+def _str_to_datey(informal_datey: str, time_marker: str) -> date | datetime | str:
+    """
+    Translate an ISO 8601 date/time ``str`` into a ``date``, ``datetime``, or marked time ``str``.
+
+    Args:
+        informal_datey: An ISO 8601 date/time ``str``.
+        time_marker: An arbitrary prefix (such as a UUID) which will be used
+            to create a "marked time" ``str``, rather than an (unyamlable) ``time`` instance.
+
+    Returns:
+        An ``date``, ``datetime``, or marked time ``str`` equivalent of ``informal_datey``.
+            A marked time ``str`` is just ISO 8601 prefixed with ``time_marker``.
+
+    Raises:
+        ValueError: This doesn't look like enough like a date/time to translate.
+    """
+    try:
+        return date.fromisoformat(informal_datey)
+    except ValueError:
+        try:
+            return datetime.fromisoformat(informal_datey)
+        except ValueError:
+            try:
+                val = time.fromisoformat(informal_datey)
+            except Exception as e:  # pragma: no cover
+                raise ValueError(': '.join(e.args))
+            else:
+                return f"{time_marker}{val.isoformat()}"
 
 
 def _non_null_matches(surgeon: YPProcessor, *query_paths: str) -> Iterable[NodeCoords]:
@@ -130,7 +160,6 @@ def cast_stringy_data(
 
     Raises:
         ValueError: Up-typing a ``str`` failed due to an unexpected format.
-        Exception: An unexpected problem.
     """
     doc = dict(data) if isinstance(data, dict) else list(data)
 
@@ -156,35 +185,27 @@ def cast_stringy_data(
         if not isinstance(match.node, str):
             continue
         try:
-            num = _str_to_num(match.node)
+            surgeon.set_value(match.path, _str_to_num(match.node))
         except ValueError as e:  # pragma: no cover
-            raise ValueError(': '.join(e.args + (str(match.path),)))
-        else:
-            surgeon.set_value(match.path, num)
+            raise ValueError(': '.join((*e.args, str(match.path))))
 
     # We can't currently store a time type in the
     # intermediary YAML doc object, so:
     marked_times_present = False
     time_marker = str(uuid4())
-    marked_time_converter = mk_marked_string_converter(time_marker=time_marker)
+    marked_time_converter = mk_unyamlable_converter(time_marker=time_marker)
 
     for match in _non_null_matches(surgeon, *date_paths):
         if not isinstance(match.node, str) or match.node.startswith(time_marker):
             continue
         try:
-            val = date.fromisoformat(match.node)
-        except ValueError:
-            try:
-                val = datetime.fromisoformat(match.node)
-            except ValueError:
-                try:
-                    val = time.fromisoformat(match.node)
-                except Exception as e:  # pragma: no cover
-                    raise e
-                else:
-                    val = f"{time_marker}{val.isoformat()}"
-                    marked_times_present = True
-        surgeon.set_value(match.path, val)
+            datey = _str_to_datey(match.node, time_marker)
+        except ValueError as e:
+            raise ValueError(': '.join((*e.args, str(match.path))))
+        else:
+            surgeon.set_value(match.path, datey)
+            if isinstance(datey, str):
+                marked_times_present = True
 
     if marked_times_present:
         doc = marked_time_converter.unstructure(doc)

@@ -70,7 +70,7 @@ def mk_deep_converter() -> Converter:
     return c
 
 
-def mk_marked_string_converter(time_marker: str) -> Converter:
+def mk_unyamlable_converter(time_marker: str) -> Converter:
     r"""
     Create a recursive ``Converter`` which replaces marked ``str``\ s with ``time`` instances.
 
@@ -134,7 +134,7 @@ def mk_json_types_converter() -> Converter:
 
     Returns:
         A ``Converter`` whose ``unstructure`` method results in nested objects of type
-            ``str``/``int``/``float``/``bool``/``dict``/``list``
+            ``str``/``int``/``float``/``bool``/``dict``/``list``/``None``
     """
     c = mk_deep_converter()
 
