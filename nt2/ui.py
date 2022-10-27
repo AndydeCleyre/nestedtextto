@@ -22,7 +22,7 @@ from .dumpers import (
 RICH = RichConsole(stderr=True)
 
 
-def inspect_exception(exc: Exception):
+def inspect_exception(exc: Exception):  # pragma: no cover
     """
     Pretty-print an exception to stderr for the user to see.
 
@@ -131,7 +131,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
                 null_paths=self.null_paths,
                 num_paths=self.num_paths,
             )
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
 
@@ -172,7 +172,7 @@ class NestedTextToYAML(
                 num_paths=self.num_paths,
                 date_paths=self.date_paths,
             )
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
 
@@ -207,7 +207,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
                 num_paths=self.num_paths,
                 date_paths=self.date_paths,
             )
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
 
@@ -227,7 +227,7 @@ class JSONToNestedText(_ColorApp):
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             dump_json_to_nestedtext(*input_files)
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
 
@@ -245,7 +245,7 @@ class YAMLToNestedText(_ColorApp):
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             dump_yaml_to_nestedtext(*input_files)
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
 
@@ -263,6 +263,6 @@ class TOMLToNestedText(_ColorApp):
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             dump_toml_to_nestedtext(*input_files)
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1

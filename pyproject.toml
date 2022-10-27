@@ -17,7 +17,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Environment :: Console",
     "Operating System :: MacOS",
-    # "Operating System :: Microsoft :: Windows",
+    "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
     "Topic :: Text Processing :: Markup",
     "Topic :: Utilities",
@@ -62,12 +62,13 @@ line-length = 99
 [tool.taskipy.tasks]
 fmt = "nox -s fmt"
 lock = "nox -s lock"
-install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
+# install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
 test = "nox -s test"
 docs = "nox -s render_readme render_api_docs"
 
 [tool.ward]
 path = ["test"]
+show-diff-symbols = true
 test-output-style = "dots-module"
 
 [tool.pydoctor]

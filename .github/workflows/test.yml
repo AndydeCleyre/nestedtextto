@@ -2,6 +2,7 @@ name: Run tests
 on:
   push
 jobs:
+
   tests:
 
     strategy:
@@ -20,6 +21,8 @@ jobs:
 
       - name: run ward tests in nox environment
         run: nox -s test test_without_toml combine_coverage --force-color
+        env:
+          PYTHONIOENCODING: utf-8
 
       - name: upload coverage data
         uses: codecov/codecov-action@v3
