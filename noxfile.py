@@ -35,7 +35,7 @@ def low_coverage(session):
     """Prepare a combined HTML low coverage report and fail if it's too low."""
     session.install('coverage')
     session.run('coverage', 'combine', success_codes=(0, 1))
-    session.run('coverage', 'html', '--skip-covered', '--skip-empty')
+    session.run('coverage', 'html', '--skip-covered', '--skip-empty', '--ignore-errors')
     session.run('coverage', 'report', '--fail-under=90')
 
 
