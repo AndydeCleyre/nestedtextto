@@ -5,18 +5,12 @@ In practice, this is just `cast_stringy_data` and any support functions it needs
 """
 from __future__ import annotations
 
-import sys
-from collections.abc import Iterable, Sequence
+from collections.abc import Sequence
 from datetime import date, datetime, time
-from types import SimpleNamespace
 from uuid import uuid4
 
-from yamlpath import Processor as YPProcessor
-from yamlpath.exceptions import YAMLPathException
-from yamlpath.wrappers import ConsolePrinter as YPConsolePrinter
-from yamlpath.wrappers.nodecoords import NodeCoords
-
 from .converters import Converter, mk_json_types_converter, mk_unyamlable_converter
+from .yamlpath_tools import mk_yamlpath_processor, non_null_matches
 
 StringyDatum = 'str | list | dict'
 StringyData = 'list[StringyDatum] | dict[str, StringyDatum]'
@@ -105,32 +99,6 @@ def _str_to_datey(informal_datey: str, time_marker: str) -> date | datetime | st
                 return f"{time_marker}{val.isoformat()}"
 
 
-def _non_null_matches(surgeon: YPProcessor, *query_paths: str) -> Iterable[NodeCoords]:
-    r"""
-    Generate ``NodeCoords`` matching any ``query_paths``.
-
-    Omit any matches whose ``node`` attr is ``None``.
-
-    Args:
-        surgeon: A ``yamlpath.Processor``, already storing the YAML document to be queried.
-        query_paths: YAMLPath query ``str``\ s to find matches for in the document.
-
-    Yields:
-        Matching ``NodeCoords`` items from the document,
-            each having a ``node`` (value) attribute and ``path`` (YAMLPath) attribute.
-    """
-    for query_path in query_paths:
-        try:
-            matches = [
-                m for m in surgeon.get_nodes(query_path, mustexist=True) if m.node is not None
-            ]
-        except YAMLPathException as e:
-            print(*e.args, sep='\n', file=sys.stderr)
-            continue
-        else:
-            yield from matches
-
-
 def cast_stringy_data(
     data: StringyData,
     bool_paths: Sequence[str] = (),
@@ -166,14 +134,13 @@ def cast_stringy_data(
     if not any((bool_paths, null_paths, num_paths, date_paths)):
         return doc
 
-    log = YPConsolePrinter(SimpleNamespace(quiet=True, verbose=False, debug=False))
-    surgeon = YPProcessor(log, doc)
+    surgeon = mk_yamlpath_processor(doc)
 
-    for match in _non_null_matches(surgeon, *null_paths):
+    for match in non_null_matches(surgeon, *null_paths):
         if match.node == '':
             surgeon.set_value(match.path, None)
 
-    for match in _non_null_matches(surgeon, *bool_paths):
+    for match in non_null_matches(surgeon, *bool_paths):
         if not isinstance(match.node, str):
             continue
         try:
@@ -181,7 +148,7 @@ def cast_stringy_data(
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path))))
 
-    for match in _non_null_matches(surgeon, *num_paths):
+    for match in non_null_matches(surgeon, *num_paths):
         if not isinstance(match.node, str):
             continue
         try:
@@ -195,7 +162,7 @@ def cast_stringy_data(
     time_marker = str(uuid4())
     marked_time_converter = mk_unyamlable_converter(time_marker=time_marker)
 
-    for match in _non_null_matches(surgeon, *date_paths):
+    for match in non_null_matches(surgeon, *date_paths):
         if not isinstance(match.node, str) or match.node.startswith(time_marker):
             continue
         try:
