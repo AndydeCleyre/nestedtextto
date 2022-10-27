@@ -4,7 +4,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/nt2?color=blue)](https://pypi.org/project/nt2/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nt2)
 [![tests badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml/badge.svg?branch=develop)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
-![codecov badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/andydecleyre/a4994f49b7d543e25bc29b07d2309a5f/raw/covbadge.json)
+[![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
 [![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
 [![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 [![Generate docs from templates](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml)
