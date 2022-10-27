@@ -145,9 +145,13 @@ def dump_json_to_nestedtext(*input_files):
             containing JSON content.
     """
     # We may need to use a converter.unstructure here; We'll see.
-    for f in input_files or (sys.stdin,):
-        typed_data = jloads(f.read())
+    if not input_files:
+        typed_data = jloads(sys.stdin.read())
         ntdump(typed_data)
+    else:
+        for f in input_files:
+            typed_data = jloads(f.read('utf-8'))
+            ntdump(typed_data)
 
 
 def dump_yaml_to_nestedtext(*input_files):
