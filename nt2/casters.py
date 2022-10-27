@@ -58,12 +58,15 @@ def _str_to_num(informal_num: str) -> int | float:
     try:
         num = float(informal_num)
     except ValueError as e:
-        try:
-            num = int(informal_num, 16)
-        except Exception:  # pragma: no cover
-            raise ValueError(': '.join(e.args))
-        else:
-            return num
+        for prefix, base in {'0x': 16, '0o': 8, '0b': 2}.items():
+            if informal_num.lower().startswith(prefix):
+                try:
+                    num = int(informal_num, base)
+                except Exception:  # pragma: no cover
+                    raise ValueError(': '.join(e.args))
+                else:
+                    return num
+        raise e  # pragma: no cover
     try:
         inum = int(num)
     except (ValueError, OverflowError):

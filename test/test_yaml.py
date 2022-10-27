@@ -51,11 +51,15 @@ for schema_file in SAMPLES // 'base.*.types.nt':
         assert_file_content(expected_file, output)
 
 
-@test("NestedText -> YAML [schema file: floats.types.nt]")
-def _():
-    expected_file = SAMPLES / 'typed_floats.yml'
-    output = nt2yaml(SAMPLES / 'floats.nt', schema_files=(SAMPLES / 'floats.types.nt',))
-    assert_file_content(expected_file, output)
+for num_type in ('floats', 'ints'):
+
+    @test(f"NestedText -> YAML [schema file: {num_type}.types.nt]")
+    def _(num_type=num_type):
+        expected_file = SAMPLES / f"typed_{num_type}.yml"
+        output = nt2yaml(
+            SAMPLES / f"{num_type}.nt", schema_files=(SAMPLES / f"{num_type}.types.nt",)
+        )
+        assert_file_content(expected_file, output)
 
 
 @test("NestedText -> YAML [schema file: dates.types.nt]")
