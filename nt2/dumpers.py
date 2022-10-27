@@ -10,12 +10,12 @@ from nestedtext import dump as _ntdump, dumps as _ntdumps, load as ntload
 from plumbum import LocalPath
 from rich.console import Console as RichConsole
 from rich.syntax import Syntax as RichSyntax
-from yamlpath.common import Parsers as YPParsers
 
 from .casters import cast_stringy_data
 from .converters import (
     mk_json_types_converter, mk_stringy_converter, mk_toml_types_converter, mk_yaml_types_converter
 )
+from .yamlpath_tools import mk_yaml_editor
 
 try:
     from tomli import load as tload, loads as tloads
@@ -25,8 +25,7 @@ except ImportError:
 else:
     TOML_SUPPORT = True
 
-YAML_EDITOR = YPParsers.get_yaml_editor()
-YAML_EDITOR.indent(mapping=2, sequence=4, offset=2)
+YAML_EDITOR = mk_yaml_editor()
 yload = YAML_EDITOR.load
 
 RICH = RichConsole()

@@ -10,10 +10,24 @@ import sys
 from collections.abc import Iterable
 from types import SimpleNamespace
 
+from ruamel.yaml.main import YAML
 from yamlpath import Processor
+from yamlpath.common import Parsers
 from yamlpath.exceptions import YAMLPathException
 from yamlpath.wrappers import ConsolePrinter
 from yamlpath.wrappers.nodecoords import NodeCoords
+
+
+def mk_yaml_editor() -> YAML:
+    """
+    Construct a YAML editor with ``load`` and ``dump`` methods.
+
+    Returns:
+        A configured object able to ``.load`` and ``.dump`` YAML (``ruamel.yaml.main.YAML``).
+    """
+    editor = Parsers.get_yaml_editor()
+    editor.indent(mapping=2, sequence=4, offset=2)
+    return editor
 
 
 def mk_yamlpath_processor(data: dict | list) -> Processor:
