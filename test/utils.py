@@ -4,6 +4,18 @@ from __future__ import annotations
 from collections.abc import Sequence
 
 from nestedtext import load as ntload
+from plumbum import LocalPath
+
+
+def assert_file_content(file: LocalPath, content: str):
+    """
+    Assert a file's contents match a string, forgiving different newline characters.
+
+    Args:
+        file: A path object to read the contents of
+        content: A str to compare the file contents to
+    """
+    assert content.splitlines() == file.read('utf-8').splitlines()
 
 
 def casting_args_from_schema_file(

@@ -1,6 +1,6 @@
 from commands import json2nt, nt2json
 from plumbum import local
-from utils import casting_args_from_schema_file
+from utils import assert_file_content, casting_args_from_schema_file
 from ward import test
 
 SAMPLES = local.path(__file__).up() / 'samples' / 'json'
@@ -10,7 +10,7 @@ SAMPLES = local.path(__file__).up() / 'samples' / 'json'
 def _():
     expected_file = SAMPLES / 'lines.nt'
     output = json2nt(SAMPLES / 'lines.jsonl')
-    assert output == expected_file.read('utf-8')
+    assert_file_content(expected_file, output)
 
 
 for input_json_name, output_nt_name in {
@@ -22,21 +22,21 @@ for input_json_name, output_nt_name in {
     def _(input_json_name=input_json_name, output_nt_name=output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = json2nt(SAMPLES / f"{input_json_name}.json")
-        assert output == expected_file.read('utf-8')
+        assert_file_content(expected_file, output)
 
 
 @test("NestedText -> JSON [untyped]")
 def _():
     expected_file = SAMPLES / 'untyped.json'
     output = nt2json(SAMPLES / 'base.nt')
-    assert output == expected_file.read('utf-8')
+    assert_file_content(expected_file, output)
 
 
 @test("NestedText -> JSON [top level array]")
 def _():
     expected_file = SAMPLES / 'lines.json'
     output = nt2json(SAMPLES / 'lines.nt')
-    assert output == expected_file.read('utf-8')
+    assert_file_content(expected_file, output)
 
 
 for schema_file in SAMPLES // 'base.*.types.nt':
@@ -45,14 +45,14 @@ for schema_file in SAMPLES // 'base.*.types.nt':
     def _(schema_file=schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.json"
         output = nt2json(SAMPLES / 'base.nt', schema_files=(schema_file,))
-        assert output == expected_file.read('utf-8')
+        assert_file_content(expected_file, output)
 
     @test(f"NestedText -> JSON [casting args from schema: {schema_file.name}]")
     def _(schema_file=schema_file):
         casting_args = casting_args_from_schema_file(schema_file)
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.json"
         output = nt2json(SAMPLES / 'base.nt', **casting_args)
-        assert output == expected_file.read('utf-8')
+        assert_file_content(expected_file, output)
 
 
 @test("NestedText -> JSON [blend schema file with casting args]")
@@ -63,7 +63,7 @@ def _():
         schema_files=(SAMPLES / 'base.bool_null.types.nt',),
         **casting_args_from_schema_file(SAMPLES / 'base.num.types.nt'),
     )
-    assert output == expected_file.read('utf-8')
+    assert_file_content(expected_file, output)
 
 
 @test("NestedText -> JSON [blend schema files]")
@@ -73,4 +73,4 @@ def _():
         SAMPLES / 'base.nt',
         schema_files=(SAMPLES / 'base.bool_null.types.nt', SAMPLES / 'base.num.types.nt'),
     )
-    assert output == expected_file.read('utf-8')
+    assert_file_content(expected_file, output)
