@@ -126,7 +126,7 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
   <summary>nt2json</summary>
 
 ```
-nt2json 0.1.5
+nt2json 0.1.6
 
 Read NestedText and output its content as JSON.
 
@@ -177,7 +177,7 @@ Switches:
   <summary>nt2yaml</summary>
 
 ```
-nt2yaml 0.1.5
+nt2yaml 0.1.6
 
 Read NestedText and output its content as YAML.
 
@@ -231,7 +231,7 @@ Switches:
   <summary>nt2toml</summary>
 
 ```
-nt2toml 0.1.5
+nt2toml 0.1.6
 
 Read NestedText and output its content as TOML.
 
@@ -282,7 +282,7 @@ Switches:
   <summary>json2nt</summary>
 
 ```
-json2nt 0.1.5
+json2nt 0.1.6
 
 Read JSON and output its content as NestedText.
 
@@ -311,7 +311,7 @@ Switches:
   <summary>yaml2nt</summary>
 
 ```
-yaml2nt 0.1.5
+yaml2nt 0.1.6
 
 Read YAML and output its content as NestedText.
 
@@ -340,7 +340,7 @@ Switches:
   <summary>toml2nt</summary>
 
 ```
-toml2nt 0.1.5
+toml2nt 0.1.6
 
 Read TOML and output its content as NestedText.
 
