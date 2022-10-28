@@ -6,7 +6,7 @@ After argument processing, these call into the `dumpers` functions to get the jo
 import sys
 
 from nestedtext import load as ntload
-from plumbum.cli import Application, ExistingFile, SwitchAttr
+from plumbum.cli import Application, ExistingFile, Flag, SwitchAttr
 from plumbum.colors import blue, green, magenta, yellow
 from rich import inspect as _rich_inspect
 from rich.console import Console as RichConsole
@@ -15,8 +15,9 @@ from ruamel.yaml.scanner import ScannerError as YAMLScannerError
 
 from . import __version__
 from .dumpers import (
-    dump_json_to_nestedtext, dump_nestedtext_to_json, dump_nestedtext_to_toml,
-    dump_nestedtext_to_yaml, dump_toml_to_nestedtext, dump_yaml_to_nestedtext
+    dump_json_to_nestedtext, dump_json_to_schema, dump_nestedtext_to_json,
+    dump_nestedtext_to_toml, dump_nestedtext_to_yaml, dump_toml_to_nestedtext,
+    dump_toml_to_schema, dump_yaml_to_nestedtext, dump_yaml_to_schema
 )
 
 RICH = RichConsole(stderr=True)
@@ -52,6 +53,11 @@ class _ColorApp(Application):
 
 
 _ColorApp.unbind_switches('help-all')
+
+
+class _TypedFormatToSchema(_ColorApp):
+
+    to_schema = Flag(('to-schema', 's'), help="Rather than convert the inputs, generate a schema")
 
 
 class _NestedTextToTypedFormat(_ColorApp):
@@ -212,7 +218,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
             return 1
 
 
-class JSONToNestedText(_ColorApp):
+class JSONToNestedText(_TypedFormatToSchema):
     """
     Read JSON and output its content as NestedText.
 
@@ -222,17 +228,18 @@ class JSONToNestedText(_ColorApp):
         cat example.json | json2nt
     """
 
-    # --make-schema ? --gen-schema ? --only-schema ? separate command?
-
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
-            dump_json_to_nestedtext(*input_files)
+            if not self.to_schema:
+                dump_json_to_nestedtext(*input_files)
+            else:
+                dump_json_to_schema(*input_files)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
 
 
-class YAMLToNestedText(_ColorApp):
+class YAMLToNestedText(_TypedFormatToSchema):
     """
     Read YAML and output its content as NestedText.
 
@@ -244,13 +251,16 @@ class YAMLToNestedText(_ColorApp):
 
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
-            dump_yaml_to_nestedtext(*input_files)
+            if not self.to_schema:
+                dump_yaml_to_nestedtext(*input_files)
+            else:
+                dump_yaml_to_schema(*input_files)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
 
 
-class TOMLToNestedText(_ColorApp):
+class TOMLToNestedText(_TypedFormatToSchema):
     """
     Read TOML and output its content as NestedText.
 
@@ -262,7 +272,10 @@ class TOMLToNestedText(_ColorApp):
 
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
-            dump_toml_to_nestedtext(*input_files)
+            if not self.to_schema:
+                dump_toml_to_nestedtext(*input_files)
+            else:
+                dump_toml_to_schema(*input_files)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1

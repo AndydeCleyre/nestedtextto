@@ -89,6 +89,12 @@ The following command will then also yield the above JSON:
 $ nt2json example.nt --schema example.types.nt
 ```
 
+Such a schema may be automatically generated from JSON/TOML/YAML:
+
+```console
+$ json2nt --to-schema example.json
+```
+
 Options may be provided before or after the document,
 and content may be piped directly to the command instead of specifying a file.
 
@@ -120,7 +126,7 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
   <summary>nt2json</summary>
 
 ```
-nt2json 0.1.5
+nt2json 0.1.6
 
 Read NestedText and output its content as JSON.
 
@@ -171,7 +177,7 @@ Switches:
   <summary>nt2yaml</summary>
 
 ```
-nt2yaml 0.1.5
+nt2yaml 0.1.6
 
 Read NestedText and output its content as YAML.
 
@@ -225,7 +231,7 @@ Switches:
   <summary>nt2toml</summary>
 
 ```
-nt2toml 0.1.5
+nt2toml 0.1.6
 
 Read NestedText and output its content as TOML.
 
@@ -276,7 +282,7 @@ Switches:
   <summary>json2nt</summary>
 
 ```
-json2nt 0.1.5
+json2nt 0.1.6
 
 Read JSON and output its content as NestedText.
 
@@ -289,8 +295,11 @@ Usage:
     json2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```
@@ -302,7 +311,7 @@ Meta-switches:
   <summary>yaml2nt</summary>
 
 ```
-yaml2nt 0.1.5
+yaml2nt 0.1.6
 
 Read YAML and output its content as NestedText.
 
@@ -315,8 +324,11 @@ Usage:
     yaml2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```
@@ -328,7 +340,7 @@ Meta-switches:
   <summary>toml2nt</summary>
 
 ```
-toml2nt 0.1.5
+toml2nt 0.1.6
 
 Read TOML and output its content as NestedText.
 
@@ -341,8 +353,11 @@ Usage:
     toml2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```

@@ -74,3 +74,14 @@ def _():
         schema_files=(SAMPLES / 'base.bool_null.types.nt', SAMPLES / 'base.num.types.nt'),
     )
     assert_file_content(expected_file, output)
+
+
+@test("JSON -> schema, NestedText -> JSON [generate schema from typed_all.json]")
+def _():
+    expected_file = SAMPLES / 'typed_all.json'
+    schema_content = json2nt(expected_file, to_schema=True)
+    with local.tempdir() as tmp:
+        schema_file = tmp / 'schema.nt'
+        schema_file.write(schema_content, 'utf-8')
+        output = nt2json(SAMPLES / 'base.nt', schema_files=(schema_file,))
+    assert_file_content(expected_file, output)
