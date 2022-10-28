@@ -5,6 +5,7 @@ import io
 import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
+from textwrap import indent
 
 from nestedtext import dump as _ntdump, dumps as _ntdumps, load as ntload
 from plumbum import LocalPath
@@ -15,7 +16,7 @@ from .casters import cast_stringy_data
 from .converters import (
     mk_json_types_converter, mk_stringy_converter, mk_toml_types_converter, mk_yaml_types_converter
 )
-from .yamlpath_tools import mk_yaml_editor
+from .yamlpath_tools import guess_briefer_schema, mk_yaml_editor, typed_data_to_schema
 
 try:
     from tomli import load as tload, loads as tloads
@@ -151,6 +152,80 @@ def dump_json_to_nestedtext(*input_files: LocalPath):
         for f in input_files:
             typed_data = jloads(f.read('utf-8'))
             ntdump(typed_data)
+
+
+def _dump_typed_data_to_schema(typed_data: dict | list):
+    schema = typed_data_to_schema(typed_data)
+    ntdump(schema)
+
+    briefer_schema = guess_briefer_schema(schema)
+    if sum(len(path_list) for path_list in briefer_schema.values()) < sum(
+        len(path_list) for path_list in schema.values()
+    ):
+        content = '\n'.join(
+            (
+                '',
+                '# Above is a schema that literally matches the current data.',
+                '# Below, for your review, is a guess at a better schema.',
+                '',
+                indent(_ntdumps(briefer_schema, indent=2), '# '),
+            )
+        )
+        if sys.stdout.isatty():
+            _syntax_print(content, 'nt')
+        else:
+            print(content)
+
+
+def dump_json_to_schema(*input_files: LocalPath):
+    r"""
+    Read JSON from stdin or ``input_files``, and send a NestedText schema to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with JSON content.
+    """
+    if not input_files:
+        typed_data = jloads(sys.stdin.read())
+        _dump_typed_data_to_schema(typed_data)
+    else:
+        for f in input_files:
+            typed_data = jloads(f.read('utf-8'))
+            _dump_typed_data_to_schema(typed_data)
+
+
+def dump_yaml_to_schema(*input_files: LocalPath):
+    r"""
+    Read YAML from stdin or ``input_files``, and send a NestedText schema to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with YAML content.
+    """
+    if not input_files:
+        typed_data = yload(sys.stdin)
+        _dump_typed_data_to_schema(typed_data)
+    else:
+        for f in input_files:
+            with open(f, encoding='utf-8') as ifile:
+                typed_data = yload(ifile)
+            _dump_typed_data_to_schema(typed_data)
+
+
+def dump_toml_to_schema(*input_files: LocalPath):
+    r"""
+    Read TOML from stdin or ``input_files``, and send a NestedText schema to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with TOML content.
+    """
+    _require_toml_support()
+    if not input_files:
+        typed_data = tloads(sys.stdin.read())
+        _dump_typed_data_to_schema(typed_data)
+    else:
+        for f in input_files:
+            with open(f, 'rb') as ifile:
+                typed_data = tload(ifile)
+            _dump_typed_data_to_schema(typed_data)
 
 
 def dump_yaml_to_nestedtext(*input_files: LocalPath):
