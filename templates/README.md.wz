@@ -89,6 +89,12 @@ The following command will then also yield the above JSON:
 $ nt2json example.nt --schema example.types.nt
 ```
 
+Such a schema may be automatically generated from JSON/TOML/YAML:
+
+```console
+$ json2nt --to-schema example.json
+```
+
 Options may be provided before or after the document,
 and content may be piped directly to the command instead of specifying a file.
 
