@@ -89,6 +89,12 @@ The following command will then also yield the above JSON:
 $ nt2json example.nt --schema example.types.nt
 ```
 
+Such a schema may be automatically generated from JSON/TOML/YAML:
+
+```console
+$ json2nt --to-schema example.json
+```
+
 Options may be provided before or after the document,
 and content may be piped directly to the command instead of specifying a file.
 
@@ -289,8 +295,11 @@ Usage:
     json2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```
@@ -315,8 +324,11 @@ Usage:
     yaml2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```
@@ -341,8 +353,11 @@ Usage:
     toml2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```

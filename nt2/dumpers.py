@@ -5,16 +5,18 @@ import io
 import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
+from textwrap import indent
 
 from nestedtext import dump as _ntdump, dumps as _ntdumps, load as ntload
+from plumbum import LocalPath
 from rich.console import Console as RichConsole
 from rich.syntax import Syntax as RichSyntax
-from yamlpath.common import Parsers as YPParsers
 
 from .casters import cast_stringy_data
 from .converters import (
     mk_json_types_converter, mk_stringy_converter, mk_toml_types_converter, mk_yaml_types_converter
 )
+from .yamlpath_tools import guess_briefer_schema, mk_yaml_editor, typed_data_to_schema
 
 try:
     from tomli import load as tload, loads as tloads
@@ -24,8 +26,7 @@ except ImportError:
 else:
     TOML_SUPPORT = True
 
-YAML_EDITOR = YPParsers.get_yaml_editor()
-YAML_EDITOR.indent(mapping=2, sequence=4, offset=2)
+YAML_EDITOR = mk_yaml_editor()
 yload = YAML_EDITOR.load
 
 RICH = RichConsole()
@@ -136,13 +137,12 @@ def jloads(content: str) -> dict | list:
         return [_jloads(line) for line in content.splitlines()]
 
 
-def dump_json_to_nestedtext(*input_files):
+def dump_json_to_nestedtext(*input_files: LocalPath):
     r"""
     Read JSON from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
-        input_files: Usually ``plumbum.local.path``\ s, must have ``read()``,
-            containing JSON content.
+        input_files: ``LocalPath``\ s with JSON content.
     """
     # We may need to use a converter.unstructure here; We'll see.
     if not input_files:
@@ -154,13 +154,86 @@ def dump_json_to_nestedtext(*input_files):
             ntdump(typed_data)
 
 
-def dump_yaml_to_nestedtext(*input_files):
+def _dump_typed_data_to_schema(typed_data: dict | list):
+    schema = typed_data_to_schema(typed_data)
+    ntdump(schema)
+
+    briefer_schema = guess_briefer_schema(schema)
+    if sum(len(path_list) for path_list in briefer_schema.values()) < sum(
+        len(path_list) for path_list in schema.values()
+    ):
+        content = '\n'.join(
+            (
+                '',
+                '# Above is a schema that literally matches the current data.',
+                '# Below, for your review, is a guess at a better schema.',
+                '',
+                indent(_ntdumps(briefer_schema, indent=2), '# '),
+            )
+        )
+        if sys.stdout.isatty():
+            _syntax_print(content, 'nt')
+        else:
+            print(content)
+
+
+def dump_json_to_schema(*input_files: LocalPath):
+    r"""
+    Read JSON from stdin or ``input_files``, and send a NestedText schema to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with JSON content.
+    """
+    if not input_files:
+        typed_data = jloads(sys.stdin.read())
+        _dump_typed_data_to_schema(typed_data)
+    else:
+        for f in input_files:
+            typed_data = jloads(f.read('utf-8'))
+            _dump_typed_data_to_schema(typed_data)
+
+
+def dump_yaml_to_schema(*input_files: LocalPath):
+    r"""
+    Read YAML from stdin or ``input_files``, and send a NestedText schema to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with YAML content.
+    """
+    if not input_files:
+        typed_data = yload(sys.stdin)
+        _dump_typed_data_to_schema(typed_data)
+    else:
+        for f in input_files:
+            with open(f, encoding='utf-8') as ifile:
+                typed_data = yload(ifile)
+            _dump_typed_data_to_schema(typed_data)
+
+
+def dump_toml_to_schema(*input_files: LocalPath):
+    r"""
+    Read TOML from stdin or ``input_files``, and send a NestedText schema to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with TOML content.
+    """
+    _require_toml_support()
+    if not input_files:
+        typed_data = tloads(sys.stdin.read())
+        _dump_typed_data_to_schema(typed_data)
+    else:
+        for f in input_files:
+            with open(f, 'rb') as ifile:
+                typed_data = tload(ifile)
+            _dump_typed_data_to_schema(typed_data)
+
+
+def dump_yaml_to_nestedtext(*input_files: LocalPath):
     r"""
     Read YAML from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
-        input_files: Usually ``plumbum.local.path``\ s, must be ``open``\ -able,
-            containing YAML content.
+        input_files: ``LocalPath``\ s with YAML content.
     """
     converter = mk_stringy_converter()
     if not input_files:
@@ -175,13 +248,12 @@ def dump_yaml_to_nestedtext(*input_files):
             ntdump(data)
 
 
-def dump_toml_to_nestedtext(*input_files):
+def dump_toml_to_nestedtext(*input_files: LocalPath):
     r"""
     Read TOML from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
-        input_files: Usually ``plumbum.local.path``\ s, must be ``open``\ -able,
-            containing TOML content.
+        input_files: ``LocalPath``\ s with TOML content.
     """
     _require_toml_support()
     converter = mk_stringy_converter()
@@ -198,14 +270,13 @@ def dump_toml_to_nestedtext(*input_files):
 
 
 def dump_nestedtext_to_yaml(
-    *input_files, bool_paths=(), null_paths=(), num_paths=(), date_paths=()
+    *input_files: LocalPath, bool_paths=(), null_paths=(), num_paths=(), date_paths=()
 ):
     r"""
     Read NestedText from stdin or ``input_files``, and send up-typed YAML to stdout.
 
     Args:
-        input_files: Usually ``plumbum.local.path``\ s, must be suitable for ``nestedtext.load``,
-            containing NestedText content.
+        input_files: ``LocalPath``\ s with NestedText content.
         bool_paths: YAMLPath queries whose matches will be casted to ``bool``.
         null_paths: YAMLPath queries whose matches will be casted to ``None``.
         num_paths: YAMLPath queries whose matches will be casted to ``int``/``float``.
@@ -224,13 +295,12 @@ def dump_nestedtext_to_yaml(
         ydump(data)
 
 
-def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_paths=()):
+def dump_nestedtext_to_toml(*input_files: LocalPath, bool_paths=(), num_paths=(), date_paths=()):
     r"""
     Read NestedText from stdin or ``input_files``, and send up-typed TOML to stdout.
 
     Args:
-        input_files: Usually ``plumbum.local.path``\ s, must be suitable for ``nestedtext.load``,
-            containing NestedText content.
+        input_files: ``LocalPath``\ s with NestedText content.
         bool_paths: YAMLPath queries whose matches will be casted to ``bool``.
         num_paths: YAMLPath queries whose matches will be casted to ``int``/``float``.
         date_paths: YAMLPath queries whose matches will be casted to
@@ -251,13 +321,12 @@ def dump_nestedtext_to_toml(*input_files, bool_paths=(), num_paths=(), date_path
         tdump(data)
 
 
-def dump_nestedtext_to_json(*input_files, bool_paths=(), null_paths=(), num_paths=()):
+def dump_nestedtext_to_json(*input_files: LocalPath, bool_paths=(), null_paths=(), num_paths=()):
     r"""
     Read NestedText from stdin or ``input_files``, and send up-typed JSON to stdout.
 
     Args:
-        input_files: Usually ``plumbum.local.path``\ s, must be suitable for ``nestedtext.load``,
-            containing NestedText content.
+        input_files: ``LocalPath``\ s with NestedText content.
         bool_paths: YAMLPath queries whose matches will be casted to ``bool``.
         null_paths: YAMLPath queries whose matches will be casted to ``None``.
         num_paths: YAMLPath queries whose matches will be casted to ``int``/``float``.

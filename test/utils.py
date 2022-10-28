@@ -5,6 +5,7 @@ from collections.abc import Sequence
 
 from nestedtext import load as ntload
 from plumbum import LocalPath
+from ward.expect import assert_equal
 
 
 def assert_file_content(file: LocalPath, content: str):
@@ -15,7 +16,7 @@ def assert_file_content(file: LocalPath, content: str):
         file: A path object to read the contents of
         content: A str to compare the file contents to
     """
-    assert content.splitlines() == file.read('utf-8').splitlines()
+    assert_equal(content.splitlines(), file.read('utf-8').splitlines(), "line for line")
 
 
 def casting_args_from_schema_file(
