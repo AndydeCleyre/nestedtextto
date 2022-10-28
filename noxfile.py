@@ -11,21 +11,29 @@ nox.options.reuse_existing_virtualenvs = True
 @nox.session(python=['3.7', '3.8', '3.9', '3.10'])
 def test(session):
     """Run all tests."""
-    session.install('.[test,toml]', 'coverage')
+    session.install(
+        '.[test,toml]',
+        'coverage @ git+https://github.com/nedbat/coveragepy@nedbat/bug1481-with-metacov',
+    )
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=['3.7', '3.8', '3.9', '3.10'])
 def test_without_toml(session):
     """Run tests without optional TOML support installed."""
-    session.install('.[test-without-toml]', 'coverage')
+    session.install(
+        '.[test-without-toml]',
+        'coverage @ git+https://github.com/nedbat/coveragepy@nedbat/bug1481-with-metacov',
+    )
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=['3.10'])
 def combine_coverage(session):
     """Prepare a combined coverage report for uploading."""
-    session.install('coverage')
+    session.install(
+        'coverage @ git+https://github.com/nedbat/coveragepy@nedbat/bug1481-with-metacov'
+    )
     session.run('coverage', 'combine')
     session.run('coverage', 'json')
 
