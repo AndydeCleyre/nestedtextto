@@ -289,8 +289,11 @@ Usage:
     json2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```
@@ -315,8 +318,11 @@ Usage:
     yaml2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```
@@ -341,8 +347,11 @@ Usage:
     toml2nt [SWITCHES] input_files...
 
 Meta-switches:
-    -h, --help         Prints this help message and quits
-    -v, --version      Prints the program's version and quits
+    -h, --help           Prints this help message and quits
+    -v, --version        Prints the program's version and quits
+
+Switches:
+    --to-schema, -s      Rather than convert the inputs, generate a schema
 
 
 ```
