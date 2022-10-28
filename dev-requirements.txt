@@ -51,7 +51,7 @@ pyparsing==3.0.9          # via packaging
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, arrow
 requests==2.28.1          # via flit
 rich==12.6.0              # via -c nt2/requirements.txt, ward
-ruff==0.0.85              # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.0.86              # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.0        # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
