@@ -13,29 +13,21 @@ DEFAULT_PYTHON = '3.10'
 @nox.session(python=ALL_PYTHONS)
 def test(session):
     """Run all tests."""
-    session.install(
-        '.[test,toml]',
-        'coverage @ git+https://github.com/nedbat/coveragepy@nedbat/bug1481-with-metacov',
-    )
+    session.install('.[test,toml]', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=ALL_PYTHONS)
 def test_without_toml(session):
     """Run tests without optional TOML support installed."""
-    session.install(
-        '.[test-without-toml]',
-        'coverage @ git+https://github.com/nedbat/coveragepy@nedbat/bug1481-with-metacov',
-    )
+    session.install('.[test-without-toml]', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=[DEFAULT_PYTHON])
 def combine_coverage(session):
     """Prepare a combined coverage report for uploading."""
-    session.install(
-        'coverage @ git+https://github.com/nedbat/coveragepy@nedbat/bug1481-with-metacov'
-    )
+    session.install('coverage')
     session.run('coverage', 'combine')
     session.run('coverage', 'json')
 
