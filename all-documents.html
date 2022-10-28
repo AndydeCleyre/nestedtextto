@@ -106,6 +106,14 @@
             <div class="kind">Module</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary">CLI definitions, parsing, and entry points.</div>
+          </li><li id="nt2.yamlpath_tools">
+            
+            <div class="fullName">nt2<wbr></wbr>.yamlpath<wbr></wbr>_tools</div>
+            <div class="url">nt2.yamlpath_tools.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Convenient functions for making use of yamlpath.</div>
           </li><li id="nt2.__version__">
             
             <div class="fullName">nt2<wbr></wbr>.__version__</div>
@@ -130,10 +138,10 @@
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary">Create a new recursively unstructuring <tt class="rst-docutils literal">cattrs.Converter</tt>.</div>
-          </li><li id="nt2.converters.mk_marked_string_converter">
+          </li><li id="nt2.converters.mk_unyamlable_converter">
             
-            <div class="fullName">nt2<wbr></wbr>.converters<wbr></wbr>.mk<wbr></wbr>_marked<wbr></wbr>_string<wbr></wbr>_converter</div>
-            <div class="url">nt2.converters.html#mk_marked_string_converter</div>
+            <div class="fullName">nt2<wbr></wbr>.converters<wbr></wbr>.mk<wbr></wbr>_unyamlable<wbr></wbr>_converter</div>
+            <div class="url">nt2.converters.html#mk_unyamlable_converter</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
@@ -170,6 +178,54 @@
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary">Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into TOML-supported types.</div>
+          </li><li id="nt2.yamlpath_tools.mk_yaml_editor">
+            
+            <div class="fullName">nt2<wbr></wbr>.yamlpath<wbr></wbr>_tools<wbr></wbr>.mk<wbr></wbr>_yaml<wbr></wbr>_editor</div>
+            <div class="url">nt2.yamlpath_tools.html#mk_yaml_editor</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Construct a YAML editor with <tt class="rst-docutils literal">load</tt> and <tt class="rst-docutils literal">dump</tt> methods.</div>
+          </li><li id="nt2.yamlpath_tools.mk_yamlpath_processor">
+            
+            <div class="fullName">nt2<wbr></wbr>.yamlpath<wbr></wbr>_tools<wbr></wbr>.mk<wbr></wbr>_yamlpath<wbr></wbr>_processor</div>
+            <div class="url">nt2.yamlpath_tools.html#mk_yamlpath_processor</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Construct a YAML Path processor/document for the <tt class="rst-docutils literal">data</tt>.</div>
+          </li><li id="nt2.yamlpath_tools.non_null_matches">
+            
+            <div class="fullName">nt2<wbr></wbr>.yamlpath<wbr></wbr>_tools<wbr></wbr>.non<wbr></wbr>_null<wbr></wbr>_matches</div>
+            <div class="url">nt2.yamlpath_tools.html#non_null_matches</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Generate <tt class="rst-docutils literal">NodeCoords</tt> matching any <tt class="rst-docutils literal">query_paths</tt>.</div>
+          </li><li id="nt2.yamlpath_tools._schema_entry_type">
+            
+            <div class="fullName">nt2<wbr></wbr>.yamlpath<wbr></wbr>_tools<wbr></wbr>._schema<wbr></wbr>_entry<wbr></wbr>_type</div>
+            <div class="url">nt2.yamlpath_tools.html#_schema_entry_type</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary"><span class="undocumented">Undocumented</span></div>
+          </li><li id="nt2.yamlpath_tools.typed_data_to_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.yamlpath<wbr></wbr>_tools<wbr></wbr>.typed<wbr></wbr>_data<wbr></wbr>_to<wbr></wbr>_schema</div>
+            <div class="url">nt2.yamlpath_tools.html#typed_data_to_schema</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Analyze nested data and produce a matching schema document.</div>
+          </li><li id="nt2.yamlpath_tools.guess_briefer_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.yamlpath<wbr></wbr>_tools<wbr></wbr>.guess<wbr></wbr>_briefer<wbr></wbr>_schema</div>
+            <div class="url">nt2.yamlpath_tools.html#guess_briefer_schema</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Suggest an alternative schema, with low confidence.</div>
           </li><li id="nt2.casters.StringyDatum">
             
             <div class="fullName">nt2<wbr></wbr>.casters<wbr></wbr>.<wbr></wbr>Stringy<wbr></wbr>Datum</div>
@@ -202,14 +258,14 @@
             <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
             <div class="summary">Translate a number as <tt class="rst-docutils literal">str</tt> into a real <tt class="rst-docutils literal">int</tt> or <tt class="rst-docutils literal">float</tt>.</div>
-          </li><li id="nt2.casters._non_null_matches">
+          </li><li id="nt2.casters._str_to_datey">
             
-            <div class="fullName">nt2<wbr></wbr>.casters<wbr></wbr>._non<wbr></wbr>_null<wbr></wbr>_matches</div>
-            <div class="url">nt2.casters.html#_non_null_matches</div>
+            <div class="fullName">nt2<wbr></wbr>.casters<wbr></wbr>._str<wbr></wbr>_to<wbr></wbr>_datey</div>
+            <div class="url">nt2.casters.html#_str_to_datey</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
-            <div class="summary">Generate <tt class="rst-docutils literal">NodeCoords</tt> matching any <tt class="rst-docutils literal">query_paths</tt>.</div>
+            <div class="summary">Translate an ISO 8601 date/time <tt class="rst-docutils literal">str</tt> into a <tt class="rst-docutils literal">date</tt>, <tt class="rst-docutils literal">datetime</tt>, or marked time <tt class="rst-docutils literal">str</tt>.</div>
           </li><li id="nt2.casters.cast_stringy_data">
             
             <div class="fullName">nt2<wbr></wbr>.casters<wbr></wbr>.cast<wbr></wbr>_stringy<wbr></wbr>_data</div>
@@ -298,6 +354,38 @@
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary">Read JSON from stdin or <tt class="rst-docutils literal">input_files</tt>, and send NestedText to stdout.</div>
+          </li><li id="nt2.dumpers._dump_typed_data_to_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>._dump<wbr></wbr>_typed<wbr></wbr>_data<wbr></wbr>_to<wbr></wbr>_schema</div>
+            <div class="url">nt2.dumpers.html#_dump_typed_data_to_schema</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary"><span class="undocumented">Undocumented</span></div>
+          </li><li id="nt2.dumpers.dump_json_to_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_json<wbr></wbr>_to<wbr></wbr>_schema</div>
+            <div class="url">nt2.dumpers.html#dump_json_to_schema</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Read JSON from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</div>
+          </li><li id="nt2.dumpers.dump_yaml_to_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_yaml<wbr></wbr>_to<wbr></wbr>_schema</div>
+            <div class="url">nt2.dumpers.html#dump_yaml_to_schema</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Read YAML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</div>
+          </li><li id="nt2.dumpers.dump_toml_to_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_toml<wbr></wbr>_to<wbr></wbr>_schema</div>
+            <div class="url">nt2.dumpers.html#dump_toml_to_schema</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Read TOML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</div>
           </li><li id="nt2.dumpers.dump_yaml_to_nestedtext">
             
             <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_yaml<wbr></wbr>_to<wbr></wbr>_nestedtext</div>
@@ -384,6 +472,22 @@
             <div class="url">nt2.ui._ColorApp.html#ALLOW_ABBREV</div>
             <div class="type">Attribute</div>
             <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui._TypedFormatToSchema">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>To<wbr></wbr>Schema</div>
+            <div class="url">nt2.ui._TypedFormatToSchema.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary"><span class="undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui._TypedFormatToSchema.to_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>To<wbr></wbr>Schema<wbr></wbr>.to<wbr></wbr>_schema</div>
+            <div class="url">nt2.ui._TypedFormatToSchema.html#to_schema</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="undocumented">Undocumented</span></div>
           </li><li id="nt2.ui._NestedTextToTypedFormat">
