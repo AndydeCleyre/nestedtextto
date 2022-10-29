@@ -1,7 +1,7 @@
 appdirs==1.4.4            # via pydoctor
 astor==0.8.1              # via pydoctor
 attrs==22.1.0             # via automat, pydoctor, twisted
-automat==20.2.0           # via twisted
+automat==22.10.0          # via twisted
 cachecontrol==0.12.11     # via pydoctor
 certifi==2022.9.24        # via requests
 charset-normalizer==2.1.1  # via requests
