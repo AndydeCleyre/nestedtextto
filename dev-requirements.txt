@@ -1,6 +1,6 @@
 argcomplete==2.0.0        # via nox
 arrow==1.2.3              # via -c nt2/requirements.txt, inform
-asttokens==2.0.8          # via stack-data
+asttokens==2.1.0          # via stack-data
 backcall==0.2.0           # via ipython
 black==22.10.0            # via -c fmt-requirements.txt, -r fmt-requirements.in
 certifi==2022.9.24        # via requests
@@ -16,7 +16,7 @@ darglint==1.8.1           # via -c fmt-requirements.txt, -r fmt-requirements.in
 decorator==5.1.1          # via ipython
 distlib==0.3.6            # via virtualenv
 docutils==0.19            # via flit
-executing==1.1.1          # via stack-data
+executing==1.2.0          # via stack-data
 filelock==3.8.0           # via virtualenv
 flit==3.7.1               # via -r dev-requirements.in
 flit-core==3.7.1          # via flit
@@ -51,12 +51,12 @@ pyparsing==3.0.9          # via packaging
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, arrow
 requests==2.28.1          # via flit
 rich==12.6.0              # via -c nt2/requirements.txt, ward
-ruff==0.0.88              # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.0.91              # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.0        # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
 ssort==0.11.6             # via -c fmt-requirements.txt, -r fmt-requirements.in
-stack-data==0.5.1         # via ipython
+stack-data==0.6.0         # via ipython
 taskipy==1.10.3           # via -r dev-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, black, flit, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, flit
