@@ -1,14 +1,21 @@
 # NestedTextTo
 ## CLI to convert between NestedText and JSON, YAML or TOML, with explicit type casting
 
-[![PyPI version](https://img.shields.io/pypi/v/nt2?color=blue)](https://pypi.org/project/nt2/)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nt2)
-[![tests badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml/badge.svg?branch=develop)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
+![Python versions](https://img.shields.io/pypi/pyversions/nt2?logo=python)
+[![PyPI version](https://img.shields.io/pypi/v/nt2?logo=pypi&label=PyPI&color=yellowgreen)](https://pypi.org/project/nt2/)
+[![Publish to PyPI](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Publish%20to%20PyPI?label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
+
+![runs on Linux](https://img.shields.io/badge/OS-Linux-yellowgreen?logo=linux)
+![runs on macOS](https://img.shields.io/badge/OS-macOS-red?logo=macos)
+![runs on Windows](https://img.shields.io/badge/OS-Windows-blue?logo=windows)
+
+[![tests badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Run%20tests?label=Tests&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
 [![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
-[![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
-[![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
-[![Generate docs from templates](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml)
-[![Publish to PyPI](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
+
+
+[![Format and lint](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Format%20and%20lint?label=Format%20%26%20Lint&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
+[![Generate docs from templates](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Generate%20docs%20from%20templates%20and%20docstrings?label=Make%20Docs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml)
+[![requirements badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Bump%20PyPI%20requirements?label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 
 ---
 
