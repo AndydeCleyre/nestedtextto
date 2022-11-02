@@ -19,6 +19,11 @@ jobs:
       - name: get nox
         uses: excitedleigh/setup-nox@v2.1.0
 
+      - name: get latest Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
       - name: run ward tests in nox environment
         run: nox -s test test_without_toml combine_coverage --force-color
         env:
