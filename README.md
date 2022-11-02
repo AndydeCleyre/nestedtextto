@@ -14,7 +14,7 @@
 
 
 [![Format and lint](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Format%20and%20lint?label=Format%20%26%20Lint&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
-[![Generate docs from templates](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Generate%20docs%20from%20templates%20and%20docstrings?label=Make%20Docs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml)
+[![Generate docs from templates](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Generate%20docs%20from%20templates%20and%20docstrings?label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
 [![Requirements badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Bump%20PyPI%20requirements?label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 
 ---
