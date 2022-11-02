@@ -13,21 +13,23 @@ DEFAULT_PYTHON = '3.10'
 @nox.session(python=ALL_PYTHONS)
 def test(session):
     """Run all tests."""
-    session.install('.[test,toml]', 'coverage')
+    session.install('-U', '.[test,toml]')
+    session.install('-U', '--pre', 'coverage')  # >= 6.6.0b1
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=ALL_PYTHONS)
 def test_without_toml(session):
     """Run tests without optional TOML support installed."""
-    session.install('.[test-without-toml]', 'coverage')
+    session.install('-U', '.[test-without-toml]')
+    session.install('-U', '--pre', 'coverage')  # >= 6.6.0b1
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=[DEFAULT_PYTHON])
 def combine_coverage(session):
     """Prepare a combined coverage report for uploading."""
-    session.install('coverage')
+    session.install('-U', '--pre', 'coverage')  # >= 6.6.0b1
     session.run('coverage', 'combine')
     session.run('coverage', 'json')
 
@@ -46,14 +48,14 @@ def fmt(session):
 @nox.session(python=[DEFAULT_PYTHON])
 def publish(session):
     """Package and upload to PyPI."""
-    session.install('.[dev]')
+    session.install('-U', '.[dev]')
     session.run('flit', 'publish')
 
 
 @nox.session(python=[DEFAULT_PYTHON])
 def render_readme(session):
     """Generate README.md from templates/README.md.wz."""
-    session.install('-e', '.[doc]')
+    session.install('-Ue', '.[doc]')
     content = session.run('wheezy.template', 'templates/README.md.wz', silent=True)
     Path('README.md').write_text(content)
 
@@ -76,7 +78,7 @@ def render_license(session):
 @nox.session(python=[DEFAULT_PYTHON])
 def lock(session):
     """Generate updated requirements.txt lock files and pyproject.toml."""
-    session.install('pip-tools')
+    session.install('-U', 'pip-tools')
     for reqsfile in (
         'nt2/requirements.in',
         'nt2/toml-requirements.in',
