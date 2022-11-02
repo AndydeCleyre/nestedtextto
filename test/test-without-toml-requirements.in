@@ -2,4 +2,6 @@
 
 nestedtext
 plumbum
-ward
+ward ; python_version<"3.11"
+
+ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>="3.11"
