@@ -6,7 +6,7 @@ import nox
 
 nox.options.default_venv_backend = 'venv'
 nox.options.reuse_existing_virtualenvs = True
-ALL_PYTHONS = ['3.7', '3.8', '3.9', '3.10']
+ALL_PYTHONS = ['3.7', '3.8', '3.9', '3.10', '3.11']
 DEFAULT_PYTHON = '3.10'
 
 
