@@ -1,5 +1,6 @@
 appdirs==1.4.4            # via pydoctor
 astor==0.8.1              # via pydoctor
+atomicwrites==1.4.1       # via fpyutils
 attrs==22.1.0             # via automat, pydoctor, twisted
 automat==22.10.0          # via twisted
 cachecontrol==0.12.11     # via pydoctor
@@ -8,15 +9,17 @@ charset-normalizer==2.1.1  # via requests
 configargparse==1.5.3     # via pydoctor
 constantly==15.1.0        # via twisted
 docutils==0.19            # via pydoctor
+fpyutils==2.2.1           # via md-toc
 hyperlink==21.0.0         # via twisted
 idna==3.4                 # via hyperlink, requests
 incremental==22.10.0      # via twisted
 lockfile==0.12.2          # via cachecontrol
 lunr==0.6.2               # via pydoctor
+md-toc==8.1.5             # via -r doc-requirements.in
 msgpack==1.0.4            # via cachecontrol
 plumbum==1.8.0            # via -r doc-requirements.in
 pydoctor==22.9.1          # via -r doc-requirements.in
-requests==2.28.1          # via cachecontrol, pydoctor
+requests==2.28.1          # via cachecontrol, fpyutils, pydoctor
 six==1.16.0               # via automat
 toml==0.10.2              # via pydoctor
 twisted==22.10.0          # via pydoctor
