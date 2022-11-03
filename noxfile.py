@@ -58,6 +58,9 @@ def render_readme(session):
     session.install('-Ue', '.[doc]')
     content = session.run('wheezy.template', 'templates/README.md.wz', silent=True)
     Path('README.md').write_text(content)
+    session.run(
+        'md_toc', '--in-place', '--skip-lines', '2', 'github', '--header-levels', '4', 'README.md'
+    )
 
 
 @nox.session(python=[DEFAULT_PYTHON])

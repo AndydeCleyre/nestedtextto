@@ -42,7 +42,7 @@ test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward ; python_version<\"3.
 toml = ["tomli", "tomli-w"]
 fmt = ["black", "darglint", "isort", "pydocstyle", "ruff", "ssort"]
 test-without-toml = ["nestedtext", "plumbum", "ward ; python_version<\"3.11\"", "ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>=\"3.11\""]
-doc = ["plumbum", "pydoctor", "wheezy.template"]
+doc = ["md-toc", "plumbum", "pydoctor", "wheezy.template"]
 
 [tool.black]
 line-length = 99

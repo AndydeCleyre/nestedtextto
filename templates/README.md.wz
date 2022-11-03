@@ -31,6 +31,12 @@ for convenient conversion between NestedText and other formats:
 - `nt2json`, `nt2toml`, `nt2yaml`
 - `json2nt`, `toml2nt`, `yaml2nt`
 
+---
+
+<!--TOC-->
+
+---
+
 ### What's NestedText?
 
 From the NestedText docs, with emphasis added:
