@@ -31,6 +31,26 @@ for convenient conversion between NestedText and other formats:
 - `nt2json`, `nt2toml`, `nt2yaml`
 - `json2nt`, `toml2nt`, `yaml2nt`
 
+---
+
+<!--TOC-->
+
+- [What's NestedText?](#whats-nestedtext)
+- [How does this translate to formats with more value types?](#how-does-this-translate-to-formats-with-more-value-types)
+- [Installation](#installation)
+- [Usage Docs](#usage-docs)
+- [More Examples](#more-examples)
+  - [View JSON Lines logs in a more readable format](#view-json-lines-logs-in-a-more-readable-format)
+  - [View TOML as NestedText](#view-toml-as-nestedtext)
+  - [Convert NestedText to TOML, with and without casting](#convert-nestedtext-to-toml-with-and-without-casting)
+  - [Convert NestedText to TOML with casting via auto-schema](#convert-nestedtext-to-toml-with-casting-via-auto-schema)
+  - [Query TOML with JSON tools, with and without casting](#query-toml-with-json-tools-with-and-without-casting)
+- [Development Docs](#development-docs)
+
+<!--TOC-->
+
+---
+
 ### What's NestedText?
 
 From the NestedText docs, with emphasis added:
