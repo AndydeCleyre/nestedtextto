@@ -26,7 +26,7 @@ twisted==22.10.0          # via pydoctor
 typing-extensions==4.4.0  # via twisted
 urllib3==1.26.12          # via requests
 wheezy-template==3.1.0    # via -r doc-requirements.in
-zope-interface==5.5.0     # via twisted
+zope-interface==5.5.1     # via twisted
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==65.5.0        # via zope-interface
