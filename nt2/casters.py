@@ -53,7 +53,9 @@ def _str_to_num(informal_num: str) -> int | float:
         num = float(informal_num)
     except ValueError as e:
         for prefix, base in {'0x': 16, '0o': 8, '0b': 2}.items():
-            if informal_num.lower().startswith(prefix):
+            if informal_num.lower().startswith(prefix) or informal_num.lower().startswith(
+                f"-{prefix}"
+            ):
                 try:
                     num = int(informal_num, base)
                 except Exception:  # pragma: no cover

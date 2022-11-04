@@ -37,12 +37,12 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
-test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
+dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward ; python_version<\"3.11\"", "ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>=\"3.11\""]
+test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward ; python_version<\"3.11\"", "ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>=\"3.11\""]
 toml = ["tomli", "tomli-w"]
 fmt = ["black", "darglint", "isort", "pydocstyle", "ruff", "ssort"]
-test-without-toml = ["nestedtext", "plumbum", "ward"]
-doc = ["plumbum", "pydoctor", "wheezy.template"]
+test-without-toml = ["nestedtext", "plumbum", "ward ; python_version<\"3.11\"", "ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>=\"3.11\""]
+doc = ["md-toc", "plumbum", "pydoctor", "wheezy.template"]
 
 [tool.black]
 line-length = 99
@@ -62,7 +62,7 @@ line-length = 99
 [tool.taskipy.tasks]
 fmt = "nox -s fmt"
 lock = "nox -s lock"
-# install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
+install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
 test = "nox -s test"
 docs = "nox -s render_readme render_api_docs"
 

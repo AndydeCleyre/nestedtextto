@@ -1,14 +1,21 @@
 # NestedTextTo
 ## CLI to convert between NestedText and JSON, YAML or TOML, with explicit type casting
 
-[![PyPI version](https://img.shields.io/pypi/v/nt2?color=blue)](https://pypi.org/project/nt2/)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nt2)
-[![tests badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml/badge.svg?branch=develop)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
+![Python versions](https://img.shields.io/pypi/pyversions/nt2?logo=python)
+[![PyPI version](https://img.shields.io/pypi/v/nt2?logo=pypi&label=PyPI&color=yellowgreen)](https://pypi.org/project/nt2/)
+[![Publish to PyPI](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Publish%20to%20PyPI?label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
+
+![Runs on Linux](https://img.shields.io/badge/Runs%20on-Linux-yellowgreen?logo=linux)
+![Runs on macOS](https://img.shields.io/badge/Runs%20on-macOS-red?logo=macos)
+![Runs on Windows](https://img.shields.io/badge/Runs%20on-Windows-blue?logo=windows)
+
+[![Tests badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Run%20tests?label=Tests&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
 [![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
-[![Format and lint](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
-[![requirements badge](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
-[![Generate docs from templates](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/doc.yml)
-[![Publish to PyPI](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml/badge.svg)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
+
+
+[![Format and lint](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Format%20and%20lint?label=Format%20%26%20Lint&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
+[![Generate docs from templates](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Generate%20docs%20from%20templates%20and%20docstrings?label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
+[![Requirements badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Bump%20PyPI%20requirements?label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 
 ---
 
@@ -23,6 +30,26 @@ This project, NestedTextTo, provides six command line tools
 for convenient conversion between NestedText and other formats:
 - `nt2json`, `nt2toml`, `nt2yaml`
 - `json2nt`, `toml2nt`, `yaml2nt`
+
+---
+
+<!--TOC-->
+
+- [What's NestedText?](#whats-nestedtext)
+- [How does this translate to formats with more value types?](#how-does-this-translate-to-formats-with-more-value-types)
+- [Installation](#installation)
+- [Usage Docs](#usage-docs)
+- [More Examples](#more-examples)
+  - [View JSON Lines logs in a more readable format](#view-json-lines-logs-in-a-more-readable-format)
+  - [View TOML as NestedText](#view-toml-as-nestedtext)
+  - [Convert NestedText to TOML, with and without casting](#convert-nestedtext-to-toml-with-and-without-casting)
+  - [Convert NestedText to TOML with casting via auto-schema](#convert-nestedtext-to-toml-with-casting-via-auto-schema)
+  - [Query TOML with JSON tools, with and without casting](#query-toml-with-json-tools-with-and-without-casting)
+- [Development Docs](#development-docs)
+
+<!--TOC-->
+
+---
 
 ### What's NestedText?
 
@@ -126,7 +153,7 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
   <summary>nt2json</summary>
 
 ```
-nt2json 0.1.6
+nt2json 0.2.0
 
 Read NestedText and output its content as JSON.
 
@@ -177,7 +204,7 @@ Switches:
   <summary>nt2yaml</summary>
 
 ```
-nt2yaml 0.1.6
+nt2yaml 0.2.0
 
 Read NestedText and output its content as YAML.
 
@@ -231,7 +258,7 @@ Switches:
   <summary>nt2toml</summary>
 
 ```
-nt2toml 0.1.6
+nt2toml 0.2.0
 
 Read NestedText and output its content as TOML.
 
@@ -282,7 +309,7 @@ Switches:
   <summary>json2nt</summary>
 
 ```
-json2nt 0.1.6
+json2nt 0.2.0
 
 Read JSON and output its content as NestedText.
 
@@ -311,7 +338,7 @@ Switches:
   <summary>yaml2nt</summary>
 
 ```
-yaml2nt 0.1.6
+yaml2nt 0.2.0
 
 Read YAML and output its content as NestedText.
 
@@ -340,7 +367,7 @@ Switches:
   <summary>toml2nt</summary>
 
 ```
-toml2nt 0.1.6
+toml2nt 0.2.0
 
 Read TOML and output its content as NestedText.
 
@@ -365,10 +392,9 @@ Switches:
 </details>
 
 
-
 ### More Examples
 
-`json2nt` can be useful for viewing JSON Lines logs in a more readable format:
+#### View JSON Lines logs in a more readable format
 
 ```console
 $ cat log.jsonl
@@ -435,6 +461,21 @@ $ json2nt log.jsonl
 
 </details>
 
+#### View TOML as NestedText
+
+![View TOML as NestedText](https://user-images.githubusercontent.com/1787385/199562999-d702bfb5-859c-417d-b8a4-ffb0d36e7537.png)
+
+#### Convert NestedText to TOML, with and without casting
+
+![Convert NestedText to TOML, with and without casting](https://user-images.githubusercontent.com/1787385/199562703-db0fec70-bb18-431a-aa01-c4858b449c56.png)
+
+#### Convert NestedText to TOML with casting via auto-schema
+
+![Convert NestedText to TOML with casting via auto-schema](https://user-images.githubusercontent.com/1787385/199562909-a1060b9b-0446-4aba-81b1-5ff288c839ed.png)
+
+#### Query TOML with JSON tools, with and without casting
+
+![Query TOML with JSON tools, with and without casting](https://user-images.githubusercontent.com/1787385/199562454-b6267df2-aaa9-421b-a47d-93cb49641a30.png)
 
 ### Development Docs
 
