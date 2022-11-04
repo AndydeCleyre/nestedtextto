@@ -17,4 +17,4 @@ rich==12.6.0              # via -c ../nt2/requirements.txt, ward
 shellingham==1.5.0        # via click-completion
 six==1.16.0               # via -c ../nt2/requirements.txt, click-completion, inform, python-dateutil
 tomli==2.0.1              # via ward
-ward==0.66.1b0 ; python_version < "3.11"  # via -r test-without-toml-requirements.in
+ward==0.67.0b0 ; python_version < "3.11"  # via -r test-without-toml-requirements.in
