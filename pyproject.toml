@@ -37,11 +37,11 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward ; python_version<\"3.11\"", "ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>=\"3.11\""]
-test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward ; python_version<\"3.11\"", "ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>=\"3.11\""]
+dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
+test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
 fmt = ["black", "darglint", "isort", "pydocstyle", "ruff", "ssort"]
-test-without-toml = ["nestedtext", "plumbum", "ward ; python_version<\"3.11\"", "ward @ git+https://github.com/andydecleyre/ward@bugfix/352 ; python_version>=\"3.11\""]
+test-without-toml = ["nestedtext", "plumbum", "ward"]
 doc = ["md-toc", "plumbum", "pydoctor", "wheezy.template"]
 
 [tool.black]
