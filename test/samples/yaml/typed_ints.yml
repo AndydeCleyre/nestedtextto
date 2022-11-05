@@ -2,3 +2,9 @@
 hex number: 123
 octal number: 123
 binary number: 123
+positive hex number: 123
+positive octal number: 123
+positive binary number: 123
+negative hex number: -123
+negative octal number: -123
+negative binary number: -123

@@ -5,6 +5,7 @@ In practice, this is just `cast_stringy_data` and any support functions it needs
 """
 from __future__ import annotations
 
+import re
 from collections.abc import Sequence
 from datetime import date, datetime, time
 from uuid import uuid4
@@ -53,9 +54,7 @@ def _str_to_num(informal_num: str) -> int | float:
         num = float(informal_num)
     except ValueError as e:
         for prefix, base in {'0x': 16, '0o': 8, '0b': 2}.items():
-            if informal_num.lower().startswith(prefix) or informal_num.lower().startswith(
-                f"-{prefix}"
-            ):
+            if re.match(f"[+-]?{prefix}", informal_num, re.I):
                 try:
                     num = int(informal_num, base)
                 except Exception:  # pragma: no cover
