@@ -1,3 +1,11 @@
 hex number: 0x7B
 octal number: 0o173
 binary number: 0b01111011
+
+positive hex number: +0x7B
+positive octal number: +0o173
+positive binary number: +0b01111011
+
+negative hex number: -0x7B
+negative octal number: -0o173
+negative binary number: -0b01111011
