@@ -7,7 +7,7 @@ cucumber-tag-expressions==4.1.0  # via ward
 inform==1.27.0            # via -c ../nt2/requirements.txt, nestedtext
 jinja2==3.1.2             # via click-completion
 markupsafe==2.1.1         # via jinja2
-nestedtext==3.4.0         # via -r test-requirements.in
+nestedtext==3.5           # via -r test-requirements.in
 pluggy==1.0.0             # via ward
 plumbum==1.8.0            # via -r test-requirements.in
 pprintpp==0.4.0           # via ward
@@ -18,4 +18,4 @@ shellingham==1.5.0        # via click-completion
 six==1.16.0               # via -c ../nt2/requirements.txt, click-completion, inform, python-dateutil
 tomli==2.0.1              # via -r ../nt2/toml-requirements.in, ward
 tomli-w==1.0.0            # via -r ../nt2/toml-requirements.in
-ward==0.67.0b0 ; python_version < "3.11"  # via -r test-requirements.in
+ward==0.67.0b0            # via -r test-requirements.in
