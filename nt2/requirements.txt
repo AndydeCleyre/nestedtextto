@@ -12,4 +12,4 @@ rich==12.6.0              # via -r requirements.in
 ruamel-yaml==0.17.21      # via -r requirements.in, yamlpath
 ruamel-yaml-clib==0.2.7   # via ruamel-yaml
 six==1.16.0               # via inform, python-dateutil
-yamlpath==3.6.7           # via -r requirements.in
+yamlpath==3.6.9           # via -r requirements.in
