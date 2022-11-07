@@ -5,6 +5,7 @@ import sys
 from collections import defaultdict
 from collections.abc import Iterable
 from datetime import date, datetime, time
+from itertools import combinations
 from types import SimpleNamespace
 
 try:
@@ -114,13 +115,45 @@ def guess_briefer_schema(schema: dict[str, list[str]]) -> dict[str, list[str]]:
     Returns:
         A dumb guess at an alternative schema that matches more patterns and fewer literal paths.
     """
+    # This probably breaks on paths with YAMLPath separators/tokens as part of the values/keys
     briefer_schema = {}
+
     for vartype, ypaths in schema.items():
         pattern_paths = set()
+
+        # Collect, replacing [0] indexes with * wildcards:
         for ypath in map(YAMLPath, ypaths):
-            segments = [seg[-1] for seg in ypath.unescaped if isinstance(seg[-1], str)]
+            segments = ['*' if seg[-1] == 0 else str(seg[-1]) for seg in ypath.unescaped]
             sep = str(ypath.seperator)  # sic
             entry = f"{sep if sep == '/' else ''}{sep.join(segments)}"
             pattern_paths.add(entry)
+
+        # Prune:
+        for entry in list(pattern_paths):
+            indices_to_check_for_existing_wildcards = []
+            ypath = YAMLPath(entry)
+            sep = str(ypath.seperator)  # sic
+            removed = False
+            for i, segment in enumerate(ypath.unescaped):
+                try:
+                    int(segment[-1])
+                except (ValueError, TypeError):
+                    continue
+                else:
+                    indices_to_check_for_existing_wildcards.append(i)
+            for num_of_indices in range(1, len(indices_to_check_for_existing_wildcards) + 1):
+                if removed:
+                    break
+                for wildcard_indices in combinations(
+                    indices_to_check_for_existing_wildcards, num_of_indices
+                ):
+                    segments = [str(seg[-1]) for seg in ypath.unescaped]
+                    for i in wildcard_indices:
+                        segments[i] = '*'
+                    if f"{sep if sep == '/' else ''}{sep.join(segments)}" in pattern_paths:
+                        pattern_paths.remove(entry)
+                        removed = True
+                        break
+
         briefer_schema[vartype] = list(pattern_paths)
     return briefer_schema

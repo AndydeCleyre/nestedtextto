@@ -158,7 +158,16 @@ def _dump_typed_data_to_schema(typed_data: dict | list):
     schema = typed_data_to_schema(typed_data)
     ntdump(schema)
 
-    briefer_schema = guess_briefer_schema(schema)
+    try:
+        briefer_schema = guess_briefer_schema(schema)
+    except Exception as e:
+        print(
+            f"I had trouble guessing a briefer schema. ({e})",
+            "Please report at https://github.com/AndydeCleyre/nestedtextto",
+            sep='\n',
+            file=sys.stderr,
+        )
+        return
     if sum(len(path_list) for path_list in briefer_schema.values()) < sum(
         len(path_list) for path_list in schema.values()
     ):
