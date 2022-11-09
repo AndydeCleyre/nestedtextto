@@ -123,7 +123,10 @@ def guess_briefer_schema(schema: dict[str, list[str]]) -> dict[str, list[str]]:
 
         # Collect, replacing [0] indexes with * wildcards:
         for ypath in map(YAMLPath, ypaths):
-            segments = ['*' if seg[-1] == 0 else str(seg[-1]) for seg in ypath.unescaped]
+            segments = [
+                '*' if seg[-1] == 0 and not isinstance(seg[-1], bool) else str(seg[-1])
+                for seg in ypath.unescaped
+            ]
             sep = str(ypath.seperator)  # sic
             entry = f"{sep if sep == '/' else ''}{sep.join(segments)}"
             pattern_paths.add(entry)
