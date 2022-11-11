@@ -16,7 +16,9 @@ def assert_file_content(file: LocalPath, content: str):
         file: A path object to read the contents of
         content: A str to compare the file contents to
     """
-    assert_equal(content.splitlines(), file.read('utf-8').splitlines(), "line for line")
+    assert_equal(
+        content.splitlines(), file.read('utf-8').splitlines(), "line for line equivalence check"
+    )
 
 
 def casting_args_from_schema_file(
