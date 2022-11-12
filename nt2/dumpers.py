@@ -11,6 +11,7 @@ from nestedtext import dump as _ntdump, dumps as _ntdumps, load as ntload
 from plumbum import LocalPath
 from rich.console import Console as RichConsole
 from rich.syntax import Syntax as RichSyntax
+from ruamel.yaml.scalarstring import walk_tree as use_multiline_syntax
 
 from .casters import cast_stringy_data
 from .converters import (
@@ -82,6 +83,7 @@ def ydump(data: dict | list):
     Raises:
         Exception: Unexpected problem dumping or highlighting data.
     """
+    use_multiline_syntax(data)
     if sys.stdout.isatty():
         out_stream = io.StringIO()
         try:
