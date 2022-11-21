@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
+from typing import cast
 
 from nestedtext import load as ntload
 from plumbum import LocalPath
@@ -40,7 +41,7 @@ def casting_args_from_schema_file(
         A `dict` mapping internal option names to sequences of YAMLPaths.
     """
     casting_args = {}
-    schema_data = ntload(schema_file)
+    schema_data = cast(dict, ntload(schema_file))
     attr_names = {
         'null': 'null_paths',
         'boolean': 'bool_paths',

@@ -4,6 +4,7 @@ CLI definitions, parsing, and entry points.
 After argument processing, these call into the `dumpers` functions to get the job done.
 """
 import sys
+from typing import cast
 
 from nestedtext import load as ntload
 from plumbum.cli import Application, ExistingFile, Flag, SwitchAttr
@@ -126,7 +127,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             for schema_file in self.schema_files:
-                schema = ntload(schema_file)
+                schema = cast(dict, ntload(schema_file))
                 self.null_paths = [*schema.get('null', ()), *self.null_paths]
                 self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
                 self.num_paths = [*schema.get('number', ()), *self.num_paths]
@@ -165,7 +166,7 @@ class NestedTextToYAML(
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             for schema_file in self.schema_files:
-                schema = ntload(schema_file)
+                schema = cast(dict, ntload(schema_file))
                 self.null_paths = [*schema.get('null', ()), *self.null_paths]
                 self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
                 self.num_paths = [*schema.get('number', ()), *self.num_paths]
@@ -202,7 +203,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
     def main(self, *input_files: ExistingFile):  # noqa: D102
         try:
             for schema_file in self.schema_files:
-                schema = ntload(schema_file)
+                schema = cast(dict, ntload(schema_file))
                 self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
                 self.num_paths = [*schema.get('number', ()), *self.num_paths]
                 self.date_paths = [*schema.get('date', ()), *self.date_paths]
