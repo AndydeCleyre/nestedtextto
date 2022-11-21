@@ -3,6 +3,21 @@ on:
   push
 jobs:
 
+  types:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      - name: fetch code
+        uses: actions/checkout@v3
+
+      - name: get nox
+        uses: excitedleigh/setup-nox@v2.1.0
+
+      - name: run pyright in nox environment
+        run: nox -s typecheck --force-color
+
   tests:
 
     strategy:
