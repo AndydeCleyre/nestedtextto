@@ -172,7 +172,7 @@ def cast_stringy_data(
             raise ValueError(': '.join((*e.args, str(match.path))))
         else:
             surgeon.set_value(match.path, datey)
-            if isinstance(datey, str):
+            if not marked_times_present and isinstance(datey, str):
                 marked_times_present = True
 
     if marked_times_present:
