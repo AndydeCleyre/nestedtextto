@@ -372,14 +372,14 @@
     <td>Function</td>
     <td><code><a href="#cast_stringy_data" class="internal-link" title="nt2.casters.cast_stringy_data">cast<wbr></wbr>_stringy<wbr></wbr>_data</a></code></td>
     <td>Take nested <tt class="rst-docutils literal">StringyData</tt> and return a copy with matching nodes up-typed.</td>
-  </tr><tr class="variable">
+  </tr><tr class="typealias">
     
-    <td>Variable</td>
+    <td>Type Alias</td>
     <td><code><a href="#StringyData" class="internal-link" title="nt2.casters.StringyData"><wbr></wbr>Stringy<wbr></wbr>Data</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="variable">
+  </tr><tr class="typealias">
     
-    <td>Variable</td>
+    <td>Type Alias</td>
     <td><code><a href="#StringyDatum" class="internal-link" title="nt2.casters.StringyDatum"><wbr></wbr>Stringy<wbr></wbr>Datum</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="function private">
@@ -417,7 +417,7 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">cast_stringy_data</span>(data, bool_paths=(), null_paths=(), num_paths=(), date_paths=(), converter=None):
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L103">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L111">
       
       (source)
     </a>
@@ -440,7 +440,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
 </dl>
 </td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>Up-typing a <tt class="rst-docutils literal">str</tt> failed due to an unexpected format.</td></tr></table></div>
   </div>
-</div><div class="basevariable">
+</div><div class="basetypealias">
   
   
   <a name="nt2.casters.StringyData">
@@ -451,8 +451,8 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">StringyData</span>: <code>str</code> =
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L17">
+    <span class="py-defname">StringyData</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L24">
       
       (source)
     </a>
@@ -465,9 +465,9 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionBody">
     
     <div><p class="undocumented">Undocumented</p></div>
-    
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>list[<wbr></wbr><a href="#StringyDatum" class="internal-link" title="nt2.casters.StringyDatum">StringyDatum</a>]|dict[<wbr></wbr>str, <wbr></wbr><a href="#StringyDatum" class="internal-link" title="nt2.casters.StringyDatum">StringyDatum</a>]</code></pre></td></tr></table>
   </div>
-</div><div class="basevariable">
+</div><div class="basetypealias">
   
   
   <a name="nt2.casters.StringyDatum">
@@ -478,8 +478,8 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">StringyDatum</span>: <code>str</code> =
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L16">
+    <span class="py-defname">StringyDatum</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L23">
       
       (source)
     </a>
@@ -492,7 +492,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionBody">
     
     <div><p class="undocumented">Undocumented</p></div>
-    
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>(str|list)|dict</code></pre></td></tr></table>
   </div>
 </div><div class="basefunction private">
   
@@ -506,7 +506,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">_str_to_bool</span>(informal_bool):
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L20">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L28">
       
       (source)
     </a>
@@ -533,7 +533,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">_str_to_datey</span>(informal_datey, time_marker):
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L73">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L81">
       
       (source)
     </a>
@@ -565,7 +565,7 @@ to create a "marked time" <tt class="rst-docutils literal">str</tt>, rather than
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">_str_to_num</span>(informal_num):
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L40">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L48">
       
       (source)
     </a>
@@ -593,7 +593,7 @@ to create a "marked time" <tt class="rst-docutils literal">str</tt>, rather than
     <div class="container">
       <a href="index.html">API Documentation</a> for <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a>,
     generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-      22.9.1 at 2022-11-21 21:08:01.
+      22.9.1 at 2022-11-21 23:10:36.
     </div>
     
     <script src="ajax.js" type="text/javascript"></script>
