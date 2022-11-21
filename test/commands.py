@@ -11,13 +11,28 @@ Each version herein returns the stdout as a `str` for convenience in tests.
 """
 import io
 import sys
+from typing import cast
 
-from plumbum.cli import Application
+try:
+    from typing import TypeAlias
+except ImportError:
+    from typing import Any as TypeAlias
+
+from plumbum.cli import Application as _Application
 
 from nt2.ui import (
-    JSONToNestedText, NestedTextToJSON, NestedTextToTOML,
-    NestedTextToYAML, TOMLToNestedText, YAMLToNestedText
+    JSONToNestedText as _JSONToNestedText, NestedTextToJSON as _NestedTextToJSON,
+    NestedTextToTOML as _NestedTextToTOML, NestedTextToYAML as _NestedTextToYAML,
+    TOMLToNestedText as _TOMLToNestedText, YAMLToNestedText as _YAMLToNestedText
 )
+
+Application: TypeAlias = _Application
+JSONToNestedText = cast(Application, _JSONToNestedText)
+NestedTextToJSON = cast(Application, _NestedTextToJSON)
+NestedTextToTOML = cast(Application, _NestedTextToTOML)
+NestedTextToYAML = cast(Application, _NestedTextToYAML)
+TOMLToNestedText = cast(Application, _TOMLToNestedText)
+YAMLToNestedText = cast(Application, _YAMLToNestedText)
 
 
 def _run_app(app_class: Application, *cli_args, **cli_kwargs) -> str:

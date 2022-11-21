@@ -81,4 +81,4 @@ html-viewsource-base = "https://github.com/AndydeCleyre/nestedtextto/tree/develo
 
 [tool.pyright]
 useLibraryCodeForTypes = true
-reportGeneralTypeIssues = false
+

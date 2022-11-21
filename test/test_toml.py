@@ -1,5 +1,7 @@
+from typing import cast
+
 from commands import nt2toml, toml2nt
-from plumbum import local
+from plumbum import LocalPath, local
 from utils import assert_file_content, casting_args_from_schema_file
 from ward import skip, test
 
@@ -12,7 +14,7 @@ else:
     TOML_DISABLED = False
 
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'toml'
+SAMPLES = local.path(__file__).up() / 'samples' / 'toml'  # type: ignore
 
 
 for input_toml_name, output_nt_name in {
@@ -115,7 +117,7 @@ for typed_toml in ('all', 'dates', 'times'):
         expected_file = SAMPLES / f"typed_{typed_toml}.toml"
         schema_content = toml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
-            schema_file = tmp / 'schema.nt'
+            schema_file = cast(LocalPath, tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2toml(
                 SAMPLES / f"{'base' if typed_toml == 'all' else typed_toml}.nt",

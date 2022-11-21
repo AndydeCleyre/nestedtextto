@@ -8,7 +8,7 @@ from typing import cast
 
 from nestedtext import load as ntload
 from plumbum.cli import Application, ExistingFile, Flag, SwitchAttr
-from plumbum.colors import blue, green, magenta, yellow
+from plumbum.colors import blue, green, magenta, yellow  # type: ignore
 from rich import inspect as _rich_inspect
 from rich.console import Console as RichConsole
 from ruamel.yaml.parser import ParserError as YAMLParserError
@@ -38,7 +38,7 @@ def inspect_exception(exc: Exception):  # pragma: no cover
     _rich_inspect(exc, console=RICH)
 
     try:
-        items = exc.get_codicil()
+        items = exc.get_codicil()  # type: ignore
     except AttributeError:
         pass
     else:
@@ -65,7 +65,7 @@ class _NestedTextToTypedFormat(_ColorApp):
 
     schema_files = SwitchAttr(
         ('schema', 's'),
-        argtype=ExistingFile,
+        argtype=ExistingFile,  # type: ignore
         list=True,
         argname='NESTEDTEXTFILE',
         help=(
@@ -124,13 +124,13 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2json -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
         try:
-            for schema_file in self.schema_files:
+            for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
-                self.null_paths = [*schema.get('null', ()), *self.null_paths]
-                self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
-                self.num_paths = [*schema.get('number', ()), *self.num_paths]
+                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
+                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
+                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
 
             dump_nestedtext_to_json(
                 *input_files,
@@ -163,14 +163,14 @@ class NestedTextToYAML(
         nt2yaml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
         try:
-            for schema_file in self.schema_files:
+            for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
-                self.null_paths = [*schema.get('null', ()), *self.null_paths]
-                self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
-                self.num_paths = [*schema.get('number', ()), *self.num_paths]
-                self.date_paths = [*schema.get('date', ()), *self.date_paths]
+                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
+                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
+                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
+                self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
 
             dump_nestedtext_to_yaml(
                 *input_files,
@@ -200,13 +200,13 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2toml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
         try:
-            for schema_file in self.schema_files:
+            for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
-                self.bool_paths = [*schema.get('boolean', ()), *self.bool_paths]
-                self.num_paths = [*schema.get('number', ()), *self.num_paths]
-                self.date_paths = [*schema.get('date', ()), *self.date_paths]
+                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
+                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
+                self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
 
             dump_nestedtext_to_toml(
                 *input_files,
@@ -229,7 +229,7 @@ class JSONToNestedText(_TypedFormatToSchema):
         cat example.json | json2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
         try:
             if not self.to_schema:
                 dump_json_to_nestedtext(*input_files)
@@ -250,7 +250,7 @@ class YAMLToNestedText(_TypedFormatToSchema):
         cat example.yml | yaml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
         try:
             if not self.to_schema:
                 dump_yaml_to_nestedtext(*input_files)
@@ -271,7 +271,7 @@ class TOMLToNestedText(_TypedFormatToSchema):
         cat example.yml | toml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
         try:
             if not self.to_schema:
                 dump_toml_to_nestedtext(*input_files)
