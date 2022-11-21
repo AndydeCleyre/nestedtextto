@@ -37,7 +37,7 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
+dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "pyright", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
 test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
 fmt = ["black", "darglint", "isort", "pydocstyle", "ruff", "ssort"]
@@ -78,3 +78,7 @@ project-url = "https://github.com/andydecleyre/nestedtextto"
 project-name = "NestedTextTo"
 html-output = "doc/api"
 html-viewsource-base = "https://github.com/AndydeCleyre/nestedtextto/tree/develop"
+
+[tool.pyright]
+useLibraryCodeForTypes = true
+reportGeneralTypeIssues = false

@@ -12,3 +12,5 @@ ipython  # manually debug
 
 taskipy  # run tasks
 nox      # run tasks in clean venvs
+
+pyright  # check types
