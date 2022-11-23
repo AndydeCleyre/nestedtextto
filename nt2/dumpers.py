@@ -161,7 +161,7 @@ def jloads(content: str) -> dict | list:
     except JSONDecodeError as original_e:
         try:
             return [_jloads(line) for line in content.splitlines()]
-        except JSONDecodeError:
+        except JSONDecodeError:  # pragma: no cover
             raise original_e
 
 

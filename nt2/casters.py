@@ -176,7 +176,7 @@ def cast_stringy_data(
             continue
         try:
             datey = _str_to_datey(match.node, time_marker)
-        except ValueError as e:
+        except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path))))
         else:
             surgeon.set_value(cast(YAMLPath, match.path), datey)
