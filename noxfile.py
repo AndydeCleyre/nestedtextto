@@ -56,7 +56,7 @@ def publish(session):
 def typecheck(session):
     """Check types."""
     session.install('-U', '.[dev]')
-    session.run('pyright')
+    session.run('sh', '-c', 'pyright --outputjson 2>/dev/null | json2nt', external=True)
 
 
 @nox.session(python=[DEFAULT_PYTHON])
