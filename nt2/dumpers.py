@@ -149,11 +149,20 @@ def jloads(content: str) -> dict | list:
 
     Returns:
         Parsed JSON data as a ``dict`` or ``list`` (usually the former).
+
+    Raises:
+        JSONDecodeError: Unable to parse ``content`` as JSON or JSONLines.
+
+    # noqa: DAR401
+    # noqa: DAR402
     """
     try:
         return _jloads(content)
-    except JSONDecodeError:
-        return [_jloads(line) for line in content.splitlines()]
+    except JSONDecodeError as original_e:
+        try:
+            return [_jloads(line) for line in content.splitlines()]
+        except JSONDecodeError:
+            raise original_e
 
 
 def dump_json_to_nestedtext(*input_files: LocalPath):
