@@ -37,7 +37,7 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
+dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle", "pyright", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
 test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
 fmt = ["black", "darglint", "isort", "pydocstyle", "ruff", "ssort"]
@@ -63,7 +63,7 @@ line-length = 99
 fmt = "nox -s fmt"
 lock = "nox -s lock"
 install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
-test = "nox -s test"
+test = "nox -s test test_without_toml typecheck -p 3.10"
 docs = "nox -s render_readme render_api_docs"
 
 [tool.ward]
@@ -78,3 +78,7 @@ project-url = "https://github.com/andydecleyre/nestedtextto"
 project-name = "NestedTextTo"
 html-output = "doc/api"
 html-viewsource-base = "https://github.com/AndydeCleyre/nestedtextto/tree/develop"
+
+[tool.pyright]
+useLibraryCodeForTypes = true
+

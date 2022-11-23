@@ -82,7 +82,9 @@ def _schema_entry_type(obj: int | float | bool | None | datetime | date | time):
         return 'null'
     if isinstance(obj, (datetime, date, time)):
         return 'date'
-    raise ValueError(f"Can't match {type(obj)} ({obj}) to 'number', 'boolean', 'null', or 'date'")
+    raise ValueError(
+        f"Can't match {type(obj)} ({obj}) to 'number', 'boolean', 'null', or 'date'"
+    )  # pragma: no cover
 
 
 def typed_data_to_schema(data: dict | list) -> dict:

@@ -1,9 +1,11 @@
+from typing import cast
+
 from commands import nt2yaml, yaml2nt
-from plumbum import local
+from plumbum import LocalPath, local
 from utils import assert_file_content, casting_args_from_schema_file
 from ward import test
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
+SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'  # type: ignore
 
 
 for input_yaml_name, output_nt_name in {
@@ -105,7 +107,7 @@ for typed_yml in ('all', 'floats', 'dates'):
         expected_file = SAMPLES / f"typed_{typed_yml}.yml"
         schema_content = yaml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
-            schema_file = tmp / 'schema.nt'
+            schema_file = cast(LocalPath, tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2yaml(
                 SAMPLES / f"{'base' if typed_yml == 'all' else typed_yml}.nt",

@@ -1,9 +1,11 @@
+from typing import cast
+
 from commands import json2nt, nt2json
-from plumbum import local
+from plumbum import LocalPath, local
 from utils import assert_file_content, casting_args_from_schema_file
 from ward import test
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'json'
+SAMPLES = local.path(__file__).up() / 'samples' / 'json'  # type: ignore
 
 
 @test("JSON Lines -> NestedText")
@@ -81,7 +83,7 @@ def _():
     expected_file = SAMPLES / 'typed_all.json'
     schema_content = json2nt(expected_file, to_schema=True)
     with local.tempdir() as tmp:
-        schema_file = tmp / 'schema.nt'
+        schema_file = cast(LocalPath, tmp / 'schema.nt')
         schema_file.write(schema_content, 'utf-8')
         output = nt2json(SAMPLES / 'base.nt', schema_files=(schema_file,))
     assert_file_content(expected_file, output)

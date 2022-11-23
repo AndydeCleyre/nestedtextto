@@ -8,13 +8,21 @@ from __future__ import annotations
 import re
 from collections.abc import Sequence
 from datetime import date, datetime, time
+from typing import cast
 from uuid import uuid4
 
-from .converters import Converter, mk_json_types_converter, mk_unyamlable_converter
-from .yamlpath_tools import mk_yamlpath_processor, non_null_matches
+try:
+    from typing import TypeAlias
+except ImportError:
+    from typing import Any as TypeAlias
 
-StringyDatum = 'str | list | dict'
-StringyData = 'list[StringyDatum] | dict[str, StringyDatum]'
+from .converters import Converter as _Converter, mk_json_types_converter, mk_unyamlable_converter
+from .yamlpath_tools import YAMLPath as _YAMLPath, mk_yamlpath_processor, non_null_matches
+
+Converter: TypeAlias = _Converter
+StringyDatum: TypeAlias = 'str | list | dict'
+StringyData: TypeAlias = 'list[StringyDatum] | dict[str, StringyDatum]'
+YAMLPath: TypeAlias = _YAMLPath
 
 
 def _str_to_bool(informal_bool: str) -> bool:
@@ -139,13 +147,13 @@ def cast_stringy_data(
 
     for match in non_null_matches(surgeon, *null_paths):
         if match.node == '':
-            surgeon.set_value(match.path, None)
+            surgeon.set_value(cast(YAMLPath, match.path), None)
 
     for match in non_null_matches(surgeon, *bool_paths):
         if not isinstance(match.node, str):
             continue
         try:
-            surgeon.set_value(match.path, _str_to_bool(match.node))
+            surgeon.set_value(cast(YAMLPath, match.path), _str_to_bool(match.node))
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path))))
 
@@ -153,7 +161,7 @@ def cast_stringy_data(
         if not isinstance(match.node, str):
             continue
         try:
-            surgeon.set_value(match.path, _str_to_num(match.node))
+            surgeon.set_value(cast(YAMLPath, match.path), _str_to_num(match.node))
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path))))
 
@@ -168,11 +176,11 @@ def cast_stringy_data(
             continue
         try:
             datey = _str_to_datey(match.node, time_marker)
-        except ValueError as e:
+        except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path))))
         else:
-            surgeon.set_value(match.path, datey)
-            if isinstance(datey, str):
+            surgeon.set_value(cast(YAMLPath, match.path), datey)
+            if not marked_times_present and isinstance(datey, str):
                 marked_times_present = True
 
     if marked_times_present:

@@ -6,14 +6,15 @@ import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
 from textwrap import indent
+from typing import Any, cast
 
-from nestedtext import dump as _ntdump, dumps as _ntdumps, load as ntload
+from nestedtext import dump as _ntdump, dumps as _ntdumps, load as _ntload
 from plumbum import LocalPath
 from rich.console import Console as RichConsole
 from rich.syntax import Syntax as RichSyntax
 from ruamel.yaml.scalarstring import walk_tree as use_multiline_syntax
 
-from .casters import cast_stringy_data
+from .casters import StringyData, cast_stringy_data
 from .converters import (
     mk_json_types_converter, mk_stringy_converter, mk_toml_types_converter, mk_yaml_types_converter
 )
@@ -45,6 +46,22 @@ def _syntax_print(content: str, syntax: str, console: RichConsole = RICH):
     console.print(
         RichSyntax(content, syntax, theme='ansi_dark', word_wrap=True, indent_guides=True)
     )
+
+
+def ntload(file: Any) -> StringyData:
+    r"""
+    Wrap ``nestedtext.load`` with convenient configuration for this module.
+
+    Set top-level type constraint to 'any',
+    and assure the type checker the result is ``StringyData``.
+
+    Args:
+        file: NestedText file-like object, usually a ``LocalPath`` or ``sys.stdin``.
+
+    Returns:
+        Parsed NestedText data as a ``dict`` or ``list`` of ``str``\ s.
+    """
+    return cast(StringyData, _ntload(file, top='any'))
 
 
 def ntdump(data: dict | list):
@@ -132,11 +149,20 @@ def jloads(content: str) -> dict | list:
 
     Returns:
         Parsed JSON data as a ``dict`` or ``list`` (usually the former).
+
+    Raises:
+        JSONDecodeError: Unable to parse ``content`` as JSON or JSONLines.
+
+    # noqa: DAR401
+    # noqa: DAR402
     """
     try:
         return _jloads(content)
-    except JSONDecodeError:
-        return [_jloads(line) for line in content.splitlines()]
+    except JSONDecodeError as original_e:
+        try:
+            return [_jloads(line) for line in content.splitlines()]
+        except JSONDecodeError:  # pragma: no cover
+            raise original_e
 
 
 def dump_json_to_nestedtext(*input_files: LocalPath):
@@ -285,7 +311,7 @@ def dump_nestedtext_to_yaml(
         date_paths: YAMLPath queries whose matches will be casted to ``date``/``datetime``.
     """
     for src in input_files or (sys.stdin,):
-        data = ntload(src, 'any')
+        data = ntload(src)
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
@@ -310,7 +336,7 @@ def dump_nestedtext_to_toml(*input_files: LocalPath, bool_paths=(), num_paths=()
     """
     _require_toml_support()
     for src in input_files or (sys.stdin,):
-        data = ntload(src, 'any')
+        data = ntload(src)
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,
@@ -334,7 +360,7 @@ def dump_nestedtext_to_json(*input_files: LocalPath, bool_paths=(), null_paths=(
         num_paths: YAMLPath queries whose matches will be casted to ``int``/``float``.
     """
     for src in input_files or (sys.stdin,):
-        data = ntload(src, 'any')
+        data = ntload(src)
         data = cast_stringy_data(
             data,
             bool_paths=bool_paths,

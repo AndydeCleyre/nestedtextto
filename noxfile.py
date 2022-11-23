@@ -53,6 +53,13 @@ def publish(session):
 
 
 @nox.session(python=[DEFAULT_PYTHON])
+def typecheck(session):
+    """Check types."""
+    session.install('-U', '.[dev]')
+    session.run('sh', '-c', 'pyright --outputjson 2>/dev/null | json2nt', external=True)
+
+
+@nox.session(python=[DEFAULT_PYTHON])
 def render_readme(session):
     """Generate README.md from templates/README.md.wz."""
     session.install('-Ue', '.[doc]')
