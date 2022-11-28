@@ -4,9 +4,10 @@ CLI definitions, parsing, and entry points.
 After argument processing, these call into the `dumpers` functions to get the job done.
 """
 import sys
+from json import JSONDecodeError
 from typing import cast
 
-from nestedtext import load as ntload
+from nestedtext import NestedTextError, load as ntload
 from plumbum.cli import Application, ExistingFile, Flag, SwitchAttr
 from plumbum.colors import blue, green, magenta, yellow  # type: ignore
 from rich import inspect as _rich_inspect
@@ -31,18 +32,27 @@ def inspect_exception(exc: Exception):  # pragma: no cover
     Args:
         exc: Any ``Exception``. After printing, it is swallowed, not raised.
     """
+    _rich_inspect(exc, console=RICH, value=False)
+
     if isinstance(exc, (YAMLParserError, YAMLScannerError)):
         print("This YAML couldn't be parsed", exc, sep='\n', file=sys.stderr)
         return
 
-    _rich_inspect(exc, console=RICH)
+    if isinstance(exc, JSONDecodeError):
+        lines = exc.doc.splitlines()
+        print(
+            "This JSON couldn't be parsed",
+            exc,
+            *lines[max(0, exc.lineno - 3) : exc.lineno],
+            f"{'.' * (exc.colno - 1)}▲" | magenta,
+            *lines[exc.lineno : exc.lineno + 2],
+            sep='\n',
+            file=sys.stderr,
+        )
+        return
 
-    try:
-        items = exc.get_codicil()  # type: ignore
-    except AttributeError:
-        pass
-    else:
-        print(*items, sep='\n', file=sys.stderr)
+    if isinstance(exc, NestedTextError):
+        print(*exc.get_codicil(), sep='\n', file=sys.stderr)
 
 
 class _ColorApp(Application):
