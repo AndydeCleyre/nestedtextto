@@ -39,6 +39,7 @@ for convenient conversion between NestedText and other formats:
 - [How does this translate to formats with more value types?](#how-does-this-translate-to-formats-with-more-value-types)
 - [Installation](#installation)
 - [Usage Docs](#usage-docs)
+  - [Known Issues](#known-issues)
 - [More Examples](#more-examples)
   - [View JSON Lines logs in a more readable format](#view-json-lines-logs-in-a-more-readable-format)
   - [View TOML as NestedText](#view-toml-as-nestedtext)
@@ -391,6 +392,18 @@ Switches:
 
 </details>
 
+
+#### Known Issues
+
+##### Non-string Keys
+
+YAML officially supports non-string key types,
+like maps, lists, and numbers.
+Support for non-string keys varies from one YAML parser to the next,
+and is currently not handled by NestedTextTo.
+
+If anyone is interested in using NestedTextTo with non-string key types,
+please open an issue and I'll see what I can do!
 
 ### More Examples
 
