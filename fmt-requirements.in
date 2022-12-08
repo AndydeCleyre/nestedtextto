@@ -8,6 +8,6 @@ isort             # format imports
 ssort             # reorder functions
 
 darglint          # lint docstrings
-pydocstyle        # lint docstrings
+pydocstyle[toml]  # lint docstrings
 
 ruff              # lint code

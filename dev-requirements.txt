@@ -58,6 +58,7 @@ snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
 ssort==0.11.6             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.2         # via ipython
 taskipy==1.10.3           # via -r dev-requirements.in
+toml==0.10.2              # via -c fmt-requirements.txt, pydocstyle
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, black, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.6.0          # via ipython, matplotlib-inline
