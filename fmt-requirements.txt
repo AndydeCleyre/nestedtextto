@@ -4,9 +4,10 @@ darglint==1.8.1           # via -r fmt-requirements.in
 isort==5.10.1             # via -r fmt-requirements.in
 mypy-extensions==0.4.3    # via black
 pathspec==0.10.2          # via black, ssort
-platformdirs==2.5.4       # via black
+platformdirs==2.6.0       # via black
 pydocstyle==6.1.1         # via -r fmt-requirements.in
-ruff==0.0.135             # via -r fmt-requirements.in
+ruff==0.0.169             # via -r fmt-requirements.in
 snowballstemmer==2.2.0    # via pydocstyle
 ssort==0.11.6             # via -r fmt-requirements.in
+toml==0.10.2              # via pydocstyle
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, black
