@@ -150,6 +150,18 @@ output = local[cmd]('--help')
 
 @end
 
+#### Known Issues
+
+##### Non-string Keys
+
+YAML officially supports non-string key types,
+like maps, lists, and numbers.
+Support for non-string keys varies from one YAML parser to the next,
+and is currently not handled by NestedTextTo.
+
+If anyone is interested in using NestedTextTo with non-string key types,
+please open an issue and I'll see what I can do!
+
 ### More Examples
 
 #### View JSON Lines logs in a more readable format
