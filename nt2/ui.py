@@ -52,7 +52,7 @@ def inspect_exception(exc: Exception):  # pragma: no cover
         return
 
     if isinstance(exc, NestedTextError):
-        print(*exc.get_codicil(), sep='\n', file=sys.stderr)
+        print(*filter(None, exc.get_codicil()), sep='\n', file=sys.stderr)
 
 
 class _ColorApp(Application):
