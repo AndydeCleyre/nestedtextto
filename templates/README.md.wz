@@ -1,21 +1,25 @@
+@(
+from plumbum import local
+release = local['git']('describe', '--tags', '--abbrev=0').strip()
+)\
 # NestedTextTo
 ## CLI to convert between NestedText and JSON, YAML or TOML, with explicit type casting
 
 ![Python versions](https://img.shields.io/pypi/pyversions/nt2?logo=python)
 [![PyPI version](https://img.shields.io/pypi/v/nt2?logo=pypi&label=PyPI&color=yellowgreen)](https://pypi.org/project/nt2/)
-[![Publish to PyPI](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Publish%20to%20PyPI?label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
+[![Publish to PyPI](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/pypi.yml?branch=@{release}&label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
 
 ![Runs on Linux](https://img.shields.io/badge/Runs%20on-Linux-yellowgreen?logo=linux)
 ![Runs on macOS](https://img.shields.io/badge/Runs%20on-macOS-red?logo=macos)
 ![Runs on Windows](https://img.shields.io/badge/Runs%20on-Windows-blue?logo=windows)
 
-[![Tests badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Run%20tests?label=Tests&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
+[![Tests badge](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/test.yml?branch=develop&label=Tests&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
 [![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
 
 
-[![Format and lint](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Format%20and%20lint?label=Format%20%26%20Lint&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
-[![Generate docs from templates](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Generate%20docs%20from%20templates%20and%20docstrings?label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
-[![Requirements badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Bump%20PyPI%20requirements?label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
+[![Format and lint](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/fmt.yml?branch=develop&label=Format%20%26%20Lint&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
+[![Generate docs from templates](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/doc.yml?branch=develop&label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
+[![Requirements badge](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/reqs.yml?branch=develop&label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 
 ---
 
@@ -134,7 +138,6 @@ I recommend using [pipx](https://github.com/pypa/pipx)
 or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 
 ### Usage Docs
-@(from plumbum import local)\
 @for cmd in ('nt2json', 'nt2yaml', 'nt2toml', 'json2nt', 'yaml2nt', 'toml2nt'):
 @(
 output = local[cmd]('--help')
