@@ -3,7 +3,7 @@
 
 ![Python versions](https://img.shields.io/pypi/pyversions/nt2?logo=python)
 [![PyPI version](https://img.shields.io/pypi/v/nt2?logo=pypi&label=PyPI&color=yellowgreen)](https://pypi.org/project/nt2/)
-[![Publish to PyPI](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/pypi.yml?branch=0.2.5&label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
+[![Publish to PyPI](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/pypi.yml?label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
 
 ![Runs on Linux](https://img.shields.io/badge/Runs%20on-Linux-yellowgreen?logo=linux)
 ![Runs on macOS](https://img.shields.io/badge/Runs%20on-macOS-red?logo=macos)
@@ -39,7 +39,7 @@ for convenient conversion between NestedText and other formats:
 - [How does this translate to formats with more value types?](#how-does-this-translate-to-formats-with-more-value-types)
 - [Installation](#installation)
 - [Usage Docs](#usage-docs)
-  - [Known Issues](#known-issues)
+  - [Limitations](#limitations)
 - [More Examples](#more-examples)
   - [View JSON Lines logs in a more readable format](#view-json-lines-logs-in-a-more-readable-format)
   - [View TOML as NestedText](#view-toml-as-nestedtext)
@@ -393,7 +393,7 @@ Switches:
 </details>
 
 
-#### Known Issues
+#### Limitations
 
 ##### Non-string Keys
 
