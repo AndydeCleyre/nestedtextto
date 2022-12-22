@@ -1,5 +1,5 @@
 arrow==1.2.3              # via inform
-attrs==22.1.0             # via cattrs
+attrs==22.2.0             # via cattrs
 cattrs==22.2.0            # via -r requirements.in
 commonmark==0.9.1         # via rich
 exceptiongroup==1.0.4     # via cattrs

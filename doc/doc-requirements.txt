@@ -1,7 +1,7 @@
 appdirs==1.4.4            # via pydoctor
 astor==0.8.1              # via pydoctor
 atomicwrites==1.4.1       # via fpyutils
-attrs==22.1.0             # via automat, pydoctor, twisted
+attrs==22.2.0             # via automat, pydoctor, twisted
 automat==22.10.0          # via twisted
 cachecontrol==0.12.11     # via pydoctor
 certifi==2022.12.7        # via requests
