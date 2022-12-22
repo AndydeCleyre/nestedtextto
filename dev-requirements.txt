@@ -23,7 +23,7 @@ flit-core==3.8.0          # via flit
 idna==3.4                 # via requests
 inform==1.27.0            # via -c nt2/requirements.txt, nestedtext
 ipython==8.7.0            # via -r dev-requirements.in
-isort==5.11.3             # via -c fmt-requirements.txt, -r fmt-requirements.in
+isort==5.11.4             # via -c fmt-requirements.txt, -r fmt-requirements.in
 jedi==0.18.2              # via ipython
 jinja2==3.1.2             # via -c test/test-requirements.txt, click-completion
 markupsafe==2.1.1         # via -c test/test-requirements.txt, jinja2
@@ -47,11 +47,11 @@ ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pydocstyle==6.1.1         # via -c fmt-requirements.txt, -r fmt-requirements.in
 pygments==2.13.0          # via -c nt2/requirements.txt, ipython, rich
-pyright==1.1.284          # via -r dev-requirements.in
+pyright==1.1.285          # via -r dev-requirements.in
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, arrow
 requests==2.28.1          # via flit
 rich==12.6.0              # via -c nt2/requirements.txt, ward
-ruff==0.0.189             # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.0.191             # via -c fmt-requirements.txt, -r fmt-requirements.in
 setuptools==65.6.3        # via nodeenv
 shellingham==1.5.0        # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, asttokens, click-completion, inform, python-dateutil
