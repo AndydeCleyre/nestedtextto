@@ -3,11 +3,10 @@ click==8.1.3              # via -c test/test-requirements.txt, black
 darglint==1.8.1           # via -r fmt-requirements.in
 isort==5.11.4             # via -r fmt-requirements.in
 mypy-extensions==0.4.3    # via black
-pathspec==0.10.3          # via black, ssort
+pathspec==0.11.0          # via black, ssort
 platformdirs==2.6.2       # via black
-pydocstyle==6.1.1         # via -r fmt-requirements.in
-ruff==0.0.201             # via -r fmt-requirements.in
+pydocstyle==6.3.0         # via -r fmt-requirements.in
+ruff==0.0.236             # via -r fmt-requirements.in
 snowballstemmer==2.2.0    # via pydocstyle
 ssort==0.11.6             # via -r fmt-requirements.in
-toml==0.10.2              # via pydocstyle
-tomli==2.0.1              # via -c nt2/toml-requirements.txt, black
+tomli==2.0.1              # via -c nt2/toml-requirements.txt, black, pydocstyle
