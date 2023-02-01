@@ -19,7 +19,6 @@ msgpack==1.0.4            # via cachecontrol
 plumbum==1.8.1            # via -r doc-requirements.in
 pydoctor==22.9.1          # via -r doc-requirements.in
 requests==2.28.2          # via cachecontrol, pydoctor
-setuptools==67.0.0        # via zope-interface
 six==1.16.0               # via automat
 toml==0.10.2              # via pydoctor
 twisted==22.10.0          # via pydoctor
@@ -27,3 +26,6 @@ typing-extensions==4.4.0  # via twisted
 urllib3==1.26.14          # via requests
 wheezy-template==3.1.0    # via -r doc-requirements.in
 zope-interface==5.5.2     # via twisted
+
+# The following packages are considered to be unsafe in a requirements file:
+setuptools==67.0.0        # via zope-interface
