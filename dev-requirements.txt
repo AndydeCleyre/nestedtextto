@@ -29,7 +29,7 @@ markdown-it-py==2.1.0     # via -c nt2/requirements.txt, rich
 markupsafe==2.1.2         # via -c test/test-requirements.txt, jinja2
 matplotlib-inline==0.1.6  # via ipython
 mdurl==0.1.2              # via -c nt2/requirements.txt, markdown-it-py
-mypy-extensions==0.4.3    # via -c fmt-requirements.txt, black
+mypy-extensions==1.0.0    # via -c fmt-requirements.txt, black
 nestedtext==3.5           # via -c nt2/requirements.txt, -r test/test-requirements.in
 nodeenv==1.7.0            # via pyright
 nox==2022.11.21           # via -r dev-requirements.in
