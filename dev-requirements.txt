@@ -52,7 +52,7 @@ pyright==1.1.294          # via -r dev-requirements.in
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, arrow
 requests==2.28.2          # via flit
 rich==13.3.1              # via -c nt2/requirements.txt, ward
-ruff==0.0.246             # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.0.247             # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.0.post1  # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
@@ -68,4 +68,4 @@ ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requ
 wcwidth==0.2.6            # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==67.3.1        # via nodeenv
+setuptools==67.3.2        # via nodeenv
