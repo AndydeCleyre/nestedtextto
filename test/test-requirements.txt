@@ -5,7 +5,7 @@ click-default-group==1.2.2  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
 inform==1.27.0            # via -c ../nt2/requirements.txt, nestedtext
 jinja2==3.1.2             # via click-completion
-markdown-it-py==2.1.0     # via -c ../nt2/requirements.txt, rich
+markdown-it-py==2.2.0     # via -c ../nt2/requirements.txt, rich
 markupsafe==2.1.2         # via jinja2
 mdurl==0.1.2              # via -c ../nt2/requirements.txt, markdown-it-py
 nestedtext==3.5           # via -r test-requirements.in
