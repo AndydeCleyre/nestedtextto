@@ -4,7 +4,7 @@ attrs==22.2.0             # via automat, pydoctor, twisted
 automat==22.10.0          # via twisted
 cachecontrol==0.12.11     # via pydoctor
 certifi==2022.12.7        # via requests
-charset-normalizer==3.0.1  # via requests
+charset-normalizer==3.1.0  # via requests
 configargparse==1.5.3     # via pydoctor
 constantly==15.1.0        # via twisted
 docutils==0.19            # via pydoctor
@@ -28,4 +28,4 @@ wheezy-template==3.1.0    # via -r doc-requirements.in
 zope-interface==5.5.2     # via twisted
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==67.5.0        # via zope-interface
+setuptools==67.5.1        # via zope-interface
