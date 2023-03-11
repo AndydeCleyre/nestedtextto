@@ -38,7 +38,7 @@ parso==0.8.3              # via jedi
 pathspec==0.11.0          # via -c fmt-requirements.txt, black, ssort
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
-platformdirs==3.1.0       # via -c fmt-requirements.txt, black, virtualenv
+platformdirs==3.1.1       # via -c fmt-requirements.txt, black, virtualenv
 pluggy==1.0.0             # via -c test/test-requirements.txt, ward
 plumbum==1.8.1            # via -c nt2/requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via -c test/test-requirements.txt, ward
@@ -62,7 +62,7 @@ taskipy==1.10.3           # via -r dev-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, black, pydocstyle, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.9.0          # via ipython, matplotlib-inline
-urllib3==1.26.14          # via requests
+urllib3==1.26.15          # via requests
 virtualenv==20.20.0       # via nox
 ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.6            # via prompt-toolkit
