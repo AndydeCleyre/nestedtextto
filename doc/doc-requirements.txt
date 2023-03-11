@@ -23,7 +23,7 @@ six==1.16.0               # via automat
 toml==0.10.2              # via pydoctor
 twisted==22.10.0          # via pydoctor
 typing-extensions==4.5.0  # via twisted
-urllib3==1.26.14          # via requests
+urllib3==1.26.15          # via requests
 wheezy-template==3.1.0    # via -r doc-requirements.in
 zope-interface==5.5.2     # via twisted
 
