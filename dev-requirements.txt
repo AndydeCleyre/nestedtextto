@@ -16,7 +16,7 @@ decorator==5.1.1          # via ipython
 distlib==0.3.6            # via virtualenv
 docutils==0.19            # via flit
 executing==1.2.0          # via stack-data
-filelock==3.9.0           # via virtualenv
+filelock==3.9.1           # via virtualenv
 flit==3.8.0               # via -r dev-requirements.in
 flit-core==3.8.0          # via flit
 idna==3.4                 # via requests
@@ -35,7 +35,7 @@ nodeenv==1.7.0            # via pyright
 nox==2022.11.21           # via -r dev-requirements.in
 packaging==23.0           # via -c fmt-requirements.txt, black, nox
 parso==0.8.3              # via jedi
-pathspec==0.11.0          # via -c fmt-requirements.txt, black, ssort
+pathspec==0.11.1          # via -c fmt-requirements.txt, black, ssort
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 platformdirs==3.1.1       # via -c fmt-requirements.txt, black, virtualenv
@@ -52,7 +52,7 @@ pyright==1.1.298          # via -r dev-requirements.in
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, arrow
 requests==2.28.2          # via flit
 rich==13.3.2              # via -c nt2/requirements.txt, ward
-ruff==0.0.255             # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.0.256             # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.0.post1  # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
