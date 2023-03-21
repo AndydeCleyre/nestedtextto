@@ -20,7 +20,7 @@ filelock==3.10.0          # via virtualenv
 flit==3.8.0               # via -r dev-requirements.in
 flit-core==3.8.0          # via flit
 idna==3.4                 # via requests
-inform==1.27.0            # via -c nt2/requirements.txt, nestedtext
+inform==1.28              # via -c nt2/requirements.txt, nestedtext
 ipython==8.11.0           # via -r dev-requirements.in
 isort==5.12.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 jedi==0.18.2              # via ipython
