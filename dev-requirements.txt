@@ -16,7 +16,7 @@ decorator==5.1.1          # via ipython
 distlib==0.3.6            # via virtualenv
 docutils==0.19            # via flit
 executing==1.2.0          # via stack-data
-filelock==3.10.3          # via virtualenv
+filelock==3.10.4          # via virtualenv
 flit==3.8.0               # via -r dev-requirements.in
 flit-core==3.8.0          # via flit
 idna==3.4                 # via requests
@@ -58,7 +58,7 @@ six==1.16.0               # via -c nt2/requirements.txt, asttokens, click-comple
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
 ssort==0.11.6             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.2         # via ipython
-taskipy==1.10.3           # via -r dev-requirements.in
+taskipy==1.10.4           # via -r dev-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, black, pydocstyle, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.9.0          # via ipython, matplotlib-inline
