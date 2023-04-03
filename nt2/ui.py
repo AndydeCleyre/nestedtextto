@@ -67,12 +67,10 @@ _ColorApp.unbind_switches('help-all')
 
 
 class _TypedFormatToSchema(_ColorApp):
-
     to_schema = Flag(('to-schema', 's'), help="Rather than convert the inputs, generate a schema")
 
 
 class _NestedTextToTypedFormat(_ColorApp):
-
     schema_files = SwitchAttr(
         ('schema', 's'),
         argtype=ExistingFile,  # type: ignore
@@ -99,7 +97,6 @@ class _NestedTextToTypedFormat(_ColorApp):
 
 
 class _NestedTextToTypedFormatSupportNull(_ColorApp):
-
     null_paths = SwitchAttr(
         ('null', 'n'),
         list=True,
@@ -109,7 +106,6 @@ class _NestedTextToTypedFormatSupportNull(_ColorApp):
 
 
 class _NestedTextToTypedFormatSupportDate(_ColorApp):
-
     date_paths = SwitchAttr(
         ('date', 'd'),
         list=True,
