@@ -43,7 +43,7 @@ pluggy==1.0.0             # via -c test/test-requirements.txt, ward
 plumbum==1.8.1            # via -c nt2/requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via -c test/test-requirements.txt, ward
 prompt-toolkit==3.0.38    # via ipython
-psutil==5.9.4             # via taskipy
+psutil==5.9.5             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pydocstyle==6.3.0         # via -c fmt-requirements.txt, -r fmt-requirements.in
