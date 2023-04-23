@@ -1,4 +1,4 @@
-argcomplete==2.1.2        # via nox
+argcomplete==3.0.6        # via nox
 arrow==1.2.3              # via -c nt2/requirements.txt, inform
 asttokens==2.2.1          # via stack-data
 backcall==0.2.0           # via ipython
@@ -32,7 +32,7 @@ mdurl==0.1.2              # via -c nt2/requirements.txt, markdown-it-py
 mypy-extensions==1.0.0    # via -c fmt-requirements.txt, black
 nestedtext==3.5           # via -c nt2/requirements.txt, -r test/test-requirements.in
 nodeenv==1.7.0            # via pyright
-nox==2022.11.21           # via -r dev-requirements.in
+nox==2023.4.22            # via -r dev-requirements.in
 packaging==23.1           # via -c fmt-requirements.txt, black, nox
 parso==0.8.3              # via jedi
 pathspec==0.11.1          # via -c fmt-requirements.txt, black, ssort
