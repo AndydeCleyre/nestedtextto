@@ -1,4 +1,4 @@
-argcomplete==3.0.6        # via nox
+argcomplete==3.0.8        # via nox
 arrow==1.2.3              # via -c nt2/requirements.txt, inform
 asttokens==2.2.1          # via stack-data
 backcall==0.2.0           # via ipython
