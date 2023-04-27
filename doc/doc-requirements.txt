@@ -18,7 +18,7 @@ md-toc==8.1.9             # via -r doc-requirements.in
 msgpack==1.0.5            # via cachecontrol
 plumbum==1.8.1            # via -r doc-requirements.in
 pydoctor==22.9.1          # via -r doc-requirements.in
-requests==2.28.2          # via cachecontrol, pydoctor
+requests==2.29.0          # via cachecontrol, pydoctor
 six==1.16.0               # via automat
 toml==0.10.2              # via pydoctor
 twisted==22.10.0          # via pydoctor
