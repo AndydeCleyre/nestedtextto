@@ -3,7 +3,7 @@ astor==0.8.1              # via pydoctor
 attrs==23.1.0             # via automat, pydoctor, twisted
 automat==22.10.0          # via twisted
 cachecontrol==0.12.11     # via pydoctor
-certifi==2022.12.7        # via requests
+certifi==2023.5.7         # via requests
 charset-normalizer==3.1.0  # via requests
 configargparse==1.5.3     # via pydoctor
 constantly==15.1.0        # via twisted
