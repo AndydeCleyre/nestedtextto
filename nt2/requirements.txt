@@ -1,16 +1,17 @@
 arrow==1.2.3              # via inform
 attrs==23.1.0             # via cattrs
-cattrs==22.2.0            # via -r requirements.in
+cattrs==23.1.1            # via -r requirements.in
 exceptiongroup==1.1.1     # via cattrs
 inform==1.28              # via nestedtext
 markdown-it-py==2.2.0     # via rich
 mdurl==0.1.2              # via markdown-it-py
-nestedtext==3.5           # via -r requirements.in
-plumbum==1.8.1            # via -r requirements.in
+nestedtext==3.6           # via -r requirements.in
+plumbum==1.8.2            # via -r requirements.in
 pygments==2.15.1          # via rich
 python-dateutil==2.8.2    # via arrow, yamlpath
 rich==13.3.5              # via -r requirements.in
 ruamel-yaml==0.17.21      # via -r requirements.in, yamlpath
 ruamel-yaml-clib==0.2.7   # via ruamel-yaml
 six==1.16.0               # via inform, python-dateutil
+typing-extensions==4.6.2  # via cattrs
 yamlpath==3.6.9           # via -r requirements.in
