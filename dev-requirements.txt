@@ -48,11 +48,11 @@ ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pydocstyle==6.3.0         # via -c fmt-requirements.txt, -r fmt-requirements.in
 pygments==2.15.1          # via -c nt2/requirements.txt, ipython, rich
-pyright==1.1.311          # via -r dev-requirements.in
+pyright==1.1.313          # via -r dev-requirements.in
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, arrow
 requests==2.31.0          # via flit
 rich==13.4.1              # via -c nt2/requirements.txt, ward
-ruff==0.0.271             # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.0.272             # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.0.post1  # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
@@ -62,7 +62,7 @@ taskipy==1.11.0           # via -r dev-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, black, pydocstyle, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.9.0          # via ipython, matplotlib-inline
-urllib3==2.0.2            # via requests
+urllib3==2.0.3            # via requests
 virtualenv==20.23.0       # via nox
 ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.6            # via prompt-toolkit
