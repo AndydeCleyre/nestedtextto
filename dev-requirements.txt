@@ -39,7 +39,7 @@ pathspec==0.11.1          # via -c fmt-requirements.txt, black, ssort
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 platformdirs==3.7.0       # via -c fmt-requirements.txt, black, virtualenv
-pluggy==1.0.0             # via -c test/test-requirements.txt, ward
+pluggy==1.2.0             # via -c test/test-requirements.txt, ward
 plumbum==1.8.2            # via -c nt2/requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via -c test/test-requirements.txt, ward
 prompt-toolkit==3.0.38    # via ipython
@@ -48,7 +48,7 @@ ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pydocstyle==6.3.0         # via -c fmt-requirements.txt, -r fmt-requirements.in
 pygments==2.15.1          # via -c nt2/requirements.txt, ipython, rich
-pyright==1.1.314          # via -r dev-requirements.in
+pyright==1.1.315          # via -r dev-requirements.in
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, arrow
 requests==2.31.0          # via flit
 rich==13.4.2              # via -c nt2/requirements.txt, ward
