@@ -1,7 +1,7 @@
 arrow==1.2.3              # via inform
 attrs==23.1.0             # via cattrs
 cattrs==23.1.2            # via -r requirements.in
-exceptiongroup==1.1.1     # via cattrs
+exceptiongroup==1.1.2     # via cattrs
 inform==1.28              # via nestedtext
 markdown-it-py==3.0.0     # via rich
 mdurl==0.1.2              # via markdown-it-py
