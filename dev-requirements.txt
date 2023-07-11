@@ -2,7 +2,7 @@ argcomplete==3.1.1        # via nox
 arrow==1.2.3              # via -c nt2/requirements.txt, inform
 asttokens==2.2.1          # via stack-data
 backcall==0.2.0           # via ipython
-black==23.3.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
+black==23.7.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 certifi==2023.5.7         # via requests
 charset-normalizer==3.2.0  # via requests
 click==8.1.4              # via -c fmt-requirements.txt, black, click-completion, click-default-group, ward
