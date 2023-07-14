@@ -5,7 +5,7 @@ backcall==0.2.0           # via ipython
 black==23.7.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 certifi==2023.5.7         # via requests
 charset-normalizer==3.2.0  # via requests
-click==8.1.4              # via -c fmt-requirements.txt, black, click-completion, click-default-group, ward
+click==8.1.5              # via -c fmt-requirements.txt, black, click-completion, click-default-group, ward
 click-completion==0.5.2   # via -c test/test-requirements.txt, ward
 click-default-group==1.2.2  # via -c test/test-requirements.txt, ward
 colorama==0.4.6           # via taskipy
