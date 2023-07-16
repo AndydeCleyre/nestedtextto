@@ -38,7 +38,7 @@ parso==0.8.3              # via jedi
 pathspec==0.11.1          # via -c fmt-requirements.txt, black, ssort
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
-platformdirs==3.8.1       # via -c fmt-requirements.txt, black, virtualenv
+platformdirs==3.9.1       # via -c fmt-requirements.txt, black, virtualenv
 pluggy==1.2.0             # via -c test/test-requirements.txt, ward
 plumbum==1.8.2            # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via -c test/test-requirements.txt, ward
