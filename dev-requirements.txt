@@ -63,7 +63,7 @@ tomli==2.0.1              # via -c fmt-requirements.txt, -c nt2/toml-requirement
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.9.0          # via ipython, matplotlib-inline
 urllib3==2.0.4            # via requests
-virtualenv==20.24.1       # via nox
+virtualenv==20.24.2       # via nox
 ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.6            # via prompt-toolkit
 
