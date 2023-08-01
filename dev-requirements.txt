@@ -51,8 +51,8 @@ pygments==2.15.1          # via -c nt2/requirements.txt, -c test/../nt2/requirem
 pyright==1.1.318          # via -r dev-requirements.in
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
 requests==2.31.0          # via flit
-rich==13.5.0              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, ward
-ruff==0.0.280             # via -c fmt-requirements.txt, -r fmt-requirements.in
+rich==13.5.1              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, ward
+ruff==0.0.281             # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.0.post1  # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
