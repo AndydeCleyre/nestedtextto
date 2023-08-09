@@ -14,7 +14,7 @@ hyperlink==21.0.0         # via twisted
 idna==3.4                 # via hyperlink, requests
 incremental==22.10.0      # via twisted
 lunr==0.6.2               # via pydoctor
-md-toc==8.1.9             # via -r doc-requirements.in
+md-toc==8.2.0             # via -r doc-requirements.in
 msgpack==1.0.5            # via cachecontrol
 plumbum==1.8.2            # via -r doc-requirements.in
 pydoctor==23.4.1          # via -r doc-requirements.in
