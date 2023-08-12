@@ -127,7 +127,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2json example.nt
         nt2json <example.nt
         cat example.nt | nt2json
-        nt2json -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+        nt2json --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
@@ -166,7 +166,7 @@ class NestedTextToYAML(
         nt2yaml example.nt
         nt2yaml <example.nt
         cat example.nt | nt2yaml
-        nt2yaml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+        nt2yaml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
@@ -203,7 +203,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2toml example.nt
         nt2toml <example.nt
         cat example.nt | nt2toml
-        nt2toml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+        nt2toml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
