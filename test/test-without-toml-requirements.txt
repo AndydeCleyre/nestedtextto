@@ -1,5 +1,5 @@
 arrow==1.2.3              # via -c ../nt2/requirements.txt, inform
-click==8.1.6              # via click-completion, click-default-group, ward
+click==8.1.7              # via click-completion, click-default-group, ward
 click-completion==0.5.2   # via ward
 click-default-group==1.2.4  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
