@@ -9,7 +9,7 @@ markdown-it-py==3.0.0     # via -c ../nt2/requirements.txt, rich
 markupsafe==2.1.3         # via jinja2
 mdurl==0.1.2              # via -c ../nt2/requirements.txt, markdown-it-py
 nestedtext==3.6           # via -c ../nt2/requirements.txt, -r test-requirements.in
-pluggy==1.2.0             # via ward
+pluggy==1.3.0             # via ward
 plumbum==1.8.2            # via -c ../nt2/requirements.txt, -r test-requirements.in
 pprintpp==0.4.0           # via ward
 pygments==2.16.1          # via -c ../nt2/requirements.txt, rich
