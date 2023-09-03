@@ -1,6 +1,6 @@
 argcomplete==3.1.1        # via nox
 arrow==1.2.3              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, inform
-asttokens==2.2.1          # via stack-data
+asttokens==2.3.0          # via stack-data
 backcall==0.2.0           # via ipython
 black==23.7.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 certifi==2023.7.22        # via requests
