@@ -2,7 +2,7 @@ argcomplete==3.1.1        # via nox
 arrow==1.2.3              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, inform
 asttokens==2.4.0          # via stack-data
 backcall==0.2.0           # via ipython
-black==23.7.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
+black==23.9.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 certifi==2023.7.22        # via requests
 charset-normalizer==3.2.0  # via requests
 click==8.1.7              # via -c fmt-requirements.txt, -c test/test-requirements.txt, black, click-completion, click-default-group, ward
@@ -63,9 +63,9 @@ taskipy==1.12.0           # via -r dev-requirements.in
 tomli==2.0.1              # via -c fmt-requirements.txt, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, black, pydocstyle, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.9.0          # via ipython, matplotlib-inline
-typing-extensions==4.7.1  # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, filelock
+typing-extensions==4.7.1  # via -c fmt-requirements.txt, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, black, filelock
 urllib3==2.0.4            # via requests
-virtualenv==20.24.4       # via nox
+virtualenv==20.24.5       # via nox
 ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.6            # via prompt-toolkit
 
