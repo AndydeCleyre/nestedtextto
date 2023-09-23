@@ -7,7 +7,7 @@ packaging==23.1           # via black
 pathspec==0.11.2          # via black, ssort
 platformdirs==3.10.0      # via black
 pydocstyle==6.3.0         # via -r fmt-requirements.in
-ruff==0.0.290             # via -r fmt-requirements.in
+ruff==0.0.291             # via -r fmt-requirements.in
 snowballstemmer==2.2.0    # via pydocstyle
 ssort==0.11.6             # via -r fmt-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -c test/test-requirements.txt, black, pydocstyle
