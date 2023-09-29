@@ -67,7 +67,7 @@ typing-extensions==4.8.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt
 urllib3==2.0.5            # via requests
 virtualenv==20.24.5       # via nox
 ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
-wcwidth==0.2.6            # via prompt-toolkit
+wcwidth==0.2.7            # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==68.2.2        # via nodeenv
