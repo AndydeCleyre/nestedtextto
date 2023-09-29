@@ -7,7 +7,7 @@
   <head>
     
     <title>nt2.dumpers</title>
-    <meta name="generator" content="pydoctor 22.9.1"> 
+    <meta name="generator" content="pydoctor 23.9.0"> 
         
     </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -498,8 +498,7 @@
         </div>
 
         <div class="moduleDocstring">
-          <div><p>Main functions to be called by the UI Application classes, after CLI option parsing.</p>
-</div>
+          <div><p>Main functions to be called by the UI Application classes, after CLI option parsing.</p></div>
         </div>
 
         <div id="splitTables">
@@ -625,7 +624,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_json_to_nestedtext</span>(*input_files):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_json_to_nestedtext</span><span class="function-signature">(*input_files: <code>LocalPath</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L168">
       
       (source)
@@ -638,8 +638,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read JSON from stdin or <tt class="rst-docutils literal">input_files</tt>, and send NestedText to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with JSON content.</td></tr></table></div>
+    <div><p>Read JSON from stdin or <tt class="rst-docutils literal">input_files</tt>, and send NestedText to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with JSON content.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -652,7 +651,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_json_to_schema</span>(*input_files):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_json_to_schema</span><span class="function-signature">(*input_files: <code>LocalPath</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L208">
       
       (source)
@@ -665,8 +665,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read JSON from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with JSON content.</td></tr></table></div>
+    <div><p>Read JSON from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with JSON content.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -679,7 +678,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_nestedtext_to_json</span>(*input_files, bool_paths=(), null_paths=(), num_paths=()):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_nestedtext_to_json</span><span class="function-signature">(*input_files: <code>LocalPath</code>, bool_paths=(), null_paths=(), num_paths=())</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L352">
       
       (source)
@@ -692,8 +692,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read NestedText from stdin or <tt class="rst-docutils literal">input_files</tt>, and send up-typed JSON to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with NestedText content.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">null<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">None</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>.</td></tr></table></div>
+    <div><p>Read NestedText from stdin or <tt class="rst-docutils literal">input_files</tt>, and send up-typed JSON to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with NestedText content.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">null<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">None</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -706,7 +705,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_nestedtext_to_toml</span>(*input_files, bool_paths=(), num_paths=(), date_paths=()):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_nestedtext_to_toml</span><span class="function-signature">(*input_files: <code>LocalPath</code>, bool_paths=(), num_paths=(), date_paths=())</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L326">
       
       (source)
@@ -719,8 +719,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read NestedText from stdin or <tt class="rst-docutils literal">input_files</tt>, and send up-typed TOML to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with NestedText content.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">date<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to
+    <div><p>Read NestedText from stdin or <tt class="rst-docutils literal">input_files</tt>, and send up-typed TOML to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with NestedText content.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">date<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to
 <tt class="rst-docutils literal">date</tt>/<tt class="rst-docutils literal">datetime</tt>/<tt class="rst-docutils literal">time</tt>.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
@@ -734,7 +733,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_nestedtext_to_yaml</span>(*input_files, bool_paths=(), null_paths=(), num_paths=(), date_paths=()):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_nestedtext_to_yaml</span><span class="function-signature">(*input_files: <code>LocalPath</code>, bool_paths=(), null_paths=(), num_paths=(), date_paths=())</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L300">
       
       (source)
@@ -747,8 +747,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read NestedText from stdin or <tt class="rst-docutils literal">input_files</tt>, and send up-typed YAML to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with NestedText content.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">null<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">None</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">date<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">date</tt>/<tt class="rst-docutils literal">datetime</tt>.</td></tr></table></div>
+    <div><p>Read NestedText from stdin or <tt class="rst-docutils literal">input_files</tt>, and send up-typed YAML to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with NestedText content.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">null<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">None</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">date<wbr></wbr>_paths</span></td><td class="fieldArgDesc">YAMLPath queries whose matches will be casted to <tt class="rst-docutils literal">date</tt>/<tt class="rst-docutils literal">datetime</tt>.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -761,7 +760,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_toml_to_nestedtext</span>(*input_files):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_toml_to_nestedtext</span><span class="function-signature">(*input_files: <code>LocalPath</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L279">
       
       (source)
@@ -774,8 +774,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read TOML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send NestedText to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with TOML content.</td></tr></table></div>
+    <div><p>Read TOML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send NestedText to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with TOML content.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -788,7 +787,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_toml_to_schema</span>(*input_files):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_toml_to_schema</span><span class="function-signature">(*input_files: <code>LocalPath</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L241">
       
       (source)
@@ -801,8 +801,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read TOML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with TOML content.</td></tr></table></div>
+    <div><p>Read TOML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with TOML content.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -815,7 +814,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_yaml_to_nestedtext</span>(*input_files):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_yaml_to_nestedtext</span><span class="function-signature">(*input_files: <code>LocalPath</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L259">
       
       (source)
@@ -828,8 +828,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read YAML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send NestedText to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with YAML content.</td></tr></table></div>
+    <div><p>Read YAML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send NestedText to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with YAML content.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -842,7 +841,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">dump_yaml_to_schema</span>(*input_files):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dump_yaml_to_schema</span><span class="function-signature">(*input_files: <code>LocalPath</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L224">
       
       (source)
@@ -855,8 +855,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Read YAML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with YAML content.</td></tr></table></div>
+    <div><p>Read YAML from stdin or <tt class="rst-docutils literal">input_files</tt>, and send a NestedText schema to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*input<wbr></wbr>_files:</span><code>LocalPath</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">LocalPath</tt>s with YAML content.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -869,7 +868,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">jdump</span>(data):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">jdump</span><span class="function-signature">(data: <code>dict|list</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L80">
       
       (source)
@@ -882,8 +882,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Pretty-print the data as JSON, with color if interactive, to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> to dump as JSON.</td></tr></table></div>
+    <div><p>Pretty-print the data as JSON, with color if interactive, to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> to dump as JSON.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -896,7 +895,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">jloads</span>(content):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">jloads</span><span class="function-signature">(content: <code>str</code>) -&gt; <code>dict|list</code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L143">
       
       (source)
@@ -925,7 +925,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">ntdump</span>(data):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">ntdump</span><span class="function-signature">(data: <code>dict|list</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L67">
       
       (source)
@@ -938,8 +939,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Pretty-print the data as NestedText, with color if interactive, to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> to dump as NestedText.</td></tr></table></div>
+    <div><p>Pretty-print the data as NestedText, with color if interactive, to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> to dump as NestedText.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -952,7 +952,8 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">ntload</span>(file):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">ntload</span><span class="function-signature">(file: <code>Any</code>) -&gt; <code><a href="nt2.casters.html#StringyData" class="internal-link" title="nt2.casters.StringyData">StringyData</a></code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L51">
       
       (source)
@@ -981,7 +982,8 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">tdump</span>(data):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">tdump</span><span class="function-signature">(data: <code>dict</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L129">
       
       (source)
@@ -994,8 +996,7 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Pretty-print the data as TOML, with color if interactive, to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> to dump as TOML.</td></tr></table></div>
+    <div><p>Pretty-print the data as TOML, with color if interactive, to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> to dump as TOML.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -1008,7 +1009,8 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">ydump</span>(data):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">ydump</span><span class="function-signature">(data: <code>dict|list</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L93">
       
       (source)
@@ -1021,8 +1023,7 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Pretty-print the data as YAML, with color if interactive, to stdout.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> to dump as YAML.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>Exception</code></td><td>Unexpected problem dumping or highlighting data.</td></tr></table></div>
+    <div><p>Pretty-print the data as YAML, with color if interactive, to stdout.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> to dump as YAML.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>Exception</code></td><td>Unexpected problem dumping or highlighting data.</td></tr></table></div>
   </div>
 </div><div class="baseconstant">
   
@@ -1089,7 +1090,8 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">_dump_typed_data_to_schema</span>(typed_data):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_dump_typed_data_to_schema</span><span class="function-signature">(typed_data: <code>dict|list</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L185">
       
       (source)
@@ -1102,7 +1104,7 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </div>
   <div class="docstring functionBody">
     
-    <div><p class="undocumented">Undocumented</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">typed<wbr></wbr>_data:</span><code>dict|list</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basefunction private">
   
@@ -1115,7 +1117,8 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">_require_toml_support</span>():
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_require_toml_support</span><span class="function-signature">()</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L118">
       
       (source)
@@ -1128,8 +1131,7 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </div>
   <div class="docstring functionBody">
     
-    <div><p>If TOML support is not installed, raise an exception.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ImportError</code></td><td>The libraries for TOML support are absent.</td></tr></table></div>
+    <div><p>If TOML support is not installed, raise an exception.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ImportError</code></td><td>The libraries for TOML support are absent.</td></tr></table></div>
   </div>
 </div><div class="basefunction private">
   
@@ -1142,7 +1144,8 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">_syntax_print</span>(content, syntax, console=<a href="#RICH" class="internal-link" title="nt2.dumpers.RICH">RICH</a>):
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_syntax_print</span><span class="function-signature">(content: <code>str</code>, syntax: <code>str</code>, console: <code>RichConsole</code> = <a href="#RICH" class="internal-link" title="nt2.dumpers.RICH">RICH</a>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/dumpers.py#L37">
       
       (source)
@@ -1155,8 +1158,7 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Print a syntax-highlighted rendering of the content to terminal.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">content:</span><code>str</code></td><td class="fieldArgDesc">Any code to be syntax-highlighted.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">syntax:</span><code>str</code></td><td class="fieldArgDesc">A syntax name recognized by pygments (via rich).</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">console:</span><code>RichConsole</code></td><td class="fieldArgDesc">An initialized Rich Console object used to print with.</td></tr></table></div>
+    <div><p>Print a syntax-highlighted rendering of the content to terminal.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">content:</span><code>str</code></td><td class="fieldArgDesc">Any code to be syntax-highlighted.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">syntax:</span><code>str</code></td><td class="fieldArgDesc">A syntax name recognized by pygments (via rich).</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">console:</span><code>RichConsole</code></td><td class="fieldArgDesc">An initialized Rich Console object used to print with.</td></tr></table></div>
   </div>
 </div>
         </div>
@@ -1171,7 +1173,7 @@ and assure the type checker the result is <tt class="rst-docutils literal">Strin
     <div class="container">
       <a href="index.html">API Documentation</a> for <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a>,
     generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-      22.9.1 at 2023-04-03 21:24:37.
+      23.9.0 at 2023-09-29 03:34:50.
     </div>
     
     <script src="ajax.js" type="text/javascript"></script>
