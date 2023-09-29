@@ -38,9 +38,9 @@ def _str_to_bool(informal_bool: str) -> bool:
     Raises:
         ValueError: This doesn't look like enough like a ``bool`` to translate.
     """
-    if informal_bool.lower() in ('true', 'yes', 'y', 'on', '1'):
+    if informal_bool.lower() in ('true', 't', 'yes', 'y', 'on', '1'):
         return True
-    if informal_bool.lower() in ('false', 'no', 'n', 'off', '0'):
+    if informal_bool.lower() in ('false', 'f', 'no', 'n', 'off', '0'):
         return False
     raise ValueError(f"{informal_bool} doesn't look like a boolean")  # pragma: no cover
 
