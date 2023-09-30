@@ -22,7 +22,7 @@ flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
 idna==3.4                 # via requests
 inform==1.28              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, nestedtext
-ipython==8.15.0           # via -r dev-requirements.in
+ipython==8.16.0           # via -r dev-requirements.in
 isort==5.12.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 jedi==0.19.0              # via ipython
 jinja2==3.1.2             # via -c test/test-requirements.txt, click-completion
@@ -67,7 +67,7 @@ typing-extensions==4.8.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt
 urllib3==2.0.5            # via requests
 virtualenv==20.24.5       # via nox
 ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
-wcwidth==0.2.7            # via prompt-toolkit
+wcwidth==0.2.8            # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==68.2.2        # via nodeenv
