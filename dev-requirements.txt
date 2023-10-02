@@ -22,7 +22,7 @@ flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
 idna==3.4                 # via requests
 inform==1.28              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, nestedtext
-ipython==8.16.0           # via -r dev-requirements.in
+ipython==8.16.1           # via -r dev-requirements.in
 isort==5.12.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 jedi==0.19.0              # via ipython
 jinja2==3.1.2             # via -c test/test-requirements.txt, click-completion
@@ -34,7 +34,7 @@ mypy-extensions==1.0.0    # via -c fmt-requirements.txt, black
 nestedtext==3.6           # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 nodeenv==1.8.0            # via pyright
 nox==2023.4.22            # via -r dev-requirements.in
-packaging==23.1           # via -c fmt-requirements.txt, black, nox
+packaging==23.2           # via -c fmt-requirements.txt, black, nox
 parso==0.8.3              # via jedi
 pathspec==0.11.2          # via -c fmt-requirements.txt, black, ssort
 pexpect==4.8.0            # via ipython
