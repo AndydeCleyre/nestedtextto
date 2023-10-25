@@ -49,11 +49,11 @@ ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pydocstyle==6.3.0         # via -c fmt-requirements.txt, -r fmt-requirements.in
 pygments==2.16.1          # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, ipython, rich
-pyright==1.1.332          # via -r dev-requirements.in
+pyright==1.1.333          # via -r dev-requirements.in
 python-dateutil==2.8.2    # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
 requests==2.31.0          # via flit
 rich==13.6.0              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, ward
-ruff==0.1.1               # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.1.2               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
@@ -62,7 +62,7 @@ stack-data==0.6.3         # via ipython
 taskipy==1.12.0           # via -r dev-requirements.in
 tomli==2.0.1              # via -c fmt-requirements.txt, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, black, pydocstyle, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, flit
-traitlets==5.11.2         # via ipython, matplotlib-inline
+traitlets==5.12.0         # via ipython, matplotlib-inline
 types-python-dateutil==2.8.19.14  # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
 typing-extensions==4.8.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, black
 urllib3==2.0.7            # via requests
