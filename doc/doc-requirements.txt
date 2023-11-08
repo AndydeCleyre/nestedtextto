@@ -9,12 +9,12 @@ configargparse==1.7       # via pydoctor
 constantly==23.10.4       # via twisted
 docutils==0.20.1          # via pydoctor
 filelock==3.13.1          # via cachecontrol
-fpyutils==3.0.1           # via md-toc
+fpyutils==4.0.0           # via md-toc
 hyperlink==21.0.0         # via twisted
 idna==3.4                 # via hyperlink, requests
 incremental==22.10.0      # via twisted
 lunr==0.6.2               # via pydoctor
-md-toc==8.2.0             # via -r doc-requirements.in
+md-toc==8.2.1             # via -r doc-requirements.in
 msgpack==1.0.7            # via cachecontrol
 plumbum==1.8.2            # via -r doc-requirements.in
 pydoctor==23.9.1          # via -r doc-requirements.in
