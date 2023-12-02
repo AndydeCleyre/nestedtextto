@@ -64,7 +64,7 @@ traitlets==5.14.0         # via ipython, matplotlib-inline
 types-python-dateutil==2.8.19.14  # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
 typing-extensions==4.8.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, black
 urllib3==2.1.0            # via requests
-virtualenv==20.24.7       # via nox
+virtualenv==20.25.0       # via nox
 ward==0.67.2b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.12           # via prompt-toolkit
 
