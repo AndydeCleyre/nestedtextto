@@ -11,7 +11,7 @@ idna==3.6                 # via requests
 isort==5.13.0             # via -r fmt-requirements.in
 mypy-extensions==1.0.0    # via black
 packaging==23.2           # via black
-pathspec==0.12.0          # via black, ssort
+pathspec==0.12.1          # via black, ssort
 pep517==0.13.1            # via requirementslib
 pip-api==0.0.30           # via isort
 pipreqs==0.4.13           # via isort
