@@ -1,36 +1,22 @@
-annotated-types==0.6.0    # via pydantic
-black==23.11.0            # via -r fmt-requirements.in
-cerberus==1.3.5           # via plette
-certifi==2023.11.17       # via requests
-charset-normalizer==3.3.2  # via requests
+aiohttp==3.9.1            # via black
+aiosignal==1.3.1          # via aiohttp
+async-timeout==4.0.3      # via aiohttp
+attrs==23.1.0             # via -c nt2/requirements.txt, aiohttp
+black==23.12.0            # via -r fmt-requirements.in
 click==8.1.7              # via -c test/test-requirements.txt, black
 darglint==1.8.1           # via -r fmt-requirements.in
-distlib==0.3.7            # via requirementslib
-docopt==0.6.2             # via pipreqs
-idna==3.6                 # via requests
-isort==5.13.0             # via -r fmt-requirements.in
+frozenlist==1.4.0         # via aiohttp, aiosignal
+idna==3.6                 # via yarl
+isort==5.13.1             # via -r fmt-requirements.in
+multidict==6.0.4          # via aiohttp, yarl
 mypy-extensions==1.0.0    # via black
 packaging==23.2           # via black
 pathspec==0.12.1          # via black, ssort
-pep517==0.13.1            # via requirementslib
-pip-api==0.0.30           # via isort
-pipreqs==0.4.13           # via isort
-platformdirs==4.1.0       # via black, requirementslib
-plette==0.4.4             # via requirementslib
-pydantic==2.5.2           # via requirementslib
-pydantic-core==2.14.5     # via pydantic
+platformdirs==4.1.0       # via black
 pydocstyle==6.3.0         # via -r fmt-requirements.in
-requests==2.31.0          # via requirementslib, yarg
-requirementslib==3.0.0    # via isort
 ruff==0.1.7               # via -r fmt-requirements.in
 snowballstemmer==2.2.0    # via pydocstyle
 ssort==0.11.6             # via -r fmt-requirements.in
-tomli==2.0.1              # via -c nt2/toml-requirements.txt, -c test/test-requirements.txt, black, pep517, pydocstyle
-tomlkit==0.12.3           # via plette, requirementslib
-typing-extensions==4.9.0  # via -c nt2/requirements.txt, black, pydantic, pydantic-core
-urllib3==2.1.0            # via requests
-yarg==0.1.9               # via pipreqs
-
-# The following packages are considered to be unsafe in a requirements file:
-pip==23.3.1               # via pip-api, requirementslib
-setuptools==69.0.2        # via requirementslib
+tomli==2.0.1              # via -c nt2/toml-requirements.txt, -c test/test-requirements.txt, black, pydocstyle
+typing-extensions==4.9.0  # via -c nt2/requirements.txt, black
+yarl==1.9.4               # via aiohttp
