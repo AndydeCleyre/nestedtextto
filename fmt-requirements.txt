@@ -7,14 +7,14 @@ click==8.1.7              # via -c test/test-requirements.txt, black
 darglint==1.8.1           # via -r fmt-requirements.in
 frozenlist==1.4.0         # via aiohttp, aiosignal
 idna==3.6                 # via yarl
-isort==5.13.1             # via -r fmt-requirements.in
+isort==5.13.2             # via -r fmt-requirements.in
 multidict==6.0.4          # via aiohttp, yarl
 mypy-extensions==1.0.0    # via black
 packaging==23.2           # via black
 pathspec==0.12.1          # via black, ssort
 platformdirs==4.1.0       # via black
 pydocstyle==6.3.0         # via -r fmt-requirements.in
-ruff==0.1.7               # via -r fmt-requirements.in
+ruff==0.1.8               # via -r fmt-requirements.in
 snowballstemmer==2.2.0    # via pydocstyle
 ssort==0.11.6             # via -r fmt-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -c test/test-requirements.txt, black, pydocstyle
