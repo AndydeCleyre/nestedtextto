@@ -23,7 +23,7 @@ executing==2.0.1          # via stack-data
 filelock==3.13.1          # via virtualenv
 flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
-frozenlist==1.4.0         # via -c fmt-requirements.txt, aiohttp, aiosignal
+frozenlist==1.4.1         # via -c fmt-requirements.txt, aiohttp, aiosignal
 idna==3.6                 # via -c fmt-requirements.txt, requests, yarl
 inform==1.28              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, nestedtext
 ipython==8.18.1           # via -r dev-requirements.in
