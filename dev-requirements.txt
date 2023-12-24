@@ -69,4 +69,4 @@ ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requ
 wcwidth==0.2.12           # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==69.0.2        # via nodeenv
+setuptools==69.0.3        # via nodeenv
