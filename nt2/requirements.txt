@@ -1,5 +1,5 @@
 arrow==1.3.0              # via inform
-attrs==23.1.0             # via cattrs
+attrs==23.2.0             # via cattrs
 cattrs==23.2.3            # via -r requirements.in
 exceptiongroup==1.2.0     # via cattrs
 inform==1.28              # via nestedtext
