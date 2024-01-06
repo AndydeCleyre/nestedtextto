@@ -61,12 +61,12 @@ taskipy==1.12.2           # via -r dev-requirements.in
 tomli==2.0.1              # via -c fmt-requirements.txt, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, black, pydocstyle, taskipy, ward
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.14.1         # via ipython, matplotlib-inline
-types-python-dateutil==2.8.19.14  # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
+types-python-dateutil==2.8.19.20240106  # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
 typing-extensions==4.9.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, black
 urllib3==2.1.0            # via requests
 virtualenv==20.25.0       # via nox
 ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
-wcwidth==0.2.12           # via prompt-toolkit
+wcwidth==0.2.13           # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==69.0.3        # via nodeenv
