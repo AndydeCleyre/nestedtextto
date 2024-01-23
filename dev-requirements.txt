@@ -55,7 +55,7 @@ ruff==0.1.14              # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via -c test/test-requirements.txt, click-completion
 six==1.16.0               # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, asttokens, click-completion, inform, python-dateutil
 snowballstemmer==2.2.0    # via -c fmt-requirements.txt, pydocstyle
-ssort==0.12.2             # via -c fmt-requirements.txt, -r fmt-requirements.in
+ssort==0.12.3             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.3         # via ipython
 taskipy==1.12.2           # via -r dev-requirements.in
 tomli==2.0.1              # via -c fmt-requirements.txt, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, black, pydocstyle, taskipy, ward
