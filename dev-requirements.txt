@@ -1,4 +1,4 @@
-argcomplete==3.2.1        # via nox
+argcomplete==3.2.2        # via nox
 arrow==1.3.0              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, inform
 asttokens==2.4.1          # via stack-data
 black==23.12.1            # via -c fmt-requirements.txt, -r fmt-requirements.in
