@@ -8,7 +8,7 @@ click==8.1.7              # via -c fmt-requirements.txt, -c test/test-requiremen
 click-completion==0.5.2   # via -c test/test-requirements.txt, ward
 click-default-group==1.2.4  # via -c test/test-requirements.txt, ward
 colorama==0.4.6           # via taskipy
-colorlog==6.8.0           # via nox
+colorlog==6.8.2           # via nox
 cucumber-tag-expressions==4.1.0  # via -c test/test-requirements.txt, ward
 darglint==1.8.1           # via -c fmt-requirements.txt, -r fmt-requirements.in
 decorator==5.1.1          # via ipython
