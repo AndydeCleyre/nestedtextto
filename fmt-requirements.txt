@@ -1,4 +1,4 @@
-black==24.1.0             # via -r fmt-requirements.in
+black==24.1.1             # via -r fmt-requirements.in
 click==8.1.7              # via -c test/test-requirements.txt, black
 darglint==1.8.1           # via -r fmt-requirements.in
 isort==5.13.2             # via -r fmt-requirements.in
