@@ -5,7 +5,7 @@ isort==5.13.2             # via -r fmt-requirements.in
 mypy-extensions==1.0.0    # via black
 packaging==23.2           # via black
 pathspec==0.12.1          # via black, ssort
-platformdirs==4.1.0       # via black
+platformdirs==4.2.0       # via black
 pydocstyle==6.3.0         # via -r fmt-requirements.in
 ruff==0.1.15              # via -r fmt-requirements.in
 snowballstemmer==2.2.0    # via pydocstyle
