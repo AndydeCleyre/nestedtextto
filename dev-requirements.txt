@@ -37,7 +37,7 @@ packaging==23.2           # via -c fmt-requirements.txt, black, nox
 parso==0.8.3              # via jedi
 pathspec==0.12.1          # via -c fmt-requirements.txt, black, ssort
 pexpect==4.9.0            # via ipython
-platformdirs==4.1.0       # via -c fmt-requirements.txt, black, virtualenv
+platformdirs==4.2.0       # via -c fmt-requirements.txt, black, virtualenv
 pluggy==1.4.0             # via -c test/test-requirements.txt, ward
 plumbum==1.8.2            # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via -c test/test-requirements.txt, ward
@@ -63,7 +63,7 @@ tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -c test/../nt2/tom
 traitlets==5.14.1         # via ipython, matplotlib-inline
 types-python-dateutil==2.8.19.20240106  # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
 typing-extensions==4.9.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, black
-urllib3==2.1.0            # via requests
+urllib3==2.2.0            # via requests
 virtualenv==20.25.0       # via nox
 ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.13           # via prompt-toolkit
