@@ -26,7 +26,7 @@ isort==5.13.2             # via -c fmt-requirements.txt, -r fmt-requirements.in
 jedi==0.19.1              # via ipython
 jinja2==3.1.3             # via -c test/test-requirements.txt, click-completion
 markdown-it-py==3.0.0     # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, rich
-markupsafe==2.1.4         # via -c test/test-requirements.txt, jinja2
+markupsafe==2.1.5         # via -c test/test-requirements.txt, jinja2
 matplotlib-inline==0.1.6  # via ipython
 mdurl==0.1.2              # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, markdown-it-py
 mypy-extensions==1.0.0    # via -c fmt-requirements.txt, black
