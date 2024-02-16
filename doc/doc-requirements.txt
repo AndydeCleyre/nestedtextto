@@ -14,7 +14,7 @@ hyperlink==21.0.0         # via twisted
 idna==3.6                 # via hyperlink, requests
 incremental==22.10.0      # via twisted
 lunr==0.6.2               # via pydoctor
-md-toc==8.2.2             # via -r doc-requirements.in
+md-toc==8.2.3             # via -r doc-requirements.in
 msgpack==1.0.7            # via cachecontrol
 plumbum==1.8.2            # via -r doc-requirements.in
 pydoctor==23.9.1          # via -r doc-requirements.in
@@ -25,7 +25,7 @@ twisted==23.10.0          # via pydoctor
 typing-extensions==4.9.0  # via twisted
 urllib3==1.26.18          # via pydoctor, requests
 wheezy-template==3.2.2    # via -r doc-requirements.in
-zope-interface==6.1       # via twisted
+zope-interface==6.2       # via twisted
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==69.1.0        # via zope-interface
