@@ -62,7 +62,7 @@ tomli==2.0.1              # via -c fmt-requirements.txt, -c nt2/toml-requirement
 tomli-w==1.0.0            # via -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in, flit
 traitlets==5.14.1         # via ipython, matplotlib-inline
 types-python-dateutil==2.8.19.20240106  # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, arrow
-typing-extensions==4.9.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, black
+typing-extensions==4.10.0  # via -c fmt-requirements.txt, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, black
 urllib3==2.2.1            # via requests
 virtualenv==20.25.1       # via nox
 ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
