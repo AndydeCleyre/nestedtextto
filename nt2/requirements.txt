@@ -13,6 +13,6 @@ rich==13.7.1              # via -r requirements.in
 ruamel-yaml==0.17.21      # via -r requirements.in, yamlpath
 ruamel-yaml-clib==0.2.8   # via ruamel-yaml
 six==1.16.0               # via inform, python-dateutil
-types-python-dateutil==2.8.19.20240106  # via arrow
+types-python-dateutil==2.8.19.20240311  # via arrow
 typing-extensions==4.10.0  # via cattrs
 yamlpath==3.6.9           # via -r requirements.in
