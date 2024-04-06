@@ -11,4 +11,4 @@ ruff==0.3.5               # via -r fmt-requirements.in
 snowballstemmer==2.2.0    # via pydocstyle
 ssort==0.12.4             # via -r fmt-requirements.in
 tomli==2.0.1              # via -c nt2/toml-requirements.txt, -c test/test-requirements.txt, black, pydocstyle
-typing-extensions==4.10.0  # via -c nt2/requirements.txt, black
+typing-extensions==4.11.0  # via -c nt2/requirements.txt, black
