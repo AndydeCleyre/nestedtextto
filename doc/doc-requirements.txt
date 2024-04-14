@@ -28,4 +28,4 @@ wheezy-template==3.2.2    # via -r doc-requirements.in
 zope-interface==6.3       # via twisted
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==69.2.0        # via zope-interface
+setuptools==69.5.1        # via zope-interface
