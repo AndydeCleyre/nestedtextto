@@ -14,7 +14,7 @@ DEFAULT_PYTHON = '3.10'
 def test(session):
     """Run all tests."""
     session.install('-U', '.[test,toml]')
-    session.install('-U', '--pre', 'coverage')  # >= 6.6.0b1
+    session.install('-U', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
@@ -22,14 +22,14 @@ def test(session):
 def test_without_toml(session):
     """Run tests without optional TOML support installed."""
     session.install('-U', '.[test-without-toml]')
-    session.install('-U', '--pre', 'coverage')  # >= 6.6.0b1
+    session.install('-U', 'coverage')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=[DEFAULT_PYTHON])
 def combine_coverage(session):
     """Prepare a combined coverage report for uploading."""
-    session.install('-U', '--pre', 'coverage')  # >= 6.6.0b1
+    session.install('-U', 'coverage')
     session.run('coverage', 'combine')
     session.run('coverage', 'json')
 
