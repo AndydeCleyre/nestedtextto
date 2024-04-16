@@ -78,14 +78,6 @@ def render_api_docs(session):
 
 
 @nox.session(python=[DEFAULT_PYTHON])
-def render_license(session):
-    """Update year in license."""
-    session.install('-r', 'doc/doc-requirements.txt')
-    content = session.run('wheezy.template', 'templates/LICENSE.wz', silent=True)
-    Path('LICENSE').write_text(content)
-
-
-@nox.session(python=[DEFAULT_PYTHON])
 def lock(session):
     """Generate updated requirements.txt lock files and pyproject.toml."""
     session.install('-U', 'pip-tools')

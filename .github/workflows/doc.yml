@@ -15,7 +15,7 @@ jobs:
         uses: excitedleigh/setup-nox@v2.1.0
 
       - name: render documents
-        run: nox -s render_readme render_api_docs render_license
+        run: nox -s render_readme render_api_docs
 
       - name: push any changes in current branch
         run: |
