@@ -3,4 +3,4 @@ nestedtext
 plumbum
 rich
 ruamel.yaml      # but if yamlpath ever supports a different backend, reconsider
-yamlpath
+yamlpath>=3.6.9
