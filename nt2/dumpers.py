@@ -136,9 +136,9 @@ def tdump(data: dict):
     """
     _require_toml_support()
     if sys.stdout.isatty():
-        _syntax_print(_tdumps(data, multiline_strings=True), 'toml')
+        _syntax_print(_tdumps(data, multiline_strings=True), 'toml')  # type: ignore
     else:
-        print(_tdumps(data, multiline_strings=True), end='')
+        print(_tdumps(data, multiline_strings=True), end='')  # type: ignore
 
 
 def jloads(content: str) -> dict | list:
@@ -248,12 +248,12 @@ def dump_toml_to_schema(*input_files: LocalPath):
     """
     _require_toml_support()
     if not input_files:
-        typed_data = tloads(sys.stdin.read())
+        typed_data = tloads(sys.stdin.read())  # type: ignore
         _dump_typed_data_to_schema(typed_data)
     else:
         for f in input_files:
             with open(f, 'rb') as ifile:
-                typed_data = tload(ifile)
+                typed_data = tload(ifile)  # type: ignore
             _dump_typed_data_to_schema(typed_data)
 
 
@@ -287,13 +287,13 @@ def dump_toml_to_nestedtext(*input_files: LocalPath):
     _require_toml_support()
     converter = mk_stringy_converter()
     if not input_files:
-        data = tloads(sys.stdin.read())
+        data = tloads(sys.stdin.read())  # type: ignore
         data = converter.unstructure(data)
         ntdump(data)
     else:
         for f in input_files:
             with open(f, 'rb') as ifile:
-                data = tload(ifile)
+                data = tload(ifile)  # type: ignore
             data = converter.unstructure(data)
             ntdump(data)
 
