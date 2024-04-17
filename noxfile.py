@@ -69,6 +69,7 @@ def typecheck(session):
     """Check types."""
     session.install('-U', '.[dev]')
     session.run('sh', '-c', 'pyright --outputjson 2>/dev/null | json2nt', external=True)
+    session.run('pyright', '--warnings')
 
 
 @nox.session(python=[DEFAULT_PYTHON])
