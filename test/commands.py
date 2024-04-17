@@ -9,6 +9,7 @@ capturing stdout would be tricky and repetitive.
 
 Each version herein returns the stdout as a `str` for convenience in tests.
 """
+
 import io
 import sys
 from typing import cast

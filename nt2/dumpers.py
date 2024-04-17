@@ -1,4 +1,5 @@
 """Main functions to be called by the UI Application classes, after CLI option parsing."""
+
 from __future__ import annotations
 
 import io

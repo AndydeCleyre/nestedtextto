@@ -87,9 +87,9 @@ def mk_unyamlable_converter(time_marker: str) -> Converter:
 
     c.register_unstructure_hook(
         str,
-        lambda s: s
-        if not s.startswith(time_marker)
-        else time.fromisoformat(s.split(time_marker, 1)[1]),
+        lambda s: (
+            s if not s.startswith(time_marker) else time.fromisoformat(s.split(time_marker, 1)[1])
+        ),
     )
 
     return c

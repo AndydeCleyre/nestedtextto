@@ -3,6 +3,7 @@ CLI definitions, parsing, and entry points.
 
 After argument processing, these call into the `dumpers` functions to get the job done.
 """
+
 import sys
 from json import JSONDecodeError
 from typing import cast
