@@ -3,11 +3,8 @@
 -c nt2/requirements.txt
 -c nt2/toml-requirements.txt
 
-black             # format code
 isort             # format imports
+ruff              # format & lint code
 ssort             # reorder functions
 
 darglint          # lint docstrings
-pydocstyle[toml]  # lint docstrings
-
-ruff              # lint code

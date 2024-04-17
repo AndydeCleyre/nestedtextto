@@ -38,17 +38,12 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["black", "darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pydocstyle[toml]", "pyright", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
+dev = ["darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pyright", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
 test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
-fmt = ["black", "darglint", "isort", "pydocstyle[toml]", "ruff", "ssort"]
+fmt = ["darglint", "isort", "ruff", "ssort"]
 test-without-toml = ["nestedtext", "plumbum", "ward"]
 doc = ["md-toc", "plumbum", "pydoctor", "wheezy.template"]
-
-[tool.black]
-line-length = 99
-skip-magic-trailing-comma = true
-skip-string-normalization = true
 
 [tool.isort]
 line_length = 99
@@ -59,6 +54,20 @@ use_parentheses = true
 
 [tool.ruff]
 line-length = 99
+
+[tool.ruff.format]
+quote-style = "preserve"
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "I", "N", "D", "UP", "YTT", "SIM"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+split-on-trailing-comma = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
 
 [tool.taskipy.tasks]
 fmt = "nox -s fmt"
@@ -82,6 +91,3 @@ html-viewsource-base = "https://github.com/AndydeCleyre/nestedtextto/tree/develo
 
 [tool.pyright]
 useLibraryCodeForTypes = true
-
-[tool.pydocstyle]
-inherit = false

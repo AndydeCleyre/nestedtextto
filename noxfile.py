@@ -43,11 +43,15 @@ def combine_coverage(session):
 def fmt(session):
     """Format and lint code and docs."""
     session.install('-r', 'fmt-requirements.txt')
-    for tool in ('ssort', 'black', 'isort', 'ruff'):
-        session.run(tool, '.')
-    for tool in ('darglint', 'pydocstyle'):
-        session.run(tool, 'nt2', 'test')
-    session.run('pydocstyle', 'noxfile.py')
+    session.run('darglint', 'nt2', 'test')
+    for tool in (
+        ('ssort',),
+        ('ruff', 'format'),
+        ('ruff', 'check', '--fix'),
+        ('ruff', 'check'),
+        ('isort',),
+    ):
+        session.run(*tool, 'noxfile.py', 'nt2', 'test')
 
 
 @nox.session(python=[DEFAULT_PYTHON])
