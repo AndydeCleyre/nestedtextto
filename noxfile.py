@@ -89,7 +89,7 @@ def render_api_docs(session):
 @nox.session(python=[DEFAULT_PYTHON])
 def lock(session):
     """Generate updated requirements.txt lock files and pyproject.toml."""
-    session.install('-U', 'pip-tools')
+    session.install('-U', 'uv')
     for reqsfile in (
         'nt2/requirements.in',
         'nt2/toml-requirements.in',
@@ -102,13 +102,14 @@ def lock(session):
         rf = Path.cwd() / reqsfile
         with session.chdir(rf.parent):
             session.run(
-                'pip-compile',
+                'uv',
+                'pip',
+                'compile',
                 '--upgrade',
                 '--no-header',
                 '--annotation-style=line',
-                '--strip-extras',
-                '--allow-unsafe',
-                '--resolver=backtracking',
                 rf.name,
+                '--output-file',
+                rf.with_suffix('.txt').name
             )
     session.run('zsh', '-c', '. ./.zpy/zpy.plugin.zsh; pypc -y', external=True)
