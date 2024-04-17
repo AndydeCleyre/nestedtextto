@@ -3,19 +3,19 @@
 
 ![Python versions](https://img.shields.io/pypi/pyversions/nt2?logo=python)
 [![PyPI version](https://img.shields.io/pypi/v/nt2?logo=pypi&label=PyPI&color=yellowgreen)](https://pypi.org/project/nt2/)
-[![Publish to PyPI](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Publish%20to%20PyPI?label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
+[![Publish to PyPI](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/pypi.yml?label=Publish%20to%20PyPI&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/pypi.yml)
 
 ![Runs on Linux](https://img.shields.io/badge/Runs%20on-Linux-yellowgreen?logo=linux)
 ![Runs on macOS](https://img.shields.io/badge/Runs%20on-macOS-red?logo=macos)
 ![Runs on Windows](https://img.shields.io/badge/Runs%20on-Windows-blue?logo=windows)
 
-[![Tests badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Run%20tests?label=Tests&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
+[![Tests badge](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/test.yml?branch=develop&label=Tests&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/test.yml)
 [![codecov badge](https://codecov.io/github/AndydeCleyre/nestedtextto/branch/develop/graph/badge.svg?token=M30UZQVM4Q)](https://codecov.io/github/AndydeCleyre/nestedtextto)
 
 
-[![Format and lint](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Format%20and%20lint?label=Format%20%26%20Lint&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
-[![Generate docs from templates](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Generate%20docs%20from%20templates%20and%20docstrings?label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
-[![Requirements badge](https://img.shields.io/github/workflow/status/andydecleyre/nestedtextto/Bump%20PyPI%20requirements?label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
+[![Format and lint](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/fmt.yml?branch=develop&label=Format%20%26%20Lint&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/fmt.yml)
+[![Generate docs from templates](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/doc.yml?branch=develop&label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
+[![Requirements badge](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/reqs.yml?branch=develop&label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 
 ---
 
@@ -39,6 +39,7 @@ for convenient conversion between NestedText and other formats:
 - [How does this translate to formats with more value types?](#how-does-this-translate-to-formats-with-more-value-types)
 - [Installation](#installation)
 - [Usage Docs](#usage-docs)
+  - [Limitations](#limitations)
 - [More Examples](#more-examples)
   - [View JSON Lines logs in a more readable format](#view-json-lines-logs-in-a-more-readable-format)
   - [View TOML as NestedText](#view-toml-as-nestedtext)
@@ -166,7 +167,7 @@ Examples:
     nt2json example.nt
     nt2json <example.nt
     cat example.nt | nt2json
-    nt2json -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+    nt2json --int People.age --boolean 'People."is a wizard"' example.nt
 
 Usage:
     nt2json [SWITCHES] input_files...
@@ -217,7 +218,7 @@ Examples:
     nt2yaml example.nt
     nt2yaml <example.nt
     cat example.nt | nt2yaml
-    nt2yaml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+    nt2yaml --int People.age --boolean 'People."is a wizard"' example.nt
 
 Usage:
     nt2yaml [SWITCHES] input_files...
@@ -271,7 +272,7 @@ Examples:
     nt2toml example.nt
     nt2toml <example.nt
     cat example.nt | nt2toml
-    nt2toml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+    nt2toml --int People.age --boolean 'People."is a wizard"' example.nt
 
 Usage:
     nt2toml [SWITCHES] input_files...
@@ -391,6 +392,18 @@ Switches:
 
 </details>
 
+
+#### Limitations
+
+##### Non-string Keys
+
+YAML officially supports non-string key types,
+like maps, lists, and numbers.
+Support for non-string keys varies from one YAML parser to the next,
+and is currently not handled by NestedTextTo.
+
+If anyone is interested in using NestedTextTo with non-string key types,
+please open an issue and I'll see what I can do!
 
 ### More Examples
 

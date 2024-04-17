@@ -3,6 +3,7 @@ CLI definitions, parsing, and entry points.
 
 After argument processing, these call into the `dumpers` functions to get the job done.
 """
+
 import sys
 from json import JSONDecodeError
 from typing import cast
@@ -52,7 +53,7 @@ def inspect_exception(exc: Exception):  # pragma: no cover
         return
 
     if isinstance(exc, NestedTextError):
-        print(*exc.get_codicil(), sep='\n', file=sys.stderr)
+        print(*filter(None, exc.get_codicil()), sep='\n', file=sys.stderr)
 
 
 class _ColorApp(Application):
@@ -67,12 +68,10 @@ _ColorApp.unbind_switches('help-all')
 
 
 class _TypedFormatToSchema(_ColorApp):
-
     to_schema = Flag(('to-schema', 's'), help="Rather than convert the inputs, generate a schema")
 
 
 class _NestedTextToTypedFormat(_ColorApp):
-
     schema_files = SwitchAttr(
         ('schema', 's'),
         argtype=ExistingFile,  # type: ignore
@@ -99,7 +98,6 @@ class _NestedTextToTypedFormat(_ColorApp):
 
 
 class _NestedTextToTypedFormatSupportNull(_ColorApp):
-
     null_paths = SwitchAttr(
         ('null', 'n'),
         list=True,
@@ -109,7 +107,6 @@ class _NestedTextToTypedFormatSupportNull(_ColorApp):
 
 
 class _NestedTextToTypedFormatSupportDate(_ColorApp):
-
     date_paths = SwitchAttr(
         ('date', 'd'),
         list=True,
@@ -131,10 +128,10 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2json example.nt
         nt2json <example.nt
         cat example.nt | nt2json
-        nt2json -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+        nt2json --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -170,10 +167,10 @@ class NestedTextToYAML(
         nt2yaml example.nt
         nt2yaml <example.nt
         cat example.nt | nt2yaml
-        nt2yaml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+        nt2yaml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -207,10 +204,10 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2toml example.nt
         nt2toml <example.nt
         cat example.nt | nt2toml
-        nt2toml -b '/People/"is a wizard"' -b '/People/"is awake"' example.nt
+        nt2toml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -239,7 +236,7 @@ class JSONToNestedText(_TypedFormatToSchema):
         cat example.json | json2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
         try:
             if not self.to_schema:
                 dump_json_to_nestedtext(*input_files)
@@ -260,7 +257,7 @@ class YAMLToNestedText(_TypedFormatToSchema):
         cat example.yml | yaml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
         try:
             if not self.to_schema:
                 dump_yaml_to_nestedtext(*input_files)
@@ -281,7 +278,7 @@ class TOMLToNestedText(_TypedFormatToSchema):
         cat example.yml | toml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
         try:
             if not self.to_schema:
                 dump_toml_to_nestedtext(*input_files)

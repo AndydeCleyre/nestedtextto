@@ -1,4 +1,5 @@
 """Convenient functions for making use of yamlpath."""
+
 from __future__ import annotations
 
 import sys
