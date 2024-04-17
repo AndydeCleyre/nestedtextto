@@ -56,7 +56,7 @@ def _run_app(app_class: Application, *cli_args, **cli_kwargs) -> str:
     try:
         sys.stdout = fake_stdout
         app, main_result = app_class.invoke(*cli_args, **cli_kwargs)
-    except Exception as e:
+    except Exception as e:  # pragma: no cover
         raise e
     else:
         output = fake_stdout.getvalue()
