@@ -43,7 +43,7 @@ psutil==5.9.8             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pygments==2.17.2          # via ipython, rich
-pyright==1.1.358
+pyright==1.1.359
 python-dateutil==2.9.0.post0  # via arrow
 requests==2.31.0          # via flit
 rich==13.7.1              # via ward
@@ -59,6 +59,6 @@ tomli-w==1.0.0            # via flit
 traitlets==5.14.2         # via ipython, matplotlib-inline
 types-python-dateutil==2.9.0.20240316  # via arrow
 urllib3==2.2.1            # via requests
-virtualenv==20.25.2       # via nox
+virtualenv==20.25.3       # via nox
 ward==0.68.0b0
 wcwidth==0.2.13           # via prompt-toolkit
