@@ -1,3 +1,5 @@
+"""Test JSON <-> NestedText."""
+
 from typing import cast
 
 from commands import json2nt, nt2json

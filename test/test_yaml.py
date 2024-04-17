@@ -1,3 +1,5 @@
+"""Test YAML <-> NestedText."""
+
 from typing import cast
 
 from commands import nt2yaml, yaml2nt
