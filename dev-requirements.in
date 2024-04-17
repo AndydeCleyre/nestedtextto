@@ -12,5 +12,6 @@ ipython  # manually debug
 
 taskipy  # run tasks
 nox      # run tasks in clean venvs
+# TODO: if/when Python 3.7 support is dropped, use nox[uv]
 
 pyright  # check types

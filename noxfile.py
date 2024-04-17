@@ -4,6 +4,7 @@ from pathlib import Path
 
 import nox
 
+# TODO: if/when Python 3.7 support is dropped, prefer uv to venv backend
 nox.options.default_venv_backend = 'venv'
 nox.options.reuse_existing_virtualenvs = True
 ALL_PYTHONS = next(
@@ -18,16 +19,18 @@ DEFAULT_PYTHON = '3.12'
 @nox.session(python=ALL_PYTHONS)
 def test(session):
     """Run all tests."""
-    session.install('-U', '.[test,toml]')
-    session.install('-U', 'coverage')
+    session.install('-U', 'pip')
+    session.install('-U', '.[test,toml]', 'coverage')
+    session.run('pip', 'list')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
 @nox.session(python=ALL_PYTHONS)
 def test_without_toml(session):
     """Run tests without optional TOML support installed."""
-    session.install('-U', '.[test-without-toml]')
-    session.install('-U', 'coverage')
+    session.install('-U', 'pip')
+    session.install('-U', '.[test-without-toml]', 'coverage')
+    session.run('pip', 'list')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
