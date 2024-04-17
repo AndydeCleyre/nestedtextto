@@ -110,6 +110,6 @@ def lock(session):
                 '--annotation-style=line',
                 rf.name,
                 '--output-file',
-                rf.with_suffix('.txt').name
+                rf.with_suffix('.txt').name,
             )
     session.run('zsh', '-c', '. ./.zpy/zpy.plugin.zsh; pypc -y', external=True)
