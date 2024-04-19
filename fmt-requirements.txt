@@ -1,5 +1,5 @@
 darglint==1.8.1
 isort==5.13.2
 pathspec==0.12.1          # via ssort
-ruff==0.3.7
+ruff==0.4.0
 ssort==0.12.4
