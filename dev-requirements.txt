@@ -35,7 +35,7 @@ parso==0.8.4              # via jedi
 pathspec==0.12.1          # via ssort
 pexpect==4.9.0            # via ipython
 platformdirs==4.2.0       # via virtualenv
-pluggy==1.4.0             # via ward
+pluggy==1.5.0             # via ward
 plumbum==1.8.2
 pprintpp==0.4.0           # via ward
 prompt-toolkit==3.0.43    # via ipython
@@ -51,7 +51,7 @@ ruff==0.4.1
 setuptools==69.5.1        # via nodeenv
 shellingham==1.5.4        # via click-completion
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil
-ssort==0.12.4
+ssort==0.13.0
 stack-data==0.6.3         # via ipython
 taskipy==1.12.2
 tomli==2.0.1              # via taskipy, ward
