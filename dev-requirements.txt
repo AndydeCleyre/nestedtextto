@@ -47,7 +47,7 @@ pyright==1.1.360
 python-dateutil==2.9.0.post0  # via arrow
 requests==2.31.0          # via flit
 rich==13.7.1              # via ward
-ruff==0.4.1
+ruff==0.4.2
 setuptools==69.5.1        # via nodeenv
 shellingham==1.5.4        # via click-completion
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil
