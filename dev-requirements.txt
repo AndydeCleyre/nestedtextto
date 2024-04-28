@@ -18,7 +18,7 @@ filelock==3.13.4          # via virtualenv
 flit==3.9.0
 flit-core==3.9.0          # via flit
 idna==3.7                 # via requests
-inform==1.28              # via nestedtext
+inform==1.29              # via nestedtext
 ipython==8.24.0
 isort==5.13.2
 jedi==0.19.1              # via ipython
@@ -27,7 +27,7 @@ markdown-it-py==3.0.0     # via rich
 markupsafe==2.1.5         # via jinja2
 matplotlib-inline==0.1.7  # via ipython
 mdurl==0.1.2              # via markdown-it-py
-nestedtext==3.6
+nestedtext==3.7
 nodeenv==1.8.0            # via pyright
 nox==2024.4.15
 packaging==24.0           # via nox
