@@ -36,7 +36,7 @@ pathspec==0.12.1          # via ssort
 pexpect==4.9.0            # via ipython
 platformdirs==4.2.1       # via virtualenv
 pluggy==1.5.0             # via ward
-plumbum==1.8.2
+plumbum==1.8.3
 pprintpp==0.4.0           # via ward
 prompt-toolkit==3.0.43    # via ipython
 psutil==5.9.8             # via taskipy
