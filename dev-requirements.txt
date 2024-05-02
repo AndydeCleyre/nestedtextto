@@ -43,7 +43,7 @@ psutil==5.9.8             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pygments==2.17.2          # via ipython, rich
-pyright==1.1.360
+pyright==1.1.361
 python-dateutil==2.9.0.post0  # via arrow
 requests==2.31.0          # via flit
 rich==13.7.1              # via ward
