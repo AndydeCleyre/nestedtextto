@@ -22,7 +22,7 @@ inform==1.29              # via nestedtext
 ipython==8.24.0
 isort==5.13.2
 jedi==0.19.1              # via ipython
-jinja2==3.1.3             # via click-completion
+jinja2==3.1.4             # via click-completion
 markdown-it-py==3.0.0     # via rich
 markupsafe==2.1.5         # via jinja2
 matplotlib-inline==0.1.7  # via ipython

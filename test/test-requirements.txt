@@ -4,7 +4,7 @@ click-completion==0.5.2   # via ward
 click-default-group==1.2.4  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
 inform==1.29              # via nestedtext
-jinja2==3.1.3             # via click-completion
+jinja2==3.1.4             # via click-completion
 markdown-it-py==3.0.0     # via rich
 markupsafe==2.1.5         # via jinja2
 mdurl==0.1.2              # via markdown-it-py
