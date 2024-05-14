@@ -1,23 +1,23 @@
-arrow==1.3.0              # via inform
+arrow==1.3.0              # via inform, -c ../nt2/requirements.txt
 click==8.1.7              # via click-completion, click-default-group, ward
 click-completion==0.5.2   # via ward
 click-default-group==1.2.4  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
-inform==1.29              # via nestedtext
+inform==1.29              # via nestedtext, -c ../nt2/requirements.txt
 jinja2==3.1.4             # via click-completion
-markdown-it-py==3.0.0     # via rich
+markdown-it-py==3.0.0     # via rich, -c ../nt2/requirements.txt
 markupsafe==2.1.5         # via jinja2
-mdurl==0.1.2              # via markdown-it-py
+mdurl==0.1.2              # via markdown-it-py, -c ../nt2/requirements.txt
 nestedtext==3.7
 pluggy==1.5.0             # via ward
 plumbum==1.8.3
 pprintpp==0.4.0           # via ward
-pygments==2.18.0          # via rich
-python-dateutil==2.9.0.post0  # via arrow
-rich==13.7.1              # via ward
+pygments==2.18.0          # via rich, -c ../nt2/requirements.txt
+python-dateutil==2.9.0.post0  # via arrow, -c ../nt2/requirements.txt
+rich==13.7.1              # via ward, -c ../nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
-six==1.16.0               # via click-completion, inform, python-dateutil
-tomli==2.0.1              # via ward
+six==1.16.0               # via click-completion, inform, python-dateutil, -c ../nt2/requirements.txt
+tomli==2.0.1              # via ward, -c ../nt2/toml-requirements.txt, -r ../nt2/toml-requirements.in
 tomli-w==1.0.0
-types-python-dateutil==2.9.0.20240316  # via arrow
+types-python-dateutil==2.9.0.20240316  # via arrow, -c ../nt2/requirements.txt
 ward==0.68.0b0
