@@ -1,5 +1,4 @@
 appdirs==1.4.4            # via pydoctor
-astor==0.8.1              # via pydoctor
 attrs==23.2.0             # via automat, pydoctor, twisted
 automat==22.10.0          # via twisted
 cachecontrol==0.14.0      # via pydoctor
@@ -17,13 +16,13 @@ lunr==0.6.2               # via pydoctor
 md-toc==9.0.0
 msgpack==1.0.8            # via cachecontrol
 plumbum==1.8.3
-pydoctor==23.9.1
+pydoctor==24.3.3
 requests==2.31.0          # via cachecontrol, pydoctor
 setuptools==69.5.1        # via zope-interface
 six==1.16.0               # via automat
 toml==0.10.2              # via pydoctor
 twisted==24.3.0           # via pydoctor
 typing-extensions==4.11.0  # via twisted
-urllib3==1.26.18          # via pydoctor, requests
+urllib3==2.2.1            # via pydoctor, requests
 wheezy-template==3.2.2
 zope-interface==6.4       # via twisted
