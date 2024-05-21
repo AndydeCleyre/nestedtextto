@@ -9,56 +9,56 @@ click-default-group==1.2.4  # via ward, -c test/test-requirements.txt
 colorama==0.4.6           # via taskipy
 colorlog==6.8.2           # via nox
 cucumber-tag-expressions==4.1.0  # via ward, -c test/test-requirements.txt
-darglint==1.8.1
+darglint==1.8.1           # via -c fmt-requirements.txt, -r fmt-requirements.in
 decorator==5.1.1          # via ipython
 distlib==0.3.8            # via virtualenv
 docutils==0.21.2          # via flit
 executing==2.0.1          # via stack-data
 filelock==3.14.0          # via virtualenv
-flit==3.9.0
+flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
 idna==3.7                 # via requests
 inform==1.29              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ipython==8.24.0
-isort==5.13.2
+ipython==8.24.0           # via -r dev-requirements.in
+isort==5.13.2             # via -c fmt-requirements.txt, -r fmt-requirements.in
 jedi==0.19.1              # via ipython
 jinja2==3.1.4             # via click-completion, -c test/test-requirements.txt
 markdown-it-py==3.0.0     # via rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 markupsafe==2.1.5         # via jinja2, -c test/test-requirements.txt
 matplotlib-inline==0.1.7  # via ipython
 mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-nestedtext==3.7
+nestedtext==3.7           # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 nodeenv==1.8.0            # via pyright
-nox==2024.4.15
+nox==2024.4.15            # via -r dev-requirements.in
 packaging==24.0           # via nox
 parso==0.8.4              # via jedi
 pathspec==0.12.1          # via ssort, -c fmt-requirements.txt
 pexpect==4.9.0            # via ipython
 platformdirs==4.2.2       # via virtualenv
 pluggy==1.5.0             # via ward, -c test/test-requirements.txt
-plumbum==1.8.3
+plumbum==1.8.3            # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via ward, -c test/test-requirements.txt
 prompt-toolkit==3.0.43    # via ipython
 psutil==5.9.8             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pygments==2.18.0          # via ipython, rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-pyright==1.1.363
+pyright==1.1.363          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-requests==2.31.0          # via flit
+requests==2.32.1          # via flit
 rich==13.7.1              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.4.4
+ruff==0.4.4               # via -c fmt-requirements.txt, -r fmt-requirements.in
 setuptools==69.5.1        # via nodeenv
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ssort==0.13.0
+ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.3         # via ipython
-taskipy==1.12.2
+taskipy==1.12.2           # via -r dev-requirements.in
 tomli==2.0.1              # via taskipy, ward, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 tomli-w==1.0.0            # via flit, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
 types-python-dateutil==2.9.0.20240316  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 urllib3==2.2.1            # via requests
 virtualenv==20.26.2       # via nox
-ward==0.68.0b0
+ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.13           # via prompt-toolkit
