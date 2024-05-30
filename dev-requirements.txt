@@ -45,7 +45,7 @@ pure-eval==0.2.2          # via stack-data
 pygments==2.18.0          # via ipython, rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 pyright==1.1.365          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-requests==2.32.2          # via flit
+requests==2.32.3          # via flit
 rich==13.7.1              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ruff==0.4.6               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
