@@ -30,7 +30,7 @@ mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt, -c test
 nestedtext==3.7           # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 nodeenv==1.9.1            # via pyright
 nox==2024.4.15            # via -r dev-requirements.in
-packaging==24.0           # via nox
+packaging==24.1           # via nox
 parso==0.8.4              # via jedi
 pathspec==0.12.1          # via ssort, -c fmt-requirements.txt
 pexpect==4.9.0            # via ipython
