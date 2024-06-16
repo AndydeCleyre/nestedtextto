@@ -1,4 +1,4 @@
-argcomplete==3.3.0        # via nox
+argcomplete==3.4.0        # via nox
 arrow==1.3.0              # via inform, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 asttokens==2.4.1          # via stack-data
 certifi==2024.6.2         # via requests
