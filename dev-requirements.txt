@@ -52,7 +52,7 @@ shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.3         # via ipython
-taskipy==1.12.2           # via -r dev-requirements.in
+taskipy==1.13.0           # via -r dev-requirements.in
 tomli==2.0.1              # via taskipy, ward, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 tomli-w==1.0.0            # via flit, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
