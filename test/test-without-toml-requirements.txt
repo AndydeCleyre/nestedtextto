@@ -3,14 +3,14 @@ click==8.1.7              # via click-completion, click-default-group, ward
 click-completion==0.5.2   # via ward
 click-default-group==1.2.4  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
-inform==1.29              # via nestedtext, -c ../nt2/requirements.txt
+inform==1.30              # via nestedtext, -c ../nt2/requirements.txt
 jinja2==3.1.4             # via click-completion
 markdown-it-py==3.0.0     # via rich, -c ../nt2/requirements.txt
 markupsafe==2.1.5         # via jinja2
 mdurl==0.1.2              # via markdown-it-py, -c ../nt2/requirements.txt
-nestedtext==3.7
+nestedtext==3.7           # via -c ../nt2/requirements.txt, -r test-without-toml-requirements.in
 pluggy==1.5.0             # via ward
-plumbum==1.8.3
+plumbum==1.8.3            # via -c ../nt2/requirements.txt, -r test-without-toml-requirements.in
 pprintpp==0.4.0           # via ward
 pygments==2.18.0          # via rich, -c ../nt2/requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c ../nt2/requirements.txt
@@ -19,4 +19,4 @@ shellingham==1.5.4        # via click-completion
 six==1.16.0               # via click-completion, inform, python-dateutil, -c ../nt2/requirements.txt
 tomli==2.0.1              # via ward
 types-python-dateutil==2.9.0.20240316  # via arrow, -c ../nt2/requirements.txt
-ward==0.68.0b0
+ward==0.68.0b0            # via -r test-without-toml-requirements.in
