@@ -7,7 +7,7 @@
   <head>
     
     <title>nt2.yamlpath_tools</title>
-    <meta name="generator" content="pydoctor 23.9.1"> 
+    <meta name="generator" content="pydoctor 24.3.3"> 
         
     </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -371,17 +371,17 @@
     
     <td>Function</td>
     <td><code><a href="#mk_yaml_editor" class="internal-link" title="nt2.yamlpath_tools.mk_yaml_editor">mk<wbr></wbr>_yaml<wbr></wbr>_editor</a></code></td>
-    <td>Construct a YAML editor with <tt class="rst-docutils literal">load</tt> and <tt class="rst-docutils literal">dump</tt> methods.</td>
+    <td>Construct a YAML editor with <tt class="rst-docutils rst-literal">load</tt> and <tt class="rst-docutils rst-literal">dump</tt> methods.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#mk_yamlpath_processor" class="internal-link" title="nt2.yamlpath_tools.mk_yamlpath_processor">mk<wbr></wbr>_yamlpath<wbr></wbr>_processor</a></code></td>
-    <td>Construct a YAML Path processor/document for the <tt class="rst-docutils literal">data</tt>.</td>
+    <td>Construct a YAML Path processor/document for the <tt class="rst-docutils rst-literal">data</tt>.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#non_null_matches" class="internal-link" title="nt2.yamlpath_tools.non_null_matches">non<wbr></wbr>_null<wbr></wbr>_matches</a></code></td>
-    <td>Generate <tt class="rst-docutils literal">NodeCoords</tt> matching any <tt class="rst-docutils literal">query_paths</tt>.</td>
+    <td>Generate <tt class="rst-docutils rst-literal">NodeCoords</tt> matching any <tt class="rst-docutils rst-literal">query_paths</tt>.</td>
   </tr><tr class="function">
     
     <td>Function</td>
@@ -452,7 +452,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Construct a YAML editor with <tt class="rst-docutils literal">load</tt> and <tt class="rst-docutils literal">dump</tt> methods.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>YAML</code></td><td class="fieldArgDesc">A configured object able to <tt class="rst-docutils literal">.load</tt> and <tt class="rst-docutils literal">.dump</tt> YAML (<tt class="rst-docutils literal">ruamel.yaml.main.YAML</tt>).</td></tr></table></div>
+    <div><p>Construct a YAML editor with <tt class="rst-docutils rst-literal">load</tt> and <tt class="rst-docutils rst-literal">dump</tt> methods.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>YAML</code></td><td class="fieldArgDesc">A configured object able to <tt class="rst-docutils rst-literal">.load</tt> and <tt class="rst-docutils rst-literal">.dump</tt> YAML (<tt class="rst-docutils rst-literal">ruamel.yaml.main.YAML</tt>).</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -466,7 +466,7 @@
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span> <span class="py-defname">mk_yamlpath_processor</span><span class="function-signature">(data: <code>dict|list</code>) -&gt; <code>Processor</code></span>:
+    <span class="py-keyword">def</span> <span class="py-defname">mk_yamlpath_processor</span><span class="function-signature">(data: <code>dict | list</code>) -&gt; <code>Processor</code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/yamlpath_tools.py#L36">
       
       (source)
@@ -479,7 +479,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Construct a YAML Path processor/document for the <tt class="rst-docutils literal">data</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">An object from which to create the processor, or "surgeon."</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Processor</code></td><td class="fieldArgDesc">A document object able to <tt class="rst-docutils literal">.set_value</tt> and <tt class="rst-docutils literal">.get_nodes</tt> (<tt class="rst-docutils literal">yamlpath.Processor</tt>).</td></tr></table></div>
+    <div><p>Construct a YAML Path processor/document for the <tt class="rst-docutils rst-literal">data</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict | list</code></td><td class="fieldArgDesc">An object from which to create the processor, or "surgeon."</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Processor</code></td><td class="fieldArgDesc">A document object able to <tt class="rst-docutils rst-literal">.set_value</tt> and <tt class="rst-docutils rst-literal">.get_nodes</tt> (<tt class="rst-docutils rst-literal">yamlpath.Processor</tt>).</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -506,11 +506,11 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Generate <tt class="rst-docutils literal">NodeCoords</tt> matching any <tt class="rst-docutils literal">query_paths</tt>.</p>
-<p>Omit any matches whose <tt class="rst-docutils literal">node</tt> attr is <tt class="rst-docutils literal">None</tt>.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">surgeon:</span><code>Processor</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">yamlpath.Processor</tt>, already storing the YAML document to be queried.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*query<wbr></wbr>_paths:</span><code>str</code></td><td class="fieldArgDesc">YAMLPath query <tt class="rst-docutils literal">str</tt>s to find matches for in the document.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Iterable[<wbr></wbr>NodeCoords]</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Yields</td></tr><tr><td colspan="2"><dl class="rst-docutils">
-<dt>Matching <tt class="rst-docutils literal">NodeCoords</tt> items from the document,</dt>
-<dd>each having a <tt class="rst-docutils literal">node</tt> (value) attribute and <tt class="rst-docutils literal">path</tt> (YAMLPath) attribute.</dd>
+    <div><p>Generate <tt class="rst-docutils rst-literal">NodeCoords</tt> matching any <tt class="rst-docutils rst-literal">query_paths</tt>.</p>
+<p>Omit any matches whose <tt class="rst-docutils rst-literal">node</tt> attr is <tt class="rst-docutils rst-literal">None</tt>.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">surgeon:</span><code>Processor</code></td><td class="fieldArgDesc">A <tt class="rst-docutils rst-literal">yamlpath.Processor</tt>, already storing the YAML document to be queried.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*query<wbr></wbr>_paths:</span><code>str</code></td><td class="fieldArgDesc">YAMLPath query <tt class="rst-docutils rst-literal">str</tt>s to find matches for in the document.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Iterable[<wbr></wbr>NodeCoords]</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Yields</td></tr><tr><td colspan="2"><dl class="rst-docutils">
+<dt>Matching <tt class="rst-docutils rst-literal">NodeCoords</tt> items from the document,</dt>
+<dd>each having a <tt class="rst-docutils rst-literal">node</tt> (value) attribute and <tt class="rst-docutils rst-literal">path</tt> (YAMLPath) attribute.</dd>
 </dl>
 </td></tr></table></div>
   </div>
@@ -526,7 +526,7 @@
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span> <span class="py-defname">typed_data_to_schema</span><span class="function-signature">(data: <code>dict|list</code>) -&gt; <code>dict</code></span>:
+    <span class="py-keyword">def</span> <span class="py-defname">typed_data_to_schema</span><span class="function-signature">(data: <code>dict | list</code>) -&gt; <code>dict</code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/yamlpath_tools.py#L91">
       
       (source)
@@ -539,7 +539,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Analyze nested data and produce a matching schema document.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict|list</code></td><td class="fieldArgDesc">A nested data object whose elements can be mapped to schema entries.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>dict</code></td><td class="fieldArgDesc">A schema <tt class="rst-docutils literal">dict</tt> mapping ('number', 'boolean', 'null', or 'date') to lists of YAML Paths.</td></tr></table></div>
+    <div><p>Analyze nested data and produce a matching schema document.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code>dict | list</code></td><td class="fieldArgDesc">A nested data object whose elements can be mapped to schema entries.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>dict</code></td><td class="fieldArgDesc">A schema <tt class="rst-docutils rst-literal">dict</tt> mapping ('number', 'boolean', 'null', or 'date') to lists of YAML Paths.</td></tr></table></div>
   </div>
 </div><div class="basefunction private">
   
@@ -553,7 +553,7 @@
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span> <span class="py-defname">_schema_entry_type</span><span class="function-signature">(obj: <code>int|float|bool|None|datetime|date|time</code>)</span>:
+    <span class="py-keyword">def</span> <span class="py-defname">_schema_entry_type</span><span class="function-signature">(obj: <code>int | float | bool | None | datetime | date | time</code>)</span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/yamlpath_tools.py#L76">
       
       (source)
@@ -581,7 +581,7 @@
     <div class="container">
       <a href="index.html">API Documentation</a> for <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a>,
     generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-      23.9.1 at 2024-04-17 17:48:53.
+      24.3.3 at 2024-06-21 17:25:04.
     </div>
     
     <script src="ajax.js" type="text/javascript"></script>

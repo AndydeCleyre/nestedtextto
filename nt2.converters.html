@@ -7,7 +7,7 @@
   <head>
     
     <title>nt2.converters</title>
-    <meta name="generator" content="pydoctor 23.9.1"> 
+    <meta name="generator" content="pydoctor 24.3.3"> 
         
     </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -365,9 +365,9 @@
         </div>
 
         <div class="moduleDocstring">
-          <div><p>These functions return <tt class="rst-docutils literal">cattrs.Converter</tt> instances.</p>
-<p>Each <tt class="rst-docutils literal">Converter</tt> has an <tt class="rst-docutils literal">unstructure</tt> method,
-which takes an object (usually a <tt class="rst-docutils literal">dict</tt> or YAML equivalent),
+          <div><p>These functions return <tt class="rst-docutils rst-literal">cattrs.Converter</tt> instances.</p>
+<p>Each <tt class="rst-docutils rst-literal">Converter</tt> has an <tt class="rst-docutils rst-literal">unstructure</tt> method,
+which takes an object (usually a <tt class="rst-docutils rst-literal">dict</tt> or YAML equivalent),
 and returns a new one whose elements have been traversed and transformed.</p>
 <p>The purpose is usually to prepare data for export into a given format,
 with its particular type support.</p>
@@ -382,37 +382,37 @@ with its particular type support.</p>
     
     <td>Function</td>
     <td><code><a href="#mk_deep_converter" class="internal-link" title="nt2.converters.mk_deep_converter">mk<wbr></wbr>_deep<wbr></wbr>_converter</a></code></td>
-    <td>Create a new recursively unstructuring <tt class="rst-docutils literal">cattrs.Converter</tt>.</td>
+    <td>Create a new recursively unstructuring <tt class="rst-docutils rst-literal">cattrs.Converter</tt>.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#mk_json_types_converter" class="internal-link" title="nt2.converters.mk_json_types_converter">mk<wbr></wbr>_json<wbr></wbr>_types<wbr></wbr>_converter</a></code></td>
-    <td>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into JSON-supported types.</td>
+    <td>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into JSON-supported types.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#mk_stringy_converter" class="internal-link" title="nt2.converters.mk_stringy_converter">mk<wbr></wbr>_stringy<wbr></wbr>_converter</a></code></td>
-    <td>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into plain <tt class="rst-docutils literal">str</tt>/<tt class="rst-docutils literal">list</tt>/<tt class="rst-docutils literal">dict</tt> objects.</td>
+    <td>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into plain <tt class="rst-docutils rst-literal">str</tt>/<tt class="rst-docutils rst-literal">list</tt>/<tt class="rst-docutils rst-literal">dict</tt> objects.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#mk_toml_types_converter" class="internal-link" title="nt2.converters.mk_toml_types_converter">mk<wbr></wbr>_toml<wbr></wbr>_types<wbr></wbr>_converter</a></code></td>
-    <td>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into TOML-supported types.</td>
+    <td>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into TOML-supported types.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#mk_unyamlable_converter" class="internal-link" title="nt2.converters.mk_unyamlable_converter">mk<wbr></wbr>_unyamlable<wbr></wbr>_converter</a></code></td>
-    <td>Create a recursive <tt class="rst-docutils literal">Converter</tt> which replaces marked <tt class="rst-docutils literal">str</tt>s with <tt class="rst-docutils literal">time</tt> instances.</td>
+    <td>Create a recursive <tt class="rst-docutils rst-literal">Converter</tt> which replaces marked <tt class="rst-docutils rst-literal">str</tt>s with <tt class="rst-docutils rst-literal">time</tt> instances.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#mk_yaml_types_converter" class="internal-link" title="nt2.converters.mk_yaml_types_converter">mk<wbr></wbr>_yaml<wbr></wbr>_types<wbr></wbr>_converter</a></code></td>
-    <td>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into YAML-supported types.</td>
+    <td>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into YAML-supported types.</td>
   </tr><tr class="function private">
     
     <td>Function</td>
     <td><code><a href="#_timestamp_to_datey" class="internal-link" title="nt2.converters._timestamp_to_datey">_timestamp<wbr></wbr>_to<wbr></wbr>_datey</a></code></td>
-    <td>Create a plain Python <tt class="rst-docutils literal">datetime.date</tt> or <tt class="rst-docutils literal">datetime.datetime</tt>.</td>
+    <td>Create a plain Python <tt class="rst-docutils rst-literal">datetime.date</tt> or <tt class="rst-docutils rst-literal">datetime.datetime</tt>.</td>
   </tr>
 </table>
           
@@ -446,11 +446,11 @@ with its particular type support.</p>
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Create a new recursively unstructuring <tt class="rst-docutils literal">cattrs.Converter</tt>.</p>
-<p>It can traverse <tt class="rst-docutils literal">dict</tt>s, <tt class="rst-docutils literal">list</tt>s, and their <tt class="rst-docutils literal">ruamel.yaml</tt> equivalents.
-The other <tt class="rst-docutils literal">Converter</tt>s here use this as a starting point,
+    <div><p>Create a new recursively unstructuring <tt class="rst-docutils rst-literal">cattrs.Converter</tt>.</p>
+<p>It can traverse <tt class="rst-docutils rst-literal">dict</tt>s, <tt class="rst-docutils rst-literal">list</tt>s, and their <tt class="rst-docutils rst-literal">ruamel.yaml</tt> equivalents.
+The other <tt class="rst-docutils rst-literal">Converter</tt>s here use this as a starting point,
 before adding more unstructuring hooks.</p>
-<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc">A new, recursively unstructuring <tt class="rst-docutils literal">cattrs.Converter</tt>.</td></tr></table></div>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc">A new, recursively unstructuring <tt class="rst-docutils rst-literal">cattrs.Converter</tt>.</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -477,9 +477,9 @@ before adding more unstructuring hooks.</p>
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into JSON-supported types.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>A <tt class="rst-docutils literal">Converter</tt> whose <tt class="rst-docutils literal">unstructure</tt> method results in nested objects of type</dt>
-<dd><tt class="rst-docutils literal">str</tt>/<tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>/<tt class="rst-docutils literal">bool</tt>/<tt class="rst-docutils literal">dict</tt>/<tt class="rst-docutils literal">list</tt>/<tt class="rst-docutils literal">None</tt></dd>
+    <div><p>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into JSON-supported types.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>A <tt class="rst-docutils rst-literal">Converter</tt> whose <tt class="rst-docutils rst-literal">unstructure</tt> method results in nested objects of type</dt>
+<dd><tt class="rst-docutils rst-literal">str</tt>/<tt class="rst-docutils rst-literal">int</tt>/<tt class="rst-docutils rst-literal">float</tt>/<tt class="rst-docutils rst-literal">bool</tt>/<tt class="rst-docutils rst-literal">dict</tt>/<tt class="rst-docutils rst-literal">list</tt>/<tt class="rst-docutils rst-literal">None</tt></dd>
 </dl>
 </td></tr></table></div>
   </div>
@@ -508,11 +508,11 @@ before adding more unstructuring hooks.</p>
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into plain <tt class="rst-docutils literal">str</tt>/<tt class="rst-docutils literal">list</tt>/<tt class="rst-docutils literal">dict</tt> objects.</p>
-<p>This might alternatively have been named <tt class="rst-docutils literal">mk_nestedtext_types_converter</tt>.</p>
+    <div><p>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into plain <tt class="rst-docutils rst-literal">str</tt>/<tt class="rst-docutils rst-literal">list</tt>/<tt class="rst-docutils rst-literal">dict</tt> objects.</p>
+<p>This might alternatively have been named <tt class="rst-docutils rst-literal">mk_nestedtext_types_converter</tt>.</p>
 <table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>A <tt class="rst-docutils literal">Converter</tt> ready to <tt class="rst-docutils literal">unstructure</tt> nested data into only</dt>
-<dd><tt class="rst-docutils literal">dict</tt>/<tt class="rst-docutils literal">list</tt>/<tt class="rst-docutils literal">str</tt> types.</dd>
+<dt>A <tt class="rst-docutils rst-literal">Converter</tt> ready to <tt class="rst-docutils rst-literal">unstructure</tt> nested data into only</dt>
+<dd><tt class="rst-docutils rst-literal">dict</tt>/<tt class="rst-docutils rst-literal">list</tt>/<tt class="rst-docutils rst-literal">str</tt> types.</dd>
 </dl>
 </td></tr></table></div>
   </div>
@@ -541,9 +541,9 @@ before adding more unstructuring hooks.</p>
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into TOML-supported types.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>A <tt class="rst-docutils literal">Converter</tt> whose <tt class="rst-docutils literal">unstructure</tt> method results in nested objects of type</dt>
-<dd><tt class="rst-docutils literal">str</tt>/<tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>/<tt class="rst-docutils literal">bool</tt>/<tt class="rst-docutils literal">dict</tt>/<tt class="rst-docutils literal">list</tt>/<tt class="rst-docutils literal">datetime</tt>/<tt class="rst-docutils literal">date</tt>/<tt class="rst-docutils literal">time</tt></dd>
+    <div><p>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into TOML-supported types.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>A <tt class="rst-docutils rst-literal">Converter</tt> whose <tt class="rst-docutils rst-literal">unstructure</tt> method results in nested objects of type</dt>
+<dd><tt class="rst-docutils rst-literal">str</tt>/<tt class="rst-docutils rst-literal">int</tt>/<tt class="rst-docutils rst-literal">float</tt>/<tt class="rst-docutils rst-literal">bool</tt>/<tt class="rst-docutils rst-literal">dict</tt>/<tt class="rst-docutils rst-literal">list</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">date</tt>/<tt class="rst-docutils rst-literal">time</tt></dd>
 </dl>
 </td></tr></table></div>
   </div>
@@ -572,11 +572,11 @@ before adding more unstructuring hooks.</p>
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Create a recursive <tt class="rst-docutils literal">Converter</tt> which replaces marked <tt class="rst-docutils literal">str</tt>s with <tt class="rst-docutils literal">time</tt> instances.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">time<wbr></wbr>_marker:</span><code>str</code></td><td class="fieldArgDesc">An arbitrary prefix (such as a UUID) which, when encountered,
-indicates the remainder of the containing <tt class="rst-docutils literal">str</tt> should be processed
-as ISO 8601 and the element replaced by a <tt class="rst-docutils literal">datetime.time</tt> instance.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>A <tt class="rst-docutils literal">Converter</tt> whose <tt class="rst-docutils literal">unstructure</tt> method replaces marked <tt class="rst-docutils literal">str</tt>s with</dt>
-<dd><tt class="rst-docutils literal">datetime.time</tt> instances.</dd>
+    <div><p>Create a recursive <tt class="rst-docutils rst-literal">Converter</tt> which replaces marked <tt class="rst-docutils rst-literal">str</tt>s with <tt class="rst-docutils rst-literal">time</tt> instances.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">time<wbr></wbr>_marker:</span><code>str</code></td><td class="fieldArgDesc">An arbitrary prefix (such as a UUID) which, when encountered,
+indicates the remainder of the containing <tt class="rst-docutils rst-literal">str</tt> should be processed
+as ISO 8601 and the element replaced by a <tt class="rst-docutils rst-literal">datetime.time</tt> instance.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>A <tt class="rst-docutils rst-literal">Converter</tt> whose <tt class="rst-docutils rst-literal">unstructure</tt> method replaces marked <tt class="rst-docutils rst-literal">str</tt>s with</dt>
+<dd><tt class="rst-docutils rst-literal">datetime.time</tt> instances.</dd>
 </dl>
 </td></tr></table></div>
   </div>
@@ -605,9 +605,9 @@ as ISO 8601 and the element replaced by a <tt class="rst-docutils literal">datet
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Create a <tt class="rst-docutils literal">Converter</tt> which <tt class="rst-docutils literal">unstructure</tt>s into YAML-supported types.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>A <tt class="rst-docutils literal">Converter</tt> whose <tt class="rst-docutils literal">unstructure</tt> method results in nested objects of type</dt>
-<dd><tt class="rst-docutils literal">str</tt>/<tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>/<tt class="rst-docutils literal">bool</tt>/<tt class="rst-docutils literal">dict</tt>/<tt class="rst-docutils literal">list</tt>/<tt class="rst-docutils literal">None</tt>/<tt class="rst-docutils literal">datetime</tt>/<tt class="rst-docutils literal">date</tt></dd>
+    <div><p>Create a <tt class="rst-docutils rst-literal">Converter</tt> which <tt class="rst-docutils rst-literal">unstructure</tt>s into YAML-supported types.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Converter</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>A <tt class="rst-docutils rst-literal">Converter</tt> whose <tt class="rst-docutils rst-literal">unstructure</tt> method results in nested objects of type</dt>
+<dd><tt class="rst-docutils rst-literal">str</tt>/<tt class="rst-docutils rst-literal">int</tt>/<tt class="rst-docutils rst-literal">float</tt>/<tt class="rst-docutils rst-literal">bool</tt>/<tt class="rst-docutils rst-literal">dict</tt>/<tt class="rst-docutils rst-literal">list</tt>/<tt class="rst-docutils rst-literal">None</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">date</tt></dd>
 </dl>
 </td></tr></table></div>
   </div>
@@ -623,7 +623,7 @@ as ISO 8601 and the element replaced by a <tt class="rst-docutils literal">datet
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span> <span class="py-defname">_timestamp_to_datey</span><span class="function-signature">(ts: <code>TimeStamp</code>) -&gt; <code>date|datetime</code></span>:
+    <span class="py-keyword">def</span> <span class="py-defname">_timestamp_to_datey</span><span class="function-signature">(ts: <code>TimeStamp</code>) -&gt; <code>date | datetime</code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/converters.py#L30">
       
       (source)
@@ -636,10 +636,10 @@ as ISO 8601 and the element replaced by a <tt class="rst-docutils literal">datet
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Create a plain Python <tt class="rst-docutils literal">datetime.date</tt> or <tt class="rst-docutils literal">datetime.datetime</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">ts:</span><code>TimeStamp</code></td><td class="fieldArgDesc">a <tt class="rst-docutils literal">ruamel.yaml.timestamp.TimeStamp</tt>,
-which may correspond to a date or time.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>date|datetime</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>A new <tt class="rst-docutils literal">datetime.date</tt> or <tt class="rst-docutils literal">datetime.datetime</tt>,</dt>
-<dd>representing the value of <tt class="rst-docutils literal">ts</tt>.</dd>
+    <div><p>Create a plain Python <tt class="rst-docutils rst-literal">datetime.date</tt> or <tt class="rst-docutils rst-literal">datetime.datetime</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">ts:</span><code>TimeStamp</code></td><td class="fieldArgDesc">a <tt class="rst-docutils rst-literal">ruamel.yaml.timestamp.TimeStamp</tt>,
+which may correspond to a date or time.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>date | datetime</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>A new <tt class="rst-docutils rst-literal">datetime.date</tt> or <tt class="rst-docutils rst-literal">datetime.datetime</tt>,</dt>
+<dd>representing the value of <tt class="rst-docutils rst-literal">ts</tt>.</dd>
 </dl>
 </td></tr></table></div>
   </div>
@@ -656,7 +656,7 @@ which may correspond to a date or time.</td></tr><tr class="fieldStart"><td clas
     <div class="container">
       <a href="index.html">API Documentation</a> for <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a>,
     generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-      23.9.1 at 2024-04-17 17:48:53.
+      24.3.3 at 2024-06-21 17:25:04.
     </div>
     
     <script src="ajax.js" type="text/javascript"></script>

@@ -7,7 +7,7 @@
   <head>
     
     <title>nt2.casters</title>
-    <meta name="generator" content="pydoctor 23.9.1"> 
+    <meta name="generator" content="pydoctor 24.3.3"> 
         
     </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -358,7 +358,7 @@
         </div>
 
         <div class="moduleDocstring">
-          <div><p>Provide any functions for transforming a "stringy" <tt class="rst-docutils literal">dict</tt>/<tt class="rst-docutils literal">list</tt> to one with more types.</p>
+          <div><p>Provide any functions for transforming a "stringy" <tt class="rst-docutils rst-literal">dict</tt>/<tt class="rst-docutils rst-literal">list</tt> to one with more types.</p>
 <p>In practice, this is just <code><a href="#cast_stringy_data" class="internal-link" title="nt2.casters.cast_stringy_data">cast_stringy_data</a></code> and any support functions it needs.</p>
 </div>
         </div>
@@ -371,7 +371,7 @@
     
     <td>Function</td>
     <td><code><a href="#cast_stringy_data" class="internal-link" title="nt2.casters.cast_stringy_data">cast<wbr></wbr>_stringy<wbr></wbr>_data</a></code></td>
-    <td>Take nested <tt class="rst-docutils literal">StringyData</tt> and return a copy with matching nodes up-typed.</td>
+    <td>Take nested <tt class="rst-docutils rst-literal">StringyData</tt> and return a copy with matching nodes up-typed.</td>
   </tr><tr class="typealias">
     
     <td>Type Alias</td>
@@ -386,17 +386,17 @@
     
     <td>Function</td>
     <td><code><a href="#_str_to_bool" class="internal-link" title="nt2.casters._str_to_bool">_str<wbr></wbr>_to<wbr></wbr>_bool</a></code></td>
-    <td>Translate a commonly used boolean <tt class="rst-docutils literal">str</tt> into a real <tt class="rst-docutils literal">bool</tt>.</td>
+    <td>Translate a commonly used boolean <tt class="rst-docutils rst-literal">str</tt> into a real <tt class="rst-docutils rst-literal">bool</tt>.</td>
   </tr><tr class="function private">
     
     <td>Function</td>
     <td><code><a href="#_str_to_datey" class="internal-link" title="nt2.casters._str_to_datey">_str<wbr></wbr>_to<wbr></wbr>_datey</a></code></td>
-    <td>Translate an ISO 8601 date/time <tt class="rst-docutils literal">str</tt> into a <tt class="rst-docutils literal">date</tt>, <tt class="rst-docutils literal">datetime</tt>, or marked time <tt class="rst-docutils literal">str</tt>.</td>
+    <td>Translate an ISO 8601 date/time <tt class="rst-docutils rst-literal">str</tt> into a <tt class="rst-docutils rst-literal">date</tt>, <tt class="rst-docutils rst-literal">datetime</tt>, or marked time <tt class="rst-docutils rst-literal">str</tt>.</td>
   </tr><tr class="function private">
     
     <td>Function</td>
     <td><code><a href="#_str_to_num" class="internal-link" title="nt2.casters._str_to_num">_str<wbr></wbr>_to<wbr></wbr>_num</a></code></td>
-    <td>Translate a number as <tt class="rst-docutils literal">str</tt> into a real <tt class="rst-docutils literal">int</tt> or <tt class="rst-docutils literal">float</tt>.</td>
+    <td>Translate a number as <tt class="rst-docutils rst-literal">str</tt> into a real <tt class="rst-docutils rst-literal">int</tt> or <tt class="rst-docutils rst-literal">float</tt>.</td>
   </tr>
 </table>
           
@@ -417,7 +417,7 @@
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span> <span class="py-defname">cast_stringy_data</span><span class="function-signature">(data: <code><a href="#StringyData" class="internal-link" title="nt2.casters.StringyData">StringyData</a></code>, bool_paths: <code>Sequence[<wbr></wbr>str]</code> = (), null_paths: <code>Sequence[<wbr></wbr>str]</code> = (), num_paths: <code>Sequence[<wbr></wbr>str]</code> = (), date_paths: <code>Sequence[<wbr></wbr>str]</code> = (), converter: <code>Converter|None</code> = None) -&gt; <code>list|dict</code></span>:
+    <span class="py-keyword">def</span> <span class="py-defname">cast_stringy_data</span><span class="function-signature">(data: <code><a href="#StringyData" class="internal-link" title="nt2.casters.StringyData">StringyData</a></code>, bool_paths: <code>Sequence[<wbr></wbr>str]</code> = (), null_paths: <code>Sequence[<wbr></wbr>str]</code> = (), num_paths: <code>Sequence[<wbr></wbr>str]</code> = (), date_paths: <code>Sequence[<wbr></wbr>str]</code> = (), converter: <code>Converter | None</code> = None) -&gt; <code>list | dict</code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L112">
       
       (source)
@@ -430,15 +430,15 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Take nested <tt class="rst-docutils literal">StringyData</tt> and return a copy with matching nodes up-typed.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code><a href="#StringyData" class="internal-link" title="nt2.casters.StringyData">StringyData</a></code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> composed of <tt class="rst-docutils literal">str</tt>, <tt class="rst-docutils literal">dict</tt> and <tt class="rst-docutils literal">list</tt> items
-all the way down.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to <tt class="rst-docutils literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">null<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to <tt class="rst-docutils literal">None</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to <tt class="rst-docutils literal">int</tt>/<tt class="rst-docutils literal">float</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">date<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to
-<tt class="rst-docutils literal">date</tt>/<tt class="rst-docutils literal">datetime</tt>/<tt class="rst-docutils literal">time</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">converter:</span><code>Converter|None</code></td><td class="fieldArgDesc">A <tt class="rst-docutils literal">Converter</tt> used to <tt class="rst-docutils literal">unstructure</tt> the result
+    <div><p>Take nested <tt class="rst-docutils rst-literal">StringyData</tt> and return a copy with matching nodes up-typed.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">data:</span><code><a href="#StringyData" class="internal-link" title="nt2.casters.StringyData">StringyData</a></code></td><td class="fieldArgDesc">A <tt class="rst-docutils rst-literal">dict</tt> or <tt class="rst-docutils rst-literal">list</tt> composed of <tt class="rst-docutils rst-literal">str</tt>, <tt class="rst-docutils rst-literal">dict</tt> and <tt class="rst-docutils rst-literal">list</tt> items
+all the way down.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bool<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to <tt class="rst-docutils rst-literal">bool</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">null<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to <tt class="rst-docutils rst-literal">None</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">num<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to <tt class="rst-docutils rst-literal">int</tt>/<tt class="rst-docutils rst-literal">float</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">date<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to
+<tt class="rst-docutils rst-literal">date</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">time</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">converter:</span><code>Converter | None</code></td><td class="fieldArgDesc">A <tt class="rst-docutils rst-literal">Converter</tt> used to <tt class="rst-docutils rst-literal">unstructure</tt> the result
 to match specific type support,
-defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_converter" class="internal-link" title="nt2.converters.mk_json_types_converter">mk_json_types_converter</a></code>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>list|dict</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>A nested <tt class="rst-docutils literal">dict</tt> or <tt class="rst-docutils literal">list</tt> containing some "up-typed" (casted) items</dt>
-<dd>in addition to <tt class="rst-docutils literal">str</tt>s.</dd>
+defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_converter" class="internal-link" title="nt2.converters.mk_json_types_converter">mk_json_types_converter</a></code>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>list | dict</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>A nested <tt class="rst-docutils rst-literal">dict</tt> or <tt class="rst-docutils rst-literal">list</tt> containing some "up-typed" (casted) items</dt>
+<dd>in addition to <tt class="rst-docutils rst-literal">str</tt>s.</dd>
 </dl>
-</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>Up-typing a <tt class="rst-docutils literal">str</tt> failed due to an unexpected format.</td></tr></table></div>
+</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>Up-typing a <tt class="rst-docutils rst-literal">str</tt> failed due to an unexpected format.</td></tr></table></div>
   </div>
 </div><div class="basetypealias">
   
@@ -465,7 +465,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionBody">
     
     <div><p class="undocumented">Undocumented</p></div>
-    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>list[<wbr></wbr><a href="#StringyDatum" class="internal-link" title="nt2.casters.StringyDatum">StringyDatum</a>]|dict[<wbr></wbr>str, <wbr></wbr><a href="#StringyDatum" class="internal-link" title="nt2.casters.StringyDatum">StringyDatum</a>]</code></pre></td></tr></table>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>list[<wbr></wbr><a href="#StringyDatum" class="internal-link" title="nt2.casters.StringyDatum">StringyDatum</a>] | dict[<wbr></wbr>str, <wbr></wbr><a href="#StringyDatum" class="internal-link" title="nt2.casters.StringyDatum">StringyDatum</a>]</code></pre></td></tr></table>
   </div>
 </div><div class="basetypealias">
   
@@ -492,7 +492,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionBody">
     
     <div><p class="undocumented">Undocumented</p></div>
-    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>str|list|dict</code></pre></td></tr></table>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>str | list | dict</code></pre></td></tr></table>
   </div>
 </div><div class="basefunction private">
   
@@ -519,7 +519,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Translate a commonly used boolean <tt class="rst-docutils literal">str</tt> into a real <tt class="rst-docutils literal">bool</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">informal<wbr></wbr>_bool:</span><code>str</code></td><td class="fieldArgDesc">A boolean represented as <tt class="rst-docutils literal">str</tt>, like <tt class="rst-docutils literal">"true"</tt>, <tt class="rst-docutils literal">"no"</tt>, <tt class="rst-docutils literal">"off"</tt>, etc.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>bool</code></td><td class="fieldArgDesc"><tt class="rst-docutils literal">True</tt> or <tt class="rst-docutils literal">False</tt> to match the intent of <tt class="rst-docutils literal">informal_bool</tt>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>This doesn't look like enough like a <tt class="rst-docutils literal">bool</tt> to translate.</td></tr></table></div>
+    <div><p>Translate a commonly used boolean <tt class="rst-docutils rst-literal">str</tt> into a real <tt class="rst-docutils rst-literal">bool</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">informal<wbr></wbr>_bool:</span><code>str</code></td><td class="fieldArgDesc">A boolean represented as <tt class="rst-docutils rst-literal">str</tt>, like <tt class="rst-docutils rst-literal">"true"</tt>, <tt class="rst-docutils rst-literal">"no"</tt>, <tt class="rst-docutils rst-literal">"off"</tt>, etc.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>bool</code></td><td class="fieldArgDesc"><tt class="rst-docutils rst-literal">True</tt> or <tt class="rst-docutils rst-literal">False</tt> to match the intent of <tt class="rst-docutils rst-literal">informal_bool</tt>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>This doesn't look like enough like a <tt class="rst-docutils rst-literal">bool</tt> to translate.</td></tr></table></div>
   </div>
 </div><div class="basefunction private">
   
@@ -533,7 +533,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span> <span class="py-defname">_str_to_datey</span><span class="function-signature">(informal_datey: <code>str</code>, time_marker: <code>str</code>) -&gt; <code>date|datetime|str</code></span>:
+    <span class="py-keyword">def</span> <span class="py-defname">_str_to_datey</span><span class="function-signature">(informal_datey: <code>str</code>, time_marker: <code>str</code>) -&gt; <code>date | datetime | str</code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L82">
       
       (source)
@@ -546,10 +546,10 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Translate an ISO 8601 date/time <tt class="rst-docutils literal">str</tt> into a <tt class="rst-docutils literal">date</tt>, <tt class="rst-docutils literal">datetime</tt>, or marked time <tt class="rst-docutils literal">str</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">informal<wbr></wbr>_datey:</span><code>str</code></td><td class="fieldArgDesc">An ISO 8601 date/time <tt class="rst-docutils literal">str</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">time<wbr></wbr>_marker:</span><code>str</code></td><td class="fieldArgDesc">An arbitrary prefix (such as a UUID) which will be used
-to create a "marked time" <tt class="rst-docutils literal">str</tt>, rather than an (unyamlable) <tt class="rst-docutils literal">time</tt> instance.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>date|datetime|str</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
-<dt>An <tt class="rst-docutils literal">date</tt>, <tt class="rst-docutils literal">datetime</tt>, or marked time <tt class="rst-docutils literal">str</tt> equivalent of <tt class="rst-docutils literal">informal_datey</tt>.</dt>
-<dd>A marked time <tt class="rst-docutils literal">str</tt> is just ISO 8601 prefixed with <tt class="rst-docutils literal">time_marker</tt>.</dd>
+    <div><p>Translate an ISO 8601 date/time <tt class="rst-docutils rst-literal">str</tt> into a <tt class="rst-docutils rst-literal">date</tt>, <tt class="rst-docutils rst-literal">datetime</tt>, or marked time <tt class="rst-docutils rst-literal">str</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">informal<wbr></wbr>_datey:</span><code>str</code></td><td class="fieldArgDesc">An ISO 8601 date/time <tt class="rst-docutils rst-literal">str</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">time<wbr></wbr>_marker:</span><code>str</code></td><td class="fieldArgDesc">An arbitrary prefix (such as a UUID) which will be used
+to create a "marked time" <tt class="rst-docutils rst-literal">str</tt>, rather than an (unyamlable) <tt class="rst-docutils rst-literal">time</tt> instance.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>date | datetime | str</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>An <tt class="rst-docutils rst-literal">date</tt>, <tt class="rst-docutils rst-literal">datetime</tt>, or marked time <tt class="rst-docutils rst-literal">str</tt> equivalent of <tt class="rst-docutils rst-literal">informal_datey</tt>.</dt>
+<dd>A marked time <tt class="rst-docutils rst-literal">str</tt> is just ISO 8601 prefixed with <tt class="rst-docutils rst-literal">time_marker</tt>.</dd>
 </dl>
 </td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>This doesn't look like enough like a date/time to translate.</td></tr></table></div>
   </div>
@@ -565,7 +565,7 @@ to create a "marked time" <tt class="rst-docutils literal">str</tt>, rather than
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span> <span class="py-defname">_str_to_num</span><span class="function-signature">(informal_num: <code>str</code>) -&gt; <code>int|float</code></span>:
+    <span class="py-keyword">def</span> <span class="py-defname">_str_to_num</span><span class="function-signature">(informal_num: <code>str</code>) -&gt; <code>int | float</code></span>:
     <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L49">
       
       (source)
@@ -578,7 +578,7 @@ to create a "marked time" <tt class="rst-docutils literal">str</tt>, rather than
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Translate a number as <tt class="rst-docutils literal">str</tt> into a real <tt class="rst-docutils literal">int</tt> or <tt class="rst-docutils literal">float</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">informal<wbr></wbr>_num:</span><code>str</code></td><td class="fieldArgDesc">A number represented as <tt class="rst-docutils literal">str</tt>, like <tt class="rst-docutils literal">"5.5"</tt>, <tt class="rst-docutils literal">"1e3"</tt>, or <tt class="rst-docutils literal">"0xdecaf"</tt></td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>int|float</code></td><td class="fieldArgDesc">An <tt class="rst-docutils literal">int</tt> or <tt class="rst-docutils literal">float</tt> equivalent of <tt class="rst-docutils literal">informal_num</tt>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>This doesn't look like enough like a number to translate.</td></tr></table></div>
+    <div><p>Translate a number as <tt class="rst-docutils rst-literal">str</tt> into a real <tt class="rst-docutils rst-literal">int</tt> or <tt class="rst-docutils rst-literal">float</tt>.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">informal<wbr></wbr>_num:</span><code>str</code></td><td class="fieldArgDesc">A number represented as <tt class="rst-docutils rst-literal">str</tt>, like <tt class="rst-docutils rst-literal">"5.5"</tt>, <tt class="rst-docutils rst-literal">"1e3"</tt>, or <tt class="rst-docutils rst-literal">"0xdecaf"</tt></td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>int | float</code></td><td class="fieldArgDesc">An <tt class="rst-docutils rst-literal">int</tt> or <tt class="rst-docutils rst-literal">float</tt> equivalent of <tt class="rst-docutils rst-literal">informal_num</tt>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>This doesn't look like enough like a number to translate.</td></tr></table></div>
   </div>
 </div>
         </div>
@@ -593,7 +593,7 @@ to create a "marked time" <tt class="rst-docutils literal">str</tt>, rather than
     <div class="container">
       <a href="index.html">API Documentation</a> for <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a>,
     generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-      23.9.1 at 2024-04-17 17:48:53.
+      24.3.3 at 2024-06-21 17:25:04.
     </div>
     
     <script src="ajax.js" type="text/javascript"></script>
