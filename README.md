@@ -19,7 +19,7 @@
 
 ---
 
-![logo](https://github.com/AndydeCleyre/nestedtextto/blob/assets/logo.png?raw=true)
+<img src="https://github.com/AndydeCleyre/nestedtextto/blob/assets/logo.png?raw=true" alt="logo" width="160" height="160" />
 
 This project was created in appreciation for the design of [NestedText](https://nestedtext.org/),
 the readability of [yamlpath](https://github.com/wwkimball/yamlpath) queries,
