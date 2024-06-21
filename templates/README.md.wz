@@ -20,6 +20,8 @@
 
 ---
 
+![logo](https://github.com/AndydeCleyre/nestedtextto/blob/assets/logo.png?raw=true)
+
 This project was created in appreciation for the design of [NestedText](https://nestedtext.org/),
 the readability of [yamlpath](https://github.com/wwkimball/yamlpath) queries,
 the utility of [cattrs](https://cattrs.readthedocs.io/),
