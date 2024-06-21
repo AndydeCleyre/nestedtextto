@@ -18,8 +18,6 @@
 [![Generate docs from templates](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/doc.yml?branch=develop&label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
 [![Requirements badge](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/reqs.yml?branch=develop&label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 
----
-
 <img src="https://github.com/AndydeCleyre/nestedtextto/blob/assets/logo.png?raw=true" alt="logo" width="160" height="160" />
 
 This project was created in appreciation for the design of [NestedText](https://nestedtext.org/),
