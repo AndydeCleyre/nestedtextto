@@ -14,7 +14,7 @@ decorator==5.1.1          # via ipython
 distlib==0.3.8            # via virtualenv
 docutils==0.21.2          # via flit
 executing==2.0.1          # via stack-data
-filelock==3.15.3          # via virtualenv
+filelock==3.15.4          # via virtualenv
 flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
 idna==3.7                 # via requests
