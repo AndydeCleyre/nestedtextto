@@ -19,7 +19,7 @@ flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
 idna==3.7                 # via requests
 inform==1.30              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ipython==8.25.0           # via -r dev-requirements.in
+ipython==8.26.0           # via -r dev-requirements.in
 isort==5.13.2             # via -c fmt-requirements.txt, -r fmt-requirements.in
 jedi==0.19.1              # via ipython
 jinja2==3.1.4             # via click-completion, -c test/test-requirements.txt
@@ -47,7 +47,7 @@ pyright==1.1.369          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==13.7.1              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.4.10              # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.5.0               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
