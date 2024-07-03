@@ -43,7 +43,7 @@ psutil==5.9.8             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.2          # via stack-data
 pygments==2.18.0          # via ipython, rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-pyright==1.1.369          # via -r dev-requirements.in
+pyright==1.1.370          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==13.7.1              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
