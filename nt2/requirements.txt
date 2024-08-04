@@ -1,5 +1,5 @@
 arrow==1.3.0              # via inform
-attrs==23.2.0             # via cattrs
+attrs==24.1.0             # via cattrs
 cattrs==23.2.3            # via -r requirements.in
 inform==1.30              # via nestedtext
 markdown-it-py==3.0.0     # via rich
