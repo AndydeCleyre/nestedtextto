@@ -3,7 +3,7 @@ click==8.1.7              # via click-completion, click-default-group, ward
 click-completion==0.5.2   # via ward
 click-default-group==1.2.4  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
-inform==1.30              # via nestedtext, -c ../nt2/requirements.txt
+inform==1.31              # via nestedtext, -c ../nt2/requirements.txt
 jinja2==3.1.4             # via click-completion
 markdown-it-py==3.0.0     # via rich, -c ../nt2/requirements.txt
 markupsafe==2.1.5         # via jinja2
