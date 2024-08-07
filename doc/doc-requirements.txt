@@ -1,5 +1,5 @@
 appdirs==1.4.4            # via pydoctor
-attrs==24.1.0             # via automat, pydoctor, twisted
+attrs==24.2.0             # via automat, pydoctor, twisted
 automat==22.10.0          # via twisted
 cachecontrol==0.14.0      # via pydoctor
 certifi==2024.7.4         # via requests
@@ -25,4 +25,4 @@ twisted==24.3.0           # via pydoctor
 typing-extensions==4.12.2  # via twisted
 urllib3==2.2.2            # via pydoctor, requests
 wheezy-template==3.2.2    # via -r doc-requirements.in
-zope-interface==7.0       # via twisted
+zope-interface==7.0.1     # via twisted
