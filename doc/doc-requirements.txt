@@ -21,7 +21,7 @@ requests==2.32.3          # via cachecontrol, pydoctor
 setuptools==72.1.0        # via incremental, zope-interface
 six==1.16.0               # via automat
 toml==0.10.2              # via pydoctor
-twisted==24.3.0           # via pydoctor
+twisted==24.7.0           # via pydoctor
 typing-extensions==4.12.2  # via twisted
 urllib3==2.2.2            # via pydoctor, requests
 wheezy-template==3.2.2    # via -r doc-requirements.in
