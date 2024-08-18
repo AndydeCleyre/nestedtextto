@@ -1,6 +1,6 @@
 appdirs==1.4.4            # via pydoctor
-attrs==24.2.0             # via automat, pydoctor, twisted
-automat==22.10.0          # via twisted
+attrs==24.2.0             # via pydoctor, twisted
+automat==24.8.0           # via twisted
 cachecontrol==0.14.0      # via pydoctor
 certifi==2024.7.4         # via requests
 charset-normalizer==3.3.2  # via requests
@@ -19,7 +19,6 @@ plumbum==1.8.3            # via -r doc-requirements.in
 pydoctor==24.3.3          # via -r doc-requirements.in
 requests==2.32.3          # via cachecontrol, pydoctor
 setuptools==72.2.0        # via incremental, zope-interface
-six==1.16.0               # via automat
 toml==0.10.2              # via pydoctor
 twisted==24.7.0           # via pydoctor
 typing-extensions==4.12.2  # via twisted
