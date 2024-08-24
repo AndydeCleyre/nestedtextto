@@ -10,7 +10,7 @@ docutils==0.21.2          # via pydoctor
 filelock==3.15.4          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hyperlink==21.0.0         # via twisted
-idna==3.7                 # via hyperlink, requests
+idna==3.8                 # via hyperlink, requests
 incremental==24.7.2       # via twisted
 lunr==0.6.2               # via pydoctor
 md-toc==9.0.0             # via -r doc-requirements.in
