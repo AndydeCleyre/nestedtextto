@@ -24,4 +24,4 @@ twisted==24.7.0           # via pydoctor
 typing-extensions==4.12.2  # via twisted
 urllib3==2.2.2            # via pydoctor, requests
 wheezy-template==3.2.2    # via -r doc-requirements.in
-zope-interface==7.0.1     # via twisted
+zope-interface==7.0.2     # via twisted

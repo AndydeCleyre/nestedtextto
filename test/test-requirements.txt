@@ -14,7 +14,7 @@ plumbum==1.8.3            # via -c ../nt2/requirements.txt, -r test-requirements
 pprintpp==0.4.0           # via ward
 pygments==2.18.0          # via rich, -c ../nt2/requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c ../nt2/requirements.txt
-rich==13.7.1              # via ward, -c ../nt2/requirements.txt
+rich==13.8.0              # via ward, -c ../nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
 six==1.16.0               # via click-completion, inform, python-dateutil, -c ../nt2/requirements.txt
 tomli==2.0.1              # via ward, -c ../nt2/toml-requirements.txt, -r ../nt2/toml-requirements.in

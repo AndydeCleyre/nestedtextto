@@ -8,7 +8,7 @@ nestedtext==3.7           # via -r requirements.in
 plumbum==1.8.3            # via -r requirements.in
 pygments==2.18.0          # via rich
 python-dateutil==2.9.0.post0  # via arrow, yamlpath
-rich==13.7.1              # via -r requirements.in
+rich==13.8.0              # via -r requirements.in
 ruamel-yaml==0.17.21      # via yamlpath, -r requirements.in
 six==1.16.0               # via inform, python-dateutil
 types-python-dateutil==2.9.0.20240821  # via arrow
