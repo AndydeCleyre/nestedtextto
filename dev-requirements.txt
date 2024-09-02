@@ -13,7 +13,7 @@ darglint==1.8.1           # via -c fmt-requirements.txt, -r fmt-requirements.in
 decorator==5.1.1          # via ipython
 distlib==0.3.8            # via virtualenv
 docutils==0.21.2          # via flit
-executing==2.0.1          # via stack-data
+executing==2.1.0          # via stack-data
 filelock==3.15.4          # via virtualenv
 flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
