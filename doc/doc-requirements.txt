@@ -18,7 +18,7 @@ msgpack==1.0.8            # via cachecontrol
 plumbum==1.8.3            # via -r doc-requirements.in
 pydoctor==24.3.3          # via -r doc-requirements.in
 requests==2.32.3          # via cachecontrol, pydoctor
-setuptools==74.1.1        # via incremental, zope-interface
+setuptools==74.1.2        # via incremental, zope-interface
 toml==0.10.2              # via pydoctor
 twisted==24.7.0           # via pydoctor
 typing-extensions==4.12.2  # via twisted
