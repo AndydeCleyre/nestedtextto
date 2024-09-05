@@ -150,6 +150,14 @@ I recommend using [uv](https://github.com/astral-sh/uv),
 [pipx](https://github.com/pypa/pipx),
 or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 
+#### Shell Completion
+
+For Zsh completion, add this line to your `.zshrc`, any time after `compinit`:
+
+```zsh
+if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2yaml nt2toml nt2json json2nt toml2nt yaml2nt
+```
+
 ### Usage Docs
 
 <details>
