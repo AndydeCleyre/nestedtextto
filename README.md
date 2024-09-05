@@ -139,15 +139,13 @@ If you don't need TOML support, you can omit the `[toml]` bits below.
 Here are some ways to install it:
 
 ```console
-$ uv tool install 'nt2[toml]'     # Install using uv (Python all-around manager)
 $ pipx install 'nt2[toml]'        # Install using pipx (Python app manager)
 $ pipz install 'nt2[toml]'        # Install using zpy (Python app and environment manager for Zsh)
 $ pip install --user 'nt2[toml]'  # Install in your user's environment
 $ pip install 'nt2[toml]'         # Install in current environment
 ```
 
-I recommend using [uv](https://github.com/astral-sh/uv),
-[pipx](https://github.com/pypa/pipx),
+I recommend using [pipx](https://github.com/pypa/pipx)
 or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 
 #### Shell Completion
