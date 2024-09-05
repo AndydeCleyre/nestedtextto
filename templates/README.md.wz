@@ -125,14 +125,24 @@ If you don't need TOML support, you can omit the `[toml]` bits below.
 Here are some ways to install it:
 
 ```console
+$ uv tool install 'nt2[toml]'     # Install using uv (Python all-around manager)
 $ pipx install 'nt2[toml]'        # Install using pipx (Python app manager)
 $ pipz install 'nt2[toml]'        # Install using zpy (Python app and environment manager for Zsh)
 $ pip install --user 'nt2[toml]'  # Install in your user's environment
 $ pip install 'nt2[toml]'         # Install in current environment
 ```
 
-I recommend using [pipx](https://github.com/pypa/pipx)
+I recommend using [uv](https://github.com/astral-sh/uv),
+[pipx](https://github.com/pypa/pipx),
 or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
+
+#### Shell Completion
+
+For Zsh completion, add this line to your `.zshrc`, any time after `compinit`:
+
+```zsh
+if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2yaml nt2toml nt2json json2nt toml2nt yaml2nt
+```
 
 ### Usage Docs
 @for cmd in ('nt2json', 'nt2yaml', 'nt2toml', 'json2nt', 'yaml2nt', 'toml2nt'):
