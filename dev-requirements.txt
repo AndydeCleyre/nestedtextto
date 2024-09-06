@@ -47,7 +47,7 @@ pyright==1.1.379          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==13.8.0              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.6.3               # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.6.4               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
@@ -56,7 +56,7 @@ taskipy==1.13.0           # via -r dev-requirements.in
 tomli==2.0.1              # via taskipy, ward, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 tomli-w==1.0.0            # via flit, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
-types-python-dateutil==2.9.0.20240821  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
+types-python-dateutil==2.9.0.20240906  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 urllib3==2.2.2            # via requests
 virtualenv==20.26.3       # via nox
 ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
