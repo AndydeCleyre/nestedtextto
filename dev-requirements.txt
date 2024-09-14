@@ -17,7 +17,7 @@ executing==2.1.0          # via stack-data
 filelock==3.16.0          # via virtualenv
 flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
-idna==3.8                 # via requests
+idna==3.9                 # via requests
 inform==1.31              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ipython==8.27.0           # via -r dev-requirements.in
 isort==5.13.2             # via -c fmt-requirements.txt, -r fmt-requirements.in
@@ -34,7 +34,7 @@ packaging==24.1           # via nox
 parso==0.8.4              # via jedi
 pathspec==0.12.1          # via ssort, -c fmt-requirements.txt
 pexpect==4.9.0            # via ipython
-platformdirs==4.3.2       # via virtualenv
+platformdirs==4.3.3       # via virtualenv
 pluggy==1.5.0             # via ward, -c test/test-requirements.txt
 plumbum==1.8.3            # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via ward, -c test/test-requirements.txt
@@ -47,7 +47,7 @@ pyright==1.1.380          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==13.8.1              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.6.4               # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.6.5               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
