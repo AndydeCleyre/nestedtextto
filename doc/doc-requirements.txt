@@ -10,7 +10,7 @@ docutils==0.21.2          # via pydoctor
 filelock==3.16.0          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hyperlink==21.0.0         # via twisted
-idna==3.9                 # via hyperlink, requests
+idna==3.10                # via hyperlink, requests
 incremental==24.7.2       # via twisted
 lunr==0.6.2               # via pydoctor
 md-toc==9.0.0             # via -r doc-requirements.in
@@ -18,7 +18,7 @@ msgpack==1.1.0            # via cachecontrol
 plumbum==1.8.3            # via -r doc-requirements.in
 pydoctor==24.3.3          # via -r doc-requirements.in
 requests==2.32.3          # via cachecontrol, pydoctor
-setuptools==74.1.2        # via incremental, zope-interface
+setuptools==75.0.0        # via incremental, zope-interface
 toml==0.10.2              # via pydoctor
 twisted==24.7.0           # via pydoctor
 typing-extensions==4.12.2  # via twisted
