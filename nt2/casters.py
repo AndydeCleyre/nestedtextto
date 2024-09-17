@@ -71,7 +71,7 @@ def _str_to_num(informal_num: str) -> int | float:
                 try:
                     num = int(informal_num, base)
                 except Exception:  # pragma: no cover
-                    raise ValueError(': '.join(e.args))
+                    raise ValueError(': '.join(e.args)) from None
                 else:
                     return num
         raise e  # pragma: no cover
@@ -108,7 +108,7 @@ def _str_to_datey(informal_datey: str, time_marker: str) -> date | datetime | st
             try:
                 val = time.fromisoformat(informal_datey)
             except Exception as e:  # pragma: no cover
-                raise ValueError(': '.join(e.args))
+                raise ValueError(': '.join(e.args)) from None
             else:
                 return f"{time_marker}{val.isoformat()}"
 
@@ -143,7 +143,7 @@ def _cast_datey(surgeon: Processor, date_paths: Sequence[str]) -> dict | list:
         try:
             datey = _str_to_datey(match.node, time_marker)
         except ValueError as e:  # pragma: no cover
-            raise ValueError(': '.join((*e.args, str(match.path))))
+            raise ValueError(': '.join((*e.args, str(match.path)))) from e
         else:
             surgeon.set_value(cast(YAMLPath, match.path), datey)
             if not marked_times_present and isinstance(datey, str):
@@ -200,7 +200,7 @@ def cast_stringy_data(
         try:
             surgeon.set_value(cast(YAMLPath, match.path), _str_to_bool(match.node))
         except ValueError as e:  # pragma: no cover
-            raise ValueError(': '.join((*e.args, str(match.path))))
+            raise ValueError(': '.join((*e.args, str(match.path)))) from e
 
     for match in non_null_matches(surgeon, *num_paths):
         if not isinstance(match.node, str):
@@ -208,7 +208,7 @@ def cast_stringy_data(
         try:
             surgeon.set_value(cast(YAMLPath, match.path), _str_to_num(match.node))
         except ValueError as e:  # pragma: no cover
-            raise ValueError(': '.join((*e.args, str(match.path))))
+            raise ValueError(': '.join((*e.args, str(match.path)))) from e
 
     doc = _cast_datey(surgeon, date_paths)
 

@@ -167,7 +167,7 @@ def jloads(content: str) -> dict | list:
         try:
             return [_jloads(line) for line in content.splitlines()]
         except JSONDecodeError:  # pragma: no cover
-            raise original_e
+            raise original_e from None
 
 
 def dump_json_to_nestedtext(*input_files: LocalPath):
