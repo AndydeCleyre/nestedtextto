@@ -7,9 +7,8 @@ In practice, this is just `cast_stringy_data` and any support functions it needs
 from __future__ import annotations
 
 import re
-from collections.abc import Sequence
 from datetime import date, datetime, time
-from typing import cast
+from typing import Sequence, cast
 from uuid import uuid4
 
 try:

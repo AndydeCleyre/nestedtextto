@@ -8,7 +8,7 @@ from ward import test
 from .commands import nt2yaml, yaml2nt
 from .utils import assert_file_content, casting_args_from_schema_file
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'  # type: ignore
+SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
 
 
 for input_yaml_name, output_nt_name in {
@@ -20,7 +20,7 @@ for input_yaml_name, output_nt_name in {
 }.items():
 
     @test(f"YAML -> NestedText [{input_yaml_name}]")
-    def _(input_yaml_name=input_yaml_name, output_nt_name=output_nt_name):
+    def _(input_yaml_name: str = input_yaml_name, output_nt_name: str = output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = yaml2nt(SAMPLES / f"{input_yaml_name}.yml")
         assert_file_content(expected_file, output)
@@ -43,13 +43,13 @@ def _():
 for schema_file in SAMPLES // 'base.*.types.nt':
 
     @test(f"NestedText -> YAML [schema file: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
         output = nt2yaml(SAMPLES / 'base.nt', schema_files=(schema_file,))
         assert_file_content(expected_file, output)
 
     @test(f"NestedText -> YAML [casting args from schema: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         casting_args = casting_args_from_schema_file(schema_file)
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
         output = nt2yaml(SAMPLES / 'base.nt', **casting_args)
@@ -59,7 +59,7 @@ for schema_file in SAMPLES // 'base.*.types.nt':
 for num_type in ('floats', 'ints'):
 
     @test(f"NestedText -> YAML [schema file: {num_type}.types.nt]")
-    def _(num_type=num_type):
+    def _(num_type: str = num_type):
         expected_file = SAMPLES / f"typed_{num_type}.yml"
         output = nt2yaml(
             SAMPLES / f"{num_type}.nt", schema_files=(SAMPLES / f"{num_type}.types.nt",)

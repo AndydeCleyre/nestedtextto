@@ -12,13 +12,14 @@ Each version herein returns the stdout as a `str` for convenience in tests.
 
 import io
 import sys
-from typing import cast
+from typing import Sequence, Union, cast
 
 try:
     from typing import TypeAlias
 except ImportError:
     from typing import Any as TypeAlias
 
+from plumbum import LocalPath
 from plumbum.cli import Application as _Application
 
 from nt2.ui import (
@@ -39,7 +40,11 @@ TOMLToNestedText = cast(Application, _TOMLToNestedText)
 YAMLToNestedText = cast(Application, _YAMLToNestedText)
 
 
-def _run_app(app_class: Application, *cli_args, **cli_kwargs) -> str:
+def _run_app(
+    app_class: Application,
+    *cli_args: LocalPath,
+    **cli_kwargs: Union[str, LocalPath, Sequence[str], bool],
+) -> str:
     """
     Invoke `app_class` with given flags, and return stdout content.
 
@@ -69,7 +74,7 @@ def _run_app(app_class: Application, *cli_args, **cli_kwargs) -> str:
     return output
 
 
-def json2nt(*cli_args, **cli_kwargs) -> str:
+def json2nt(*cli_args: LocalPath, **cli_kwargs: Union[str, bool]) -> str:
     """
     Invoke `JSONToNestedText` in a test-friendly way.
 
@@ -83,7 +88,7 @@ def json2nt(*cli_args, **cli_kwargs) -> str:
     return _run_app(JSONToNestedText, *cli_args, **cli_kwargs)
 
 
-def nt2json(*cli_args, **cli_kwargs) -> str:
+def nt2json(*cli_args: LocalPath, **cli_kwargs: Union[str, LocalPath, Sequence[str]]) -> str:
     """
     Invoke `NestedTextToJSON` in a test-friendly way.
 
@@ -97,7 +102,7 @@ def nt2json(*cli_args, **cli_kwargs) -> str:
     return _run_app(NestedTextToJSON, *cli_args, **cli_kwargs)
 
 
-def nt2yaml(*cli_args, **cli_kwargs) -> str:
+def nt2yaml(*cli_args: LocalPath, **cli_kwargs: Union[str, LocalPath, Sequence[str]]) -> str:
     """
     Invoke `NestedTextToYAML` in a test-friendly way.
 
@@ -111,7 +116,7 @@ def nt2yaml(*cli_args, **cli_kwargs) -> str:
     return _run_app(NestedTextToYAML, *cli_args, **cli_kwargs)
 
 
-def yaml2nt(*cli_args, **cli_kwargs) -> str:
+def yaml2nt(*cli_args: LocalPath, **cli_kwargs: Union[str, bool]) -> str:
     """
     Invoke `YAMLToNestedText` in a test-friendly way.
 
@@ -125,7 +130,7 @@ def yaml2nt(*cli_args, **cli_kwargs) -> str:
     return _run_app(YAMLToNestedText, *cli_args, **cli_kwargs)
 
 
-def nt2toml(*cli_args, **cli_kwargs) -> str:
+def nt2toml(*cli_args: LocalPath, **cli_kwargs: Union[str, LocalPath, Sequence[str]]) -> str:
     """
     Invoke `NestedTextToTOML` in a test-friendly way.
 
@@ -139,7 +144,7 @@ def nt2toml(*cli_args, **cli_kwargs) -> str:
     return _run_app(NestedTextToTOML, *cli_args, **cli_kwargs)
 
 
-def toml2nt(*cli_args, **cli_kwargs) -> str:
+def toml2nt(*cli_args: LocalPath, **cli_kwargs: Union[str, bool]) -> str:
     """
     Invoke `TOMLToNestedText` in a test-friendly way.
 

@@ -6,8 +6,9 @@ import io
 import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
+from pathlib import Path
 from textwrap import indent
-from typing import Any, cast
+from typing import Sequence, TextIO, cast
 
 from nestedtext import dump as _ntdump, dumps as _ntdumps, load as _ntload
 from plumbum import LocalPath
@@ -52,7 +53,7 @@ def _syntax_print(content: str, syntax: str, console: RichConsole = RICH):
     )
 
 
-def ntload(file: Any) -> StringyData:
+def ntload(file: str | Path | TextIO) -> StringyData:
     r"""
     Wrap ``nestedtext.load`` with convenient configuration for this module.
 
@@ -302,7 +303,11 @@ def dump_toml_to_nestedtext(*input_files: LocalPath):
 
 
 def dump_nestedtext_to_yaml(
-    *input_files: LocalPath, bool_paths=(), null_paths=(), num_paths=(), date_paths=()
+    *input_files: LocalPath,
+    bool_paths: Sequence[str] = (),
+    null_paths: Sequence[str] = (),
+    num_paths: Sequence[str] = (),
+    date_paths: Sequence[str] = (),
 ):
     r"""
     Read NestedText from stdin or ``input_files``, and send up-typed YAML to stdout.
@@ -327,7 +332,12 @@ def dump_nestedtext_to_yaml(
         ydump(data)
 
 
-def dump_nestedtext_to_toml(*input_files: LocalPath, bool_paths=(), num_paths=(), date_paths=()):
+def dump_nestedtext_to_toml(
+    *input_files: LocalPath,
+    bool_paths: Sequence[str] = (),
+    num_paths: Sequence[str] = (),
+    date_paths: Sequence[str] = (),
+):
     r"""
     Read NestedText from stdin or ``input_files``, and send up-typed TOML to stdout.
 
@@ -353,7 +363,12 @@ def dump_nestedtext_to_toml(*input_files: LocalPath, bool_paths=(), num_paths=()
         tdump(data)
 
 
-def dump_nestedtext_to_json(*input_files: LocalPath, bool_paths=(), null_paths=(), num_paths=()):
+def dump_nestedtext_to_json(
+    *input_files: LocalPath,
+    bool_paths: Sequence[str] = (),
+    null_paths: Sequence[str] = (),
+    num_paths: Sequence[str] = (),
+):
     r"""
     Read NestedText from stdin or ``input_files``, and send up-typed JSON to stdout.
 

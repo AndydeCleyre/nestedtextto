@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import sys
 from collections import defaultdict
-from collections.abc import Iterable
 from datetime import date, datetime, time
 from types import SimpleNamespace
+from typing import Iterable
 
 try:
     from types import NoneType
@@ -73,7 +73,7 @@ def non_null_matches(surgeon: Processor, *query_paths: str) -> Iterable[NodeCoor
             yield from matches
 
 
-def _schema_entry_type(obj: int | float | bool | None | datetime | date | time):
+def _schema_entry_type(obj: int | float | bool | None | datetime | date | time) -> str:
     # -> Literal['number', 'boolean', 'null', 'date']
     if isinstance(obj, bool):
         return 'boolean'

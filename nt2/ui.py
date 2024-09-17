@@ -137,7 +137,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2json --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201,ANN101
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -176,7 +176,7 @@ class NestedTextToYAML(
         nt2yaml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201,ANN101
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -213,7 +213,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2toml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201,ANN101
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -242,7 +242,7 @@ class JSONToNestedText(_TypedFormatToSchema):
         cat example.json | json2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201,ANN101
         try:
             if not self.to_schema:
                 dump_json_to_nestedtext(*input_files)
@@ -263,7 +263,7 @@ class YAMLToNestedText(_TypedFormatToSchema):
         cat example.yml | yaml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201,ANN101
         try:
             if not self.to_schema:
                 dump_yaml_to_nestedtext(*input_files)
@@ -284,7 +284,7 @@ class TOMLToNestedText(_TypedFormatToSchema):
         cat example.yml | toml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201,ANN101
         try:
             if not self.to_schema:
                 dump_toml_to_nestedtext(*input_files)
