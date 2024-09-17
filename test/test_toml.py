@@ -2,10 +2,11 @@
 
 from typing import cast
 
-from commands import nt2toml, toml2nt
 from plumbum import LocalPath, local
-from utils import assert_file_content, casting_args_from_schema_file
 from ward import skip, test
+
+from .commands import nt2toml, toml2nt
+from .utils import assert_file_content, casting_args_from_schema_file
 
 try:
     import tomli  # noqa: F401

@@ -2,10 +2,11 @@
 
 from typing import cast
 
-from commands import nt2yaml, yaml2nt
 from plumbum import LocalPath, local
-from utils import assert_file_content, casting_args_from_schema_file
 from ward import test
+
+from .commands import nt2yaml, yaml2nt
+from .utils import assert_file_content, casting_args_from_schema_file
 
 SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'  # type: ignore
 
