@@ -18,7 +18,9 @@ except ImportError:
     from typing import Any as TypeAlias
 
 from .converters import Converter as _Converter, mk_json_types_converter, mk_unyamlable_converter
-from .yamlpath_tools import YAMLPath as _YAMLPath, mk_yamlpath_processor, non_null_matches
+from .yamlpath_tools import (
+    Processor, YAMLPath as _YAMLPath, mk_yamlpath_processor, non_null_matches
+)
 
 Converter: TypeAlias = _Converter
 StringyDatum: TypeAlias = 'str | list | dict'
@@ -109,6 +111,46 @@ def _str_to_datey(informal_datey: str, time_marker: str) -> date | datetime | st
                 return f"{time_marker}{val.isoformat()}"
 
 
+def _cast_datey(surgeon: Processor, date_paths: Sequence[str]) -> dict | list:
+    r"""
+    Cast ``date``/``datetime``/``time`` strings to ``date``/``datetime``/``time`` objects.
+
+    We can't currently store a time type in the intermediary YAML doc object (``surgeon.data``),
+    so we mark times as special ``str``\ s within ``surgeon.data``,
+    then do a second pass to convert them to ``time`` objects on the way out.
+
+    Args:
+        surgeon: A YAMLPath ``Processor`` with existing ``data`` to be up-typed.
+        date_paths: YAMLPath queries indicating nodes to be up-typed to
+            ``date``/``datetime``/``time``.
+
+    Returns:
+        A nested ``dict`` or ``list`` containing some "up-typed" (casted) items
+            in addition to ``str``\ s.
+
+    Raises:
+        ValueError: Up-typing a ``str`` failed due to an unexpected format.
+    """
+    marked_times_present = False
+    time_marker = str(uuid4())
+    marked_time_converter = mk_unyamlable_converter(time_marker=time_marker)
+
+    for match in non_null_matches(surgeon, *date_paths):
+        if not isinstance(match.node, str) or match.node.startswith(time_marker):
+            continue
+        try:
+            datey = _str_to_datey(match.node, time_marker)
+        except ValueError as e:  # pragma: no cover
+            raise ValueError(': '.join((*e.args, str(match.path))))
+        else:
+            surgeon.set_value(cast(YAMLPath, match.path), datey)
+            if not marked_times_present and isinstance(datey, str):
+                marked_times_present = True
+    return (
+        marked_time_converter.unstructure(surgeon.data) if marked_times_present else surgeon.data
+    )
+
+
 def cast_stringy_data(
     data: StringyData,
     bool_paths: Sequence[str] = (),
@@ -166,25 +208,6 @@ def cast_stringy_data(
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path))))
 
-    # We can't currently store a time type in the
-    # intermediary YAML doc object, so:
-    marked_times_present = False
-    time_marker = str(uuid4())
-    marked_time_converter = mk_unyamlable_converter(time_marker=time_marker)
-
-    for match in non_null_matches(surgeon, *date_paths):
-        if not isinstance(match.node, str) or match.node.startswith(time_marker):
-            continue
-        try:
-            datey = _str_to_datey(match.node, time_marker)
-        except ValueError as e:  # pragma: no cover
-            raise ValueError(': '.join((*e.args, str(match.path))))
-        else:
-            surgeon.set_value(cast(YAMLPath, match.path), datey)
-            if not marked_times_present and isinstance(datey, str):
-                marked_times_present = True
-
-    if marked_times_present:
-        doc = marked_time_converter.unstructure(doc)
+    doc = _cast_datey(surgeon, date_paths)
 
     return (converter or mk_json_types_converter()).unstructure(doc)
