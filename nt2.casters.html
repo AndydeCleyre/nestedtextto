@@ -104,6 +104,16 @@
         
 
         
+            <div class="itemName"><code><a href="#_cast_datey" class="internal-link" title="nt2.casters._cast_datey">_cast<wbr></wbr>_datey</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
             <div class="itemName"><code><a href="#_str_to_bool" class="internal-link" title="nt2.casters._str_to_bool">_str<wbr></wbr>_to<wbr></wbr>_bool</a></code>
             </div>
         
@@ -385,6 +395,11 @@
   </tr><tr class="function private">
     
     <td>Function</td>
+    <td><code><a href="#_cast_datey" class="internal-link" title="nt2.casters._cast_datey">_cast<wbr></wbr>_datey</a></code></td>
+    <td>Cast <tt class="rst-docutils rst-literal">date</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">time</tt> strings to <tt class="rst-docutils rst-literal">date</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">time</tt> objects.</td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
     <td><code><a href="#_str_to_bool" class="internal-link" title="nt2.casters._str_to_bool">_str<wbr></wbr>_to<wbr></wbr>_bool</a></code></td>
     <td>Translate a commonly used boolean <tt class="rst-docutils rst-literal">str</tt> into a real <tt class="rst-docutils rst-literal">bool</tt>.</td>
   </tr><tr class="function private">
@@ -418,7 +433,7 @@
     
     
     <span class="py-keyword">def</span> <span class="py-defname">cast_stringy_data</span><span class="function-signature">(data: <code><a href="#StringyData" class="internal-link" title="nt2.casters.StringyData">StringyData</a></code>, bool_paths: <code>Sequence[<wbr></wbr>str]</code> = (), null_paths: <code>Sequence[<wbr></wbr>str]</code> = (), num_paths: <code>Sequence[<wbr></wbr>str]</code> = (), date_paths: <code>Sequence[<wbr></wbr>str]</code> = (), converter: <code>Converter | None</code> = None) -&gt; <code>list | dict</code></span>:
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L112">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L156">
       
       (source)
     </a>
@@ -452,7 +467,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionHeader">
     
     <span class="py-defname">StringyData</span>: <code>TypeAlias</code> =
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L25">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L29">
       
       (source)
     </a>
@@ -479,7 +494,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
   <div class="functionHeader">
     
     <span class="py-defname">StringyDatum</span>: <code>TypeAlias</code> =
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L24">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L28">
       
       (source)
     </a>
@@ -497,6 +512,42 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
 </div><div class="basefunction private">
   
   
+  <a name="nt2.casters._cast_datey">
+    
+  </a>
+  <a name="_cast_datey">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_cast_datey</span><span class="function-signature">(surgeon: <code>Processor</code>, date_paths: <code>Sequence[<wbr></wbr>str]</code>) -&gt; <code>dict | list</code></span>:
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L116">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#_cast_datey" title="nt2.casters._cast_datey">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Cast <tt class="rst-docutils rst-literal">date</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">time</tt> strings to <tt class="rst-docutils rst-literal">date</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">time</tt> objects.</p>
+<p>We can't currently store a time type in the intermediary YAML doc object (<tt class="rst-docutils rst-literal">surgeon.data</tt>),
+so we mark times as special <tt class="rst-docutils rst-literal">str</tt>s within <tt class="rst-docutils rst-literal">surgeon.data</tt>,
+then do a second pass to convert them to <tt class="rst-docutils rst-literal">time</tt> objects on the way out.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">surgeon:</span><code>Processor</code></td><td class="fieldArgDesc">A YAMLPath <tt class="rst-docutils rst-literal">Processor</tt> with existing <tt class="rst-docutils rst-literal">data</tt> to be up-typed.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">date<wbr></wbr>_paths:</span><code>Sequence[<wbr></wbr>str]</code></td><td class="fieldArgDesc">YAMLPath queries indicating nodes to be up-typed to
+<tt class="rst-docutils rst-literal">date</tt>/<tt class="rst-docutils rst-literal">datetime</tt>/<tt class="rst-docutils rst-literal">time</tt>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>dict | list</code></td><td class="fieldArgDesc"><dl class="rst-docutils">
+<dt>A nested <tt class="rst-docutils rst-literal">dict</tt> or <tt class="rst-docutils rst-literal">list</tt> containing some "up-typed" (casted) items</dt>
+<dd>in addition to <tt class="rst-docutils rst-literal">str</tt>s.</dd>
+</dl>
+</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>ValueError</code></td><td>Up-typing a <tt class="rst-docutils rst-literal">str</tt> failed due to an unexpected format.</td></tr></table></div>
+  </div>
+</div><div class="basefunction private">
+  
+  
   <a name="nt2.casters._str_to_bool">
     
   </a>
@@ -507,7 +558,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
     
     
     <span class="py-keyword">def</span> <span class="py-defname">_str_to_bool</span><span class="function-signature">(informal_bool: <code>str</code>) -&gt; <code>bool</code></span>:
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L29">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L33">
       
       (source)
     </a>
@@ -534,7 +585,7 @@ defaulting to one created with <code><a href="nt2.converters.html#mk_json_types_
     
     
     <span class="py-keyword">def</span> <span class="py-defname">_str_to_datey</span><span class="function-signature">(informal_datey: <code>str</code>, time_marker: <code>str</code>) -&gt; <code>date | datetime | str</code></span>:
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L82">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L86">
       
       (source)
     </a>
@@ -566,7 +617,7 @@ to create a "marked time" <tt class="rst-docutils rst-literal">str</tt>, rather 
     
     
     <span class="py-keyword">def</span> <span class="py-defname">_str_to_num</span><span class="function-signature">(informal_num: <code>str</code>) -&gt; <code>int | float</code></span>:
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L49">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/casters.py#L53">
       
       (source)
     </a>
@@ -593,7 +644,7 @@ to create a "marked time" <tt class="rst-docutils rst-literal">str</tt>, rather 
     <div class="container">
       <a href="index.html">API Documentation</a> for <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a>,
     generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-      24.3.3 at 2024-09-17 18:18:30.
+      24.3.3 at 2024-09-17 21:50:20.
     </div>
     
     <script src="ajax.js" type="text/javascript"></script>
