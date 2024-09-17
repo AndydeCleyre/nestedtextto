@@ -53,7 +53,7 @@ quote-style = "preserve"
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
-select = ["F", "E", "W", "I", "N", "D", "UP", "YTT", "SIM"]
+select = ["F", "E", "W", "C90", "I", "N", "D", "UP", "YTT", "SIM"]
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
