@@ -3,7 +3,6 @@
 -c nt2/requirements.txt
 -c nt2/toml-requirements.txt
 
-isort             # format imports
 ruff              # format & lint code
 ssort             # reorder functions
 

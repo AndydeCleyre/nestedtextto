@@ -19,7 +19,10 @@ except ImportError:
 
 from .converters import Converter as _Converter, mk_json_types_converter, mk_unyamlable_converter
 from .yamlpath_tools import (
-    Processor, YAMLPath as _YAMLPath, mk_yamlpath_processor, non_null_matches
+    Processor,
+    YAMLPath as _YAMLPath,
+    mk_yamlpath_processor,
+    non_null_matches,
 )
 
 Converter: TypeAlias = _Converter

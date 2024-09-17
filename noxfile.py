@@ -47,13 +47,7 @@ def fmt(session):
     """Format and lint code and docs."""
     session.install('-r', 'fmt-requirements.txt')
     session.run('darglint', 'nt2', 'test')
-    for tool in (
-        ('ssort',),
-        ('ruff', 'format'),
-        ('ruff', 'check', '--fix'),
-        ('ruff', 'check'),
-        ('isort',),
-    ):
+    for tool in (('ssort',), ('ruff', 'format'), ('ruff', 'check', '--fix'), ('ruff', 'check')):
         session.run(*tool, 'noxfile.py', 'nt2', 'test')
 
 

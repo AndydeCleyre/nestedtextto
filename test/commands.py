@@ -22,9 +22,12 @@ except ImportError:
 from plumbum.cli import Application as _Application
 
 from nt2.ui import (
-    JSONToNestedText as _JSONToNestedText, NestedTextToJSON as _NestedTextToJSON,
-    NestedTextToTOML as _NestedTextToTOML, NestedTextToYAML as _NestedTextToYAML,
-    TOMLToNestedText as _TOMLToNestedText, YAMLToNestedText as _YAMLToNestedText
+    JSONToNestedText as _JSONToNestedText,
+    NestedTextToJSON as _NestedTextToJSON,
+    NestedTextToTOML as _NestedTextToTOML,
+    NestedTextToYAML as _NestedTextToYAML,
+    TOMLToNestedText as _TOMLToNestedText,
+    YAMLToNestedText as _YAMLToNestedText,
 )
 
 Application: TypeAlias = _Application

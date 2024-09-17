@@ -7,7 +7,7 @@ charset-normalizer==3.3.2  # via requests
 configargparse==1.7       # via pydoctor
 constantly==23.10.4       # via twisted
 docutils==0.21.2          # via pydoctor
-filelock==3.16.0          # via cachecontrol
+filelock==3.16.1          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hyperlink==21.0.0         # via twisted
 idna==3.10                # via hyperlink, requests

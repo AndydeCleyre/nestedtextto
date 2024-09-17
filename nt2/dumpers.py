@@ -17,7 +17,10 @@ from ruamel.yaml.scalarstring import walk_tree as use_multiline_syntax
 
 from .casters import StringyData, cast_stringy_data
 from .converters import (
-    mk_json_types_converter, mk_stringy_converter, mk_toml_types_converter, mk_yaml_types_converter
+    mk_json_types_converter,
+    mk_stringy_converter,
+    mk_toml_types_converter,
+    mk_yaml_types_converter,
 )
 from .yamlpath_tools import guess_briefer_schema, mk_yaml_editor, typed_data_to_schema
 
