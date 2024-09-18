@@ -124,14 +124,13 @@ for typed_toml in ('all', 'dates', 'times'):
 
     @skip("TOML support not enabled", when=TOML_DISABLED)
     @test(f"TOML -> schema, NestedText -> TOML [generate schema from typed_{typed_toml}.toml]")
-    def _():
-        expected_file = SAMPLES / f"typed_{typed_toml}.toml"
+    def _(types: str = typed_toml):
+        expected_file = SAMPLES / f"typed_{types}.toml"
         schema_content = toml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
             schema_file = cast(LocalPath, tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2toml(
-                SAMPLES / f"{'base' if typed_toml == 'all' else typed_toml}.nt",
-                schema_files=(schema_file,),
+                SAMPLES / f"{'base' if types == 'all' else types}.nt", schema_files=(schema_file,)
             )
         assert_file_content(expected_file, output)

@@ -106,16 +106,15 @@ def _():
 for typed_yml in ('all', 'floats', 'dates'):
 
     @test(f"YAML -> schema, NestedText -> YAML [generate schema from typed_{typed_yml}.yml]")
-    def _():
-        expected_file = SAMPLES / f"typed_{typed_yml}.yml"
+    def _(types: str = typed_yml):
+        expected_file = SAMPLES / f"typed_{types}.yml"
         schema_content = yaml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
             schema_file = cast(LocalPath, tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2yaml(
-                SAMPLES / f"{'base' if typed_yml == 'all' else typed_yml}.nt",
-                schema_files=(schema_file,),
+                SAMPLES / f"{'base' if types == 'all' else types}.nt", schema_files=(schema_file,)
             )
-        if typed_yml == 'dates':
+        if types == 'dates':
             expected_file = SAMPLES / 'typed_dates_round_trip.yml'
         assert_file_content(expected_file, output)
