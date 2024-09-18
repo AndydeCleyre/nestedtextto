@@ -53,7 +53,8 @@ quote-style = "preserve"
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
-select = ["F", "E", "W", "C90", "I", "N", "D", "UP", "YTT", "ANN", "S", "FBT", "B", "SIM"]
+select = ["ALL"]
+ignore = ["BLE", "COM812", "EM", "FIX", "ISC001", "PERF203", "PGH003", "Q000", "T20", "TD002", "TD003", "TRY003", "TRY302"]
 
 [tool.ruff.lint.flake8-annotations]
 suppress-none-returning = true
@@ -64,6 +65,9 @@ split-on-trailing-comma = false
 
 [tool.ruff.lint.pydocstyle]
 convention = "pep257"
+
+[tool.ruff.lint.pylint]
+max-args = 6
 
 [tool.taskipy.tasks]
 fmt = "nox -s fmt"

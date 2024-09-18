@@ -6,12 +6,16 @@ import io
 import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
-from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+    from plumbum import LocalPath
 from textwrap import indent
-from typing import Sequence, TextIO, cast
+from typing import BinaryIO, Sequence, TextIO, cast
 
 from nestedtext import dump as _ntdump, dumps as _ntdumps, load as _ntload
-from plumbum import LocalPath
 from rich.console import Console as RichConsole
 from rich.syntax import Syntax as RichSyntax
 from ruamel.yaml.scalarstring import walk_tree as use_multiline_syntax
@@ -110,8 +114,8 @@ def ydump(data: dict | list):
         out_stream = io.StringIO()
         try:
             YAML_EDITOR.dump(data, out_stream)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
         else:
             _syntax_print(out_stream.getvalue(), 'yaml')
         finally:
@@ -140,9 +144,9 @@ def tdump(data: dict):
     """
     _require_toml_support()
     if sys.stdout.isatty():
-        _syntax_print(_tdumps(data, multiline_strings=True), 'toml')  # type: ignore
+        _syntax_print(_tdumps(data, multiline_strings=True), 'toml')  # pyright: ignore [reportPossiblyUnboundVariable]
     else:
-        print(_tdumps(data, multiline_strings=True), end='')  # type: ignore
+        print(_tdumps(data, multiline_strings=True), end='')  # pyright: ignore [reportPossiblyUnboundVariable]
 
 
 def jloads(content: str) -> dict | list:
@@ -238,7 +242,7 @@ def dump_yaml_to_schema(*input_files: LocalPath):
         _dump_typed_data_to_schema(typed_data)
     else:
         for f in input_files:
-            with open(f, encoding='utf-8') as ifile:
+            with f.open(encoding='utf-8') as ifile:
                 typed_data = yload(ifile)
             _dump_typed_data_to_schema(typed_data)
 
@@ -252,12 +256,12 @@ def dump_toml_to_schema(*input_files: LocalPath):
     """
     _require_toml_support()
     if not input_files:
-        typed_data = tloads(sys.stdin.read())  # type: ignore
+        typed_data = tloads(sys.stdin.read())  # pyright: ignore [reportPossiblyUnboundVariable]
         _dump_typed_data_to_schema(typed_data)
     else:
         for f in input_files:
-            with open(f, 'rb') as ifile:
-                typed_data = tload(ifile)  # type: ignore
+            with f.open('rb') as ifile:
+                typed_data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             _dump_typed_data_to_schema(typed_data)
 
 
@@ -275,7 +279,7 @@ def dump_yaml_to_nestedtext(*input_files: LocalPath):
         ntdump(data)
     else:
         for f in input_files:
-            with open(f, encoding='utf-8') as ifile:
+            with f.open(encoding='utf-8') as ifile:
                 data = yload(ifile)
             data = converter.unstructure(data)
             ntdump(data)
@@ -291,13 +295,13 @@ def dump_toml_to_nestedtext(*input_files: LocalPath):
     _require_toml_support()
     converter = mk_stringy_converter()
     if not input_files:
-        data = tloads(sys.stdin.read())  # type: ignore
+        data = tloads(sys.stdin.read())  # pyright: ignore [reportPossiblyUnboundVariable]
         data = converter.unstructure(data)
         ntdump(data)
     else:
         for f in input_files:
-            with open(f, 'rb') as ifile:
-                data = tload(ifile)  # type: ignore
+            with f.open('rb') as ifile:
+                data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             data = converter.unstructure(data)
             ntdump(data)
 

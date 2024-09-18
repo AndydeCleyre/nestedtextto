@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Sequence, TextIO, cast
+from typing import TYPE_CHECKING, Sequence, TextIO, cast
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+    from plumbum import LocalPath
 
 from nestedtext import load as ntload
-from plumbum import LocalPath
 from ward.expect import assert_equal
 
 

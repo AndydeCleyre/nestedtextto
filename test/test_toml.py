@@ -1,6 +1,8 @@
 """Test TOML <-> NestedText."""
 
-from typing import Dict, Sequence, cast
+from __future__ import annotations
+
+from typing import Sequence, cast
 
 from plumbum import LocalPath, local
 from ward import skip, test
@@ -114,7 +116,7 @@ for input_file, expected_file, schema_file in (
     def _(
         input_file: LocalPath = input_file,
         expected_file: LocalPath = expected_file,
-        casting_args: Dict[str, Sequence[str]] = casting_args,
+        casting_args: dict[str, Sequence[str]] = casting_args,
     ):
         output = nt2toml(input_file, **casting_args)
         assert_file_content(expected_file, output)

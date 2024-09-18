@@ -23,7 +23,6 @@ def test(session: Session):
     """Run all tests."""
     session.install('-U', 'pip')
     session.install('-U', '.[test,toml]', 'coverage')
-    session.run('pip', 'list')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
@@ -32,7 +31,6 @@ def test_without_toml(session: Session):
     """Run tests without optional TOML support installed."""
     session.install('-U', 'pip')
     session.install('-U', '.[test-without-toml]', 'coverage')
-    session.run('pip', 'list')
     session.run('coverage', 'run', '-p', '-m', 'ward', *session.posargs)
 
 
