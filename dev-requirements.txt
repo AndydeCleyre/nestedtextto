@@ -46,7 +46,7 @@ pyright==1.1.382.post0    # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==13.8.1              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.6.7               # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.6.8               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
