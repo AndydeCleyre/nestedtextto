@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from plumbum import LocalPath
+from os import environ
 from textwrap import indent
 from typing import BinaryIO, Sequence, TextIO, cast
 
@@ -53,7 +54,13 @@ def _syntax_print(content: str, syntax: str, console: RichConsole = RICH):
         console: An initialized Rich Console object used to print with.
     """
     console.print(
-        RichSyntax(content, syntax, theme='ansi_dark', word_wrap=True, indent_guides=True)
+        RichSyntax(
+            content,
+            syntax,
+            theme='ansi_dark',
+            word_wrap=True,
+            indent_guides=not environ.get('NO_COLOR'),
+        )
     )
 
 
