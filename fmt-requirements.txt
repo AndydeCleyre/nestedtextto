@@ -1,4 +1,4 @@
 darglint==1.8.1           # via -r fmt-requirements.in
 pathspec==0.12.1          # via ssort
-ruff==0.6.8               # via -r fmt-requirements.in
+ruff==0.6.9               # via -r fmt-requirements.in
 ssort==0.13.0             # via -r fmt-requirements.in
