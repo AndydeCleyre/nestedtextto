@@ -11,8 +11,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: get nox
-        uses: excitedleigh/setup-nox@v2.1.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pipx install nox
 
       - name: render documents
         run: nox -s render_readme render_api_docs

@@ -9,8 +9,11 @@ jobs:
       - name: fetch code
         uses: actions/checkout@v4
 
-      - name: get nox
-        uses: excitedleigh/setup-nox@v2.1.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pipx install nox
 
       - name: format and lint
         run: nox -s fmt

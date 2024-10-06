@@ -18,8 +18,11 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
 
-      - name: get nox
-        uses: excitedleigh/setup-nox@v2.1.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pipx install nox
 
       - name: upgrade lockfiles
         run: nox -s lock
