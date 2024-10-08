@@ -23,7 +23,7 @@ ipython==8.28.0           # via -r dev-requirements.in
 jedi==0.19.1              # via ipython
 jinja2==3.1.4             # via click-completion, -c test/test-requirements.txt
 markdown-it-py==3.0.0     # via rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-markupsafe==2.1.5         # via jinja2, -c test/test-requirements.txt
+markupsafe==3.0.0         # via jinja2, -c test/test-requirements.txt
 matplotlib-inline==0.1.7  # via ipython
 mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 nestedtext==3.7           # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
