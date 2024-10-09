@@ -6,7 +6,7 @@ cucumber-tag-expressions==4.1.0  # via ward
 inform==1.31              # via nestedtext, -c ../nt2/requirements.txt
 jinja2==3.1.4             # via click-completion
 markdown-it-py==3.0.0     # via rich, -c ../nt2/requirements.txt
-markupsafe==3.0.0         # via jinja2
+markupsafe==3.0.1         # via jinja2
 mdurl==0.1.2              # via markdown-it-py, -c ../nt2/requirements.txt
 nestedtext==3.7           # via -c ../nt2/requirements.txt, -r test-requirements.in
 pluggy==1.5.0             # via ward
@@ -18,6 +18,6 @@ rich==13.9.2              # via ward, -c ../nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
 six==1.16.0               # via click-completion, inform, python-dateutil, -c ../nt2/requirements.txt
 tomli==2.0.2              # via ward, -c ../nt2/toml-requirements.txt, -r ../nt2/toml-requirements.in
-tomli-w==1.0.0            # via -c ../nt2/toml-requirements.txt, -r ../nt2/toml-requirements.in
+tomli-w==1.1.0            # via -c ../nt2/toml-requirements.txt, -r ../nt2/toml-requirements.in
 types-python-dateutil==2.9.0.20241003  # via arrow, -c ../nt2/requirements.txt
 ward==0.68.0b0            # via -r test-requirements.in

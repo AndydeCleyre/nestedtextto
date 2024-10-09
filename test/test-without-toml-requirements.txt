@@ -6,7 +6,7 @@ cucumber-tag-expressions==4.1.0  # via ward
 inform==1.31              # via nestedtext, -c ../nt2/requirements.txt
 jinja2==3.1.4             # via click-completion
 markdown-it-py==3.0.0     # via rich, -c ../nt2/requirements.txt
-markupsafe==3.0.0         # via jinja2
+markupsafe==3.0.1         # via jinja2
 mdurl==0.1.2              # via markdown-it-py, -c ../nt2/requirements.txt
 nestedtext==3.7           # via -c ../nt2/requirements.txt, -r test-without-toml-requirements.in
 pluggy==1.5.0             # via ward
