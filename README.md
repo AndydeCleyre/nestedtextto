@@ -165,7 +165,7 @@ if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic
   <summary>nt2json</summary>
 
 ```
-nt2json 0.2.6
+nt2json 0.2.7
 
 Read NestedText and output its content as JSON.
 
@@ -216,7 +216,7 @@ Switches:
   <summary>nt2yaml</summary>
 
 ```
-nt2yaml 0.2.6
+nt2yaml 0.2.7
 
 Read NestedText and output its content as YAML.
 
@@ -270,7 +270,7 @@ Switches:
   <summary>nt2toml</summary>
 
 ```
-nt2toml 0.2.6
+nt2toml 0.2.7
 
 Read NestedText and output its content as TOML.
 
@@ -321,7 +321,7 @@ Switches:
   <summary>json2nt</summary>
 
 ```
-json2nt 0.2.6
+json2nt 0.2.7
 
 Read JSON and output its content as NestedText.
 
@@ -350,7 +350,7 @@ Switches:
   <summary>yaml2nt</summary>
 
 ```
-yaml2nt 0.2.6
+yaml2nt 0.2.7
 
 Read YAML and output its content as NestedText.
 
@@ -379,7 +379,7 @@ Switches:
   <summary>toml2nt</summary>
 
 ```
-toml2nt 0.2.6
+toml2nt 0.2.7
 
 Read TOML and output its content as NestedText.
 
