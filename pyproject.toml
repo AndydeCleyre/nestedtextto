@@ -16,6 +16,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Environment :: Console",
     "Operating System :: MacOS",
     "Operating System :: Microsoft :: Windows",
@@ -38,19 +39,12 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["darglint", "flit", "ipython", "isort", "nestedtext", "nox", "plumbum", "pyright", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
+dev = ["darglint", "flit", "ipython", "nestedtext", "nox", "plumbum", "pyright", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
 test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
-fmt = ["darglint", "isort", "ruff", "ssort"]
+fmt = ["darglint", "ruff", "ssort"]
 test-without-toml = ["nestedtext", "plumbum", "ward"]
 doc = ["md-toc", "plumbum", "pydoctor", "wheezy.template"]
-
-[tool.isort]
-line_length = 99
-balanced_wrapping = true
-combine_as_imports = true
-multi_line_output = 6
-use_parentheses = true
 
 [tool.ruff]
 line-length = 99
@@ -60,7 +54,11 @@ quote-style = "preserve"
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
-select = ["F", "E", "W", "I", "N", "D", "UP", "YTT", "SIM"]
+select = ["ALL"]
+ignore = ["BLE", "COM812", "EM", "FIX", "ISC001", "PERF203", "PGH003", "Q000", "T20", "TD002", "TD003", "TRY003", "TRY302"]
+
+[tool.ruff.lint.flake8-annotations]
+suppress-none-returning = true
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
@@ -68,6 +66,9 @@ split-on-trailing-comma = false
 
 [tool.ruff.lint.pydocstyle]
 convention = "pep257"
+
+[tool.ruff.lint.pylint]
+max-args = 6
 
 [tool.taskipy.tasks]
 fmt = "nox -s fmt"
@@ -88,6 +89,3 @@ project-url = "https://github.com/andydecleyre/nestedtextto"
 project-name = "NestedTextTo"
 html-output = "doc/api"
 html-viewsource-base = "https://github.com/AndydeCleyre/nestedtextto/tree/develop"
-
-[tool.pyright]
-useLibraryCodeForTypes = true

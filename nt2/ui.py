@@ -6,11 +6,16 @@ After argument processing, these call into the `dumpers` functions to get the jo
 
 import sys
 from json import JSONDecodeError
-from typing import cast
+from typing import ClassVar, cast
 
 from nestedtext import NestedTextError, load as ntload
 from plumbum.cli import Application, ExistingFile, Flag, SwitchAttr
-from plumbum.colors import blue, green, magenta, yellow  # type: ignore
+from plumbum.colors import (
+    blue,  # pyright: ignore [reportAttributeAccessIssue]
+    green,  # pyright: ignore [reportAttributeAccessIssue]
+    magenta,  # pyright: ignore [reportAttributeAccessIssue]
+    yellow,  # pyright: ignore [reportAttributeAccessIssue]
+)
 from rich import inspect as _rich_inspect
 from rich.console import Console as RichConsole
 from ruamel.yaml.parser import ParserError as YAMLParserError
@@ -18,9 +23,15 @@ from ruamel.yaml.scanner import ScannerError as YAMLScannerError
 
 from . import __version__
 from .dumpers import (
-    dump_json_to_nestedtext, dump_json_to_schema, dump_nestedtext_to_json,
-    dump_nestedtext_to_toml, dump_nestedtext_to_yaml, dump_toml_to_nestedtext,
-    dump_toml_to_schema, dump_yaml_to_nestedtext, dump_yaml_to_schema
+    dump_json_to_nestedtext,
+    dump_json_to_schema,
+    dump_nestedtext_to_json,
+    dump_nestedtext_to_toml,
+    dump_nestedtext_to_yaml,
+    dump_toml_to_nestedtext,
+    dump_toml_to_schema,
+    dump_yaml_to_nestedtext,
+    dump_yaml_to_schema,
 )
 
 RICH = RichConsole(stderr=True)
@@ -60,7 +71,7 @@ class _ColorApp(Application):
     PROGNAME = green
     VERSION = __version__ | blue
     COLOR_USAGE = green
-    COLOR_GROUPS = {'Meta-switches': magenta, 'Switches': yellow, 'Subcommands': blue}
+    COLOR_GROUPS: ClassVar = {'Meta-switches': magenta, 'Switches': yellow, 'Subcommands': blue}
     ALLOW_ABBREV = True
 
 
@@ -131,7 +142,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2json --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -170,7 +181,7 @@ class NestedTextToYAML(
         nt2yaml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -207,7 +218,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         nt2toml --int People.age --boolean 'People."is a wizard"' example.nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -236,7 +247,7 @@ class JSONToNestedText(_TypedFormatToSchema):
         cat example.json | json2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             if not self.to_schema:
                 dump_json_to_nestedtext(*input_files)
@@ -257,7 +268,7 @@ class YAMLToNestedText(_TypedFormatToSchema):
         cat example.yml | yaml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             if not self.to_schema:
                 dump_yaml_to_nestedtext(*input_files)
@@ -278,7 +289,7 @@ class TOMLToNestedText(_TypedFormatToSchema):
         cat example.yml | toml2nt
     """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             if not self.to_schema:
                 dump_toml_to_nestedtext(*input_files)

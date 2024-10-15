@@ -2,12 +2,13 @@
 
 from typing import cast
 
-from commands import nt2yaml, yaml2nt
 from plumbum import LocalPath, local
-from utils import assert_file_content, casting_args_from_schema_file
 from ward import test
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'  # type: ignore
+from .commands import nt2yaml, yaml2nt
+from .utils import assert_file_content, casting_args_from_schema_file
+
+SAMPLES = local.path(__file__).up() / 'samples' / 'yaml'
 
 
 for input_yaml_name, output_nt_name in {
@@ -19,7 +20,7 @@ for input_yaml_name, output_nt_name in {
 }.items():
 
     @test(f"YAML -> NestedText [{input_yaml_name}]")
-    def _(input_yaml_name=input_yaml_name, output_nt_name=output_nt_name):
+    def _(input_yaml_name: str = input_yaml_name, output_nt_name: str = output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = yaml2nt(SAMPLES / f"{input_yaml_name}.yml")
         assert_file_content(expected_file, output)
@@ -42,13 +43,13 @@ def _():
 for schema_file in SAMPLES // 'base.*.types.nt':
 
     @test(f"NestedText -> YAML [schema file: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
         output = nt2yaml(SAMPLES / 'base.nt', schema_files=(schema_file,))
         assert_file_content(expected_file, output)
 
     @test(f"NestedText -> YAML [casting args from schema: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         casting_args = casting_args_from_schema_file(schema_file)
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.yml"
         output = nt2yaml(SAMPLES / 'base.nt', **casting_args)
@@ -58,7 +59,7 @@ for schema_file in SAMPLES // 'base.*.types.nt':
 for num_type in ('floats', 'ints'):
 
     @test(f"NestedText -> YAML [schema file: {num_type}.types.nt]")
-    def _(num_type=num_type):
+    def _(num_type: str = num_type):
         expected_file = SAMPLES / f"typed_{num_type}.yml"
         output = nt2yaml(
             SAMPLES / f"{num_type}.nt", schema_files=(SAMPLES / f"{num_type}.types.nt",)
@@ -105,16 +106,15 @@ def _():
 for typed_yml in ('all', 'floats', 'dates'):
 
     @test(f"YAML -> schema, NestedText -> YAML [generate schema from typed_{typed_yml}.yml]")
-    def _():
-        expected_file = SAMPLES / f"typed_{typed_yml}.yml"
+    def _(types: str = typed_yml):
+        expected_file = SAMPLES / f"typed_{types}.yml"
         schema_content = yaml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
             schema_file = cast(LocalPath, tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2yaml(
-                SAMPLES / f"{'base' if typed_yml == 'all' else typed_yml}.nt",
-                schema_files=(schema_file,),
+                SAMPLES / f"{'base' if types == 'all' else types}.nt", schema_files=(schema_file,)
             )
-        if typed_yml == 'dates':
+        if types == 'dates':
             expected_file = SAMPLES / 'typed_dates_round_trip.yml'
         assert_file_content(expected_file, output)

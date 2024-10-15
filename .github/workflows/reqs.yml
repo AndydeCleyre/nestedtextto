@@ -4,11 +4,11 @@ on:
     - cron: '53 8 * * *'
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
 
       - name: fetch code (develop) and zpy submodule
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: develop
           submodules: recursive
@@ -18,8 +18,11 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
 
-      - name: get nox
-        uses: excitedleigh/setup-nox@v2.1.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pipx install nox
 
       - name: upgrade lockfiles
         run: nox -s lock

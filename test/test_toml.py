@@ -1,11 +1,14 @@
 """Test TOML <-> NestedText."""
 
-from typing import cast
+from __future__ import annotations
 
-from commands import nt2toml, toml2nt
+from typing import Sequence, cast
+
 from plumbum import LocalPath, local
-from utils import assert_file_content, casting_args_from_schema_file
 from ward import skip, test
+
+from .commands import nt2toml, toml2nt
+from .utils import assert_file_content, casting_args_from_schema_file
 
 try:
     import tomli  # noqa: F401
@@ -16,7 +19,7 @@ else:
     TOML_DISABLED = False
 
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'toml'  # type: ignore
+SAMPLES = local.path(__file__).up() / 'samples' / 'toml'
 
 
 for input_toml_name, output_nt_name in {
@@ -28,7 +31,7 @@ for input_toml_name, output_nt_name in {
 
     @skip("TOML support not enabled", when=TOML_DISABLED)
     @test(f"TOML -> NestedText [{input_toml_name}]")
-    def _(input_toml_name=input_toml_name, output_nt_name=output_nt_name):
+    def _(input_toml_name: str = input_toml_name, output_nt_name: str = output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = toml2nt(SAMPLES / f"{input_toml_name}.toml")
         assert_file_content(expected_file, output)
@@ -54,14 +57,14 @@ for schema_file in SAMPLES // 'base.*.types.nt':
 
     @skip("TOML support not enabled", when=TOML_DISABLED)
     @test(f"NestedText -> TOML [schema file: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.toml"
         output = nt2toml(SAMPLES / 'base.nt', schema_files=(schema_file,))
         assert_file_content(expected_file, output)
 
     @skip("TOML support not enabled", when=TOML_DISABLED)
     @test(f"NestedText -> TOML [casting args from schema: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         casting_args = casting_args_from_schema_file(schema_file, ('number', 'boolean'))
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.toml"
         output = nt2toml(SAMPLES / 'base.nt', **casting_args)
@@ -98,7 +101,11 @@ for input_file, expected_file, schema_file in (
 
     @skip("TOML support not enabled", when=TOML_DISABLED)
     @test(f"NestedText -> TOML [schema file: {schema_file.name}]")
-    def _(input_file=input_file, expected_file=expected_file, schema_file=schema_file):
+    def _(
+        input_file: LocalPath = input_file,
+        expected_file: LocalPath = expected_file,
+        schema_file: LocalPath = schema_file,
+    ):
         output = nt2toml(input_file, schema_files=(schema_file,))
         assert_file_content(expected_file, output)
 
@@ -106,7 +113,11 @@ for input_file, expected_file, schema_file in (
 
     @skip("TOML support not enabled", when=TOML_DISABLED)
     @test(f"NestedText -> TOML [casting args: {', '.join(casting_args)}]")
-    def _(input_file=input_file, expected_file=expected_file, casting_args=casting_args):
+    def _(
+        input_file: LocalPath = input_file,
+        expected_file: LocalPath = expected_file,
+        casting_args: dict[str, Sequence[str]] = casting_args,
+    ):
         output = nt2toml(input_file, **casting_args)
         assert_file_content(expected_file, output)
 
@@ -115,14 +126,13 @@ for typed_toml in ('all', 'dates', 'times'):
 
     @skip("TOML support not enabled", when=TOML_DISABLED)
     @test(f"TOML -> schema, NestedText -> TOML [generate schema from typed_{typed_toml}.toml]")
-    def _():
-        expected_file = SAMPLES / f"typed_{typed_toml}.toml"
+    def _(types: str = typed_toml):
+        expected_file = SAMPLES / f"typed_{types}.toml"
         schema_content = toml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
             schema_file = cast(LocalPath, tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2toml(
-                SAMPLES / f"{'base' if typed_toml == 'all' else typed_toml}.nt",
-                schema_files=(schema_file,),
+                SAMPLES / f"{'base' if types == 'all' else types}.nt", schema_files=(schema_file,)
             )
         assert_file_content(expected_file, output)

@@ -4,21 +4,22 @@ from __future__ import annotations
 
 import sys
 from collections import defaultdict
-from collections.abc import Iterable
 from datetime import date, datetime, time
 from types import SimpleNamespace
+from typing import TYPE_CHECKING, Iterable
 
 try:
     from types import NoneType
 except ImportError:
     NoneType = type(None)
 
-from ruamel.yaml.main import YAML
+if TYPE_CHECKING:
+    from ruamel.yaml.main import YAML
+    from yamlpath.wrappers.nodecoords import NodeCoords
 from yamlpath import Processor, YAMLPath
 from yamlpath.common import Parsers
 from yamlpath.exceptions import YAMLPathException
 from yamlpath.wrappers import ConsolePrinter
-from yamlpath.wrappers.nodecoords import NodeCoords
 
 
 def mk_yaml_editor() -> YAML:
@@ -73,7 +74,7 @@ def non_null_matches(surgeon: Processor, *query_paths: str) -> Iterable[NodeCoor
             yield from matches
 
 
-def _schema_entry_type(obj: int | float | bool | None | datetime | date | time):
+def _schema_entry_type(obj: float | bool | None | datetime | date | time) -> str:
     # -> Literal['number', 'boolean', 'null', 'date']
     if isinstance(obj, bool):
         return 'boolean'

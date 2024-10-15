@@ -1,2 +1,2 @@
-tomli==2.0.1
-tomli-w==1.0.0
+tomli==2.0.2              # via -r toml-requirements.in
+tomli-w==1.1.0            # via -r toml-requirements.in

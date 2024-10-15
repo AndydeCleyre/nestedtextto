@@ -17,7 +17,7 @@
 [![Generate docs from templates](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/doc.yml?branch=develop&label=Make%20Docs&logo=github)](https://andydecleyre.github.io/nestedtextto/moduleIndex.html)
 [![Requirements badge](https://img.shields.io/github/actions/workflow/status/andydecleyre/nestedtextto/reqs.yml?branch=develop&label=Bump%20Reqs&logo=github)](https://github.com/AndydeCleyre/nestedtextto/actions/workflows/reqs.yml)
 
----
+<img src="https://github.com/AndydeCleyre/nestedtextto/blob/assets/logo.png?raw=true" alt="logo" width="160" height="160" />
 
 This project was created in appreciation for the design of [NestedText](https://nestedtext.org/),
 the readability of [yamlpath](https://github.com/wwkimball/yamlpath) queries,
@@ -38,6 +38,7 @@ for convenient conversion between NestedText and other formats:
 - [What's NestedText?](#whats-nestedtext)
 - [How does this translate to formats with more value types?](#how-does-this-translate-to-formats-with-more-value-types)
 - [Installation](#installation)
+  - [Shell Completion](#shell-completion)
 - [Usage Docs](#usage-docs)
   - [Limitations](#limitations)
 - [More Examples](#more-examples)
@@ -139,14 +140,24 @@ If you don't need TOML support, you can omit the `[toml]` bits below.
 Here are some ways to install it:
 
 ```console
+$ uv tool install 'nt2[toml]'     # Install using uv (Python all-around manager)
 $ pipx install 'nt2[toml]'        # Install using pipx (Python app manager)
 $ pipz install 'nt2[toml]'        # Install using zpy (Python app and environment manager for Zsh)
 $ pip install --user 'nt2[toml]'  # Install in your user's environment
 $ pip install 'nt2[toml]'         # Install in current environment
 ```
 
-I recommend using [pipx](https://github.com/pypa/pipx)
+I recommend using [uv](https://github.com/astral-sh/uv),
+[pipx](https://github.com/pypa/pipx),
 or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
+
+#### Shell Completion
+
+For Zsh completion, add this line to your `.zshrc`, any time after `compinit`:
+
+```zsh
+if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2yaml nt2toml nt2json json2nt toml2nt yaml2nt
+```
 
 ### Usage Docs
 
@@ -154,7 +165,7 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
   <summary>nt2json</summary>
 
 ```
-nt2json 0.2.6
+nt2json 0.2.7
 
 Read NestedText and output its content as JSON.
 
@@ -205,7 +216,7 @@ Switches:
   <summary>nt2yaml</summary>
 
 ```
-nt2yaml 0.2.6
+nt2yaml 0.2.7
 
 Read NestedText and output its content as YAML.
 
@@ -259,7 +270,7 @@ Switches:
   <summary>nt2toml</summary>
 
 ```
-nt2toml 0.2.6
+nt2toml 0.2.7
 
 Read NestedText and output its content as TOML.
 
@@ -310,7 +321,7 @@ Switches:
   <summary>json2nt</summary>
 
 ```
-json2nt 0.2.6
+json2nt 0.2.7
 
 Read JSON and output its content as NestedText.
 
@@ -339,7 +350,7 @@ Switches:
   <summary>yaml2nt</summary>
 
 ```
-yaml2nt 0.2.6
+yaml2nt 0.2.7
 
 Read YAML and output its content as NestedText.
 
@@ -368,7 +379,7 @@ Switches:
   <summary>toml2nt</summary>
 
 ```
-toml2nt 0.2.6
+toml2nt 0.2.7
 
 Read TOML and output its content as NestedText.
 

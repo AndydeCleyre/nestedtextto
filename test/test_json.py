@@ -2,12 +2,13 @@
 
 from typing import cast
 
-from commands import json2nt, nt2json
 from plumbum import LocalPath, local
-from utils import assert_file_content, casting_args_from_schema_file
 from ward import test
 
-SAMPLES = local.path(__file__).up() / 'samples' / 'json'  # type: ignore
+from .commands import json2nt, nt2json
+from .utils import assert_file_content, casting_args_from_schema_file
+
+SAMPLES = local.path(__file__).up() / 'samples' / 'json'
 
 
 @test("JSON Lines -> NestedText")
@@ -23,7 +24,7 @@ for input_json_name, output_nt_name in {
 }.items():
 
     @test(f"JSON -> NestedText [{input_json_name}]")
-    def _(input_json_name=input_json_name, output_nt_name=output_nt_name):
+    def _(input_json_name: str = input_json_name, output_nt_name: str = output_nt_name):
         expected_file = SAMPLES / f"{output_nt_name}.nt"
         output = json2nt(SAMPLES / f"{input_json_name}.json")
         assert_file_content(expected_file, output)
@@ -46,13 +47,13 @@ def _():
 for schema_file in SAMPLES // 'base.*.types.nt':
 
     @test(f"NestedText -> JSON [schema file: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.json"
         output = nt2json(SAMPLES / 'base.nt', schema_files=(schema_file,))
         assert_file_content(expected_file, output)
 
     @test(f"NestedText -> JSON [casting args from schema: {schema_file.name}]")
-    def _(schema_file=schema_file):
+    def _(schema_file: LocalPath = schema_file):
         casting_args = casting_args_from_schema_file(schema_file)
         expected_file = SAMPLES / f"typed_{schema_file.name.split('.')[1]}.json"
         output = nt2json(SAMPLES / 'base.nt', **casting_args)

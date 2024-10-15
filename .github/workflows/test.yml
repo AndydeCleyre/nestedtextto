@@ -5,15 +5,18 @@ jobs:
 
   types:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
 
       - name: fetch code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: get nox
-        uses: excitedleigh/setup-nox@v2.1.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pipx install nox
 
       - name: run pyright in nox environment
         run: nox -s typecheck --force-color
@@ -23,16 +26,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-12, windows-2022]
+        os: [ubuntu-latest, macos-13, windows-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
 
       - name: fetch code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: get nox
-        uses: excitedleigh/setup-nox@v2.1.0
+      - uses: actions/setup-python@v5
+        with:
+          allow-prereleases: true
+          python-version: |
+            3.13
+            3.12
+            3.11
+            3.10
+            3.9
+            3.8
+            3.7
+
+      - run: pipx install nox
 
       - name: run ward tests in nox environment
         run: nox -s test test_without_toml combine_coverage --force-color

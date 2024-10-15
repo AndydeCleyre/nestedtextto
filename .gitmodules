@@ -1,3 +1,5 @@
 [submodule ".zpy"]
-	path = .zpy
-	url = https://github.com/andydecleyre/zpy
+  path = .zpy
+  url = https://github.com/andydecleyre/zpy
+  branch = master
+  shallow = true

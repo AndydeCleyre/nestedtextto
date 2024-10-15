@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
-from typing import cast
+from typing import TYPE_CHECKING, Sequence, TextIO, cast
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+    from plumbum import LocalPath
 
 from nestedtext import load as ntload
-from plumbum import LocalPath
 from ward.expect import assert_equal
 
 
@@ -24,7 +27,7 @@ def assert_file_content(file: LocalPath, content: str):
 
 
 def casting_args_from_schema_file(
-    schema_file, types=('null', 'number', 'boolean')
+    schema_file: str | Path | TextIO, types: Sequence[str] = ('null', 'number', 'boolean')
 ) -> dict[str, Sequence[str]]:
     """
     Use a "schema file" to create a `dict` mapping internal option names to sequences of YAMLPaths.
