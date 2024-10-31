@@ -7,7 +7,7 @@ click==8.1.7              # via click-completion, click-default-group, ward, -c 
 click-completion==0.5.2   # via ward, -c test/test-requirements.txt
 click-default-group==1.2.4  # via ward, -c test/test-requirements.txt
 colorama==0.4.6           # via taskipy
-colorlog==6.8.2           # via nox
+colorlog==6.9.0           # via nox
 cucumber-tag-expressions==4.1.0  # via ward, -c test/test-requirements.txt
 darglint==1.8.1           # via -c fmt-requirements.txt, -r fmt-requirements.in
 decorator==5.1.1          # via ipython
@@ -19,7 +19,7 @@ flit==3.9.0               # via -r dev-requirements.in
 flit-core==3.9.0          # via flit
 idna==3.10                # via requests
 inform==1.31              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ipython==8.28.0           # via -r dev-requirements.in
+ipython==8.29.0           # via -r dev-requirements.in
 jedi==0.19.1              # via ipython
 jinja2==3.1.4             # via click-completion, -c test/test-requirements.txt
 markdown-it-py==3.0.0     # via rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
@@ -42,22 +42,22 @@ psutil==5.9.8             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.3          # via stack-data
 pygments==2.18.0          # via ipython, rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-pyright==1.1.386          # via -r dev-requirements.in
+pyright==1.1.387          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==13.9.3              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.7.0               # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.7.1               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.3         # via ipython
-taskipy==1.13.0           # via -r dev-requirements.in
+taskipy==1.14.0           # via -r dev-requirements.in
 tomli==2.0.2              # via taskipy, ward, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 tomli-w==1.1.0            # via flit, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
 types-python-dateutil==2.9.0.20241003  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 typing-extensions==4.12.2  # via pyright
 urllib3==2.2.3            # via requests
-virtualenv==20.27.0       # via nox
+virtualenv==20.27.1       # via nox
 ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.13           # via prompt-toolkit
