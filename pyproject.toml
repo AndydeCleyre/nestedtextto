@@ -48,6 +48,7 @@ doc = ["md-toc", "plumbum", "pydoctor", "wheezy.template"]
 
 [tool.ruff]
 line-length = 99
+exclude = ["./.zpy"]
 
 [tool.ruff.format]
 quote-style = "preserve"
