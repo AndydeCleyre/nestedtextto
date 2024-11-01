@@ -15,8 +15,8 @@ distlib==0.3.9            # via virtualenv
 docutils==0.21.2          # via flit
 executing==2.1.0          # via stack-data
 filelock==3.16.1          # via virtualenv
-flit==3.9.0               # via -r dev-requirements.in
-flit-core==3.9.0          # via flit
+flit==3.10.0              # via -r dev-requirements.in
+flit-core==3.10.0         # via flit
 idna==3.10                # via requests
 inform==1.31              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ipython==8.29.0           # via -r dev-requirements.in
@@ -33,6 +33,7 @@ packaging==24.1           # via nox
 parso==0.8.4              # via jedi
 pathspec==0.12.1          # via ssort, -c fmt-requirements.txt
 pexpect==4.9.0            # via ipython
+pip==24.3.1               # via flit
 platformdirs==4.3.6       # via virtualenv
 pluggy==1.5.0             # via ward, -c test/test-requirements.txt
 plumbum==1.9.0            # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
