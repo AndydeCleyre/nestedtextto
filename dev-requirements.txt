@@ -15,8 +15,8 @@ distlib==0.3.9            # via virtualenv
 docutils==0.21.2          # via flit
 executing==2.1.0          # via stack-data
 filelock==3.16.1          # via virtualenv
-flit==3.10.0              # via -r dev-requirements.in
-flit-core==3.10.0         # via flit
+flit==3.10.1              # via -r dev-requirements.in
+flit-core==3.10.1         # via flit
 idna==3.10                # via requests
 inform==1.31              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ipython==8.29.0           # via -r dev-requirements.in
