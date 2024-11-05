@@ -50,7 +50,7 @@ rich==13.9.4              # via ward, -c nt2/requirements.txt, -c test/../nt2/re
 ruff==0.7.2               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ssort==0.13.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
+ssort==0.14.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.3         # via ipython
 taskipy==1.14.0           # via -r dev-requirements.in
 tomli==2.0.2              # via taskipy, ward, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
