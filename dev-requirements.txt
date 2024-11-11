@@ -20,7 +20,7 @@ flit-core==3.10.1         # via flit
 idna==3.10                # via requests
 inform==1.31              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ipython==8.29.0           # via -r dev-requirements.in
-jedi==0.19.1              # via ipython
+jedi==0.19.2              # via ipython
 jinja2==3.1.4             # via click-completion, -c test/test-requirements.txt
 markdown-it-py==3.0.0     # via rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 markupsafe==3.0.2         # via jinja2, -c test/test-requirements.txt

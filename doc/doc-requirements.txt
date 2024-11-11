@@ -23,5 +23,5 @@ toml==0.10.2              # via pydoctor
 twisted==24.10.0          # via pydoctor
 typing-extensions==4.12.2  # via twisted
 urllib3==2.2.3            # via pydoctor, requests
-wheezy-template==3.2.2    # via -r doc-requirements.in
+wheezy-template==3.2.3    # via -r doc-requirements.in
 zope-interface==7.1.1     # via twisted
