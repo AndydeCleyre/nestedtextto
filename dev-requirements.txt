@@ -39,7 +39,7 @@ pluggy==1.5.0             # via ward, -c test/test-requirements.txt
 plumbum==1.9.0            # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via ward, -c test/test-requirements.txt
 prompt-toolkit==3.0.48    # via ipython
-psutil==5.9.8             # via taskipy
+psutil==6.1.0             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.3          # via stack-data
 pygments==2.18.0          # via ipython, rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
@@ -52,7 +52,7 @@ shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.16.0               # via asttokens, click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.14.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
 stack-data==0.6.3         # via ipython
-taskipy==1.14.0           # via -r dev-requirements.in
+taskipy==1.14.1           # via -r dev-requirements.in
 tomli==2.1.0              # via taskipy, ward, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 tomli-w==1.1.0            # via flit, -c nt2/toml-requirements.txt, -c test/../nt2/toml-requirements.txt, -c test/test-requirements.txt, -r test/../nt2/toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
