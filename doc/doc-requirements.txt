@@ -19,7 +19,7 @@ plumbum==1.9.0            # via -r doc-requirements.in
 pydoctor==24.11.0         # via -r doc-requirements.in
 requests==2.32.3          # via cachecontrol, pydoctor
 setuptools==75.6.0        # via incremental, zope-interface
-twisted==24.10.0          # via pydoctor
+twisted==24.11.0          # via pydoctor
 typing-extensions==4.12.2  # via twisted
 urllib3==2.2.3            # via pydoctor, requests
 wheezy-template==3.2.3    # via -r doc-requirements.in
