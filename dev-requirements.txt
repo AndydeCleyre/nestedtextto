@@ -18,7 +18,7 @@ filelock==3.16.1          # via virtualenv
 flit==3.10.1              # via -r dev-requirements.in
 flit-core==3.10.1         # via flit
 idna==3.10                # via requests
-inform==1.32              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
+inform==1.33              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ipython==8.30.0           # via -r dev-requirements.in
 jedi==0.19.2              # via ipython
 jinja2==3.1.4             # via click-completion, -c test/test-requirements.txt
