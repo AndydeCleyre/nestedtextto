@@ -1,7 +1,7 @@
 argcomplete==3.5.3        # via nox
 arrow==1.3.0              # via inform, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 asttokens==3.0.0          # via stack-data
-certifi==2024.12.14       # via requests
+certifi==2025.1.31        # via requests
 charset-normalizer==3.4.1  # via requests
 click==8.1.8              # via click-completion, click-default-group, ward, -c test/test-requirements.txt
 click-completion==0.5.2   # via ward, -c test/test-requirements.txt
@@ -47,7 +47,7 @@ pyright==1.1.393          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==13.9.4              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.9.3               # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.9.4               # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.14.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
