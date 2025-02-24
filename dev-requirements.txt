@@ -11,7 +11,7 @@ colorama==0.4.6           # via taskipy
 colorlog==6.9.0           # via nox
 cucumber-tag-expressions==4.1.0  # via ward, -c test/test-requirements.txt
 darglint==1.8.1           # via -c fmt-requirements.txt, -r fmt-requirements.in
-decorator==5.2.0          # via ipython
+decorator==5.2.1          # via ipython
 dependency-groups==1.3.0  # via nox
 distlib==0.3.9            # via virtualenv
 docutils==0.21.2          # via flit
