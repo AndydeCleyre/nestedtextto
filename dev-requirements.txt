@@ -46,11 +46,11 @@ psutil==6.1.1             # via taskipy
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.3          # via stack-data
 pygments==2.19.1          # via ipython, ipython-pygments-lexers, rich, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-pyright==1.1.399          # via -r dev-requirements.in
+pyright==1.1.400          # via -r dev-requirements.in
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 requests==2.32.3          # via flit
 rich==14.0.0              # via ward, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ruff==0.11.6              # via -c fmt-requirements.txt, -r fmt-requirements.in
+ruff==0.11.7              # via -c fmt-requirements.txt, -r fmt-requirements.in
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 ssort==0.14.0             # via -c fmt-requirements.txt, -r fmt-requirements.in
