@@ -2,7 +2,7 @@ argcomplete==3.6.2        # via nox
 arrow==1.3.0              # via inform, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 asttokens==3.0.0          # via stack-data
 attrs==25.3.0             # via nox, -c nt2/requirements.txt, -c test/../nt2/requirements.txt
-certifi==2025.1.31        # via requests
+certifi==2025.4.26        # via requests
 charset-normalizer==3.4.1  # via requests
 click==8.1.8              # via click-completion, click-default-group, ward, -c test/test-requirements.txt
 click-completion==0.5.2   # via ward, -c test/test-requirements.txt
@@ -21,7 +21,7 @@ flit==3.12.0              # via -r dev-requirements.in
 flit-core==3.12.0         # via flit
 idna==3.10                # via requests
 inform==1.33              # via nestedtext, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
-ipython==9.1.0            # via -r dev-requirements.in
+ipython==9.2.0            # via -r dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
 jedi==0.19.2              # via ipython
 jinja2==3.1.6             # via click-completion, -c test/test-requirements.txt
