@@ -41,6 +41,13 @@ jobs:
           python-version: 3.7
 
       - uses: jdx/mise-action@v2
+        if: matrix.os == 'windows-latest'
+        with:
+          tool_versions: |
+            python 3.13 3.12 3.11 3.10 3.9 3.8
+
+      - uses: jdx/mise-action@v2
+        if: matrix.os != 'windows-latest'
 
       - run: pipx install nox
 
