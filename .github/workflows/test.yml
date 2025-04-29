@@ -12,9 +12,9 @@ jobs:
       - name: fetch code
         uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - uses: jdx/mise-action@v2
         with:
-          python-version: '3.12'
+          install_args: "python@3.13"
 
       - run: pipx install nox
 
