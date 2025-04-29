@@ -136,10 +136,10 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
     Casting switches may be before or after file arguments.
 
     Examples:
-        nt2json example.nt
-        nt2json <example.nt
-        cat example.nt | nt2json
-        nt2json --int People.age --boolean 'People."is a wizard"' example.nt
+        nt2json config.nt >config.json
+        cat config.nt | nt2json
+        nt2json --schema config.schema.nt config.nt >config.json
+        nt2json --int stats.total --boolean config.enabled data.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
@@ -175,10 +175,10 @@ class NestedTextToYAML(
     Casting switches may be before or after file arguments.
 
     Examples:
-        nt2yaml example.nt
-        nt2yaml <example.nt
-        cat example.nt | nt2yaml
-        nt2yaml --int People.age --boolean 'People."is a wizard"' example.nt
+        nt2yaml config.nt >config.yml
+        cat config.nt | nt2yaml
+        nt2yaml --schema config.schema.nt config.nt >config.yml
+        nt2yaml --int stats.total --boolean config.enabled data.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
@@ -212,10 +212,10 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
     Casting switches may be before or after file arguments.
 
     Examples:
-        nt2toml example.nt
-        nt2toml <example.nt
-        cat example.nt | nt2toml
-        nt2toml --int People.age --boolean 'People."is a wizard"' example.nt
+        nt2toml config.nt >config.toml
+        cat config.nt | nt2toml
+        nt2toml --schema config.schema.nt config.nt >config.toml
+        nt2toml --int stats.total --boolean config.enabled data.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
@@ -242,9 +242,9 @@ class JSONToNestedText(_TypedFormatToSchema):
     Read JSON and output its content as NestedText.
 
     Examples:
-        json2nt example.json
-        json2nt <example.json
-        cat example.json | json2nt
+        json2nt data.json >data.nt
+        curl -s https://api.example.com/data | json2nt
+        json2nt --to-schema data.json >data.schema.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
@@ -263,9 +263,9 @@ class YAMLToNestedText(_TypedFormatToSchema):
     Read YAML and output its content as NestedText.
 
     Examples:
-        yaml2nt example.yml
-        yaml2nt <example.yml
-        cat example.yml | yaml2nt
+        yaml2nt config.yml >config.nt
+        kubectl get deployment -o yaml | yaml2nt
+        yaml2nt --to-schema config.yml >config.schema.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
@@ -284,9 +284,9 @@ class TOMLToNestedText(_TypedFormatToSchema):
     Read TOML and output its content as NestedText.
 
     Examples:
-        toml2nt example.yml
-        toml2nt <example.yml
-        cat example.yml | toml2nt
+        toml2nt config.toml >config.nt
+        cat config.toml | toml2nt
+        toml2nt --to-schema config.toml >config.schema.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
