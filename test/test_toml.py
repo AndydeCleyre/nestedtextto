@@ -130,7 +130,7 @@ for typed_toml in ('all', 'dates', 'times'):
         expected_file = SAMPLES / f"typed_{types}.toml"
         schema_content = toml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
-            schema_file = cast('LocalPath', tmp / 'schema.nt')
+            schema_file = cast(LocalPath, tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2toml(
                 SAMPLES / f"{'base' if types == 'all' else types}.nt", schema_files=(schema_file,)

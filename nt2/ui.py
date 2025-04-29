@@ -144,11 +144,11 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
-            for schema_file in cast("list", self.schema_files):
-                schema = cast("dict", ntload(schema_file))
-                self.null_paths = [*schema.get('null', ()), *cast("list", self.null_paths)]
-                self.bool_paths = [*schema.get('boolean', ()), *cast("list", self.bool_paths)]
-                self.num_paths = [*schema.get('number', ()), *cast("list", self.num_paths)]
+            for schema_file in cast(list, self.schema_files):
+                schema = cast(dict, ntload(schema_file))
+                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
+                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
+                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
 
             dump_nestedtext_to_json(
                 *input_files,
@@ -183,12 +183,12 @@ class NestedTextToYAML(
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
-            for schema_file in cast("list", self.schema_files):
-                schema = cast("dict", ntload(schema_file))
-                self.null_paths = [*schema.get('null', ()), *cast("list", self.null_paths)]
-                self.bool_paths = [*schema.get('boolean', ()), *cast("list", self.bool_paths)]
-                self.num_paths = [*schema.get('number', ()), *cast("list", self.num_paths)]
-                self.date_paths = [*schema.get('date', ()), *cast("list", self.date_paths)]
+            for schema_file in cast(list, self.schema_files):
+                schema = cast(dict, ntload(schema_file))
+                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
+                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
+                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
+                self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
 
             dump_nestedtext_to_yaml(
                 *input_files,
@@ -220,11 +220,11 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
-            for schema_file in cast("list", self.schema_files):
-                schema = cast("dict", ntload(schema_file))
-                self.bool_paths = [*schema.get('boolean', ()), *cast("list", self.bool_paths)]
-                self.num_paths = [*schema.get('number', ()), *cast("list", self.num_paths)]
-                self.date_paths = [*schema.get('date', ()), *cast("list", self.date_paths)]
+            for schema_file in cast(list, self.schema_files):
+                schema = cast(dict, ntload(schema_file))
+                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
+                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
+                self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
 
             dump_nestedtext_to_toml(
                 *input_files,

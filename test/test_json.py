@@ -86,7 +86,7 @@ def _():
     expected_file = SAMPLES / 'typed_all.json'
     schema_content = json2nt(expected_file, to_schema=True)
     with local.tempdir() as tmp:
-        schema_file = cast('LocalPath', tmp / 'schema.nt')
+        schema_file = cast(LocalPath, tmp / 'schema.nt')
         schema_file.write(schema_content, 'utf-8')
         output = nt2json(SAMPLES / 'base.nt', schema_files=(schema_file,))
     assert_file_content(expected_file, output)

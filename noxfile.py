@@ -64,7 +64,7 @@ def render_readme(session: Session):
     """Generate README.md from templates/README.md.wz."""
     session.install('-Ue', '.[doc]')
     content = session.run('wheezy.template', 'templates/README.md.wz', silent=True)
-    Path('README.md').write_text(cast('str', content))
+    Path('README.md').write_text(cast(str, content))
     session.run(
         'md_toc', '--in-place', '--skip-lines', '2', 'github', '--header-levels', '4', 'README.md'
     )
