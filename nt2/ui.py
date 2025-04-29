@@ -138,7 +138,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
     Examples:
         nt2json config.nt >config.json
         cat config.nt | nt2json
-        nt2json --schema config.schema.nt config.nt >config.json
+        nt2json --schema config.types.nt config.nt >config.json
         nt2json --int stats.total --boolean config.enabled data.nt
     """
 
@@ -177,7 +177,7 @@ class NestedTextToYAML(
     Examples:
         nt2yaml config.nt >config.yml
         cat config.nt | nt2yaml
-        nt2yaml --schema config.schema.nt config.nt >config.yml
+        nt2yaml --schema config.types.nt config.nt >config.yml
         nt2yaml --int stats.total --boolean config.enabled data.nt
     """
 
@@ -214,7 +214,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
     Examples:
         nt2toml config.nt >config.toml
         cat config.nt | nt2toml
-        nt2toml --schema config.schema.nt config.nt >config.toml
+        nt2toml --schema config.types.nt config.nt >config.toml
         nt2toml --int stats.total --boolean config.enabled data.nt
     """
 
@@ -244,7 +244,7 @@ class JSONToNestedText(_TypedFormatToSchema):
     Examples:
         json2nt data.json >data.nt
         curl -s https://api.example.com/data | json2nt
-        json2nt --to-schema data.json >data.schema.nt
+        json2nt --to-schema data.json >data.types.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
@@ -265,7 +265,7 @@ class YAMLToNestedText(_TypedFormatToSchema):
     Examples:
         yaml2nt config.yml >config.nt
         kubectl get deployment -o yaml | yaml2nt
-        yaml2nt --to-schema config.yml >config.schema.nt
+        yaml2nt --to-schema config.yml >config.types.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
@@ -286,7 +286,7 @@ class TOMLToNestedText(_TypedFormatToSchema):
     Examples:
         toml2nt config.toml >config.nt
         cat config.toml | toml2nt
-        toml2nt --to-schema config.toml >config.schema.nt
+        toml2nt --to-schema config.toml >config.types.nt
     """
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
