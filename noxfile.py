@@ -15,7 +15,7 @@ ALL_PYTHONS = next(
         (Path(__file__).parent / '.tool-versions').read_text().splitlines(),
     )
 ).split()[1:]
-DEFAULT_PYTHON = '3.12'
+DEFAULT_PYTHON = '3.13'
 
 
 @nox.session(python=ALL_PYTHONS)
@@ -49,13 +49,6 @@ def fmt(session: Session):
     session.run('darglint', 'nt2', 'test')
     for tool in (('ssort',), ('ruff', 'format'), ('ruff', 'check', '--fix'), ('ruff', 'check')):
         session.run(*tool, 'noxfile.py', 'nt2', 'test')
-
-
-@nox.session(python=[DEFAULT_PYTHON])
-def publish(session: Session):
-    """Package and upload to PyPI."""
-    session.install('-U', '.[dev]')
-    session.run('flit', 'publish')
 
 
 @nox.session(python=[DEFAULT_PYTHON])
