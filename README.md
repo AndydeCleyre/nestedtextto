@@ -67,61 +67,51 @@ But you can provide options to cast any values as numbers, booleans, nulls, or d
 if the target format supports it, using the powerful and concise YAML Path query syntax.
 
 ```console
-$ cat example.nt
+$ cat config.nt
 ```
 ```yaml
-people:
-  -
-    name: Bill Sky
-    problems: 99
-    happy: False
-  -
-    name: Vorbis Florbis
-    problems: 6
-    happy: yes
+logging:
+  level: info
+  file: /var/log/app.log
+  rotate: yes
+  max_size: 100
 ```
 ```console
-$ nt2json example.nt --number people.problems --boolean people.happy
+$ nt2json config.nt --number logging.max_size --boolean logging.rotate
 ```
 ```json
 {
-  "people": [
-    {
-      "name": "Bill Sky",
-      "problems": 99,
-      "happy": false
-    },
-    {
-      "name": "Vorbis Florbis",
-      "problems": 6,
-      "happy": true
-    }
-  ]
+  "logging": {
+    "level": "info",
+    "file": "/var/log/app.log",
+    "rotate": true,
+    "max_size": 100
+  }
 }
 ```
 
 You may instead store these type mappings in a NestedText "schema" file.
 
 ```console
-$ cat example.types.nt
+$ cat config.types.nt
 ```
 ```yaml
 boolean:
-  - people.happy
+  - logging.rotate
 number:
-  - people.problems
+  - logging.max_size
 ```
 
 The following command will then also yield the above JSON:
 
 ```console
-$ nt2json example.nt --schema example.types.nt
+$ nt2json config.nt --schema config.types.nt
 ```
 
 Such a schema may be automatically generated from JSON/TOML/YAML:
 
 ```console
-$ json2nt --to-schema example.json
+$ json2nt --to-schema config.json
 ```
 
 Options may be provided before or after the document,
@@ -175,10 +165,10 @@ but you can cast nodes matching YAML Paths to boolean, null, or number.
 Casting switches may be before or after file arguments.
 
 Examples:
-    nt2json example.nt
-    nt2json <example.nt
-    cat example.nt | nt2json
-    nt2json --int People.age --boolean 'People."is a wizard"' example.nt
+    nt2json config.nt >config.json
+    cat config.nt | nt2json
+    nt2json --schema config.types.nt config.nt >config.json
+    nt2json --int stats.total --boolean config.enabled data.nt
 
 Usage:
     nt2json [SWITCHES] input_files...
@@ -226,10 +216,10 @@ but you can cast nodes matching YAML Paths to boolean, null, number, or date.
 Casting switches may be before or after file arguments.
 
 Examples:
-    nt2yaml example.nt
-    nt2yaml <example.nt
-    cat example.nt | nt2yaml
-    nt2yaml --int People.age --boolean 'People."is a wizard"' example.nt
+    nt2yaml config.nt >config.yml
+    cat config.nt | nt2yaml
+    nt2yaml --schema config.types.nt config.nt >config.yml
+    nt2yaml --int stats.total --boolean config.enabled data.nt
 
 Usage:
     nt2yaml [SWITCHES] input_files...
@@ -280,10 +270,10 @@ but you can cast nodes matching YAML Paths to boolean, number, or date.
 Casting switches may be before or after file arguments.
 
 Examples:
-    nt2toml example.nt
-    nt2toml <example.nt
-    cat example.nt | nt2toml
-    nt2toml --int People.age --boolean 'People."is a wizard"' example.nt
+    nt2toml config.nt >config.toml
+    cat config.nt | nt2toml
+    nt2toml --schema config.types.nt config.nt >config.toml
+    nt2toml --int stats.total --boolean config.enabled data.nt
 
 Usage:
     nt2toml [SWITCHES] input_files...
@@ -326,9 +316,9 @@ json2nt 0.2.7
 Read JSON and output its content as NestedText.
 
 Examples:
-    json2nt example.json
-    json2nt <example.json
-    cat example.json | json2nt
+    json2nt data.json >data.nt
+    curl -s https://api.example.com/data | json2nt
+    json2nt --to-schema data.json >data.types.nt
 
 Usage:
     json2nt [SWITCHES] input_files...
@@ -355,9 +345,9 @@ yaml2nt 0.2.7
 Read YAML and output its content as NestedText.
 
 Examples:
-    yaml2nt example.yml
-    yaml2nt <example.yml
-    cat example.yml | yaml2nt
+    yaml2nt config.yml >config.nt
+    kubectl get deployment -o yaml | yaml2nt
+    yaml2nt --to-schema config.yml >config.types.nt
 
 Usage:
     yaml2nt [SWITCHES] input_files...
@@ -384,9 +374,9 @@ toml2nt 0.2.7
 Read TOML and output its content as NestedText.
 
 Examples:
-    toml2nt example.yml
-    toml2nt <example.yml
-    cat example.yml | toml2nt
+    toml2nt config.toml >config.nt
+    cat config.toml | toml2nt
+    toml2nt --to-schema config.toml >config.types.nt
 
 Usage:
     toml2nt [SWITCHES] input_files...
