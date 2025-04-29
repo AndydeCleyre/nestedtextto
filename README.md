@@ -81,7 +81,7 @@ people:
     happy: yes
 ```
 ```console
-$ nt2json example.nt --number /people/problems --boolean /people/happy
+$ nt2json example.nt --number people.problems --boolean people.happy
 ```
 ```json
 {
@@ -107,9 +107,9 @@ $ cat example.types.nt
 ```
 ```yaml
 boolean:
-  - /people/happy
+  - people.happy
 number:
-  - /people/problems
+  - people.problems
 ```
 
 The following command will then also yield the above JSON:
@@ -131,7 +131,7 @@ For more YAML Path syntax information see
 [the YAML Path wiki](https://github.com/wwkimball/yamlpath/wiki/Search-Expressions).
 
 For example, you could match all items which are *probably* intended as booleans,
-at any depth, with `--boolean '/**[.=~/^(?i)(yes|no|true|false)$/]'`.
+at any depth, with `--boolean '/**[. =~ /(?i)^(yes|no|true|false)$/]'`.
 
 ### Installation
 
