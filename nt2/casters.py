@@ -145,7 +145,7 @@ def _cast_datey(surgeon: Processor, date_paths: Sequence[str]) -> dict | list:
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
         else:
-            surgeon.set_value(cast(YAMLPath, match.path), datey)
+            surgeon.set_value(cast('YAMLPath', match.path), datey)
             if not marked_times_present and isinstance(datey, str):
                 marked_times_present = True
     return (
@@ -192,13 +192,13 @@ def cast_stringy_data(
 
     for match in non_null_matches(surgeon, *null_paths):
         if match.node == '':
-            surgeon.set_value(cast(YAMLPath, match.path), None)
+            surgeon.set_value(cast('YAMLPath', match.path), None)
 
     for match in non_null_matches(surgeon, *bool_paths):
         if not isinstance(match.node, str):
             continue
         try:
-            surgeon.set_value(cast(YAMLPath, match.path), _str_to_bool(match.node))
+            surgeon.set_value(cast('YAMLPath', match.path), _str_to_bool(match.node))
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
 
@@ -206,7 +206,7 @@ def cast_stringy_data(
         if not isinstance(match.node, str):
             continue
         try:
-            surgeon.set_value(cast(YAMLPath, match.path), _str_to_num(match.node))
+            surgeon.set_value(cast('YAMLPath', match.path), _str_to_num(match.node))
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
 

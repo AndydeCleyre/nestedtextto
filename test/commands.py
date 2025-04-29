@@ -35,12 +35,12 @@ from nt2.ui import (
 )
 
 Application: TypeAlias = _Application
-JSONToNestedText = cast(Application, _JSONToNestedText)
-NestedTextToJSON = cast(Application, _NestedTextToJSON)
-NestedTextToTOML = cast(Application, _NestedTextToTOML)
-NestedTextToYAML = cast(Application, _NestedTextToYAML)
-TOMLToNestedText = cast(Application, _TOMLToNestedText)
-YAMLToNestedText = cast(Application, _YAMLToNestedText)
+JSONToNestedText = cast("Application", _JSONToNestedText)
+NestedTextToJSON = cast("Application", _NestedTextToJSON)
+NestedTextToTOML = cast("Application", _NestedTextToTOML)
+NestedTextToYAML = cast("Application", _NestedTextToYAML)
+TOMLToNestedText = cast("Application", _TOMLToNestedText)
+YAMLToNestedText = cast("Application", _YAMLToNestedText)
 
 
 def _run_app(

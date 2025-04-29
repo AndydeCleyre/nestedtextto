@@ -110,7 +110,7 @@ for typed_yml in ('all', 'floats', 'dates'):
         expected_file = SAMPLES / f"typed_{types}.yml"
         schema_content = yaml2nt(expected_file, to_schema=True)
         with local.tempdir() as tmp:
-            schema_file = cast(LocalPath, tmp / 'schema.nt')
+            schema_file = cast('LocalPath', tmp / 'schema.nt')
             schema_file.write(schema_content, 'utf-8')
             output = nt2yaml(
                 SAMPLES / f"{'base' if types == 'all' else types}.nt", schema_files=(schema_file,)

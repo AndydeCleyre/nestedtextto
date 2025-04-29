@@ -77,7 +77,7 @@ def ntload(file: str | Path | TextIO) -> StringyData:
     Returns:
         Parsed NestedText data as a ``dict`` or ``list`` of ``str``\ s.
     """
-    return cast(StringyData, _ntload(file, top='any'))
+    return cast('StringyData', _ntload(file, top='any'))
 
 
 def ntdump(data: dict | list):
@@ -268,7 +268,7 @@ def dump_toml_to_schema(*input_files: LocalPath):
     else:
         for f in input_files:
             with f.open('rb') as ifile:
-                typed_data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
+                typed_data = tload(cast('BinaryIO', ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             _dump_typed_data_to_schema(typed_data)
 
 
@@ -308,7 +308,7 @@ def dump_toml_to_nestedtext(*input_files: LocalPath):
     else:
         for f in input_files:
             with f.open('rb') as ifile:
-                data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
+                data = tload(cast('BinaryIO', ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             data = converter.unstructure(data)
             ntdump(data)
 
