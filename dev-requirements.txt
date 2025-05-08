@@ -30,7 +30,7 @@ packaging==25.0           # via dependency-groups, nox
 parso==0.8.4              # via jedi
 pathspec==0.12.1          # via ssort, -c fmt-requirements.txt
 pexpect==4.9.0            # via ipython
-platformdirs==4.3.7       # via virtualenv
+platformdirs==4.3.8       # via virtualenv
 pluggy==1.5.0             # via ward, -c test/test-requirements.txt
 plumbum==1.9.0            # via -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt, -r test/test-requirements.in
 pprintpp==0.4.0           # via ward, -c test/test-requirements.txt
