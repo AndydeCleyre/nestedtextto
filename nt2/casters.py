@@ -88,7 +88,7 @@ def _str_to_datey(informal_datey: str, time_marker: str) -> date | datetime | st
             to create a "marked time" ``str``, rather than an (unyamlable) ``time`` instance.
 
     Returns:
-        An ``date``, ``datetime``, or marked time ``str`` equivalent of ``informal_datey``.
+        A ``date``, ``datetime``, or marked time ``str`` equivalent of ``informal_datey``.
             A marked time ``str`` is just ISO 8601 prefixed with ``time_marker``.
 
     Raises:
