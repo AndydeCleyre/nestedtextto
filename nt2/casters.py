@@ -130,7 +130,6 @@ def _cast_datey(surgeon: Processor, date_paths: Sequence[str]) -> dict | list:
     """
     marked_times_present = False
     time_marker = str(uuid4())
-    marked_time_converter = mk_unyamlable_converter(time_marker=time_marker)
 
     for match in non_null_matches(surgeon, *date_paths):
         if not isinstance(match.node, str) or match.node.startswith(time_marker):
@@ -143,9 +142,11 @@ def _cast_datey(surgeon: Processor, date_paths: Sequence[str]) -> dict | list:
             surgeon.set_value(cast(YAMLPath, match.path), datey)
             if not marked_times_present and isinstance(datey, str):
                 marked_times_present = True
-    return (
-        marked_time_converter.unstructure(surgeon.data) if marked_times_present else surgeon.data
-    )
+
+    if marked_times_present:
+        marked_time_converter = mk_unyamlable_converter(time_marker=time_marker)
+        return marked_time_converter.unstructure(surgeon.data)
+    return surgeon.data
 
 
 def cast_stringy_data(
