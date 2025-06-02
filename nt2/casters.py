@@ -75,12 +75,7 @@ def _str_to_num(informal_num: str) -> int | float:
                 else:
                     return num
         raise  # pragma: no cover
-    try:
-        inum = int(num)
-    except (ValueError, OverflowError):
-        return num
-    else:
-        return inum if num == inum else num
+    return int(num) if num.is_integer() else num
 
 
 def _str_to_datey(informal_datey: str, time_marker: str) -> date | datetime | str:
