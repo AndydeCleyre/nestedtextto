@@ -20,7 +20,7 @@ pydoctor==25.4.0          # via -r doc-requirements.in
 requests==2.32.3          # via cachecontrol, pydoctor
 setuptools==80.9.0        # via incremental, zope-interface
 twisted==24.11.0          # via pydoctor
-typing-extensions==4.13.2  # via twisted
+typing-extensions==4.14.0  # via twisted
 urllib3==2.4.0            # via pydoctor, requests
 wheezy-template==3.2.3    # via -r doc-requirements.in
 zope-interface==7.2       # via twisted
