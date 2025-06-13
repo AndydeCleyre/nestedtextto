@@ -13,7 +13,7 @@ idna==3.10                # via hyperlink, requests
 incremental==24.7.2       # via twisted
 lunr==0.8.0               # via pydoctor
 md-toc==9.0.0             # via -r doc-requirements.in
-msgpack==1.1.0            # via cachecontrol
+msgpack==1.1.1            # via cachecontrol
 platformdirs==4.3.8       # via pydoctor
 plumbum==1.9.0            # via -r doc-requirements.in
 pydoctor==25.4.0          # via -r doc-requirements.in
