@@ -12,7 +12,7 @@ nestedtext==3.7           # via -c ../nt2/requirements.txt, -r test-requirements
 pluggy==1.6.0             # via ward
 plumbum==1.9.0            # via -c ../nt2/requirements.txt, -r test-requirements.in
 pprintpp==0.4.0           # via ward
-pygments==2.19.1          # via rich, -c ../nt2/requirements.txt
+pygments==2.19.2          # via rich, -c ../nt2/requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c ../nt2/requirements.txt
 rich==14.0.0              # via ward, -c ../nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
