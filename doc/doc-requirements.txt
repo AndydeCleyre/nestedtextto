@@ -1,7 +1,7 @@
 attrs==25.3.0             # via pydoctor, twisted
 automat==25.4.16          # via twisted
 cachecontrol==0.14.3      # via pydoctor
-certifi==2025.6.15        # via requests
+certifi==2025.7.9         # via requests
 charset-normalizer==3.4.2  # via requests
 configargparse==1.7.1     # via pydoctor
 constantly==23.10.4       # via twisted
