@@ -53,6 +53,6 @@ tomli-w==1.2.0            # via -c nt2/toml-requirements.txt, -c test/../nt2/tom
 traitlets==5.14.3         # via ipython, matplotlib-inline
 types-python-dateutil==2.9.0.20250708  # via arrow, -c nt2/requirements.txt, -c test/../nt2/requirements.txt, -c test/test-requirements.txt
 typing-extensions==4.14.1  # via pyright, -c nt2/requirements.txt, -c test/../nt2/requirements.txt
-virtualenv==20.31.2       # via nox
+virtualenv==20.32.0       # via nox
 ward==0.68.0b0            # via -c test/test-requirements.txt, -r test/test-requirements.in
 wcwidth==0.2.13           # via prompt-toolkit
