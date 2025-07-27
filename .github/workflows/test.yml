@@ -23,19 +23,12 @@ jobs:
           python-version: 3.7
 
       - uses: jdx/mise-action@v2
-        if: matrix.os == 'windows-latest'
-        with:
-          tool_versions: |
-            python 3.13 3.12 3.11 3.10 3.9 3.8
-
-      - uses: jdx/mise-action@v2
-        if: matrix.os != 'windows-latest'
 
       - name: run tests
         run: |
           mise run test
           mise run test-without-toml
-          mise run combine-coverage --force-color
+          mise run combine-coverage
         env:
           PYTHONIOENCODING: utf-8
 

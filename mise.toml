@@ -1,5 +1,5 @@
 [tools]
-python = ["3.13", "3.12", "3.11", "3.10", "3.9", "3.8", "3.7"]
+python = "3.13"
 uv = "latest"
 
 [env._.python]
@@ -55,20 +55,20 @@ run = [
 [tasks.test]
 description = "Run all tests"
 run = """\
-      {{vars.run_with_coverage}} \
-        --with-editable . \
-        --with-requirements test/test-requirements.txt \
-        {{vars.test_with_coverage}}
-      """
+  {{vars.run_with_coverage}} \
+    --with-editable . \
+    --with-requirements test/test-requirements.txt \
+    {{vars.test_with_coverage}}
+"""
 
 [tasks.test-without-toml]
 description = "Run all tests, excluding optional TOML support"
 run = """\
-      {{vars.run_with_coverage}} \
-        --with-editable . \
-        --with-requirements test/test-without-toml-requirements.txt \
-        {{vars.test_with_coverage}}
-      """
+  {{vars.run_with_coverage}} \
+    --with-editable . \
+    --with-requirements test/test-without-toml-requirements.txt \
+    {{vars.test_with_coverage}}
+"""
 
 [tasks.test-all]
 description = "Run all tests, with and without TOML support enabled"
@@ -79,24 +79,51 @@ run = [
 
 [tasks.test-all-pythons]
 description = "Run all tests, with and without TOML support enabled, for each supported Python release"
-run = [
-  "mise install",
-  """\
-    for pyver in 3.13 3.12 3.11 3.10 3.9 3.8 3.7; do
+run = """\
+  for pyver in 3.13 3.12 3.11 3.10 3.9 3.8 3.7; do
 
+    mise x python@$pyver -- \
       {{vars.run_with_coverage}} \
-        --python "python${pyver}" \
-        --with-editable '.[test]' \
-        {{vars.test_with_coverage}}
+      --python "python${pyver}" \
+      --with-editable '.[test]' \
+      {{vars.test_with_coverage}}
 
+    mise x python@$pyver -- \
       {{vars.run_with_coverage}} \
-        --python "python${pyver}" \
-        --with-editable '.[test-without-toml]' \
-        {{vars.test_with_coverage}}
+      --python "python${pyver}" \
+      --with-editable '.[test-without-toml]' \
+      {{vars.test_with_coverage}}
 
-    done
-  """
-]
+  done
+"""
+run_windows = """\
+
+  {{vars.run_with_coverage}} \
+    --python "python3.7" \
+    --with-editable '.[test]' \
+    {{vars.test_with_coverage}}
+
+  {{vars.run_with_coverage}} \
+    --python "python3.7" \
+    --with-editable '.[test-without-toml]' \
+    {{vars.test_with_coverage}}
+
+  for pyver in 3.13 3.12 3.11 3.10 3.9 3.8; do
+
+    mise x python@$pyver -- \
+      {{vars.run_with_coverage}} \
+      --python "python${pyver}" \
+      --with-editable '.[test]' \
+      {{vars.test_with_coverage}}
+
+    mise x python@$pyver -- \
+      {{vars.run_with_coverage}} \
+      --python "python${pyver}" \
+      --with-editable '.[test-without-toml]' \
+      {{vars.test_with_coverage}}
+
+  done
+"""
 
 [tasks.combine-coverage]
 description = "Prepare a combined coverage report for uploading"

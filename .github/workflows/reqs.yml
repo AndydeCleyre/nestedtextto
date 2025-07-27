@@ -19,8 +19,6 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
 
       - uses: jdx/mise-action@v2
-        with:
-          install_args: "uv python@3.13"
 
       - name: upgrade lockfiles
         run: mise run bump-reqs

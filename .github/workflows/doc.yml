@@ -12,8 +12,6 @@ jobs:
           fetch-depth: 0
 
       - uses: jdx/mise-action@v2
-        with:
-          install_args: "uv python@3.13"
 
       - name: render documents
         run: mise run docs
