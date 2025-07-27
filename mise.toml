@@ -98,16 +98,6 @@ run = """\
 """
 run_windows = """\
 
-  {{vars.run_with_coverage}} \
-    --python python3.7 \
-    --with-editable .[test] \
-    {{vars.test_with_coverage}}
-
-  {{vars.run_with_coverage}} \
-    --python python3.7 \
-    --with-editable .[test-without-toml] \
-    {{vars.test_with_coverage}}
-
   for pyver in 3.13 3.12 3.11 3.10 3.9 3.8; do
 
     mise x python@$pyver -- \
@@ -123,6 +113,16 @@ run_windows = """\
       {{vars.test_with_coverage}}
 
   done
+
+  {{vars.run_with_coverage}} \
+    --python python3.7 \
+    --with-editable .[test] \
+    {{vars.test_with_coverage}}
+
+  {{vars.run_with_coverage}} \
+    --python python3.7 \
+    --with-editable .[test-without-toml] \
+    {{vars.test_with_coverage}}
 """
 
 [tasks.combine-coverage]
