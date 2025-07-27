@@ -3,24 +3,6 @@ on:
   push
 jobs:
 
-  types:
-
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: fetch code
-        uses: actions/checkout@v4
-
-      - uses: jdx/mise-action@v2
-        with:
-          install_args: "python@3.13"
-
-      - run: pipx install nox
-
-      - name: run pyright in nox environment
-        run: nox -s typecheck --force-color
-
   tests:
 
     strategy:
@@ -49,10 +31,11 @@ jobs:
       - uses: jdx/mise-action@v2
         if: matrix.os != 'windows-latest'
 
-      - run: pipx install nox
-
-      - name: run ward tests in nox environment
-        run: nox -s test test_without_toml combine_coverage --force-color
+      - name: run tests
+        run: |
+          mise run test
+          mise run test-without-toml
+          mise run combine-coverage --force-color
         env:
           PYTHONIOENCODING: utf-8
 

@@ -1,0 +1,106 @@
+[tools]
+python = ["3.13", "3.12", "3.11", "3.10", "3.9", "3.8", "3.7"]
+uv = "latest"
+
+[env._.python]
+venv = { path = ".venv", create = true }
+
+[vars]
+pip_compile = "uv pip compile -q --python python --upgrade --no-header --annotation-style=line"
+run_with_coverage = "uv run --no-project --isolated --with coverage"
+test_with_coverage = "coverage run --parallel-mode --module ward"
+
+[tasks.install]
+description = "Install packages required for development into the virtual environment"
+run = "uv -q pip install -p python -Ue '.[dev,toml]' -c dev-requirements.txt -c nt2/requirements.txt -c nt2/toml-requirements.txt"
+
+[tasks.fmt]
+description = "Format and lint code and docs"
+depends = ["install"]
+run = [
+  "darglint nt2 test",
+
+  "ssort nt2 test",
+
+  "ruff format nt2 test",
+  "ruff check --fix nt2 test",
+  "ruff check nt2 test",
+
+  "pyright --outputjson 2>/dev/null | json2nt",
+  "pyright --warnings",
+]
+# maybe drop file/folder args
+
+[tasks.bump-reqs]
+description = "Regenerate lock files with updated package versions"
+run = [
+  "{{vars.pip_compile}} requirements.in                   -o nt2/requirements.txt",
+  "{{vars.pip_compile}} toml-requirements.in              -o nt2/toml-requirements.txt",
+  "{{vars.pip_compile}} test-without-toml-requirements.in -o test/test-without-toml-requirements.txt",
+  "{{vars.pip_compile}} test-requirements.in              -o test/test-requirements.txt",
+  "{{vars.pip_compile}} dev-requirements.in               -o dev-requirements.txt",
+  "zsh -c '. ./.zpy/zpy.plugin.zsh; pypc -y'",
+]
+
+[tasks.docs]
+description = "Render README from templates/README.md.wz and API documentation from docstrings"
+depends = ["install"]
+run = [
+  "wheezy.template templates/README.md.wz >README.md",
+  "md_toc --in-place --skip-lines 2 github --header-levels 4 README.md",
+
+  "pydoctor nt2",
+]
+
+[tasks.test]
+description = "Run all tests"
+run = """\
+      {{vars.run_with_coverage}} \
+        --with-editable . \
+        --with-requirements test/test-requirements.txt \
+        {{vars.test_with_coverage}}
+      """
+
+[tasks.test-without-toml]
+description = "Run all tests, excluding optional TOML support"
+run = """\
+      {{vars.run_with_coverage}} \
+        --with-editable . \
+        --with-requirements test/test-without-toml-requirements.txt \
+        {{vars.test_with_coverage}}
+      """
+
+[tasks.test-all]
+description = "Run all tests, with and without TOML support enabled"
+run = [
+  "mise run test",
+  "mise run test-without-toml"
+]
+
+[tasks.test-all-pythons]
+description = "Run all tests, with and without TOML support enabled, for each supported Python release"
+run = [
+  "mise install",
+  """\
+    for pyver in 3.13 3.12 3.11 3.10 3.9 3.8 3.7; do
+
+      {{vars.run_with_coverage}} \
+        --python "python${pyver}" \
+        --with-editable '.[test]' \
+        {{vars.test_with_coverage}}
+
+      {{vars.run_with_coverage}} \
+        --python "python${pyver}" \
+        --with-editable '.[test-without-toml]' \
+        {{vars.test_with_coverage}}
+
+    done
+  """
+]
+
+[tasks.combine-coverage]
+description = "Prepare a combined coverage report for uploading"
+run = [
+  "{{vars.run_with_coverage}} coverage combine",
+  "{{vars.run_with_coverage}} coverage json"
+]

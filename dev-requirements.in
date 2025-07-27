@@ -1,16 +1,9 @@
--r test/test-requirements.in
--c test/test-requirements.txt
-
--r fmt-requirements.in
--c fmt-requirements.txt
-
 -c nt2/requirements.txt
 -c nt2/toml-requirements.txt
+-c test/test-requirements.txt
+
+-r doc-requirements.txt
+-r fmt-requirements.txt
+-r test-requirements.in
 
 ipython  # manually debug
-
-taskipy  # run tasks
-nox      # run tasks in clean venvs
-# TODO: if/when Python 3.7 support is dropped, use nox[uv]
-
-pyright  # check types

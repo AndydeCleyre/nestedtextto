@@ -13,12 +13,10 @@ jobs:
 
       - uses: jdx/mise-action@v2
         with:
-          install_args: "python@3.13"
-
-      - run: pipx install nox
+          install_args: "uv python@3.13"
 
       - name: render documents
-        run: nox -s render_readme render_api_docs
+        run: mise run docs
 
       - name: push any changes in current branch
         run: |

@@ -74,7 +74,7 @@ def non_null_matches(surgeon: Processor, *query_paths: str) -> Iterable[NodeCoor
             yield from matches
 
 
-def _schema_entry_type(obj: float | bool | None | datetime | date | time) -> str:
+def _schema_entry_type(obj: float | bool | None | datetime | date | time) -> str:  # noqa: FBT001
     # -> Literal['number', 'boolean', 'null', 'date']
     if isinstance(obj, bool):
         return 'boolean'

@@ -1,4 +1,8 @@
-darglint==1.8.1           # via -r fmt-requirements.in
-pathspec==0.12.1          # via ssort
-ruff==0.11.12             # via -r fmt-requirements.in
-ssort==0.14.0             # via -r fmt-requirements.in
+-c nt2/requirements.txt
+-c nt2/toml-requirements.txt
+-c test/test-requirements.txt
+
+darglint  # lint docstrings
+pyright   # type check
+ruff      # format & lint code
+ssort     # reorder functions

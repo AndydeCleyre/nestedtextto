@@ -1,0 +1,6 @@
+-c nt2/requirements.txt
+-c nt2/toml-requirements.txt
+-c test/test-without-toml-requirements.txt
+
+-r toml-requirements.in
+-r test-without-toml-requirements.in

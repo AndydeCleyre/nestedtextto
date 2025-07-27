@@ -1,5 +1,0 @@
-plumbum          # Render README from template
-wheezy.template  #
-md-toc           # Generate table of contents
-
-pydoctor         # Generate API HTML from code

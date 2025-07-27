@@ -249,17 +249,16 @@ $ json2nt log.jsonl
 
 ### Development Docs
 
-For local development, it's recommended to activate a venv, then
+For local development, it's recommended to install and activate mise, then
 
 ```console
-$ pip install -r local-requirements.txt
+$ mise run install
 ```
 
 From there, you may want to look at common task definitions:
 
 ```console
-$ task -l
-$ nox -l
+$ mise tasks
 ```
 
 And you may wish to browse the structure and in-code documentation as rendered HTML,

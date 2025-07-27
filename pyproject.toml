@@ -39,12 +39,10 @@ yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["darglint", "ipython", "nestedtext", "nox", "plumbum", "pyright", "ruff", "ssort", "taskipy", "tomli", "tomli-w", "ward"]
+dev = ["darglint", "ipython", "md-toc", "nestedtext", "plumbum", "pydoctor", "pyright", "ruff", "ssort", "tomli", "tomli-w", "ward", "wheezy.template"]
 test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
-fmt = ["darglint", "ruff", "ssort"]
 test-without-toml = ["nestedtext", "plumbum", "ward"]
-doc = ["md-toc", "plumbum", "pydoctor", "wheezy.template"]
 
 [tool.ruff]
 line-length = 99
@@ -83,13 +81,6 @@ convention = "pep257"
 
 [tool.ruff.lint.pylint]
 max-args = 6
-
-[tool.taskipy.tasks]
-fmt = "nox -s fmt"
-lock = "nox -s lock"
-install = "if [ $VIRTUAL_ENV ]; then pip install -r local-requirements.txt; else printf '%s\n' 'Please activate a venv first'; return 1; fi"
-test = "nox -s test test_without_toml typecheck -p 3.12"
-docs = "nox -s render_readme render_api_docs"
 
 [tool.ward]
 path = ["test"]

@@ -1,9 +1,0 @@
--c test/test-requirements.txt
-
--c nt2/requirements.txt
--c nt2/toml-requirements.txt
-
-ruff              # format & lint code
-ssort             # reorder functions
-
-darglint          # lint docstrings

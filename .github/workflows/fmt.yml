@@ -11,12 +11,10 @@ jobs:
 
       - uses: jdx/mise-action@v2
         with:
-          install_args: "python@3.13"
-
-      - run: pipx install nox
+          install_args: "uv python@3.13"
 
       - name: format and lint
-        run: nox -s fmt
+        run: mise run fmt
 
       - name: push any changes
         run: |
