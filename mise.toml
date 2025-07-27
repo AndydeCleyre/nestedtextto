@@ -99,12 +99,12 @@ run = """\
 run_windows = """\
 
   {{vars.run_with_coverage}} \
-    --python "python3.7" \
+    --python python3.7 \
     --with-editable .[test] \
     {{vars.test_with_coverage}}
 
   {{vars.run_with_coverage}} \
-    --python "python3.7" \
+    --python python3.7 \
     --with-editable .[test-without-toml] \
     {{vars.test_with_coverage}}
 
@@ -112,13 +112,13 @@ run_windows = """\
 
     mise x python@$pyver -- \
       {{vars.run_with_coverage}} \
-      --python "python${pyver}" \
+      --python python${pyver} \
       --with-editable .[test] \
       {{vars.test_with_coverage}}
 
     mise x python@$pyver -- \
       {{vars.run_with_coverage}} \
-      --python "python${pyver}" \
+      --python python${pyver} \
       --with-editable .[test-without-toml] \
       {{vars.test_with_coverage}}
 
