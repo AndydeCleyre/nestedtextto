@@ -26,8 +26,7 @@ jobs:
 
       - name: run tests
         run: |
-          mise run test
-          mise run test-without-toml
+          mise run test-all-pythons
           mise run combine-coverage
         env:
           PYTHONIOENCODING: utf-8
