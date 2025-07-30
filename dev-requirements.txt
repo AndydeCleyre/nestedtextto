@@ -13,7 +13,7 @@ constantly==23.10.4       # via twisted
 cucumber-tag-expressions==4.1.0  # via ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 darglint==1.8.1           # via -r fmt-requirements.txt
 decorator==5.2.1          # via ipython
-docutils==0.21.2          # via pydoctor
+docutils==0.22            # via pydoctor
 executing==2.2.0          # via stack-data
 filelock==3.18.0          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
@@ -50,7 +50,7 @@ pyright==1.1.403          # via -r fmt-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 requests==2.32.4          # via cachecontrol, pydoctor
 rich==14.1.0              # via ward, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
-ruff==0.12.5              # via -r fmt-requirements.txt
+ruff==0.12.7              # via -r fmt-requirements.txt
 setuptools==80.9.0        # via incremental, zope-interface
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
