@@ -5,7 +5,7 @@ automat==25.4.16          # via twisted
 cachecontrol==0.14.3      # via pydoctor
 certifi==2025.7.14        # via requests
 charset-normalizer==3.4.2  # via requests
-click==8.2.1              # via click-completion, click-default-group, ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
+click==8.2.2              # via click-completion, click-default-group, ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 click-completion==0.5.2   # via ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 click-default-group==1.2.4  # via ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 configargparse==1.7.1     # via pydoctor
