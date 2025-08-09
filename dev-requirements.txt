@@ -4,7 +4,7 @@ attrs==25.3.0             # via pydoctor, twisted, -c nt2/requirements.txt
 automat==25.4.16          # via twisted
 cachecontrol==0.14.3      # via pydoctor
 certifi==2025.8.3         # via requests
-charset-normalizer==3.4.2  # via requests
+charset-normalizer==3.4.3  # via requests
 click==8.2.1              # via click-completion, click-default-group, ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 click-completion==0.5.2   # via ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 click-default-group==1.2.4  # via ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
@@ -60,7 +60,7 @@ tomli==2.2.1              # via ward, -c nt2/toml-requirements.txt, -c test/test
 tomli-w==1.2.0            # via -c nt2/toml-requirements.txt, -c test/test-requirements.txt, -r toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
 twisted==25.5.0           # via pydoctor
-types-python-dateutil==2.9.0.20250708  # via arrow, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
+types-python-dateutil==2.9.0.20250809  # via arrow, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 typing-extensions==4.14.1  # via pyright, twisted, -c nt2/requirements.txt
 urllib3==2.5.0            # via pydoctor, requests
 ward==0.68.0b0            # via -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt, -r test-without-toml-requirements.in
