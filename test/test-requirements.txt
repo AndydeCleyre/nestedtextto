@@ -5,7 +5,7 @@ click-default-group==1.2.4  # via ward, -c test/test-without-toml-requirements.t
 cucumber-tag-expressions==4.1.0  # via ward, -c test/test-without-toml-requirements.txt
 inform==1.35              # via nestedtext, -c nt2/requirements.txt, -c test/test-without-toml-requirements.txt
 jinja2==3.1.6             # via click-completion, -c test/test-without-toml-requirements.txt
-markdown-it-py==3.0.0     # via rich, -c nt2/requirements.txt, -c test/test-without-toml-requirements.txt
+markdown-it-py==4.0.0     # via rich, -c nt2/requirements.txt, -c test/test-without-toml-requirements.txt
 markupsafe==3.0.2         # via jinja2, -c test/test-without-toml-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt, -c test/test-without-toml-requirements.txt
 nestedtext==3.7           # via -c nt2/requirements.txt, -c test/test-without-toml-requirements.txt, -r test-without-toml-requirements.in
