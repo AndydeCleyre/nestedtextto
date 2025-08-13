@@ -1,0 +1,31 @@
+[tasks.test-all-pythons]
+description = "Run all tests, with and without TOML support enabled, for each supported Python release"
+shell = "sh -c -o errexit"
+run = """\
+
+  for pyver in 3.13 3.12 3.11 3.10 3.9 3.8; do
+
+    mise x python@$pyver -- \
+      {{vars.run_with_coverage}} \
+      --python "python${pyver}" \
+      --with-editable '.[test]' \
+      {{vars.test_with_coverage}}
+
+    mise x python@$pyver -- \
+      {{vars.run_with_coverage}} \
+      --python "python${pyver}" \
+      --with-editable '.[test-without-toml]' \
+      {{vars.test_with_coverage}}
+
+  done
+
+  {{vars.run_with_coverage}} \
+    --python python3.7 \
+    --with-editable '.[test]' \
+    {{vars.test_with_coverage}}
+
+  {{vars.run_with_coverage}} \
+    --python python3.7 \
+    --with-editable '.[test-without-toml]' \
+    {{vars.test_with_coverage}}
+"""
