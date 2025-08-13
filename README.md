@@ -146,7 +146,7 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 For Zsh completion, add this line to your `.zshrc`, any time after `compinit`:
 
 ```zsh
-if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2yaml nt2toml nt2json json2nt toml2nt yaml2nt
+if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2{json,{to,ya}ml} {json,{to,ya}ml}2nt
 ```
 
 ### Usage Docs
