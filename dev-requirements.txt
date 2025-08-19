@@ -48,7 +48,7 @@ pydoctor==25.4.0          # via -r doc-requirements.txt
 pygments==2.19.2          # via ipython, ipython-pygments-lexers, rich, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 pyright==1.1.403          # via -r fmt-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
-requests==2.32.4          # via cachecontrol, pydoctor
+requests==2.32.5          # via cachecontrol, pydoctor
 rich==14.1.0              # via ward, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 ruff==0.12.9              # via -r fmt-requirements.txt
 setuptools==80.9.0        # via incremental, zope-interface
