@@ -18,5 +18,5 @@ rich==14.1.0              # via ward, -c nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt
 tomli==2.2.1              # via ward, -c nt2/toml-requirements.txt
-types-python-dateutil==2.9.0.20250809  # via arrow, -c nt2/requirements.txt
+types-python-dateutil==2.9.0.20250822  # via arrow, -c nt2/requirements.txt
 ward==0.68.0b0            # via -r test-without-toml-requirements.in
