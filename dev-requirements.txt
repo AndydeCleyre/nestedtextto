@@ -41,7 +41,7 @@ platformdirs==4.4.0       # via pydoctor
 pluggy==1.6.0             # via ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 plumbum==1.9.0            # via -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt, -r doc-requirements.txt, -r test-without-toml-requirements.in
 pprintpp==0.4.0           # via ward, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
-prompt-toolkit==3.0.51    # via ipython
+prompt-toolkit==3.0.52    # via ipython
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.3          # via stack-data
 pydoctor==25.4.0          # via -r doc-requirements.txt
