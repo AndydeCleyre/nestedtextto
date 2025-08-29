@@ -50,7 +50,7 @@ pyright==1.1.404          # via -r fmt-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 requests==2.32.5          # via cachecontrol, pydoctor
 rich==14.1.0              # via ward, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
-ruff==0.12.10             # via -r fmt-requirements.txt
+ruff==0.12.11             # via -r fmt-requirements.txt
 setuptools==80.9.0        # via incremental, zope-interface
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt
