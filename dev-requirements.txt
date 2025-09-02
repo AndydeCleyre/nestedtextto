@@ -14,7 +14,7 @@ cucumber-tag-expressions==4.1.0  # via ward, -c test/test-requirements.txt, -c t
 darglint==1.8.1           # via -r fmt-requirements.txt
 decorator==5.2.1          # via ipython
 docutils==0.22            # via pydoctor
-executing==2.2.0          # via stack-data
+executing==2.2.1          # via stack-data
 filelock==3.19.1          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hyperlink==21.0.0         # via twisted
