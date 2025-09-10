@@ -23,8 +23,11 @@ from ruamel.yaml.scanner import ScannerError as YAMLScannerError
 
 from . import __version__
 from .dumpers import (
+    dump_huml_to_nestedtext,
+    dump_huml_to_schema,
     dump_json_to_nestedtext,
     dump_json_to_schema,
+    dump_nestedtext_to_huml,
     dump_nestedtext_to_json,
     dump_nestedtext_to_toml,
     dump_nestedtext_to_yaml,
@@ -237,6 +240,41 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
             return 1
 
 
+class NestedTextToHUML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportNull):
+    """
+    Read NestedText and output its content as HUML.
+
+    By default, generated HUML values will only contain strings, arrays, and maps,
+    but you can cast nodes matching YAML Paths to boolean, null, or number.
+
+    Casting switches may be before or after file arguments.
+
+    Examples:
+        nt2huml config.nt >config.huml
+        cat config.nt | nt2huml
+        nt2huml --schema config.types.nt config.nt >config.huml
+        nt2huml --int stats.total --boolean config.enabled data.nt
+    """
+
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+        try:
+            for schema_file in cast(list, self.schema_files):
+                schema = cast(dict, ntload(schema_file))
+                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
+                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
+                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
+
+            dump_nestedtext_to_huml(
+                *input_files,
+                bool_paths=self.bool_paths,
+                null_paths=self.null_paths,
+                num_paths=self.num_paths,
+            )
+        except Exception as e:  # pragma: no cover
+            inspect_exception(e)
+            return 1
+
+
 class JSONToNestedText(_TypedFormatToSchema):
     """
     Read JSON and output its content as NestedText.
@@ -295,6 +333,27 @@ class TOMLToNestedText(_TypedFormatToSchema):
                 dump_toml_to_nestedtext(*input_files)
             else:
                 dump_toml_to_schema(*input_files)
+        except Exception as e:  # pragma: no cover
+            inspect_exception(e)
+            return 1
+
+
+class HUMLToNestedText(_TypedFormatToSchema):
+    """
+    Read HUML and output its content as NestedText.
+
+    Examples:
+        huml2nt config.huml >config.nt
+        cat config.huml | huml2nt
+        huml2nt --to-schema config.huml >config.types.nt
+    """
+
+    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+        try:
+            if not self.to_schema:
+                dump_huml_to_nestedtext(*input_files)
+            else:
+                dump_huml_to_schema(*input_files)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1

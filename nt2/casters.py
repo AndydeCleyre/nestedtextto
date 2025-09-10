@@ -26,7 +26,7 @@ from .yamlpath_tools import (
 
 Converter: TypeAlias = _Converter
 StringyDatum: TypeAlias = 'str | list | dict'
-StringyData: TypeAlias = 'list[StringyDatum] | dict[str, StringyDatum]'
+StringyData: TypeAlias = 'list[StringyDatum] | dict[str, StringyDatum] | str'
 YAMLPath: TypeAlias = _YAMLPath
 
 

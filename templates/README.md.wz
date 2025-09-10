@@ -1,6 +1,6 @@
 @(from plumbum import local)\
 # NestedTextTo
-## CLI to convert between NestedText and JSON, YAML or TOML, with explicit type casting
+## CLI to convert between NestedText and JSON, YAML, HUML, or TOML, with explicit type casting
 
 ![Python versions](https://img.shields.io/pypi/pyversions/nt2?logo=python)
 [![PyPI version](https://img.shields.io/pypi/v/nt2?logo=pypi&label=PyPI&color=yellowgreen)](https://pypi.org/project/nt2/)
@@ -27,10 +27,10 @@ and the joy of [plumbum](https://plumbum.readthedocs.io/)
 and [ward](https://ward.readthedocs.io/) --
 none of which are this author's projects.
 
-This project, NestedTextTo, provides six command line tools
+This project, NestedTextTo, provides command line tools
 for convenient conversion between NestedText and other formats:
-- `nt2json`, `nt2toml`, `nt2yaml`
-- `json2nt`, `toml2nt`, `yaml2nt`
+- `nt2json`, `nt2toml`, `nt2yaml`, `nt2huml`
+- `json2nt`, `toml2nt`, `yaml2nt`, `huml2nt`
 
 ---
 
@@ -110,16 +110,17 @@ at any depth, with `--boolean '/**[. =~ /(?i)^(yes|no|true|false)$/]'`.
 
 ### Installation
 
-If you don't need TOML support, you can omit the `[toml]` bits below.
+Support for TOML and HUML are optional.
+If you don't need support for those, you can omit the `[toml,huml]` bits below.
 
 Here are some ways to install it:
 
 ```console
-$ uv tool install 'nt2[toml]'     # Install using uv (Python all-around manager)
-$ pipx install 'nt2[toml]'        # Install using pipx (Python app manager)
-$ pipz install 'nt2[toml]'        # Install using zpy (Python app and environment manager for Zsh)
-$ pip install --user 'nt2[toml]'  # Install in your user's environment
-$ pip install 'nt2[toml]'         # Install in current environment
+$ uv tool install 'nt2[toml,huml]'     # Install using uv (Python all-around manager)
+$ pipx install 'nt2[toml,huml]'        # Install using pipx (Python app manager)
+$ pipz install 'nt2[toml,huml]'        # Install using zpy (Python app and environment manager for Zsh)
+$ pip install --user 'nt2[toml,huml]'  # Install in your user's environment
+$ pip install 'nt2[toml,huml]'         # Install in current environment
 ```
 
 I recommend using [uv](https://github.com/astral-sh/uv),
@@ -131,7 +132,7 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 For Zsh completion, add this line to your `.zshrc`, any time after `compinit`:
 
 ```zsh
-if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2{json,{to,ya}ml} {json,{to,ya}ml}2nt
+if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2{json,{to,ya,hu}ml} {json,{to,ya,hu}ml}2nt
 ```
 
 ### Usage Docs

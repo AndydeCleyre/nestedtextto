@@ -26,6 +26,7 @@ from .converters import (
     mk_json_types_converter,
     mk_stringy_converter,
     mk_toml_types_converter,
+    # mk_huml_types_converter,
     mk_yaml_types_converter,
 )
 from .yamlpath_tools import guess_briefer_schema, mk_yaml_editor, typed_data_to_schema
@@ -37,6 +38,13 @@ except ImportError:
     TOML_SUPPORT = False
 else:
     TOML_SUPPORT = True
+
+try:
+    from pyhuml import dump as _huml_dump, dumps as _huml_dumps, load as huml_load
+except ImportError:
+    HUML_SUPPORT = False
+else:
+    HUML_SUPPORT = True
 
 YAML_EDITOR = mk_yaml_editor()
 yload = YAML_EDITOR.load
@@ -75,17 +83,17 @@ def ntload(file: str | Path | TextIO) -> StringyData:
         file: NestedText file-like object, usually a ``LocalPath`` or ``sys.stdin``.
 
     Returns:
-        Parsed NestedText data as a ``dict`` or ``list`` of ``str``\ s.
+        Parsed NestedText data as a ``str``, ``dict``, or ``list``.
     """
     return cast(StringyData, _ntload(file, top='any'))
 
 
-def ntdump(data: dict | list):
+def ntdump(data: dict | list | str):
     """
     Pretty-print the data as NestedText, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` or ``list`` to dump as NestedText.
+        data: A ``dict``, ``list``, or ``str`` to dump as NestedText.
     """
     if sys.stdout.isatty():
         _syntax_print(_ntdumps(data, indent=2), 'nt')
@@ -93,12 +101,12 @@ def ntdump(data: dict | list):
         _ntdump(data, sys.stdout, indent=2)
 
 
-def jdump(data: dict | list):
+def jdump(data: dict | list | str):
     """
     Pretty-print the data as JSON, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` or ``list`` to dump as JSON.
+        data: A ``dict``, ``list``, or ``str`` to dump as JSON.
     """
     if sys.stdout.isatty():
         _syntax_print(_jdumps(data, indent=2), 'json')
@@ -106,6 +114,7 @@ def jdump(data: dict | list):
         _jdump(data, sys.stdout, indent=2)
 
 
+# TODO: ydump string input?
 def ydump(data: dict | list):
     """
     Pretty-print the data as YAML, with color if interactive, to stdout.
@@ -156,6 +165,31 @@ def tdump(data: dict):
         print(_tdumps(data, multiline_strings=True), end='')  # pyright: ignore [reportPossiblyUnboundVariable]
 
 
+def _require_huml_support():
+    """
+    If HUML support is not installed, raise an exception.
+
+    Raises:
+        ImportError: The libraries for HUML support are absent.
+    """
+    if not HUML_SUPPORT:
+        raise ImportError("HUML support for nt2 is not installed. Try reinstalling as 'nt2[huml]'")
+
+
+def huml_dump(data: dict | list | str):
+    """
+    Pretty-print the data as HUML, with color if interactive, to stdout.
+
+    Args:
+        data: A ``dict``, ``list``, or ``str`` to dump as HUML.
+    """
+    _require_huml_support()
+    if sys.stdout.isatty():
+        _syntax_print(_huml_dumps(data), 'huml')  # pyright: ignore [reportPossiblyUnboundVariable]
+    else:
+        _huml_dump(data, sys.stdout)  # pyright: ignore [reportPossiblyUnboundVariable]
+
+
 def jloads(content: str) -> dict | list:
     """
     Wrap ``json.loads`` so that on failure it tries parsing as JSON Lines.
@@ -198,7 +232,11 @@ def dump_json_to_nestedtext(*input_files: LocalPath):
             ntdump(typed_data)
 
 
-def _dump_typed_data_to_schema(typed_data: dict | list):
+def _dump_typed_data_to_schema(typed_data: dict | list | str):
+    if isinstance(typed_data, str):
+        print()
+        return
+
     schema = typed_data_to_schema(typed_data)
     ntdump(schema)
 
@@ -272,6 +310,23 @@ def dump_toml_to_schema(*input_files: LocalPath):
             _dump_typed_data_to_schema(typed_data)
 
 
+def dump_huml_to_schema(*input_files: LocalPath):
+    r"""
+    Read HUML from stdin or ``input_files``, and send a NestedText schema to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with HUML content.
+    """
+    _require_huml_support()
+    if not input_files:
+        typed_data = huml_load(sys.stdin)  # pyright: ignore [reportPossiblyUnboundVariable]
+        _dump_typed_data_to_schema(typed_data)
+    else:
+        for f in input_files:
+            typed_data = huml_load(f)  # pyright: ignore [reportPossiblyUnboundVariable,reportArgumentType]
+            _dump_typed_data_to_schema(typed_data)
+
+
 def dump_yaml_to_nestedtext(*input_files: LocalPath):
     r"""
     Read YAML from stdin or ``input_files``, and send NestedText to stdout.
@@ -309,6 +364,26 @@ def dump_toml_to_nestedtext(*input_files: LocalPath):
         for f in input_files:
             with f.open('rb') as ifile:
                 data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
+            data = converter.unstructure(data)
+            ntdump(data)
+
+
+def dump_huml_to_nestedtext(*input_files: LocalPath):
+    r"""
+    Read HUML from stdin or ``input_files``, and send NestedText to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with HUML content.
+    """
+    _require_huml_support()
+    converter = mk_stringy_converter()
+    if not input_files:
+        data = huml_load(sys.stdin)  # pyright: ignore [reportPossiblyUnboundVariable]
+        data = converter.unstructure(data)
+        ntdump(data)
+    else:
+        for f in input_files:
+            data = huml_load(f)  # pyright: ignore [reportPossiblyUnboundVariable,reportArgumentType]
             data = converter.unstructure(data)
             ntdump(data)
 
@@ -399,3 +474,32 @@ def dump_nestedtext_to_json(
             converter=mk_json_types_converter(),
         )
         jdump(data)
+
+
+def dump_nestedtext_to_huml(
+    *input_files: LocalPath,
+    bool_paths: Sequence[str] = (),
+    null_paths: Sequence[str] = (),
+    num_paths: Sequence[str] = (),
+):
+    r"""
+    Read NestedText from stdin or ``input_files``, and send up-typed HUML to stdout.
+
+    Args:
+        input_files: ``LocalPath``\ s with NestedText content.
+        bool_paths: YAMLPath queries whose matches will be casted to ``bool``.
+        null_paths: YAMLPath queries whose matches will be casted to ``None``.
+        num_paths: YAMLPath queries whose matches will be casted to ``int``/``float``.
+    """
+    _require_huml_support()
+    for src in input_files or (sys.stdin,):
+        data = ntload(src)
+        data = cast_stringy_data(
+            data,
+            bool_paths=bool_paths,
+            null_paths=null_paths,
+            num_paths=num_paths,
+            converter=mk_json_types_converter(),
+            # TODO: we may need a new converter, especially to handle number syntaxes
+        )
+        huml_dump(data)

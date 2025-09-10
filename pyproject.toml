@@ -8,7 +8,7 @@ authors = [{name = "Andy Kluger"}]
 dynamic = ["version", "description"]
 license = {file = "LICENSE"}
 readme = "README.md"
-keywords = ["NestedText", "JSON", "YAML", "TOML"]
+keywords = ["NestedText", "JSON", "YAML", "TOML", "HUML"]
 classifiers = [
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
@@ -34,15 +34,19 @@ Home = "https://github.com/andydecleyre/nestedtextto"
 nt2json = "nt2.ui:NestedTextToJSON"
 nt2yaml = "nt2.ui:NestedTextToYAML"
 nt2toml = "nt2.ui:NestedTextToTOML"
+nt2huml = "nt2.ui:NestedTextToHUML"
 json2nt = "nt2.ui:JSONToNestedText"
 yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
+huml2nt = "nt2.ui:HUMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["darglint", "ipython", "md-toc", "nestedtext", "plumbum", "pydoctor", "pyright", "ruff", "ssort", "tomli", "tomli-w", "ward", "wheezy.template"]
-test = ["nestedtext", "plumbum", "tomli", "tomli-w", "ward"]
+dev = ["darglint", "ipython", "md-toc", "nestedtext", "plumbum", "pydoctor", "pyhuml", "pyright", "ruff", "ssort", "tomli", "tomli-w", "ward", "wheezy.template"]
+test = ["nestedtext", "plumbum", "pyhuml", "tomli", "tomli-w", "ward"]
 toml = ["tomli", "tomli-w"]
 test-without-toml = ["nestedtext", "plumbum", "ward"]
+test-without-extras = ["nestedtext", "plumbum", "ward"]
+huml = ["pyhuml"]
 
 [tool.ruff]
 line-length = 99
