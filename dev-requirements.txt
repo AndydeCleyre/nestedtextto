@@ -66,4 +66,4 @@ urllib3==2.5.0            # via pydoctor, requests
 ward==0.68.0b0            # via -c test/test-requirements.txt, -c test/test-without-toml-requirements.txt, -r test-without-toml-requirements.in
 wcwidth==0.2.13           # via prompt-toolkit
 wheezy-template==3.2.3    # via -r doc-requirements.txt
-zope-interface==7.2       # via twisted
+zope-interface==8.0       # via twisted
