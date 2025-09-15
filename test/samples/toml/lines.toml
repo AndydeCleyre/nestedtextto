@@ -1,4 +1,4 @@
-[["TOML does not allow top-level arrays"]]
+[["TOML requires a top-level hash table"]]
 name = "Twoflower"
 wins = [
     [
@@ -11,7 +11,7 @@ wins = [
     ],
 ]
 
-[["TOML does not allow top-level arrays"]]
+[["TOML requires a top-level hash table"]]
 name = "Vorbis"
 wins = [
     [
@@ -24,7 +24,7 @@ wins = [
     ],
 ]
 
-[["TOML does not allow top-level arrays"]]
+[["TOML requires a top-level hash table"]]
 name = "Victor"
 wins = [
     [
@@ -33,6 +33,6 @@ wins = [
     ],
 ]
 
-[["TOML does not allow top-level arrays"]]
+[["TOML requires a top-level hash table"]]
 name = "One Man Bucket"
 wins = []

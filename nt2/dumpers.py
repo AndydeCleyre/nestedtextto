@@ -6,22 +6,16 @@ import io
 import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from pathlib import Path
-
-    from plumbum import LocalPath
 from os import environ
 from textwrap import indent
-from typing import BinaryIO, Sequence, TextIO, cast
+from typing import TYPE_CHECKING, cast
 
 from nestedtext import dump as _ntdump, dumps as _ntdumps, load as _ntload
 from rich.console import Console as RichConsole
 from rich.syntax import Syntax as RichSyntax
 from ruamel.yaml.scalarstring import walk_tree as use_multiline_syntax
 
-from .casters import StringyData, cast_stringy_data
+from .casters import cast_stringy_data
 from .converters import (
     mk_json_types_converter,
     mk_stringy_converter,
@@ -30,6 +24,14 @@ from .converters import (
 )
 from .yamlpath_tools import guess_briefer_schema, mk_yaml_editor, typed_data_to_schema
 
+if TYPE_CHECKING:
+    from pathlib import Path
+    from typing import BinaryIO, Sequence, TextIO
+
+    from plumbum import LocalPath
+
+    from .types import JSONData, Schema, StringyData, TOMLData, TOMLHashData, TypedData, YAMLData
+
 try:
     from tomli import load as tload, loads as tloads
     from tomli_w import dumps as _tdumps
@@ -37,6 +39,7 @@ except ImportError:
     TOML_SUPPORT = False
 else:
     TOML_SUPPORT = True
+
 
 YAML_EDITOR = mk_yaml_editor()
 yload = YAML_EDITOR.load
@@ -85,17 +88,17 @@ def ntload(file: str | Path | TextIO) -> StringyData:
         file: NestedText file-like object, usually a ``LocalPath`` or ``sys.stdin``.
 
     Returns:
-        Parsed NestedText data as a ``dict`` or ``list`` of ``str``\ s.
+        Parsed NestedText data as ``StringyData``.
     """
-    return cast(StringyData, _ntload(file, top='any'))
+    return cast('StringyData', _ntload(file, top='any'))
 
 
-def ntdump(data: dict | list):
+def ntdump(data: JSONData | tuple | set | Schema):
     """
     Pretty-print the data as NestedText, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` or ``list`` to dump as NestedText.
+        data: An object, usually ``dict`` or ``list``, to dump as NestedText.
     """
     if _ansi_ok():
         _syntax_print(_ntdumps(data, indent=2), 'nt')
@@ -103,12 +106,12 @@ def ntdump(data: dict | list):
         _ntdump(data, sys.stdout, indent=2)
 
 
-def jdump(data: dict | list):
+def jdump(data: JSONData):
     """
     Pretty-print the data as JSON, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` or ``list`` to dump as JSON.
+        data: A ``JSONData`` to dump as JSON.
     """
     if _ansi_ok():
         _syntax_print(_jdumps(data, indent=2), 'json')
@@ -116,12 +119,12 @@ def jdump(data: dict | list):
         _jdump(data, sys.stdout, indent=2)
 
 
-def ydump(data: dict | list):
+def ydump(data: YAMLData):
     """
     Pretty-print the data as YAML, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` or ``list`` to dump as YAML.
+        data: A ``YAMLData`` to dump as YAML.
 
     Raises:
         Exception: Unexpected problem dumping or highlighting data.
@@ -152,12 +155,12 @@ def _require_toml_support():
         raise ImportError("TOML support for nt2 is not installed. Try reinstalling as 'nt2[toml]'")
 
 
-def tdump(data: dict):
+def tdump(data: TOMLHashData):
     """
     Pretty-print the data as TOML, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` to dump as TOML.
+        data: A ``TOMLHashData`` to dump as TOML.
     """
     _require_toml_support()
     if _ansi_ok():
@@ -166,7 +169,7 @@ def tdump(data: dict):
         print(_tdumps(data, multiline_strings=True), end='')  # pyright: ignore [reportPossiblyUnboundVariable]
 
 
-def jloads(content: str) -> dict | list:
+def jloads(content: str) -> JSONData:
     """
     Wrap ``json.loads`` so that on failure it tries parsing as JSON Lines.
 
@@ -174,7 +177,7 @@ def jloads(content: str) -> dict | list:
         content: JSON or JSON Lines content.
 
     Returns:
-        Parsed JSON data as a ``dict`` or ``list`` (usually the former).
+        Parsed JSON data as a JSON-supported type, usually ``dict`` or ``list``.
 
     Raises:
         JSONDecodeError: Unable to parse ``content`` as JSON or JSONLines.
@@ -208,7 +211,7 @@ def dump_json_to_nestedtext(*input_files: LocalPath):
             ntdump(typed_data)
 
 
-def _dump_typed_data_to_schema(typed_data: dict | list):
+def _dump_typed_data_to_schema(typed_data: TypedData):
     schema = typed_data_to_schema(typed_data)
     ntdump(schema)
 
@@ -278,7 +281,7 @@ def dump_toml_to_schema(*input_files: LocalPath):
     else:
         for f in input_files:
             with f.open('rb') as ifile:
-                typed_data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
+                typed_data = tload(cast('BinaryIO', ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             _dump_typed_data_to_schema(typed_data)
 
 
@@ -318,7 +321,7 @@ def dump_toml_to_nestedtext(*input_files: LocalPath):
     else:
         for f in input_files:
             with f.open('rb') as ifile:
-                data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
+                data = tload(cast('BinaryIO', ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             data = converter.unstructure(data)
             ntdump(data)
 
@@ -342,13 +345,16 @@ def dump_nestedtext_to_yaml(
     """
     for src in input_files or (sys.stdin,):
         data = ntload(src)
-        data = cast_stringy_data(
-            data,
-            bool_paths=bool_paths,
-            null_paths=null_paths,
-            num_paths=num_paths,
-            date_paths=date_paths,
-            converter=mk_yaml_types_converter(),
+        data = cast(
+            'YAMLData',
+            cast_stringy_data(
+                data,
+                bool_paths=bool_paths,
+                null_paths=null_paths,
+                num_paths=num_paths,
+                date_paths=date_paths,
+                converter=mk_yaml_types_converter(),
+            ),
         )
         ydump(data)
 
@@ -372,15 +378,18 @@ def dump_nestedtext_to_toml(
     _require_toml_support()
     for src in input_files or (sys.stdin,):
         data = ntload(src)
-        data = cast_stringy_data(
-            data,
-            bool_paths=bool_paths,
-            num_paths=num_paths,
-            date_paths=date_paths,
-            converter=mk_toml_types_converter(),
+        data = cast(
+            'TOMLData',
+            cast_stringy_data(
+                data,
+                bool_paths=bool_paths,
+                num_paths=num_paths,
+                date_paths=date_paths,
+                converter=mk_toml_types_converter(),
+            ),
         )
-        if isinstance(data, list):
-            data = {'TOML does not allow top-level arrays': data}
+        if not isinstance(data, dict):
+            data = cast('TOMLHashData', {'TOML requires a top-level hash table': data})
         tdump(data)
 
 
@@ -401,11 +410,14 @@ def dump_nestedtext_to_json(
     """
     for src in input_files or (sys.stdin,):
         data = ntload(src)
-        data = cast_stringy_data(
-            data,
-            bool_paths=bool_paths,
-            null_paths=null_paths,
-            num_paths=num_paths,
-            converter=mk_json_types_converter(),
+        data = cast(
+            'JSONData',
+            cast_stringy_data(
+                data,
+                bool_paths=bool_paths,
+                null_paths=null_paths,
+                num_paths=num_paths,
+                converter=mk_json_types_converter(),
+            ),
         )
         jdump(data)
