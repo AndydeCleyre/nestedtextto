@@ -93,17 +93,18 @@ def ntload(file: str | Path | TextIO) -> StringyData:
     return cast('StringyData', _ntload(file, top='any'))
 
 
-def ntdump(data: JSONData | tuple | set | Schema):
+def ntdump(data: JSONData | tuple | set | Schema, inline_width: int = 0):
     """
     Pretty-print the data as NestedText, with color if interactive, to stdout.
 
     Args:
         data: An object, usually ``dict`` or ``list``, to dump as NestedText.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     if _ansi_ok():
-        _syntax_print(_ntdumps(data, indent=2), 'nt')
+        _syntax_print(_ntdumps(data, indent=2, width=inline_width), 'nt')
     else:
-        _ntdump(data, sys.stdout, indent=2)
+        _ntdump(data, sys.stdout, indent=2, width=inline_width)
 
 
 def jdump(data: JSONData):
@@ -194,21 +195,22 @@ def jloads(content: str) -> JSONData:
             raise original_e from None
 
 
-def dump_json_to_nestedtext(*input_files: LocalPath):
+def dump_json_to_nestedtext(*input_files: LocalPath, inline_width: int = 0):
     r"""
     Read JSON from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
         input_files: ``LocalPath``\ s with JSON content.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     # We may need to use a converter.unstructure here; We'll see.
     if not input_files:
         typed_data = jloads(sys.stdin.read())
-        ntdump(typed_data)
+        ntdump(typed_data, inline_width=inline_width)
     else:
         for f in input_files:
             typed_data = jloads(f.read('utf-8'))
-            ntdump(typed_data)
+            ntdump(typed_data, inline_width=inline_width)
 
 
 def _dump_typed_data_to_schema(typed_data: TypedData):
@@ -285,45 +287,47 @@ def dump_toml_to_schema(*input_files: LocalPath):
             _dump_typed_data_to_schema(typed_data)
 
 
-def dump_yaml_to_nestedtext(*input_files: LocalPath):
+def dump_yaml_to_nestedtext(*input_files: LocalPath, inline_width: int = 0):
     r"""
     Read YAML from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
         input_files: ``LocalPath``\ s with YAML content.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     converter = mk_stringy_converter()
     if not input_files:
         data = yload(sys.stdin)
         data = converter.unstructure(data)
-        ntdump(data)
+        ntdump(data, inline_width=inline_width)
     else:
         for f in input_files:
             with f.open(encoding='utf-8') as ifile:
                 data = yload(ifile)
             data = converter.unstructure(data)
-            ntdump(data)
+            ntdump(data, inline_width=inline_width)
 
 
-def dump_toml_to_nestedtext(*input_files: LocalPath):
+def dump_toml_to_nestedtext(*input_files: LocalPath, inline_width: int = 0):
     r"""
     Read TOML from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
         input_files: ``LocalPath``\ s with TOML content.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     _require_toml_support()
     converter = mk_stringy_converter()
     if not input_files:
         data = tloads(sys.stdin.read())  # pyright: ignore [reportPossiblyUnboundVariable]
         data = converter.unstructure(data)
-        ntdump(data)
+        ntdump(data, inline_width=inline_width)
     else:
         for f in input_files:
             with f.open('rb') as ifile:
                 data = tload(cast('BinaryIO', ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             data = converter.unstructure(data)
-            ntdump(data)
+            ntdump(data, inline_width=inline_width)
 
 
 def dump_nestedtext_to_yaml(

@@ -9,7 +9,7 @@ from json import JSONDecodeError
 from typing import ClassVar, cast
 
 from nestedtext import NestedTextError, load as ntload
-from plumbum.cli import Application, ExistingFile, Flag, SwitchAttr
+from plumbum.cli import Application, ExistingFile, Flag, Range, SwitchAttr
 from plumbum.colors import (
     blue,  # pyright: ignore [reportAttributeAccessIssue]
     green,  # pyright: ignore [reportAttributeAccessIssue]
@@ -80,6 +80,16 @@ _ColorApp.unbind_switches('help-all')
 
 class _TypedFormatToSchema(_ColorApp):
     to_schema = Flag(('to-schema', 's'), help="Rather than convert the inputs, generate a schema")
+
+
+class _ToNestedText(_TypedFormatToSchema):
+    inline_width = SwitchAttr(
+        ('inline-width', 'i'),
+        argtype=Range(0, 120),  # type: ignore
+        default=0,
+        argname='WIDTH',
+        help="Maximum line width for inline dictionaries and lists",
+    )
 
 
 class _NestedTextToTypedFormat(_ColorApp):
@@ -237,7 +247,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
             return 1
 
 
-class JSONToNestedText(_TypedFormatToSchema):
+class JSONToNestedText(_ToNestedText):
     """
     Read JSON and output its content as NestedText.
 
@@ -250,7 +260,7 @@ class JSONToNestedText(_TypedFormatToSchema):
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             if not self.to_schema:
-                dump_json_to_nestedtext(*input_files)
+                dump_json_to_nestedtext(*input_files, inline_width=cast(int, self.inline_width))
             else:
                 dump_json_to_schema(*input_files)
         except Exception as e:  # pragma: no cover
@@ -258,7 +268,7 @@ class JSONToNestedText(_TypedFormatToSchema):
             return 1
 
 
-class YAMLToNestedText(_TypedFormatToSchema):
+class YAMLToNestedText(_ToNestedText):
     """
     Read YAML and output its content as NestedText.
 
@@ -271,7 +281,7 @@ class YAMLToNestedText(_TypedFormatToSchema):
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             if not self.to_schema:
-                dump_yaml_to_nestedtext(*input_files)
+                dump_yaml_to_nestedtext(*input_files, inline_width=cast(int, self.inline_width))
             else:
                 dump_yaml_to_schema(*input_files)
         except Exception as e:  # pragma: no cover
@@ -279,7 +289,7 @@ class YAMLToNestedText(_TypedFormatToSchema):
             return 1
 
 
-class TOMLToNestedText(_TypedFormatToSchema):
+class TOMLToNestedText(_ToNestedText):
     """
     Read TOML and output its content as NestedText.
 
@@ -292,7 +302,7 @@ class TOMLToNestedText(_TypedFormatToSchema):
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
             if not self.to_schema:
-                dump_toml_to_nestedtext(*input_files)
+                dump_toml_to_nestedtext(*input_files, inline_width=cast(int, self.inline_width))
             else:
                 dump_toml_to_schema(*input_files)
         except Exception as e:  # pragma: no cover
