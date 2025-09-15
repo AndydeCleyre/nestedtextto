@@ -64,6 +64,16 @@ def _syntax_print(content: str, syntax: str, console: RichConsole = RICH):
     )
 
 
+def _ansi_ok() -> bool:
+    """
+    Return ``True`` if it's acceptable to use ANSI escape sequences.
+
+    Returns:
+        ``True`` if stdout is a terminal OR ``FORCE_COLOR`` is set.
+    """
+    return bool(sys.stdout.isatty() or environ.get('FORCE_COLOR'))
+
+
 def ntload(file: str | Path | TextIO) -> StringyData:
     r"""
     Wrap ``nestedtext.load`` with convenient configuration for this module.
@@ -87,7 +97,7 @@ def ntdump(data: dict | list):
     Args:
         data: A ``dict`` or ``list`` to dump as NestedText.
     """
-    if sys.stdout.isatty():
+    if _ansi_ok():
         _syntax_print(_ntdumps(data, indent=2), 'nt')
     else:
         _ntdump(data, sys.stdout, indent=2)
@@ -100,7 +110,7 @@ def jdump(data: dict | list):
     Args:
         data: A ``dict`` or ``list`` to dump as JSON.
     """
-    if sys.stdout.isatty():
+    if _ansi_ok():
         _syntax_print(_jdumps(data, indent=2), 'json')
     else:
         _jdump(data, sys.stdout, indent=2)
@@ -117,7 +127,7 @@ def ydump(data: dict | list):
         Exception: Unexpected problem dumping or highlighting data.
     """
     use_multiline_syntax(data)
-    if sys.stdout.isatty():
+    if _ansi_ok():
         out_stream = io.StringIO()
         try:
             YAML_EDITOR.dump(data, out_stream)
@@ -150,7 +160,7 @@ def tdump(data: dict):
         data: A ``dict`` to dump as TOML.
     """
     _require_toml_support()
-    if sys.stdout.isatty():
+    if _ansi_ok():
         _syntax_print(_tdumps(data, multiline_strings=True), 'toml')  # pyright: ignore [reportPossiblyUnboundVariable]
     else:
         print(_tdumps(data, multiline_strings=True), end='')  # pyright: ignore [reportPossiblyUnboundVariable]
@@ -215,7 +225,7 @@ def _dump_typed_data_to_schema(typed_data: dict | list):
                 indent(_ntdumps(briefer_schema, indent=2), '# '),
             )
         )
-        if sys.stdout.isatty():
+        if _ansi_ok():
             _syntax_print(content, 'nt')
         else:
             print(content)
