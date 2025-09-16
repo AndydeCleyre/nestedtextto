@@ -66,7 +66,7 @@ def _run_app(
     fake_stdout = io.StringIO()
     try:
         sys.stdout = fake_stdout
-        app, main_result = app_class.invoke(*cli_args, **cli_kwargs)
+        _app, _main_result = app_class.invoke(*cli_args, **cli_kwargs)
     except Exception:  # pragma: no cover
         raise
     else:

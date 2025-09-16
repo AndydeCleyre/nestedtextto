@@ -6,22 +6,16 @@ import io
 import sys
 from json import dump as _jdump, dumps as _jdumps, loads as _jloads
 from json.decoder import JSONDecodeError
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from pathlib import Path
-
-    from plumbum import LocalPath
 from os import environ
 from textwrap import indent
-from typing import BinaryIO, Sequence, TextIO, cast
+from typing import TYPE_CHECKING, cast
 
 from nestedtext import dump as _ntdump, dumps as _ntdumps, load as _ntload
 from rich.console import Console as RichConsole
 from rich.syntax import Syntax as RichSyntax
 from ruamel.yaml.scalarstring import walk_tree as use_multiline_syntax
 
-from .casters import StringyData, cast_stringy_data
+from .casters import cast_stringy_data
 from .converters import (
     mk_json_types_converter,
     mk_stringy_converter,
@@ -30,6 +24,14 @@ from .converters import (
     mk_yaml_types_converter,
 )
 from .yamlpath_tools import guess_briefer_schema, mk_yaml_editor, typed_data_to_schema
+
+if TYPE_CHECKING:
+    from pathlib import Path
+    from typing import BinaryIO, Sequence, TextIO
+
+    from plumbum import LocalPath
+
+    from .types import JSONData, Schema, StringyData, TOMLData, TOMLHashData, TypedData, YAMLData
 
 try:
     from tomli import load as tload, loads as tloads
@@ -72,6 +74,16 @@ def _syntax_print(content: str, syntax: str, console: RichConsole = RICH):
     )
 
 
+def _ansi_ok() -> bool:
+    """
+    Return ``True`` if it's acceptable to use ANSI escape sequences.
+
+    Returns:
+        ``True`` if stdout is a terminal OR ``FORCE_COLOR`` is set.
+    """
+    return bool(sys.stdout.isatty() or environ.get('FORCE_COLOR'))
+
+
 def ntload(file: str | Path | TextIO) -> StringyData:
     r"""
     Wrap ``nestedtext.load`` with convenient configuration for this module.
@@ -83,50 +95,50 @@ def ntload(file: str | Path | TextIO) -> StringyData:
         file: NestedText file-like object, usually a ``LocalPath`` or ``sys.stdin``.
 
     Returns:
-        Parsed NestedText data as a ``str``, ``dict``, or ``list``.
+        Parsed NestedText data as ``StringyData``.
     """
-    return cast(StringyData, _ntload(file, top='any'))
+    return cast('StringyData', _ntload(file, top='any'))
 
 
-def ntdump(data: dict | list | str):
+def ntdump(data: JSONData | tuple | set | Schema, inline_width: int = 0):
     """
     Pretty-print the data as NestedText, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict``, ``list``, or ``str`` to dump as NestedText.
+        data: An object, usually ``dict`` or ``list``, to dump as NestedText.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
-    if sys.stdout.isatty():
-        _syntax_print(_ntdumps(data, indent=2), 'nt')
+    if _ansi_ok():
+        _syntax_print(_ntdumps(data, indent=2, width=inline_width), 'nt')
     else:
-        _ntdump(data, sys.stdout, indent=2)
+        _ntdump(data, sys.stdout, indent=2, width=inline_width)
 
 
-def jdump(data: dict | list | str):
+def jdump(data: JSONData):
     """
     Pretty-print the data as JSON, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict``, ``list``, or ``str`` to dump as JSON.
+        data: A ``JSONData`` to dump as JSON.
     """
-    if sys.stdout.isatty():
+    if _ansi_ok():
         _syntax_print(_jdumps(data, indent=2), 'json')
     else:
         _jdump(data, sys.stdout, indent=2)
 
 
-# TODO: ydump string input?
-def ydump(data: dict | list):
+def ydump(data: YAMLData):
     """
     Pretty-print the data as YAML, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` or ``list`` to dump as YAML.
+        data: A ``YAMLData`` to dump as YAML.
 
     Raises:
         Exception: Unexpected problem dumping or highlighting data.
     """
     use_multiline_syntax(data)
-    if sys.stdout.isatty():
+    if _ansi_ok():
         out_stream = io.StringIO()
         try:
             YAML_EDITOR.dump(data, out_stream)
@@ -151,15 +163,15 @@ def _require_toml_support():
         raise ImportError("TOML support for nt2 is not installed. Try reinstalling as 'nt2[toml]'")
 
 
-def tdump(data: dict):
+def tdump(data: TOMLHashData):
     """
     Pretty-print the data as TOML, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict`` to dump as TOML.
+        data: A ``TOMLHashData`` to dump as TOML.
     """
     _require_toml_support()
-    if sys.stdout.isatty():
+    if _ansi_ok():
         _syntax_print(_tdumps(data, multiline_strings=True), 'toml')  # pyright: ignore [reportPossiblyUnboundVariable]
     else:
         print(_tdumps(data, multiline_strings=True), end='')  # pyright: ignore [reportPossiblyUnboundVariable]
@@ -176,21 +188,21 @@ def _require_huml_support():
         raise ImportError("HUML support for nt2 is not installed. Try reinstalling as 'nt2[huml]'")
 
 
-def huml_dump(data: dict | list | str):
+def huml_dump(data: JSONData):
     """
     Pretty-print the data as HUML, with color if interactive, to stdout.
 
     Args:
-        data: A ``dict``, ``list``, or ``str`` to dump as HUML.
+        data: A ``JSONData`` to dump as HUML.
     """
     _require_huml_support()
-    if sys.stdout.isatty():
+    if _ansi_ok():
         _syntax_print(_huml_dumps(data), 'huml')  # pyright: ignore [reportPossiblyUnboundVariable]
     else:
         _huml_dump(data, sys.stdout)  # pyright: ignore [reportPossiblyUnboundVariable]
 
 
-def jloads(content: str) -> dict | list:
+def jloads(content: str) -> JSONData:
     """
     Wrap ``json.loads`` so that on failure it tries parsing as JSON Lines.
 
@@ -198,7 +210,7 @@ def jloads(content: str) -> dict | list:
         content: JSON or JSON Lines content.
 
     Returns:
-        Parsed JSON data as a ``dict`` or ``list`` (usually the former).
+        Parsed JSON data as a JSON-supported type, usually ``dict`` or ``list``.
 
     Raises:
         JSONDecodeError: Unable to parse ``content`` as JSON or JSONLines.
@@ -215,24 +227,25 @@ def jloads(content: str) -> dict | list:
             raise original_e from None
 
 
-def dump_json_to_nestedtext(*input_files: LocalPath):
+def dump_json_to_nestedtext(*input_files: LocalPath, inline_width: int = 0):
     r"""
     Read JSON from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
         input_files: ``LocalPath``\ s with JSON content.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     # We may need to use a converter.unstructure here; We'll see.
     if not input_files:
         typed_data = jloads(sys.stdin.read())
-        ntdump(typed_data)
+        ntdump(typed_data, inline_width=inline_width)
     else:
         for f in input_files:
             typed_data = jloads(f.read('utf-8'))
-            ntdump(typed_data)
+            ntdump(typed_data, inline_width=inline_width)
 
 
-def _dump_typed_data_to_schema(typed_data: dict | list | str):
+def _dump_typed_data_to_schema(typed_data: TypedData):
     if isinstance(typed_data, str):
         print()
         return
@@ -253,7 +266,7 @@ def _dump_typed_data_to_schema(typed_data: dict | list | str):
                 indent(_ntdumps(briefer_schema, indent=2), '# '),
             )
         )
-        if sys.stdout.isatty():
+        if _ansi_ok():
             _syntax_print(content, 'nt')
         else:
             print(content)
@@ -306,7 +319,7 @@ def dump_toml_to_schema(*input_files: LocalPath):
     else:
         for f in input_files:
             with f.open('rb') as ifile:
-                typed_data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
+                typed_data = tload(cast('BinaryIO', ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             _dump_typed_data_to_schema(typed_data)
 
 
@@ -327,65 +340,68 @@ def dump_huml_to_schema(*input_files: LocalPath):
             _dump_typed_data_to_schema(typed_data)
 
 
-def dump_yaml_to_nestedtext(*input_files: LocalPath):
+def dump_yaml_to_nestedtext(*input_files: LocalPath, inline_width: int = 0):
     r"""
     Read YAML from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
         input_files: ``LocalPath``\ s with YAML content.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     converter = mk_stringy_converter()
     if not input_files:
         data = yload(sys.stdin)
         data = converter.unstructure(data)
-        ntdump(data)
+        ntdump(data, inline_width=inline_width)
     else:
         for f in input_files:
             with f.open(encoding='utf-8') as ifile:
                 data = yload(ifile)
             data = converter.unstructure(data)
-            ntdump(data)
+            ntdump(data, inline_width=inline_width)
 
 
-def dump_toml_to_nestedtext(*input_files: LocalPath):
+def dump_toml_to_nestedtext(*input_files: LocalPath, inline_width: int = 0):
     r"""
     Read TOML from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
         input_files: ``LocalPath``\ s with TOML content.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     _require_toml_support()
     converter = mk_stringy_converter()
     if not input_files:
         data = tloads(sys.stdin.read())  # pyright: ignore [reportPossiblyUnboundVariable]
         data = converter.unstructure(data)
-        ntdump(data)
+        ntdump(data, inline_width=inline_width)
     else:
         for f in input_files:
             with f.open('rb') as ifile:
-                data = tload(cast(BinaryIO, ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
+                data = tload(cast('BinaryIO', ifile))  # pyright: ignore [reportPossiblyUnboundVariable]
             data = converter.unstructure(data)
-            ntdump(data)
+            ntdump(data, inline_width=inline_width)
 
 
-def dump_huml_to_nestedtext(*input_files: LocalPath):
+def dump_huml_to_nestedtext(*input_files: LocalPath, inline_width: int = 0):
     r"""
     Read HUML from stdin or ``input_files``, and send NestedText to stdout.
 
     Args:
         input_files: ``LocalPath``\ s with HUML content.
+        inline_width: Maximum line length for inline dictionaries and lists.
     """
     _require_huml_support()
     converter = mk_stringy_converter()
     if not input_files:
         data = huml_load(sys.stdin)  # pyright: ignore [reportPossiblyUnboundVariable]
         data = converter.unstructure(data)
-        ntdump(data)
+        ntdump(data, inline_width=inline_width)
     else:
         for f in input_files:
             data = huml_load(f)  # pyright: ignore [reportPossiblyUnboundVariable,reportArgumentType]
             data = converter.unstructure(data)
-            ntdump(data)
+            ntdump(data, inline_width=inline_width)
 
 
 def dump_nestedtext_to_yaml(
@@ -407,13 +423,16 @@ def dump_nestedtext_to_yaml(
     """
     for src in input_files or (sys.stdin,):
         data = ntload(src)
-        data = cast_stringy_data(
-            data,
-            bool_paths=bool_paths,
-            null_paths=null_paths,
-            num_paths=num_paths,
-            date_paths=date_paths,
-            converter=mk_yaml_types_converter(),
+        data = cast(
+            'YAMLData',
+            cast_stringy_data(
+                data,
+                bool_paths=bool_paths,
+                null_paths=null_paths,
+                num_paths=num_paths,
+                date_paths=date_paths,
+                converter=mk_yaml_types_converter(),
+            ),
         )
         ydump(data)
 
@@ -437,15 +456,18 @@ def dump_nestedtext_to_toml(
     _require_toml_support()
     for src in input_files or (sys.stdin,):
         data = ntload(src)
-        data = cast_stringy_data(
-            data,
-            bool_paths=bool_paths,
-            num_paths=num_paths,
-            date_paths=date_paths,
-            converter=mk_toml_types_converter(),
+        data = cast(
+            'TOMLData',
+            cast_stringy_data(
+                data,
+                bool_paths=bool_paths,
+                num_paths=num_paths,
+                date_paths=date_paths,
+                converter=mk_toml_types_converter(),
+            ),
         )
-        if isinstance(data, list):
-            data = {'TOML does not allow top-level arrays': data}
+        if not isinstance(data, dict):
+            data = cast('TOMLHashData', {'TOML requires a top-level hash table': data})
         tdump(data)
 
 
@@ -466,12 +488,15 @@ def dump_nestedtext_to_json(
     """
     for src in input_files or (sys.stdin,):
         data = ntload(src)
-        data = cast_stringy_data(
-            data,
-            bool_paths=bool_paths,
-            null_paths=null_paths,
-            num_paths=num_paths,
-            converter=mk_json_types_converter(),
+        data = cast(
+            'JSONData',
+            cast_stringy_data(
+                data,
+                bool_paths=bool_paths,
+                null_paths=null_paths,
+                num_paths=num_paths,
+                converter=mk_json_types_converter(),
+            ),
         )
         jdump(data)
 
@@ -494,12 +519,14 @@ def dump_nestedtext_to_huml(
     _require_huml_support()
     for src in input_files or (sys.stdin,):
         data = ntload(src)
-        data = cast_stringy_data(
-            data,
-            bool_paths=bool_paths,
-            null_paths=null_paths,
-            num_paths=num_paths,
-            converter=mk_json_types_converter(),
-            # TODO: we may need a new converter, especially to handle number syntaxes
+        data = cast(
+            'JSONData',
+            cast_stringy_data(
+                data,
+                bool_paths=bool_paths,
+                null_paths=null_paths,
+                num_paths=num_paths,
+                converter=mk_json_types_converter(),
+            ),
         )
         huml_dump(data)

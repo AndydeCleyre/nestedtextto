@@ -133,8 +133,7 @@ def mk_json_types_converter() -> Converter:
     Create a ``Converter`` which ``unstructure``\ s into JSON-supported types.
 
     Returns:
-        A ``Converter`` whose ``unstructure`` method results in nested objects of type
-            ``str``/``int``/``float``/``bool``/``dict``/``list``/``None``
+        A ``Converter`` whose ``unstructure`` method results in nested ``JSONData``.
     """
     c = mk_deep_converter()
 
@@ -159,8 +158,7 @@ def mk_yaml_types_converter() -> Converter:
     Create a ``Converter`` which ``unstructure``\ s into YAML-supported types.
 
     Returns:
-        A ``Converter`` whose ``unstructure`` method results in nested objects of type
-            ``str``/``int``/``float``/``bool``/``dict``/``list``/``None``/``datetime``/``date``
+        A ``Converter`` whose ``unstructure`` method results in nested ``YAMLData``.
     """
     c = mk_deep_converter()
 
@@ -182,8 +180,7 @@ def mk_toml_types_converter() -> Converter:
     Create a ``Converter`` which ``unstructure``\ s into TOML-supported types.
 
     Returns:
-        A ``Converter`` whose ``unstructure`` method results in nested objects of type
-            ``str``/``int``/``float``/``bool``/``dict``/``list``/``datetime``/``date``/``time``
+        A ``Converter`` whose ``unstructure`` method results in nested ``TOMLData``.
     """
     c = mk_deep_converter()
 

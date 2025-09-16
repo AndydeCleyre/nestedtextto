@@ -6,20 +6,24 @@ import sys
 from collections import defaultdict
 from datetime import date, datetime, time
 from types import SimpleNamespace
-from typing import TYPE_CHECKING, Iterable
+from typing import TYPE_CHECKING
 
 try:
     from types import NoneType
 except ImportError:
     NoneType = type(None)
-
-if TYPE_CHECKING:
-    from ruamel.yaml.main import YAML
-    from yamlpath.wrappers.nodecoords import NodeCoords
 from yamlpath import Processor, YAMLPath
 from yamlpath.common import Parsers
 from yamlpath.exceptions import YAMLPathException
 from yamlpath.wrappers import ConsolePrinter
+
+if TYPE_CHECKING:
+    from typing import Iterable
+
+    from ruamel.yaml.main import YAML
+    from yamlpath.wrappers.nodecoords import NodeCoords
+
+    from .types import Schema, SchemaKey, SchemaNative, StringyData, TypedData
 
 
 def mk_yaml_editor() -> YAML:
@@ -34,7 +38,7 @@ def mk_yaml_editor() -> YAML:
     return editor
 
 
-def mk_yamlpath_processor(data: dict | list) -> Processor:
+def mk_yamlpath_processor(data: TypedData | StringyData) -> Processor:
     """
     Construct a YAML Path processor/document for the ``data``.
 
@@ -74,8 +78,7 @@ def non_null_matches(surgeon: Processor, *query_paths: str) -> Iterable[NodeCoor
             yield from matches
 
 
-def _schema_entry_type(obj: float | bool | None | datetime | date | time) -> str:  # noqa: FBT001
-    # -> Literal['number', 'boolean', 'null', 'date']
+def _schema_entry_type(obj: SchemaNative) -> SchemaKey:
     if isinstance(obj, bool):
         return 'boolean'
     if isinstance(obj, (int, float)):
@@ -89,15 +92,15 @@ def _schema_entry_type(obj: float | bool | None | datetime | date | time) -> str
     )  # pragma: no cover
 
 
-def typed_data_to_schema(data: dict | list) -> dict:
-    """
+def typed_data_to_schema(data: TypedData) -> Schema:
+    r"""
     Analyze nested data and produce a matching schema document.
 
     Args:
         data: A nested data object whose elements can be mapped to schema entries.
 
     Returns:
-        A schema ``dict`` mapping ('number', 'boolean', 'null', or 'date') to lists of YAML Paths.
+        A ``Schema`` ``dict``, mapping ``SchemaKey``\ s to lists of YAML Paths.
     """
     schema = defaultdict(list)
     surgeon = mk_yamlpath_processor(data)
@@ -108,7 +111,7 @@ def typed_data_to_schema(data: dict | list) -> dict:
     return schema
 
 
-def guess_briefer_schema(schema: dict[str, list[str]]) -> dict[str, list[str]]:
+def guess_briefer_schema(schema: Schema) -> dict[str, list[str]]:
     """
     Suggest an alternative schema, with low confidence.
 

@@ -1,5 +1,5 @@
 """
-Provide any functions for transforming a "stringy" ``dict``/``list`` to one with more types.
+Provide any functions for transforming a "stringy" ``dict``/``list``/value to one with more types.
 
 In practice, this is just `cast_stringy_data` and any support functions it needs.
 """
@@ -8,26 +8,18 @@ from __future__ import annotations
 
 import re
 from datetime import date, datetime, time
-from typing import Sequence, cast
+from typing import TYPE_CHECKING, cast
 from uuid import uuid4
 
-try:
-    from typing import TypeAlias
-except ImportError:
-    from typing import Any as TypeAlias
+from .converters import mk_json_types_converter, mk_unyamlable_converter
+from .yamlpath_tools import Processor, mk_yamlpath_processor, non_null_matches
 
-from .converters import Converter as _Converter, mk_json_types_converter, mk_unyamlable_converter
-from .yamlpath_tools import (
-    Processor,
-    YAMLPath as _YAMLPath,
-    mk_yamlpath_processor,
-    non_null_matches,
-)
+if TYPE_CHECKING:
+    from typing import Sequence
 
-Converter: TypeAlias = _Converter
-StringyDatum: TypeAlias = 'str | list | dict'
-StringyData: TypeAlias = 'list[StringyDatum] | dict[str, StringyDatum] | str'
-YAMLPath: TypeAlias = _YAMLPath
+    from .converters import Converter
+    from .types import StringyData, TypedData
+    from .yamlpath_tools import YAMLPath
 
 
 def _str_to_bool(informal_bool: str) -> bool:
@@ -139,7 +131,7 @@ def _cast_datey(surgeon: Processor, date_paths: Sequence[str]) -> dict | list:
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
         else:
-            surgeon.set_value(cast(YAMLPath, match.path), datey)
+            surgeon.set_value(cast('YAMLPath', match.path), datey)
             if not marked_times_present and isinstance(datey, str):
                 marked_times_present = True
 
@@ -156,13 +148,13 @@ def cast_stringy_data(
     num_paths: Sequence[str] = (),
     date_paths: Sequence[str] = (),
     converter: Converter | None = None,
-) -> list | dict:
+) -> TypedData:
     r"""
     Take nested ``StringyData`` and return a copy with matching nodes up-typed.
 
     Args:
         data: A ``dict`` or ``list`` composed of ``str``, ``dict`` and ``list`` items
-            all the way down.
+            all the way down, or (rarely) a ``str``.
         bool_paths: YAMLPath queries indicating nodes to be up-typed to ``bool``.
         null_paths: YAMLPath queries indicating nodes to be up-typed to ``None``.
         num_paths: YAMLPath queries indicating nodes to be up-typed to ``int``/``float``.
@@ -174,27 +166,27 @@ def cast_stringy_data(
 
     Returns:
         A nested ``dict`` or ``list`` containing some "up-typed" (casted) items
-            in addition to ``str``\ s.
+            in addition to ``str``\ s, or (rarely) a single value.
 
     Raises:
         ValueError: Up-typing a ``str`` failed due to an unexpected format.
     """
-    doc = dict(data) if isinstance(data, dict) else list(data)
+    doc = dict(data) if isinstance(data, dict) else list(data) if isinstance(data, list) else data
 
     if not any((bool_paths, null_paths, num_paths, date_paths)):
-        return doc
+        return cast('TypedData', doc)
 
     surgeon = mk_yamlpath_processor(doc)
 
     for match in non_null_matches(surgeon, *null_paths):
         if match.node == '':
-            surgeon.set_value(cast(YAMLPath, match.path), None)
+            surgeon.set_value(cast('YAMLPath', match.path), None)
 
     for match in non_null_matches(surgeon, *bool_paths):
         if not isinstance(match.node, str):
             continue
         try:
-            surgeon.set_value(cast(YAMLPath, match.path), _str_to_bool(match.node))
+            surgeon.set_value(cast('YAMLPath', match.path), _str_to_bool(match.node))
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
 
@@ -202,7 +194,7 @@ def cast_stringy_data(
         if not isinstance(match.node, str):
             continue
         try:
-            surgeon.set_value(cast(YAMLPath, match.path), _str_to_num(match.node))
+            surgeon.set_value(cast('YAMLPath', match.path), _str_to_num(match.node))
         except ValueError as e:  # pragma: no cover
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
 
