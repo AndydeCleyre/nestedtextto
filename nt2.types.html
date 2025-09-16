@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>nt2.types</title>
+    <meta name="generator" content="pydoctor 25.4.0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="readthedocstheme.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a> <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+    
+        <!-- Side navigation -->
+      <div class="sidebarcontainer">
+        <nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code class="thisobject"><a href="nt2.types.html" class="internal-link" title="This module">types</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        
+         
+
+        
+         
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#JSONData" class="internal-link" title="nt2.types.JSONData"><wbr></wbr>JSONData</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#Schema" class="internal-link" title="nt2.types.Schema"><wbr></wbr>Schema</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#SchemaKey" class="internal-link" title="nt2.types.SchemaKey"><wbr></wbr>Schema<wbr></wbr>Key</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#SchemaNative" class="internal-link" title="nt2.types.SchemaNative"><wbr></wbr>Schema<wbr></wbr>Native</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#StringyData" class="internal-link" title="nt2.types.StringyData"><wbr></wbr>Stringy<wbr></wbr>Data</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#TOMLData" class="internal-link" title="nt2.types.TOMLData"><wbr></wbr>TOMLData</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#TOMLHashData" class="internal-link" title="nt2.types.TOMLHashData"><wbr></wbr>TOMLHash<wbr></wbr>Data</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#TypedData" class="internal-link" title="nt2.types.TypedData"><wbr></wbr>Typed<wbr></wbr>Data</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#YAMLData" class="internal-link" title="nt2.types.YAMLData"><wbr></wbr>YAMLData</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="index.html" class="internal-link" title="The parent of this module">nt2</a></code> 
+      </div>
+      
+      <div>
+        
+
+        <div class="childrenKindTitle">Modules</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="nt2.casters.html" class="internal-link" title="nt2.casters">casters</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="nt2.converters.html" class="internal-link" title="nt2.converters">converters</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="nt2.dumpers.html" class="internal-link" title="nt2.dumpers">dumpers</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="nt2.types.html" class="internal-link" title="nt2.types">types</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="nt2.ui.html" class="internal-link" title="nt2.ui">ui</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="nt2.yamlpath_tools.html" class="internal-link" title="nt2.yamlpath_tools">yamlpath<wbr></wbr>_tools</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+        
+
+        
+         
+
+        
+         
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="index.html#__version__" class="internal-link" title="nt2.__version__">__version__</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        <!-- No sidebar toggle for read the docs theme, the sidebar is always
+          visible when the screen is width enough.
+        -->
+      </div>
+
+    </nav>
+    
+    <div class="container-fluid">
+
+      <div id="main" class="">
+        
+
+        
+
+
+        <div class="page-header">
+          <h1 class="module"><code><code><a href="index.html" class="internal-link">nt2</a></code><wbr></wbr>.<code><a href="nt2.types.html" class="internal-link" title="nt2.types">types</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          module documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <a href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py" class="sourceLink">(source)</a>
+          <p></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>TypeAliases for internal use.</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id6">
+  
+  
+  <tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#JSONData" class="internal-link" title="nt2.types.JSONData"><wbr></wbr>JSONData</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#Schema" class="internal-link" title="nt2.types.Schema"><wbr></wbr>Schema</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#SchemaKey" class="internal-link" title="nt2.types.SchemaKey"><wbr></wbr>Schema<wbr></wbr>Key</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#SchemaNative" class="internal-link" title="nt2.types.SchemaNative"><wbr></wbr>Schema<wbr></wbr>Native</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#StringyData" class="internal-link" title="nt2.types.StringyData"><wbr></wbr>Stringy<wbr></wbr>Data</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#TOMLData" class="internal-link" title="nt2.types.TOMLData"><wbr></wbr>TOMLData</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#TOMLHashData" class="internal-link" title="nt2.types.TOMLHashData"><wbr></wbr>TOMLHash<wbr></wbr>Data</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#TypedData" class="internal-link" title="nt2.types.TypedData"><wbr></wbr>Typed<wbr></wbr>Data</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="typealias">
+    
+    <td>Type Alias</td>
+    <td><code><a href="#YAMLData" class="internal-link" title="nt2.types.YAMLData"><wbr></wbr>YAMLData</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basetypealias">
+  
+  
+  <a name="nt2.types.JSONData">
+    
+  </a>
+  <a name="JSONData">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">JSONData</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L21">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#JSONData" title="nt2.types.JSONData">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>dict[<wbr></wbr>str, <wbr></wbr><a href="#JSONData" class="internal-link" title="nt2.types.JSONData">JSONData</a>] | list[<wbr></wbr><a href="#JSONData" class="internal-link" title="nt2.types.JSONData">JSONData</a>] | str | int | float | bool | None</code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.Schema">
+    
+  </a>
+  <a name="Schema">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">Schema</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L33">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#Schema" title="nt2.types.Schema">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>dict[<wbr></wbr><a href="#SchemaKey" class="internal-link" title="nt2.types.SchemaKey">SchemaKey</a>, <wbr></wbr>list[<wbr></wbr>str]]</code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.SchemaKey">
+    
+  </a>
+  <a name="SchemaKey">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">SchemaKey</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L32">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#SchemaKey" title="nt2.types.SchemaKey">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>Literal[<wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">number</span><span class="rst-variable-quote">'</span>, <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">boolean</span><span class="rst-variable-quote">'</span>, <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">null</span><span class="rst-variable-quote">'</span>, <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">date</span><span class="rst-variable-quote">'</span>]</code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.SchemaNative">
+    
+  </a>
+  <a name="SchemaNative">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">SchemaNative</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L35">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#SchemaNative" title="nt2.types.SchemaNative">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>int | float | bool | None | datetime | date | time</code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.StringyData">
+    
+  </a>
+  <a name="StringyData">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">StringyData</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L30">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#StringyData" title="nt2.types.StringyData">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>str | list[<wbr></wbr><a href="#StringyData" class="internal-link" title="nt2.types.StringyData">StringyData</a>] | dict[<wbr></wbr>str, <wbr></wbr><a href="#StringyData" class="internal-link" title="nt2.types.StringyData">StringyData</a>]</code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.TOMLData">
+    
+  </a>
+  <a name="TOMLData">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">TOMLData</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L25">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#TOMLData" title="nt2.types.TOMLData">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code><a href="#TOMLHashData" class="internal-link" title="nt2.types.TOMLHashData">TOMLHashData</a> | list[<wbr></wbr><a href="#TOMLData" class="internal-link" title="nt2.types.TOMLData">TOMLData</a>] | str | int | float | bool | datetime | date | time</code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.TOMLHashData">
+    
+  </a>
+  <a name="TOMLHashData">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">TOMLHashData</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L28">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#TOMLHashData" title="nt2.types.TOMLHashData">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>dict[<wbr></wbr>str, <wbr></wbr><a href="#TOMLData" class="internal-link" title="nt2.types.TOMLData">TOMLData</a>]</code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.TypedData">
+    
+  </a>
+  <a name="TypedData">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">TypedData</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L36">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#TypedData" title="nt2.types.TypedData">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>dict[<wbr></wbr>str, <wbr></wbr><a href="#TypedData" class="internal-link" title="nt2.types.TypedData">TypedData</a>] | list[<wbr></wbr><a href="#TypedData" class="internal-link" title="nt2.types.TypedData">TypedData</a>] | <a href="#SchemaNative" class="internal-link" title="nt2.types.SchemaNative">SchemaNative</a> | <a href="#JSONData" class="internal-link" title="nt2.types.JSONData">JSONData</a> | <a href="#YAMLData" class="internal-link" title="nt2.types.YAMLData">YAMLData</a> | <a href="#TOMLData" class="internal-link" title="nt2.types.TOMLData">TOMLData</a></code></pre></td></tr></table>
+  </div>
+</div><div class="basetypealias">
+  
+  
+  <a name="nt2.types.YAMLData">
+    
+  </a>
+  <a name="YAMLData">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">YAMLData</span>: <code>TypeAlias</code> =
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/types.py#L22">
+      
+      (source)
+    </a>
+    <a class="headerLink" href="#YAMLData" title="nt2.types.YAMLData">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>dict[<wbr></wbr>str, <wbr></wbr><a href="#YAMLData" class="internal-link" title="nt2.types.YAMLData">YAMLData</a>] | list[<wbr></wbr><a href="#YAMLData" class="internal-link" title="nt2.types.YAMLData">YAMLData</a>] | str | int | float | bool | None | datetime |<span class="rst-variable-linewrap">↵</span>
+ date</code></pre></td></tr></table>
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+    <hr />
+    
+    
+    <div class="container-fluid">
+      <a href="index.html">API Documentation</a> for <a href="https://github.com/andydecleyre/nestedtextto" class="projecthome">NestedTextTo</a>,
+    generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+      25.4.0 at 2025-09-16 03:03:06.
+    </div>
+    
+    <script src="ajax.js" type="text/javascript"></script>
+    <script src="searchlib.js" type="text/javascript"></script>
+    <script src="search.js" type="text/javascript"></script>
+  
+  </footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

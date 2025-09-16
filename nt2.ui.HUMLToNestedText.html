@@ -6,7 +6,7 @@
 
   <head>
     
-    <title>nt2.ui.JSONToNestedText</title>
+    <title>nt2.ui.HUMLToNestedText</title>
     <meta name="generator" content="pydoctor 25.4.0"> 
         
     </meta>
@@ -107,7 +107,7 @@
 
       <div class="thingTitle">
         <span>Class</span>
-        <code class="thisobject"><a href="nt2.ui.JSONToNestedText.html" class="internal-link" title="This class"><wbr></wbr>JSONTo<wbr></wbr>Nested<wbr></wbr>Text</a></code> 
+        <code class="thisobject"><a href="nt2.ui.HUMLToNestedText.html" class="internal-link" title="This class"><wbr></wbr>HUMLTo<wbr></wbr>Nested<wbr></wbr>Text</a></code> 
       </div>
       
       <div>
@@ -128,7 +128,7 @@
         
 
         
-            <div class="itemName"><code><a href="#main" class="internal-link" title="nt2.ui.JSONToNestedText.main">main</a></code>
+            <div class="itemName"><code><a href="#main" class="internal-link" title="nt2.ui.HUMLToNestedText.main">main</a></code>
             </div>
         
 
@@ -214,7 +214,7 @@
         <div class="childrenKindTitle">Classes</div>
         <ul>
     
-    <li class="">
+    <li class=" thisobject">
         
         
         
@@ -224,7 +224,7 @@
             </div>
         
 
-    </li><li class=" thisobject">
+    </li><li class="">
         
         
         
@@ -415,7 +415,7 @@
 
 
         <div class="page-header">
-          <h1 class="class"><code><code><a href="index.html" class="internal-link">nt2</a></code><wbr></wbr>.<code><a href="nt2.ui.html" class="internal-link" title="nt2.ui">ui</a></code><wbr></wbr>.<code><a href="nt2.ui.JSONToNestedText.html" class="internal-link" title="nt2.ui.JSONToNestedText">JSONToNestedText</a></code></code></h1>
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">nt2</a></code><wbr></wbr>.<code><a href="nt2.ui.html" class="internal-link" title="nt2.ui">ui</a></code><wbr></wbr>.<code><a href="nt2.ui.HUMLToNestedText.html" class="internal-link" title="nt2.ui.HUMLToNestedText">HUMLToNestedText</a></code></code></h1>
           <div id="showPrivate">
             <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
           </div>
@@ -426,29 +426,29 @@
         </div>
 
         <div class="extrasDocstring">
-          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">JSONToNestedText</span>(<a href="nt2.ui._ToNestedText.html" class="internal-link" title="nt2.ui._ToNestedText">_ToNestedText</a>): <a href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/ui.py#L288" class="sourceLink">(source)</a></code></p>
-          <p><a href="classIndex.html#nt2.ui.JSONToNestedText">View In Hierarchy</a></p>
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">HUMLToNestedText</span>(<a href="nt2.ui._ToNestedText.html" class="internal-link" title="nt2.ui._ToNestedText">_ToNestedText</a>): <a href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/ui.py#L351" class="sourceLink">(source)</a></code></p>
+          <p><a href="classIndex.html#nt2.ui.HUMLToNestedText">View In Hierarchy</a></p>
         </div>
 
         <div class="moduleDocstring">
-          <div><p>Read JSON and output its content as NestedText.</p>
+          <div><p>Read HUML and output its content as NestedText.</p>
 <div class="rst-admonition rst-admonition-examples">
 <p class="rst-admonition-title rst-first">Examples</p>
-<p class="rst-last">json2nt data.json &gt;data.nt
-curl -s <a class="rst-external rst-reference" href="https://api.example.com/data" target="_top">https://api.example.com/data</a> | json2nt
-json2nt --to-schema data.json &gt;data.types.nt</p>
+<p class="rst-last">huml2nt config.huml &gt;config.nt
+cat config.huml | huml2nt
+huml2nt --to-schema config.huml &gt;config.types.nt</p>
 </div>
 </div>
         </div>
 
         <div id="splitTables">
-          <table class="children sortable" id="id32">
+          <table class="children sortable" id="id44">
   
   
   <tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#main" class="internal-link" title="nt2.ui.JSONToNestedText.main">main</a></code></td>
+    <td><code><a href="#main" class="internal-link" title="nt2.ui.HUMLToNestedText.main">main</a></code></td>
     <td><span class="rst-undocumented">Undocumented</span></td>
   </tr>
 </table>
@@ -456,7 +456,7 @@ json2nt --to-schema data.json &gt;data.types.nt</p>
             <p class="inheritedFrom">
               Inherited from <code><a href="nt2.ui._ToNestedText.html" class="internal-link" title="nt2.ui._ToNestedText">_ToNestedText</a></code>:
             </p>
-            <table class="children sortable" id="id33">
+            <table class="children sortable" id="id45">
   
   
   <tr class="baseclassvariable">
@@ -470,7 +470,7 @@ json2nt --to-schema data.json &gt;data.types.nt</p>
             <p class="inheritedFrom">
               Inherited from <code><a href="nt2.ui._TypedFormatToSchema.html" class="internal-link" title="nt2.ui._TypedFormatToSchema">_TypedFormatToSchema</a></code> (via <code><a href="nt2.ui._ToNestedText.html" class="internal-link" title="nt2.ui._ToNestedText">_ToNestedText</a></code>):
             </p>
-            <table class="children sortable" id="id34">
+            <table class="children sortable" id="id46">
   
   
   <tr class="baseclassvariable">
@@ -484,7 +484,7 @@ json2nt --to-schema data.json &gt;data.types.nt</p>
             <p class="inheritedFrom">
               Inherited from <code><a href="nt2.ui._ColorApp.html" class="internal-link" title="nt2.ui._ColorApp">_ColorApp</a></code> (via <code><a href="nt2.ui._ToNestedText.html" class="internal-link" title="nt2.ui._ToNestedText">_ToNestedText</a></code>, <code><a href="nt2.ui._TypedFormatToSchema.html" class="internal-link" title="nt2.ui._TypedFormatToSchema">_TypedFormatToSchema</a></code>):
             </p>
-            <table class="children sortable" id="id35">
+            <table class="children sortable" id="id47">
   
   
   <tr class="baseconstant">
@@ -513,7 +513,7 @@ json2nt --to-schema data.json &gt;data.types.nt</p>
           <div class="basemethod">
   
   
-  <a name="nt2.ui.JSONToNestedText.main">
+  <a name="nt2.ui.HUMLToNestedText.main">
     
   </a>
   <a name="main">
@@ -523,11 +523,11 @@ json2nt --to-schema data.json &gt;data.types.nt</p>
     
     
     <span class="py-keyword">def</span>&#160;<span class="py-defname">main</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">*input_files: <code>ExistingFile</code></span>):</span>
-    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/ui.py#L298">
+    <a class="sourceLink" href="https://github.com/AndydeCleyre/nestedtextto/tree/develop/nt2/ui.py#L361">
       
       (source)
     </a>
-    <a class="headerLink" href="#main" title="nt2.ui.JSONToNestedText.main">
+    <a class="headerLink" href="#main" title="nt2.ui.HUMLToNestedText.main">
       
       
       ¶
