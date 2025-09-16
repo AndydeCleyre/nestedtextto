@@ -93,7 +93,7 @@ The following command will then also yield the above JSON:
 $ nt2json config.nt --schema config.types.nt
 ```
 
-Such a schema may be automatically generated from JSON/TOML/YAML:
+Such a schema may be automatically generated from JSON/TOML/YAML/HUML:
 
 ```console
 $ json2nt --to-schema config.json
@@ -111,16 +111,17 @@ at any depth, with `--boolean '/**[. =~ /(?i)^(yes|no|true|false)$/]'`.
 ### Installation
 
 Support for TOML and HUML are optional.
-If you don't need support for those, you can omit the `[toml,huml]` bits below.
+If you don't need support for those, you can omit the `[all]` bits below.
+Or you can use `[toml]` or `[huml]` to include support for just one of them.
 
 Here are some ways to install it:
 
 ```console
-$ uv tool install 'nt2[toml,huml]'     # Install using uv (Python all-around manager)
-$ pipx install 'nt2[toml,huml]'        # Install using pipx (Python app manager)
-$ pipz install 'nt2[toml,huml]'        # Install using zpy (Python app and environment manager for Zsh)
-$ pip install --user 'nt2[toml,huml]'  # Install in your user's environment
-$ pip install 'nt2[toml,huml]'         # Install in current environment
+$ uv tool install 'nt2[all]'     # Install using uv (Python all-around manager)
+$ pipx install 'nt2[all]'        # Install using pipx (Python app manager)
+$ pipz install 'nt2[all]'        # Install using zpy (Python app and environment manager for Zsh)
+$ pip install --user 'nt2[all]'  # Install in your user's environment
+$ pip install 'nt2[all]'         # Install in current environment
 ```
 
 I recommend using [uv](https://github.com/astral-sh/uv),
@@ -132,11 +133,11 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 For Zsh completion, add this line to your `.zshrc`, any time after `compinit`:
 
 ```zsh
-if (( $+functions[compdef] )) && (( $+commands[nt2json] ))  compdef _gnu_generic nt2{json,{to,ya,hu}ml} {json,{to,ya,hu}ml}2nt
+compdef _gnu_generic nt2{json,{to,ya,hu}ml} {json,{to,ya,hu}ml}2nt
 ```
 
 ### Usage Docs
-@for cmd in ('nt2json', 'nt2yaml', 'nt2toml', 'json2nt', 'yaml2nt', 'toml2nt'):
+@for cmd in ('nt2json', 'nt2yaml', 'nt2toml', 'nt2huml', 'json2nt', 'yaml2nt', 'toml2nt', 'huml2nt'):
 @(
 output = local[cmd]('--help')
 )
