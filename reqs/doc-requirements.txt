@@ -1,5 +1,4 @@
 -c ../nt2/requirements.txt
--c ../nt2/all-requirements.txt
 -c ../test/test-requirements.txt
 
 # Render README from template:
