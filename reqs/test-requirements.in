@@ -1,0 +1,6 @@
+-c ../nt2/requirements.txt
+-c ../nt2/all-requirements.txt
+-c ../test/test-without-extras-requirements.txt
+
+-r all-requirements.in
+-r test-without-extras-requirements.in

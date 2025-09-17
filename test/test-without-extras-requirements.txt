@@ -1,22 +1,22 @@
-arrow==1.3.0              # via inform, -c nt2/requirements.txt
+arrow==1.3.0              # via inform, -c reqs/../nt2/requirements.txt
 click==8.2.1              # via click-completion, click-default-group, ward
 click-completion==0.5.2   # via ward
 click-default-group==1.2.4  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
-inform==1.35              # via nestedtext, -c nt2/requirements.txt
+inform==1.35              # via nestedtext, -c reqs/../nt2/requirements.txt
 jinja2==3.1.6             # via click-completion
-markdown-it-py==4.0.0     # via rich, -c nt2/requirements.txt
+markdown-it-py==4.0.0     # via rich, -c reqs/../nt2/requirements.txt
 markupsafe==3.0.2         # via jinja2
-mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt
-nestedtext==3.7           # via -c nt2/requirements.txt, -r test-without-extras-requirements.in
+mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt
+nestedtext==3.7           # via -c reqs/../nt2/requirements.txt, -r reqs/test-without-extras-requirements.in
 pluggy==1.6.0             # via ward
-plumbum==1.9.0            # via -c nt2/requirements.txt, -r test-without-extras-requirements.in
+plumbum==1.9.0            # via -c reqs/../nt2/requirements.txt, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward
-pygments==2.19.2          # via rich, -c nt2/requirements.txt
-python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt
-rich==14.1.0              # via ward, -c nt2/requirements.txt
+pygments==2.19.2          # via rich, -c reqs/../nt2/requirements.txt
+python-dateutil==2.9.0.post0  # via arrow, -c reqs/../nt2/requirements.txt
+rich==14.1.0              # via ward, -c reqs/../nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
-six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt
-tomli==2.2.1              # via ward, -c nt2/toml-requirements.txt
-types-python-dateutil==2.9.0.20250822  # via arrow, -c nt2/requirements.txt
-ward==0.68.0b0            # via -r test-without-extras-requirements.in
+six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt
+tomli==2.2.1              # via ward, -c reqs/../nt2/all-requirements.txt
+types-python-dateutil==2.9.0.20250822  # via arrow, -c reqs/../nt2/requirements.txt
+ward==0.68.0b0            # via -r reqs/test-without-extras-requirements.in

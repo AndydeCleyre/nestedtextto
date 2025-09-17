@@ -1,0 +1,3 @@
+-c ../nt2/requirements.txt
+tomli
+tomli-w

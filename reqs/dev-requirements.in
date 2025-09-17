@@ -1,0 +1,9 @@
+-c ../nt2/requirements.txt
+-c ../nt2/all-requirements.txt
+-c ../test/test-requirements.txt
+
+-r doc-requirements.txt
+-r fmt-requirements.txt
+-r test-requirements.in
+
+ipython  # manually debug

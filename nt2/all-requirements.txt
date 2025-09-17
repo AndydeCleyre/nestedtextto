@@ -1,0 +1,3 @@
+pyhuml==0.1.0             # via -r reqs/huml-requirements.in
+tomli==2.2.1              # via -r reqs/toml-requirements.in
+tomli-w==1.2.0            # via -r reqs/toml-requirements.in

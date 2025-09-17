@@ -41,13 +41,14 @@ toml2nt = "nt2.ui:TOMLToNestedText"
 huml2nt = "nt2.ui:HUMLToNestedText"
 
 [project.optional-dependencies]
-dev = ["darglint", "ipython", "md-toc", "nestedtext", "plumbum", "pydoctor", "pyhuml", "pyright", "ruff", "ssort", "tomli", "tomli-w", "ward", "wheezy.template"]
-test = ["nestedtext", "plumbum", "pyhuml", "tomli", "tomli-w", "ward"]
+
 toml = ["tomli", "tomli-w"]
-test-without-toml = ["nestedtext", "plumbum", "ward"]
-test-without-extras = ["nestedtext", "plumbum", "ward"]
 huml = ["pyhuml"]
 all = ["pyhuml", "tomli", "tomli-w"]
+
+test-without-extras = ["nestedtext", "plumbum", "ward"]
+test = ["nestedtext", "plumbum", "pyhuml", "tomli", "tomli-w", "ward"]
+dev = ["darglint", "ipython", "md-toc", "nestedtext", "plumbum", "pydoctor", "pyhuml", "pyright", "ruff", "ssort", "tomli", "tomli-w", "ward", "wheezy.template"]
 
 [tool.ruff]
 line-length = 99
