@@ -1,6 +1,5 @@
 # Support for all formats, that is.
 # This does not cover development requirements.
 
--r requirements.in
 -r toml-requirements.in
 -r huml-requirements.in

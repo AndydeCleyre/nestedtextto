@@ -47,7 +47,7 @@ toml = ["tomli", "tomli-w"]
 test-without-toml = ["nestedtext", "plumbum", "ward"]
 test-without-extras = ["nestedtext", "plumbum", "ward"]
 huml = ["pyhuml"]
-all = ["cattrs", "nestedtext", "plumbum", "pyhuml", "rich", "ruamel.yaml", "tomli", "tomli-w", "typing-extensions; python_version<'3.9'", "yamlpath>=3.6.9"]
+all = ["pyhuml", "tomli", "tomli-w"]
 
 [tool.ruff]
 line-length = 99
