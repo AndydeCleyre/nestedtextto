@@ -12,7 +12,7 @@ test_with_coverage = "coverage run --parallel-mode --module ward"
 
 [tasks.install]
 description = "Install packages required for development into the virtual environment"
-run = "uv -q pip install -p python -Ue '.[dev,toml,huml]' -c dev-requirements.txt -c nt2/requirements.txt -c nt2/toml-requirements.txt -c nt2/huml-requirements.txt"
+run = "uv -q pip install -p python -Ue '.[dev,all]' -c dev-requirements.txt -c nt2/requirements.txt -c nt2/toml-requirements.txt -c nt2/huml-requirements.txt"
 
 [tasks.fmt]
 description = "Format and lint code and docs"
@@ -63,7 +63,7 @@ run = """\
 """
 
 [tasks.test-without-extras]
-description = "Run all tests, excluding optional TOML and HUML support"
+description = "Run all tests, excluding optional format support"
 run = """\
   {{vars.run_with_coverage}} \
     --with-editable . \
@@ -72,14 +72,14 @@ run = """\
 """
 
 [tasks.test-all]
-description = "Run all tests, with and without TOML and HUML support enabled"
+description = "Run all tests, with and without optional format support enabled"
 run = [
   "mise run test",
   "mise run test-without-extras"
 ]
 
 [tasks.test-all-pythons]
-description = "Run all tests, with and without TOML and HUML support enabled, for each supported Python release"
+description = "Run all tests, with and without optional format support enabled, for each supported Python release"
 run = """\
   for pyver in 3.13 3.12 3.11 3.10 3.9 3.8 3.7; do
 

@@ -3,6 +3,5 @@
 -c nt2/huml-requirements.txt
 -c test/test-without-extras-requirements.txt
 
--r toml-requirements.in
--r huml-requirements.in
+-r all-requirements.in
 -r test-without-extras-requirements.in
