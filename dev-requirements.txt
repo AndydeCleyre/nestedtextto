@@ -13,7 +13,7 @@ constantly==23.10.4       # via twisted
 cucumber-tag-expressions==4.1.0  # via ward, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 darglint==1.8.1           # via -r fmt-requirements.txt
 decorator==5.2.1          # via ipython
-docutils==0.22            # via pydoctor
+docutils==0.22.1          # via pydoctor
 executing==2.2.1          # via stack-data
 filelock==3.19.1          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
