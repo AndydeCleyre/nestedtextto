@@ -5,7 +5,7 @@ automat==25.4.16          # via twisted
 cachecontrol==0.14.3      # via pydoctor
 certifi==2025.8.3         # via requests
 charset-normalizer==3.4.3  # via requests
-click==8.2.1              # via click-completion, click-default-group, ward, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
+click==8.3.0              # via click-completion, click-default-group, ward, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 click-default-group==1.2.4  # via ward, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 configargparse==1.7.1     # via pydoctor
@@ -51,7 +51,7 @@ pyright==1.1.405          # via -r fmt-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 requests==2.32.5          # via cachecontrol, pydoctor
 rich==14.1.0              # via ward, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
-ruff==0.13.0              # via -r fmt-requirements.txt
+ruff==0.13.1              # via -r fmt-requirements.txt
 setuptools==80.9.0        # via incremental, zope-interface
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
