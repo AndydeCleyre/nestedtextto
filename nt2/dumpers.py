@@ -160,7 +160,9 @@ def _require_toml_support():
         ImportError: The libraries for TOML support are absent.
     """
     if not TOML_SUPPORT:
-        raise ImportError("TOML support for nt2 is not installed. Try reinstalling as 'nt2[toml]'")
+        raise ImportError(
+            "TOML support for nt2 is not installed. Try reinstalling as 'nt2[toml]' or 'nt2[all]'"
+        )
 
 
 def tdump(data: TOMLHashData):

@@ -110,9 +110,9 @@ at any depth, with `--boolean '/**[. =~ /(?i)^(yes|no|true|false)$/]'`.
 
 ### Installation
 
-Support for TOML and HUML are optional.
-If you don't need support for those, you can omit the `[all]` bits below.
-Or you can use `[toml]` or `[huml]` to include support for just one of them.
+Support for JSON and YAML are always included.
+If you don't need support for more than those, you can omit the `[all]` bits below.
+Or you can use a comma-separated list of extra formats, like `[toml,huml]`.
 
 Here are some ways to install it:
 
