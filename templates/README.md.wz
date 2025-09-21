@@ -205,6 +205,13 @@ and is currently not handled by NestedTextTo.
 If anyone is interested in using NestedTextTo with non-string key types,
 please open an issue and I'll see what I can do!
 
+##### Duplicate Keys
+
+Most of the formats don't support duplicate keys,
+and they are not currently handled by NestedTextTo.
+
+Please open an issue if this matters to you.
+
 ### More Examples
 
 #### View JSON Lines logs in a more readable format
