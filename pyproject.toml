@@ -34,11 +34,11 @@ Home = "https://github.com/andydecleyre/nestedtextto"
 nt2json = "nt2.ui:NestedTextToJSON"
 nt2yaml = "nt2.ui:NestedTextToYAML"
 nt2toml = "nt2.ui:NestedTextToTOML"
-nt2huml = "nt2.ui:NestedTextToHUML"
 json2nt = "nt2.ui:JSONToNestedText"
 yaml2nt = "nt2.ui:YAMLToNestedText"
 toml2nt = "nt2.ui:TOMLToNestedText"
-huml2nt = "nt2.ui:HUMLToNestedText"
+nt2 = "nt2.ui:NestedTextTo"
+2nt = "nt2.ui:ToNestedText"
 
 [project.optional-dependencies]
 

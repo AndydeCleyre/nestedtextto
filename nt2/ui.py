@@ -75,13 +75,16 @@ class _ColorApp(Application):
     VERSION = __version__ | blue
     COLOR_USAGE = green
     COLOR_GROUPS: ClassVar = {'Meta-switches': magenta, 'Switches': yellow, 'Subcommands': blue}
+
+
+class _ColorSubcommand(_ColorApp):
     ALLOW_ABBREV = True
 
 
-_ColorApp.unbind_switches('help-all')
+_ColorSubcommand.unbind_switches('help-all')
 
 
-class _TypedFormatToSchema(_ColorApp):
+class _TypedFormatToSchema(_ColorSubcommand):
     to_schema = Flag(('to-schema', 's'), help="Rather than convert the inputs, generate a schema")
 
 
@@ -95,7 +98,7 @@ class _ToNestedText(_TypedFormatToSchema):
     )
 
 
-class _NestedTextToTypedFormat(_ColorApp):
+class _NestedTextToTypedFormat(_ColorSubcommand):
     schema_files = SwitchAttr(
         ('schema', 's'),
         argtype=ExistingFile,  # type: ignore
@@ -103,8 +106,8 @@ class _NestedTextToTypedFormat(_ColorApp):
         argname='NESTEDTEXTFILE',
         help=(
             "Cast nodes matching YAML Path queries specified in a NestedText document. "
-            "It must be a map with one or more of the keys: 'null', 'boolean', 'number'"
-            "Each key's value is a list of YAML Paths."
+            "It must be a map with one or more of the keys: 'null', 'boolean', 'number'. "
+            "Each key's value is a list of YAML Paths"
         ),
     )
     bool_paths = SwitchAttr(
@@ -121,7 +124,7 @@ class _NestedTextToTypedFormat(_ColorApp):
     )
 
 
-class _NestedTextToTypedFormatSupportNull(_ColorApp):
+class _NestedTextToTypedFormatSupportNull(_ColorSubcommand):
     null_paths = SwitchAttr(
         ('null', 'n'),
         list=True,
@@ -130,7 +133,7 @@ class _NestedTextToTypedFormatSupportNull(_ColorApp):
     )
 
 
-class _NestedTextToTypedFormatSupportDate(_ColorApp):
+class _NestedTextToTypedFormatSupportDate(_ColorSubcommand):
     date_paths = SwitchAttr(
         ('date', 'd'),
         list=True,
@@ -139,21 +142,40 @@ class _NestedTextToTypedFormatSupportDate(_ColorApp):
     )
 
 
+class NestedTextTo(_ColorApp):
+    """Convert NestedText to another format."""
+
+
+NT2_DESCRIPTION_MORE_TMPL = """
+By default, generated {target} values will only contain strings, arrays, and maps,
+but you can cast nodes matching YAML Paths to {types}.
+
+Casting switches may be before or after file arguments.
+
+Examples:
+
+    - nt2 {subcommand} config.nt >config.{extension}
+    - cat config.nt | nt2 {subcommand}
+    - nt2 {subcommand} --schema config.types.nt config.nt >config.{extension}
+    - nt2 {subcommand} --int stats.total --boolean config.enabled data.nt
+"""
+
+
+class ToNestedText(_ColorApp):
+    """Convert another format to NestedText."""
+
+
+@NestedTextTo.subcommand('json')  # pyright: ignore [reportCallIssue]
 class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportNull):
-    """
-    Read NestedText and output its content as JSON.
+    """Read NestedText and output its content as JSON."""
 
-    By default, generated JSON values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean, null, or number.
-
-    Casting switches may be before or after file arguments.
-
-    Examples:
-        nt2json config.nt >config.json
-        cat config.nt | nt2json
-        nt2json --schema config.types.nt config.nt >config.json
-        nt2json --int stats.total --boolean config.enabled data.nt
-    """
+    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
+        target="JSON", types="boolean, null, or number", subcommand="json", extension="json"
+    )
+    DESCRIPTION_MORE += (
+        "\nIt can be invoked as either the subcommand `nt2 json`"
+        " or the single command `nt2json`.\n"
+    )
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
@@ -174,25 +196,21 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
             return 1
 
 
+@NestedTextTo.subcommand('yaml')  # pyright: ignore [reportCallIssue]
 class NestedTextToYAML(
     _NestedTextToTypedFormat,
     _NestedTextToTypedFormatSupportNull,
     _NestedTextToTypedFormatSupportDate,
 ):
-    """
-    Read NestedText and output its content as YAML.
+    """Read NestedText and output its content as YAML."""
 
-    By default, generated YAML values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean, null, number, or date.
-
-    Casting switches may be before or after file arguments.
-
-    Examples:
-        nt2yaml config.nt >config.yml
-        cat config.nt | nt2yaml
-        nt2yaml --schema config.types.nt config.nt >config.yml
-        nt2yaml --int stats.total --boolean config.enabled data.nt
-    """
+    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
+        target="YAML", types="boolean, null, number, or date", subcommand="yaml", extension="yml"
+    )
+    DESCRIPTION_MORE += (
+        "\nIt can be invoked as either the subcommand `nt2 yaml`"
+        " or the single command `nt2yaml`.\n"
+    )
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
@@ -215,21 +233,17 @@ class NestedTextToYAML(
             return 1
 
 
+@NestedTextTo.subcommand('toml')  # pyright: ignore [reportCallIssue]
 class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportDate):
-    """
-    Read NestedText and output its content as TOML.
+    """Read NestedText and output its content as TOML."""
 
-    By default, generated TOML values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean, number, or date.
-
-    Casting switches may be before or after file arguments.
-
-    Examples:
-        nt2toml config.nt >config.toml
-        cat config.nt | nt2toml
-        nt2toml --schema config.types.nt config.nt >config.toml
-        nt2toml --int stats.total --boolean config.enabled data.nt
-    """
+    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
+        target="TOML", types="boolean, number, or date", subcommand="toml", extension="toml"
+    )
+    DESCRIPTION_MORE += (
+        "\nIt can be invoked as either the subcommand `nt2 toml`"
+        " or the single command `nt2toml`.\n"
+    )
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
@@ -250,21 +264,13 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
             return 1
 
 
+@NestedTextTo.subcommand('huml')  # pyright: ignore [reportCallIssue]
 class NestedTextToHUML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportNull):
-    """
-    Read NestedText and output its content as HUML.
+    """Read NestedText and output its content as HUML."""
 
-    By default, generated HUML values will only contain strings, arrays, and maps,
-    but you can cast nodes matching YAML Paths to boolean, null, or number.
-
-    Casting switches may be before or after file arguments.
-
-    Examples:
-        nt2huml config.nt >config.huml
-        cat config.nt | nt2huml
-        nt2huml --schema config.types.nt config.nt >config.huml
-        nt2huml --int stats.total --boolean config.enabled data.nt
-    """
+    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
+        target="HUML", types="boolean, null, or number", subcommand="huml", extension="huml"
+    )
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
@@ -285,15 +291,19 @@ class NestedTextToHUML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
             return 1
 
 
+@ToNestedText.subcommand('json')  # pyright: ignore [reportCallIssue]
 class JSONToNestedText(_ToNestedText):
-    """
-    Read JSON and output its content as NestedText.
+    """Read JSON and output its content as NestedText."""
 
-    Examples:
-        json2nt data.json >data.nt
-        curl -s https://api.example.com/data | json2nt
-        json2nt --to-schema data.json >data.types.nt
-    """
+    DESCRIPTION_MORE = """
+Examples:
+
+    - 2nt json data.json >data.nt
+    - curl -s https://api.example.com/data | 2nt json
+    - 2nt json --to-schema data.json >data.types.nt
+
+It can be invoked as either the subcommand `2nt json` or the single command `json2nt`.
+"""
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
@@ -306,15 +316,19 @@ class JSONToNestedText(_ToNestedText):
             return 1
 
 
+@ToNestedText.subcommand('yaml')  # pyright: ignore [reportCallIssue]
 class YAMLToNestedText(_ToNestedText):
-    """
-    Read YAML and output its content as NestedText.
+    """Read YAML and output its content as NestedText."""
 
-    Examples:
-        yaml2nt config.yml >config.nt
-        kubectl get deployment -o yaml | yaml2nt
-        yaml2nt --to-schema config.yml >config.types.nt
-    """
+    DESCRIPTION_MORE = """
+Examples:
+
+    - 2nt yaml config.yml >config.nt
+    - kubectl get deployment -o yaml | 2nt yaml
+    - 2nt yaml --to-schema config.yml >config.types.nt
+
+It can be invoked as either the subcommand `2nt yaml` or the single command `yaml2nt`.
+"""
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
@@ -327,15 +341,19 @@ class YAMLToNestedText(_ToNestedText):
             return 1
 
 
+@ToNestedText.subcommand('toml')  # pyright: ignore [reportCallIssue]
 class TOMLToNestedText(_ToNestedText):
-    """
-    Read TOML and output its content as NestedText.
+    """Read TOML and output its content as NestedText."""
 
-    Examples:
-        toml2nt config.toml >config.nt
-        cat config.toml | toml2nt
-        toml2nt --to-schema config.toml >config.types.nt
-    """
+    DESCRIPTION_MORE = """
+Examples:
+
+    - 2nt toml config.toml >config.nt
+    - cat config.toml | 2nt toml
+    - 2nt toml --to-schema config.toml >config.types.nt
+
+It can be invoked as either the subcommand `2nt toml` or the single command `toml2nt`.
+"""
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:
@@ -348,15 +366,17 @@ class TOMLToNestedText(_ToNestedText):
             return 1
 
 
+@ToNestedText.subcommand('huml')  # pyright: ignore [reportCallIssue]
 class HUMLToNestedText(_ToNestedText):
-    """
-    Read HUML and output its content as NestedText.
+    """Read HUML and output its content as NestedText."""
 
-    Examples:
-        huml2nt config.huml >config.nt
-        cat config.huml | huml2nt
-        huml2nt --to-schema config.huml >config.types.nt
-    """
+    DESCRIPTION_MORE = """
+Examples:
+
+    - 2nt huml config.huml >config.nt
+    - cat config.huml | 2nt huml
+    - 2nt huml --to-schema config.huml >config.types.nt
+"""
 
     def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
         try:

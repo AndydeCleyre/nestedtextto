@@ -29,8 +29,19 @@ none of which are this author's projects.
 
 This project, NestedTextTo, provides command line tools
 for convenient conversion between NestedText and other formats:
-- `nt2json`, `nt2toml`, `nt2yaml`, `nt2huml`
-- `json2nt`, `toml2nt`, `yaml2nt`, `huml2nt`
+
+@(
+syntaxes = ('json', 'yaml', 'toml', 'huml')
+subcmd_list = ', '.join(f"`{s}`" for s in syntaxes)
+)
+
+- `nt2` with subcommands: @{subcmd_list}
+
+  - `nt2 {json,toml,yaml}` can also be invoked as a single command: `nt2json`, `nt2toml`, `nt2yaml`
+
+- `2nt` with subcommands: @{subcmd_list}
+
+  - `2nt {json,toml,yaml}` can also be invoked as a single command: `json2nt`, `toml2nt`, `yaml2nt`
 
 ---
 
@@ -93,7 +104,7 @@ The following command will then also yield the above JSON:
 $ nt2json config.nt --schema config.types.nt
 ```
 
-Such a schema may be automatically generated from JSON/TOML/YAML/HUML:
+Such a schema may be automatically generated from any of the typed formats:
 
 ```console
 $ json2nt --to-schema config.json
@@ -106,7 +117,7 @@ For more YAML Path syntax information see
 [the YAML Path wiki](https://github.com/wwkimball/yamlpath/wiki/Search-Expressions).
 
 For example, you could match all items which are *probably* intended as booleans,
-at any depth, with `--boolean '/**[. =~ /(?i)^(yes|no|true|false)$/]'`.
+at any depth, with `--boolean '**[. =~ /(?i)^(yes|no|true|false)$/]'`.
 
 ### Installation
 
@@ -133,14 +144,17 @@ or `pipz` from [zpy](https://github.com/AndydeCleyre/zpy).
 For Zsh completion, add this line to your `.zshrc`, any time after `compinit`:
 
 ```zsh
-compdef _gnu_generic nt2{json,{to,ya,hu}ml} {json,{to,ya,hu}ml}2nt
+compdef _gnu_generic nt2{json,{to,ya}ml} {json,{to,ya}ml}2nt
 ```
 
+@# TODO: completion, especially for nt2 and 2nt
+
 ### Usage Docs
-@for cmd in ('nt2json', 'nt2yaml', 'nt2toml', 'nt2huml', 'json2nt', 'yaml2nt', 'toml2nt', 'huml2nt'):
+
+@for cmd in ('nt2', '2nt'):
 @(
 output = local[cmd]('--help')
-)
+)\
 <details>
   <summary>@cmd</summary>
 
@@ -151,7 +165,34 @@ output = local[cmd]('--help')
 </details>
 
 @end
+@for syntax in syntaxes:
+@(
+output = local['nt2'](syntax, '--help')
+)\
+<details>
+  <summary>nt2 @syntax</summary>
 
+```
+@output
+```
+
+</details>
+
+@end
+@for syntax in syntaxes:
+@(
+output = local['2nt'](syntax, '--help')
+)\
+<details>
+  <summary>2nt @syntax</summary>
+
+```
+@output
+```
+
+</details>
+
+@end
 #### Limitations
 
 ##### Non-string Keys
