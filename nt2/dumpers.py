@@ -187,7 +187,9 @@ def _require_huml_support():
         ImportError: The libraries for HUML support are absent.
     """
     if not HUML_SUPPORT:
-        raise ImportError("HUML support for nt2 is not installed. Try reinstalling as 'nt2[huml]'")
+        raise ImportError(
+            "HUML support for nt2 is not installed. Try reinstalling as 'nt2[huml]' or 'nt2[all]'"
+        )
 
 
 def huml_dump(data: JSONData):
