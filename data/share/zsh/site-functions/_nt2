@@ -1,6 +1,6 @@
-#compdef nt2 2nt
+#compdef nt2 2nt nt2json json2nt nt2yaml yaml2nt nt2toml toml2nt
 
-# Zsh completion for nt2 and 2nt commands
+# Zsh completion for nt2 and 2nt commands and their single-command variants
 # Usage: Place this file in your $fpath (e.g., ~/.local/share/zsh/site-functions/_nt2)
 # and ensure compinit is called in your .zshrc
 
@@ -8,6 +8,35 @@ _nt2_2nt() {
   local context state state_descr line
   typeset -A opt_args
 
+  # Handle single commands directly
+  case $service in
+    nt2json)
+      _nt2_json_args
+      return
+      ;;
+    json2nt)
+      _2nt_json_args
+      return
+      ;;
+    nt2yaml)
+      _nt2_yaml_args
+      return
+      ;;
+    yaml2nt)
+      _2nt_yaml_args
+      return
+      ;;
+    nt2toml)
+      _nt2_toml_args
+      return
+      ;;
+    toml2nt)
+      _2nt_toml_args
+      return
+      ;;
+  esac
+
+  # Handle parent commands with subcommands
   local -a subcommands
   case $service in
     nt2)
