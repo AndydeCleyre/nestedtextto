@@ -50,6 +50,9 @@ test-without-extras = ["nestedtext", "plumbum", "ward"]
 test = ["nestedtext", "plumbum", "pyhuml", "tomli", "tomli-w", "ward"]
 dev = ["darglint", "ipython", "md-toc", "nestedtext", "plumbum", "pydoctor", "pyhuml", "pyright", "ruff", "ssort", "tomli", "tomli-w", "ward", "wheezy.template"]
 
+[tool.flit.external-data]
+directory = "data"
+
 [tool.ruff]
 line-length = 99
 exclude = ["./.zpy"]

@@ -1,0 +1,184 @@
+#compdef nt2 2nt
+
+# Zsh completion for nt2 and 2nt commands
+# Usage: Place this file in your $fpath (e.g., ~/.local/share/zsh/site-functions/_nt2)
+# and ensure compinit is called in your .zshrc
+
+_nt2_2nt() {
+  local context state state_descr line
+  typeset -A opt_args
+
+  local -a subcommands
+  case $service in
+    nt2)
+      subcommands=(
+        'json:Read NestedText and output as JSON'
+        'yaml:Read NestedText and output as YAML'
+        'toml:Read NestedText and output as TOML'
+        'huml:Read NestedText and output as HUML'
+      )
+      ;;
+    2nt)
+      subcommands=(
+        'json:Read JSON and output as NestedText'
+        'yaml:Read YAML and output as NestedText'
+        'toml:Read TOML and output as NestedText'
+        'huml:Read HUML and output as NestedText'
+      )
+      ;;
+  esac
+
+  case $service in
+    nt2)
+      _arguments -C \
+        '(-h --help)'{-h,--help}'[Show help message and quit]' \
+        '--help-all[Show help messages of all sub-commands and quit]' \
+        '(-v --version)'{-v,--version}'[Show version and quit]' \
+        '1: :->subcommand' \
+        '*:: :->subcommand_args' && return 0
+      ;;
+    2nt)
+      _arguments -C \
+        '(-h --help)'{-h,--help}'[Show help message and quit]' \
+        '--help-all[Show help messages of all sub-commands and quit]' \
+        '(-v --version)'{-v,--version}'[Show version and quit]' \
+        '1: :->subcommand' \
+        '*:: :->subcommand_args' && return 0
+      ;;
+  esac
+
+  case $state in
+    subcommand)
+      _describe -t subcommands 'subcommands' subcommands && return 0
+      ;;
+    subcommand_args)
+      case $words[1] in
+        json)
+          case $service in
+            nt2)
+              _nt2_json_args
+              ;;
+            2nt)
+              _2nt_json_args
+              ;;
+          esac
+          ;;
+        yaml)
+          case $service in
+            nt2)
+              _nt2_yaml_args
+              ;;
+            2nt)
+              _2nt_yaml_args
+              ;;
+          esac
+          ;;
+        toml)
+          case $service in
+            nt2)
+              _nt2_toml_args
+              ;;
+            2nt)
+              _2nt_toml_args
+              ;;
+          esac
+          ;;
+        huml)
+          case $service in
+            nt2)
+              _nt2_huml_args
+              ;;
+            2nt)
+              _2nt_huml_args
+              ;;
+          esac
+          ;;
+      esac
+      ;;
+  esac
+}
+
+# nt2 subcommand completions
+_nt2_json_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
+    '(-n --null)'{-n,--null}'[Cast nodes matching YAML Path as null if empty string]:YAML Path:' \
+    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
+    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
+    '*:input files:_files'
+}
+
+_nt2_yaml_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
+    '(-n --null)'{-n,--null}'[Cast nodes matching YAML Path as null if empty string]:YAML Path:' \
+    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
+    '(-d --date)'{-d,--date}'[Cast nodes matching YAML Path as date (ISO 8601)]:YAML Path:' \
+    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
+    '*:input files:_files'
+}
+
+_nt2_toml_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
+    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
+    '(-d --date)'{-d,--date}'[Cast nodes matching YAML Path as date (ISO 8601)]:YAML Path:' \
+    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
+    '*:input files:_files'
+}
+
+_nt2_huml_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
+    '(-n --null)'{-n,--null}'[Cast nodes matching YAML Path as null if empty string]:YAML Path:' \
+    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
+    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
+    '*:input files:_files'
+}
+
+# 2nt subcommand completions
+_2nt_json_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
+    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
+    '*:input files:_files -g "*.json"'
+}
+
+_2nt_yaml_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
+    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
+    '*:input files:_files -g "*.{yml,yaml}"'
+}
+
+_2nt_toml_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
+    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
+    '*:input files:_files -g "*.toml"'
+}
+
+_2nt_huml_args() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Show help message and quit]' \
+    '(-v --version)'{-v,--version}'[Show version and quit]' \
+    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
+    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
+    '*:input files:_files -g "*.huml"'
+}
+
+_nt2_2nt "$@"
