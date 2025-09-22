@@ -215,7 +215,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         " or the single command `nt2json`.\n"
     )
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -224,7 +224,7 @@ class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
                 self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
 
             dump_nestedtext_to_json(
-                *input_files,
+                *INPUT_FILE,
                 bool_paths=self.bool_paths,
                 null_paths=self.null_paths,
                 num_paths=self.num_paths,
@@ -250,7 +250,7 @@ class NestedTextToYAML(
         " or the single command `nt2yaml`.\n"
     )
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -260,7 +260,7 @@ class NestedTextToYAML(
                 self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
 
             dump_nestedtext_to_yaml(
-                *input_files,
+                *INPUT_FILE,
                 bool_paths=self.bool_paths,
                 null_paths=self.null_paths,
                 num_paths=self.num_paths,
@@ -283,7 +283,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         " or the single command `nt2toml`.\n"
     )
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -292,7 +292,7 @@ class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
                 self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
 
             dump_nestedtext_to_toml(
-                *input_files,
+                *INPUT_FILE,
                 bool_paths=self.bool_paths,
                 num_paths=self.num_paths,
                 date_paths=self.date_paths,
@@ -310,7 +310,7 @@ class NestedTextToHUML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
         target="HUML", types="boolean, null, or number", subcommand="huml", extension="huml"
     )
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             for schema_file in cast(list, self.schema_files):
                 schema = cast(dict, ntload(schema_file))
@@ -319,7 +319,7 @@ class NestedTextToHUML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupport
                 self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
 
             dump_nestedtext_to_huml(
-                *input_files,
+                *INPUT_FILE,
                 bool_paths=self.bool_paths,
                 null_paths=self.null_paths,
                 num_paths=self.num_paths,
@@ -343,12 +343,12 @@ Examples:
 It can be invoked as either the subcommand `2nt json` or the single command `json2nt`.
 """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             if not self.to_schema:
-                dump_json_to_nestedtext(*input_files, inline_width=cast(int, self.inline_width))
+                dump_json_to_nestedtext(*INPUT_FILE, inline_width=cast(int, self.inline_width))
             else:
-                dump_json_to_schema(*input_files)
+                dump_json_to_schema(*INPUT_FILE)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
@@ -368,12 +368,12 @@ Examples:
 It can be invoked as either the subcommand `2nt yaml` or the single command `yaml2nt`.
 """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             if not self.to_schema:
-                dump_yaml_to_nestedtext(*input_files, inline_width=cast(int, self.inline_width))
+                dump_yaml_to_nestedtext(*INPUT_FILE, inline_width=cast(int, self.inline_width))
             else:
-                dump_yaml_to_schema(*input_files)
+                dump_yaml_to_schema(*INPUT_FILE)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
@@ -393,12 +393,12 @@ Examples:
 It can be invoked as either the subcommand `2nt toml` or the single command `toml2nt`.
 """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             if not self.to_schema:
-                dump_toml_to_nestedtext(*input_files, inline_width=cast(int, self.inline_width))
+                dump_toml_to_nestedtext(*INPUT_FILE, inline_width=cast(int, self.inline_width))
             else:
-                dump_toml_to_schema(*input_files)
+                dump_toml_to_schema(*INPUT_FILE)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
@@ -416,12 +416,12 @@ Examples:
     - 2nt huml --to-schema config.huml >config.types.nt
 """
 
-    def main(self, *input_files: ExistingFile):  # type: ignore  # noqa: D102,ANN201
+    def main(self, *INPUT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
         try:
             if not self.to_schema:
-                dump_huml_to_nestedtext(*input_files, inline_width=cast(int, self.inline_width))
+                dump_huml_to_nestedtext(*INPUT_FILE, inline_width=cast(int, self.inline_width))
             else:
-                dump_huml_to_schema(*input_files)
+                dump_huml_to_schema(*INPUT_FILE)
         except Exception as e:  # pragma: no cover
             inspect_exception(e)
             return 1
