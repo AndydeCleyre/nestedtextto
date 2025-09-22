@@ -9,7 +9,8 @@ from json import JSONDecodeError
 from typing import ClassVar, cast
 
 from nestedtext import NestedTextError, load as ntload
-from plumbum.cli import Application, ExistingFile, Flag, Range, SwitchAttr
+from plumbum import local
+from plumbum.cli import Application, ExistingFile, Flag, Range, Set, SwitchAttr
 from plumbum.colors import (
     blue,  # pyright: ignore [reportAttributeAccessIssue]
     green,  # pyright: ignore [reportAttributeAccessIssue]
@@ -144,6 +145,43 @@ class _NestedTextToTypedFormatSupportDate(_ColorSubcommand):
 
 class NestedTextTo(_ColorApp):
     """Convert NestedText to another format."""
+
+
+@NestedTextTo.subcommand('completion')  # pyright: ignore [reportCallIssue]
+class PrintShellCompletion(_ColorSubcommand):
+    """Print completion code for the given shell."""
+
+    DESCRIPTION_MORE = """
+Examples:
+
+  - nt2 completion zsh >~/.local/share/zsh/site-functions/_nt2
+  - nt2 completion bash >~/.local/share/bash-completion/completions/nt2
+  - nt2 completion fish >~/.config/fish/completions/nt2.fish
+"""
+
+    def main(self, SHELL: Set('zsh', 'bash', 'fish')):  # type: ignore  # noqa: D102,N803
+        data_dir = local.path(__file__).up(2) / 'data'
+        if not data_dir.exists():
+            data_dir = local.path(__file__).up(5)
+
+        bread_crumbs = {
+            'zsh': ('share', 'zsh', 'site-functions', '_nt2'),
+            'bash': ('share', 'bash-completion', 'completions', 'nt2'),
+            'fish': ('config', 'fish', 'completions', 'nt2.fish'),
+        }[SHELL]
+
+        comp_file = data_dir.join(*bread_crumbs)
+
+        if comp_file.exists():
+            print(comp_file.read())
+        else:
+            print(
+                f"{comp_file} not found.\n"
+                "Report @ https://github.com/AndydeCleyre/nestedtextto/issues\n"
+                "Find the file @ https://github.com/AndydeCleyre/nestedtextto/tree/master/data",
+                file=sys.stderr,
+            )
+            sys.exit(1)
 
 
 NT2_DESCRIPTION_MORE_TMPL = """
