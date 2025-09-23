@@ -65,6 +65,6 @@ types-python-dateutil==2.9.0.20250822  # via arrow, -c nt2/requirements.txt, -c 
 typing-extensions==4.15.0  # via pyright, twisted, -c nt2/requirements.txt
 urllib3==2.5.0            # via pydoctor, requests
 ward==0.68.0b0            # via -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt, -r test-without-extras-requirements.in
-wcwidth==0.2.13           # via prompt-toolkit
+wcwidth==0.2.14           # via prompt-toolkit
 wheezy-template==3.2.3    # via -r doc-requirements.txt
 zope-interface==8.0       # via twisted
