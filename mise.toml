@@ -6,13 +6,16 @@ uv = "latest"
 venv = { path = ".venv", create = true }
 
 [vars]
-pip_compile = "uv pip compile -q --python python --upgrade --no-header --annotation-style=line"
+pip_compile = "uv pip compile -q --upgrade --no-header --annotation-style=line"
 run_with_coverage = "uv run --no-project --isolated --with coverage"
 test_with_coverage = "coverage run --parallel-mode --module ward"
 
 [tasks.install]
 description = "Install packages required for development into the virtual environment"
-run = "uv -q pip install -p python -Ue '.[dev]' -c dev-requirements.txt"
+run = [
+  "uv -q pip sync dev-requirements.txt",
+  "uv -q pip install -Ue '.[dev]' -c dev-requirements.txt",
+]
 
 [tasks.fmt]
 description = "Format and lint code and docs"

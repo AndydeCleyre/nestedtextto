@@ -1,6 +1,7 @@
 -c ../nt2/requirements.txt
 -c ../test/test-requirements.txt
 
+-r requirements.in
 -r doc-requirements.txt
 -r fmt-requirements.txt
 -r test-requirements.in
