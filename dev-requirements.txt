@@ -27,7 +27,7 @@ jedi==0.19.2              # via ipython
 jinja2==3.1.6             # via click-completion, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 lunr==0.8.0               # via pydoctor
 markdown-it-py==4.0.0     # via rich, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
-markupsafe==3.0.2         # via jinja2, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
+markupsafe==3.0.3         # via jinja2, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 matplotlib-inline==0.1.7  # via ipython
 md-toc==9.0.0             # via -r doc-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
