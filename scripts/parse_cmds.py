@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python: ">=3.13"
+# dependencies: ["plumbum]
+# ///
 """Parse plumbum application help output to extract properties, subcommands and switches."""
 
 from __future__ import annotations
@@ -40,11 +44,6 @@ def process_usage(s: str) -> str:
     return re.sub(USAGE_PATTERN, r'\1', s).strip()
 
 
-# def process_description(s: str) -> str:
-#     """Process description string to remove cruft."""
-#     return s.removesuffix(SWITCH_DESCRIPTION_MULTIPLE_TAIL)
-
-
 def process_description_more(s: str) -> str:
     """Process description more string to remove trailing newlines."""
     return s.strip()
@@ -55,11 +54,14 @@ def process_switches(s: str) -> list[dict]:
     return [
         {
             'names': match['names'].split(', '),
-            'description': re.sub(r'\n\s+', ' ', match['desc']).removesuffix(SWITCH_DESCRIPTION_MULTIPLE_TAIL),
+            'description': re.sub(r'\n\s+', ' ', match['desc']).removesuffix(
+                SWITCH_DESCRIPTION_MULTIPLE_TAIL
+            ),
             'argname': match['argname'],
             'argtype': match['argtype'],
-            'multiple': match['desc'].endswith(SWITCH_DESCRIPTION_MULTIPLE_TAIL)
-        } for match in re.finditer(SWITCH_PATTERN, s)
+            'multiple': match['desc'].endswith(SWITCH_DESCRIPTION_MULTIPLE_TAIL),
+        }
+        for match in re.finditer(SWITCH_PATTERN, s)
     ]
 
 
@@ -70,23 +72,21 @@ def process_subcommands(s: str) -> dict:
 
 def arguments_from_usage(usage: str) -> list[dict]:
     """Extract arguments from usage string."""
-    # 2nt [SWITCHES] [SUBCOMMAND [SWITCHES]] args...
     arguments = []
     if usage:
         _usage = usage.split(' [SWITCHES] ', 1)
 
         if len(_usage) == 2:
-
             if _usage[1].startswith('[SUBCOMMAND'):
                 return arguments
 
-            if (lines := _usage[1].splitlines()):
+            if lines := _usage[1].splitlines():
                 argstrs = lines[0].strip().split()
                 for argstr in argstrs:
                     arg = {'argdefault': None, 'multiple': False}
-                    if (match := re.match(USAGE_POSITIONAL_ARG_WITH_DEFAULT_PATTERN, argstr)):
+                    if match := re.match(USAGE_POSITIONAL_ARG_WITH_DEFAULT_PATTERN, argstr):
                         arg.update(match.groupdict())
-                    elif (match := re.match(USAGE_POSITIONAL_ARG_MULTIPLE_PATTERN, argstr)):
+                    elif match := re.match(USAGE_POSITIONAL_ARG_MULTIPLE_PATTERN, argstr):
                         arg.update(match.groupdict())
                         arg['multiple'] = True
                     else:
@@ -107,14 +107,21 @@ def parse_help_output(help_text: str) -> dict:
 
     usage = (data['usage'] and process_usage(data['usage'])) or ''
 
-    data.update({
-        'description_more': (data['description_more'] and process_description_more(data['description_more'])) or '',
-        'usage': usage,
-        'meta_switches': (data['meta_switches'] and process_switches(data['meta_switches'])) or [],
-        'switches': (data['switches'] and process_switches(data['switches'])) or [],
-        'arguments': arguments_from_usage(usage),
-        'subcommands': (data['subcommands'] and process_subcommands(data['subcommands'])) or {}
-    })
+    data.update(
+        {
+            'description_more': (
+                data['description_more'] and process_description_more(data['description_more'])
+            )
+            or '',
+            'usage': usage,
+            'meta_switches': (data['meta_switches'] and process_switches(data['meta_switches']))
+            or [],
+            'switches': (data['switches'] and process_switches(data['switches'])) or [],
+            'arguments': arguments_from_usage(usage),
+            'subcommands': (data['subcommands'] and process_subcommands(data['subcommands']))
+            or {},
+        }
+    )
 
     return data
 
@@ -148,5 +155,4 @@ def get_shipped_commands() -> list[str]:
 
 
 if __name__ == '__main__':
-    # save_commands_info(get_shipped_commands_info(), local.path('temp.json'))
     json.dump(get_shipped_commands_info(), sys.stdout, indent=2)
