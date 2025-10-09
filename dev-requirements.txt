@@ -15,7 +15,7 @@ darglint==1.8.1           # via -r fmt-requirements.txt
 decorator==5.2.1          # via ipython
 docutils==0.22.2          # via pydoctor
 executing==2.2.1          # via stack-data
-filelock==3.19.1          # via cachecontrol
+filelock==3.20.0          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hyperlink==21.0.0         # via twisted
 idna==3.10                # via hyperlink, requests
@@ -31,13 +31,13 @@ markupsafe==3.0.3         # via jinja2, -c test/test-requirements.txt, -c test/t
 matplotlib-inline==0.1.7  # via ipython
 md-toc==9.0.0             # via -r doc-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
-msgpack==1.1.1            # via cachecontrol
+msgpack==1.1.2            # via cachecontrol
 nestedtext==3.7           # via -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt, -r test-without-extras-requirements.in
 nodeenv==1.9.1            # via pyright
 parso==0.8.5              # via jedi
 pathspec==0.12.1          # via ssort
 pexpect==4.9.0            # via ipython
-platformdirs==4.4.0       # via pydoctor
+platformdirs==4.5.0       # via pydoctor
 pluggy==1.6.0             # via ward, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 plumbum==1.9.0            # via -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt, -r doc-requirements.txt, -r test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
@@ -57,7 +57,7 @@ shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt,
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 ssort==0.15.0             # via -r fmt-requirements.txt
 stack-data==0.6.3         # via ipython
-tomli==2.2.1              # via ward, -c nt2/toml-requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt, -r toml-requirements.in
+tomli==2.3.0              # via ward, -c nt2/toml-requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt, -r toml-requirements.in
 tomli-w==1.2.0            # via -c nt2/toml-requirements.txt, -c test/test-requirements.txt, -r toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
 twisted==25.5.0           # via pydoctor

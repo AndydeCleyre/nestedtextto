@@ -18,7 +18,7 @@ python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/test
 rich==14.1.0              # via ward, -c nt2/requirements.txt, -c test/test-without-extras-requirements.txt
 shellingham==1.5.4        # via click-completion, -c test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/test-without-extras-requirements.txt
-tomli==2.2.1              # via ward, -c nt2/toml-requirements.txt, -c test/test-without-extras-requirements.txt, -r toml-requirements.in
+tomli==2.3.0              # via ward, -c nt2/toml-requirements.txt, -c test/test-without-extras-requirements.txt, -r toml-requirements.in
 tomli-w==1.2.0            # via -c nt2/toml-requirements.txt, -r toml-requirements.in
 types-python-dateutil==2.9.0.20251008  # via arrow, -c nt2/requirements.txt, -c test/test-without-extras-requirements.txt
 ward==0.68.0b0            # via -c test/test-without-extras-requirements.txt, -r test-without-extras-requirements.in
