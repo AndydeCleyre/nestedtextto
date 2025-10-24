@@ -28,7 +28,7 @@ jinja2==3.1.6             # via click-completion, -c test/test-requirements.txt,
 lunr==0.8.0               # via pydoctor
 markdown-it-py==4.0.0     # via rich, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 markupsafe==3.0.3         # via jinja2, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
-matplotlib-inline==0.1.7  # via ipython
+matplotlib-inline==0.2.1  # via ipython
 md-toc==9.0.0             # via -r doc-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 msgpack==1.1.2            # via cachecontrol
@@ -51,7 +51,7 @@ pyright==1.1.406          # via -r fmt-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 requests==2.32.5          # via cachecontrol, pydoctor
 rich==14.2.0              # via ward, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
-ruff==0.14.1              # via -r fmt-requirements.txt
+ruff==0.14.2              # via -r fmt-requirements.txt
 setuptools==80.9.0        # via incremental
 shellingham==1.5.4        # via click-completion, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c nt2/requirements.txt, -c test/test-requirements.txt, -c test/test-without-extras-requirements.txt
