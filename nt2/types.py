@@ -7,27 +7,27 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from datetime import date, datetime, time
 
+    try:
+        from typing import TypeAlias
+    except ImportError:
+        from typing_extensions import TypeAlias
+
 try:
     from typing import Literal
 except ImportError:
     from typing_extensions import Literal
 
-try:
-    from typing import TypeAlias
-except ImportError:
-    from typing_extensions import TypeAlias
 
-
-JSONData: TypeAlias = 'dict[str, JSONData] | list[JSONData] | str | int | float | bool | None'
-YAMLData: TypeAlias = (
-    'dict[str, YAMLData] | list[YAMLData] | str | int | float | bool | None | datetime | date'
+JSONData: TypeAlias = (
+    'dict[str, JSONData] | list[JSONData] | str | int | float | bool | None | StringyData'
 )
+YAMLData: TypeAlias = 'dict[str, YAMLData] | list[YAMLData] | JSONData | datetime | date'
 TOMLData: TypeAlias = (
     'TOMLHashData | list[TOMLData] | str | int | float | bool | datetime | date | time'
 )
 TOMLHashData: TypeAlias = dict[str, TOMLData]
 
-StringyData: TypeAlias = 'str | list[StringyData] | dict[str, StringyData]'
+StringyData: TypeAlias = 'str | list[StringyData] | dict[str, StringyData] | Schema'
 
 SchemaKey: TypeAlias = Literal['number', 'boolean', 'null', 'date']
 Schema: TypeAlias = dict[SchemaKey, list[str]]

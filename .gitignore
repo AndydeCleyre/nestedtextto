@@ -5,3 +5,4 @@
 __pycache__
 pyrightconfig.json
 *.sublime-project
+/cache

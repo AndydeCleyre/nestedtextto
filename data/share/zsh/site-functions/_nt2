@@ -1,213 +1,355 @@
-#compdef nt2 2nt nt2json json2nt nt2yaml yaml2nt nt2toml toml2nt
+#compdef nt2json nt2yaml nt2toml json2nt yaml2nt toml2nt nt2 2nt 2nt2
 
-# Zsh completion for nt2 and 2nt commands and their single-command variants
 # Usage: Place this file in your $fpath (e.g., ~/.local/share/zsh/site-functions/_nt2)
 # and ensure compinit is called in your .zshrc
 
-_nt2_2nt() {
+# -- Main Completer --
+_nt2json_nt2yaml_nt2toml_json2nt_yaml2nt_toml2nt_nt2_2nt_2nt2 () {
   local context state state_descr line
   typeset -A opt_args
 
-  # Handle single commands directly
-  case $service in
-    nt2json)
-      _nt2_json_args
-      return
-      ;;
-    json2nt)
-      _2nt_json_args
-      return
-      ;;
-    nt2yaml)
-      _nt2_yaml_args
-      return
-      ;;
-    yaml2nt)
-      _2nt_yaml_args
-      return
-      ;;
-    nt2toml)
-      _nt2_toml_args
-      return
-      ;;
-    toml2nt)
-      _2nt_toml_args
-      return
-      ;;
-  esac
-
-  # Handle parent commands with subcommands
+  # -- Top-Level Commands --
   local -a subcommands
-  case $service in
-    nt2)
-      subcommands=(
-        'json:Read NestedText and output as JSON'
-        'yaml:Read NestedText and output as YAML'
-        'toml:Read NestedText and output as TOML'
-        'huml:Read NestedText and output as HUML'
-      )
-      ;;
-    2nt)
-      subcommands=(
-        'json:Read JSON and output as NestedText'
-        'yaml:Read YAML and output as NestedText'
-        'toml:Read TOML and output as NestedText'
-        'huml:Read HUML and output as NestedText'
-      )
-      ;;
-  esac
+  case $service {
+    nt2json)
+      _message -r 'Read NestedText and output its content as JSON.'
 
-  case $service in
-    nt2)
       _arguments -C \
-        '(-h --help)'{-h,--help}'[Show help message and quit]' \
-        '--help-all[Show help messages of all sub-commands and quit]' \
-        '(-v --version)'{-v,--version}'[Show version and quit]' \
-        '1: :->subcommand' \
-        '*:: :->subcommand_args' && return 0
-      ;;
-    2nt)
-      _arguments -C \
-        '(-h --help)'{-h,--help}'[Show help message and quit]' \
-        '--help-all[Show help messages of all sub-commands and quit]' \
-        '(-v --version)'{-v,--version}'[Show version and quit]' \
-        '1: :->subcommand' \
-        '*:: :->subcommand_args' && return 0
-      ;;
-  esac
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+        '*'{--null,-n}'[Cast each node matching the given YAML Path query as null, if it is an empty string]:YAMLPATH:' \
+        '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+        '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+        '*:NESTED TEXT FILE:_files -g "*.nt"' && return  ;;
 
-  case $state in
+    nt2yaml)
+      _message -r 'Read NestedText and output its content as YAML.'
+
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+        '*'{--date,-d}'[Cast each node matching the given YAML Path query as a date, assuming it'"'"'s ISO 8601]:YAMLPATH:' \
+        '*'{--null,-n}'[Cast each node matching the given YAML Path query as null, if it is an empty string]:YAMLPATH:' \
+        '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+        '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+        '*:NESTED TEXT FILE:_files -g "*.nt"' && return  ;;
+
+    nt2toml)
+      _message -r 'Read NestedText and output its content as TOML.'
+
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+        '*'{--date,-d}'[Cast each node matching the given YAML Path query as a date, assuming it'"'"'s ISO 8601]:YAMLPATH:' \
+        '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+        '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+        '*:NESTED TEXT FILE:_files -g "*.nt"' && return  ;;
+
+    json2nt)
+      _message -r 'Read JSON and output its content as NestedText.'
+
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+        '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+        '*:JSON FILE:_files -g "*.json"' && return  ;;
+
+    yaml2nt)
+      _message -r 'Read YAML and output its content as NestedText.'
+
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+        '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+        '*:YAML FILE:_files -g "*.y(a|)ml"' && return  ;;
+
+    toml2nt)
+      _message -r 'Read TOML and output its content as NestedText.'
+
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+        '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+        '*:TOML FILE:_files -g "*.toml"' && return  ;;
+
+    nt2)
+      _message -r 'Convert NestedText to another format.'
+
+      subcommands=(
+        'completion:Print completion code for the given shell.'
+        'hjson:Read NestedText and output its content as Hjson.'
+        'huml:Read NestedText and output its content as HUML.'
+        'json:Read NestedText and output its content as JSON.'
+        'maml:Read NestedText and output its content as MAML.'
+        'toml:Read NestedText and output its content as TOML.'
+        'xml:Read NestedText and output its content as XML.'
+        'yaml:Read NestedText and output its content as YAML.'
+      )
+      
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *)--help-all'[Prints help messages of all sub-commands and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '1: :->subcommand' \
+        '*:: :->subcommand_args' && return  ;;
+
+    2nt)
+      _message -r 'Convert another format to NestedText.'
+
+      subcommands=(
+        'completion:Print completion code for the given shell.'
+        'hjson:Read Hjson and output its content as NestedText.'
+        'huml:Read HUML and output its content as NestedText.'
+        'json:Read JSON and output its content as NestedText.'
+        'maml:Read MAML and output its content as NestedText.'
+        'toml:Read TOML and output its content as NestedText.'
+        'xml:Read XML and output its content as NestedText.'
+        'yaml:Read YAML and output its content as NestedText.'
+      )
+      
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *)--help-all'[Prints help messages of all sub-commands and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '(--from -f)'{--from,-f}'[Format to convert from]:FROM FORMAT:(hjson maml xml toml huml json jsonl yml yaml)' \
+        '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+        '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+        '1: :->subcommand' \
+        '*:: :->subcommand_args' && return  ;;
+
+    2nt2)
+      _message -r 'Convert another format to another format, by way of NestedText.'
+
+      _arguments -C \
+        (- *){-h,--help}'[Prints this help message and quits]' \
+        (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+        '(--from -f)'{--from,-f}'[Format to convert from]:FROM FORMAT:(hjson maml xml toml huml json jsonl yml yaml)' \
+        ':TO FORMAT:(hjson huml json maml toml xml yaml)' \
+        '*:DATA FILE:_files' && return  ;;
+
+  }
+
+  # -- Route Subcommand Argument Completions --
+  case $state {
     subcommand)
-      _describe -t subcommands 'subcommands' subcommands && return 0
-      ;;
+      case $service {
+        2nt)
+          local ret=1
+          _describe -t subcommands subcommands subcommands && ret=0
+          _files && ret=0
+          return ret
+        ;;
+        *)  _describe -t subcommands subcommands subcommands  ;;
+      }
+    ;;
     subcommand_args)
-      case $words[1] in
-        json)
-          case $service in
-            nt2)
-              _nt2_json_args
-              ;;
-            2nt)
-              _2nt_json_args
-              ;;
-          esac
-          ;;
-        yaml)
-          case $service in
-            nt2)
-              _nt2_yaml_args
-              ;;
-            2nt)
-              _2nt_yaml_args
-              ;;
-          esac
-          ;;
-        toml)
-          case $service in
-            nt2)
-              _nt2_toml_args
-              ;;
-            2nt)
-              _2nt_toml_args
-              ;;
-          esac
-          ;;
-        huml)
-          case $service in
-            nt2)
-              _nt2_huml_args
-              ;;
-            2nt)
-              _2nt_huml_args
-              ;;
-          esac
-          ;;
-      esac
-      ;;
-  esac
+      case $service {
+
+        nt2)
+          case $words[1] {
+            completion)  _nt2_completion_args  ;;
+            hjson)  _nt2_hjson_args  ;;
+            huml)  _nt2_huml_args  ;;
+            json)  _nt2_json_args  ;;
+            maml)  _nt2_maml_args  ;;
+            toml)  _nt2_toml_args  ;;
+            xml)  _nt2_xml_args  ;;
+            yaml)  _nt2_yaml_args  ;;
+          }
+        ;;
+
+        2nt)
+          case $words[1] {
+            completion)  _2nt_completion_args  ;;
+            hjson)  _2nt_hjson_args  ;;
+            huml)  _2nt_huml_args  ;;
+            json)  _2nt_json_args  ;;
+            maml)  _2nt_maml_args  ;;
+            toml)  _2nt_toml_args  ;;
+            xml)  _2nt_xml_args  ;;
+            yaml)  _2nt_yaml_args  ;;
+          }
+        ;;
+
+      }
+
+    ;;
+  }
 }
 
-# nt2 subcommand completions
-_nt2_json_args() {
+# -- Define Subcommand Argument Completions --
+_nt2_completion_args () {
+  _message -r 'Print completion code for the given shell.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
-    '(-n --null)'{-n,--null}'[Cast nodes matching YAML Path as null if empty string]:YAML Path:' \
-    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
-    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
-    '*:input files:_files'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    ':SHELL:(bash zsh fish)'
 }
 
-_nt2_yaml_args() {
+_nt2_hjson_args () {
+  _message -r 'Read NestedText and output its content as Hjson.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
-    '(-n --null)'{-n,--null}'[Cast nodes matching YAML Path as null if empty string]:YAML Path:' \
-    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
-    '(-d --date)'{-d,--date}'[Cast nodes matching YAML Path as date (ISO 8601)]:YAML Path:' \
-    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
-    '*:input files:_files'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+    '*'{--null,-n}'[Cast each node matching the given YAML Path query as null, if it is an empty string]:YAMLPATH:' \
+    '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+    '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+    '*:NESTED TEXT FILE:_files -g "*.nt"'
 }
 
-_nt2_toml_args() {
+_nt2_huml_args () {
+  _message -r 'Read NestedText and output its content as HUML.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
-    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
-    '(-d --date)'{-d,--date}'[Cast nodes matching YAML Path as date (ISO 8601)]:YAML Path:' \
-    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
-    '*:input files:_files'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+    '*'{--null,-n}'[Cast each node matching the given YAML Path query as null, if it is an empty string]:YAMLPATH:' \
+    '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+    '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+    '*:NESTED TEXT FILE:_files -g "*.nt"'
 }
 
-_nt2_huml_args() {
+_nt2_json_args () {
+  _message -r 'Read NestedText and output its content as JSON.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-b --boolean)'{-b,--boolean}'[Cast nodes matching YAML Path as boolean]:YAML Path:' \
-    '(-n --null)'{-n,--null}'[Cast nodes matching YAML Path as null if empty string]:YAML Path:' \
-    '(-i --int --number --float -f)'{-i,--int,--number,--float,-f}'[Cast nodes matching YAML Path as number]:YAML Path:' \
-    '(-s --schema)'{-s,--schema}'[Cast nodes using NestedText schema file]:schema file:_files -g "*.nt"' \
-    '*:input files:_files'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+    '*'{--null,-n}'[Cast each node matching the given YAML Path query as null, if it is an empty string]:YAMLPATH:' \
+    '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+    '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+    '*:NESTED TEXT FILE:_files -g "*.nt"'
 }
 
-# 2nt subcommand completions
-_2nt_json_args() {
+_nt2_maml_args () {
+  _message -r 'Read NestedText and output its content as MAML.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
-    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
-    '*:input files:_files -g "*.json"'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+    '*'{--null,-n}'[Cast each node matching the given YAML Path query as null, if it is an empty string]:YAMLPATH:' \
+    '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+    '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+    '*:NESTED TEXT FILE:_files -g "*.nt"'
 }
 
-_2nt_yaml_args() {
+_nt2_toml_args () {
+  _message -r 'Read NestedText and output its content as TOML.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
-    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
-    '*:input files:_files -g "*.{yml,yaml}"'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+    '*'{--date,-d}'[Cast each node matching the given YAML Path query as a date, assuming it'"'"'s ISO 8601]:YAMLPATH:' \
+    '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+    '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+    '*:NESTED TEXT FILE:_files -g "*.nt"'
 }
 
-_2nt_toml_args() {
+_nt2_xml_args () {
+  _message -r 'Read NestedText and output its content as XML.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
-    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
-    '*:input files:_files -g "*.toml"'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '*:NESTED TEXT FILE:_files -g "*.nt"'
 }
 
-_2nt_huml_args() {
+_nt2_yaml_args () {
+  _message -r 'Read NestedText and output its content as YAML.'
   _arguments \
-    '(-h --help)'{-h,--help}'[Show help message and quit]' \
-    '(-v --version)'{-v,--version}'[Show version and quit]' \
-    '(-i --inline-width)'{-i,--inline-width}'[Maximum line width for inline dictionaries and lists]:width (0-120):' \
-    '(-s --to-schema)'{-s,--to-schema}'[Generate a schema rather than convert]' \
-    '*:input files:_files -g "*.huml"'
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '*'{--boolean,-b}'[Cast each node matching the given YAML Path query as boolean]:YAMLPATH:' \
+    '*'{--date,-d}'[Cast each node matching the given YAML Path query as a date, assuming it'"'"'s ISO 8601]:YAMLPATH:' \
+    '*'{--null,-n}'[Cast each node matching the given YAML Path query as null, if it is an empty string]:YAMLPATH:' \
+    '*'{--number,--int,--float,-i,-f}'[Cast each node matching the given YAML Path query as a number]:YAMLPATH:' \
+    '*'{--schema,-s}'[Cast nodes matching YAML Path queries specified in a NestedText document. It must be a map whose keys are names of supported types (a subset of '"'"'null'"'"', '"'"'boolean'"'"', '"'"'number'"'"', and '"'"'date'"'"'). Each key'"'"'s value is a list of YAML Paths]:NESTED TEXT FILE:_files -g "*.nt"' \
+    '*:NESTED TEXT FILE:_files -g "*.nt"'
 }
 
-_nt2_2nt "$@"
+_2nt_completion_args () {
+  _message -r 'Print completion code for the given shell.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    ':SHELL:(bash zsh fish)'
+}
+
+_2nt_hjson_args () {
+  _message -r 'Read Hjson and output its content as NestedText.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+    '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+    '*:HJSON FILE:_files'
+}
+
+_2nt_huml_args () {
+  _message -r 'Read HUML and output its content as NestedText.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+    '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+    '*:HUML FILE:_files -g "*.huml"'
+}
+
+_2nt_json_args () {
+  _message -r 'Read JSON and output its content as NestedText.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+    '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+    '*:JSON FILE:_files -g "*.json"'
+}
+
+_2nt_maml_args () {
+  _message -r 'Read MAML and output its content as NestedText.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+    '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+    '*:MAML FILE:_files -g "*.maml"'
+}
+
+_2nt_toml_args () {
+  _message -r 'Read TOML and output its content as NestedText.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+    '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+    '*:TOML FILE:_files -g "*.toml"'
+}
+
+_2nt_xml_args () {
+  _message -r 'Read XML and output its content as NestedText.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+    '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+    '*:XML FILE:_files'
+}
+
+_2nt_yaml_args () {
+  _message -r 'Read YAML and output its content as NestedText.'
+  _arguments \
+    (- *){-h,--help}'[Prints this help message and quits]' \
+    (- *){-v,--version}'[Prints the program'"'"'s version and quits]' \
+    '(--inline-width -i)'{--inline-width,-i}'[Maximum line width for inline dictionaries and lists]:WIDTH [0..120]:' \
+    '(--to-schema -s)'{--to-schema,-s}'[Rather than convert the inputs, generate a schema]' \
+    '*:YAML FILE:_files -g "*.y(a|)ml"'
+}
+
+# -- Main --
+_nt2json_nt2yaml_nt2toml_json2nt_yaml2nt_toml2nt_nt2_2nt_2nt2 "$@"

@@ -25,12 +25,16 @@ if TYPE_CHECKING:
     from plumbum import LocalPath
 from plumbum.cli import Application as _Application
 
-from nt2.ui import (
+from nt2.formats.json import (
     JSONToNestedText as _JSONToNestedText,
     NestedTextToJSON as _NestedTextToJSON,
+)
+from nt2.formats.toml import (
     NestedTextToTOML as _NestedTextToTOML,
-    NestedTextToYAML as _NestedTextToYAML,
     TOMLToNestedText as _TOMLToNestedText,
+)
+from nt2.formats.yaml import (
+    NestedTextToYAML as _NestedTextToYAML,
     YAMLToNestedText as _YAMLToNestedText,
 )
 

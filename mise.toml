@@ -1,5 +1,5 @@
 [tools]
-python = "3.13"
+python = "3.14"
 uv = "latest"
 
 [env._.python]
@@ -55,6 +55,32 @@ run = [
   "pydoctor nt2",
 ]
 
+[tasks.completions-data]
+hide = true
+sources = [
+  "scripts/parse_cmds.py",
+  "nt2/ui.py",
+  "nt2/commands.py",
+  "nt2/formats/*.py",
+  "nt2/__init__.py",
+  "pyproject.toml",
+]
+outputs = ["cache/cmd_help.json"]
+run = "uv run --with-editable '.[all]' --script scripts/parse_cmds.py >cache/cmd_help.json"
+
+[tasks.completions]
+description = "Generate shell completions"
+depends = ["completions-data"]
+sources = [
+  "cache/cmd_help.json",
+  "templates/_nt2.wz",
+  "templates/src/template_utils/zsh.py",
+]
+outputs = ["data/share/zsh/site-functions/_nt2"]
+run = [
+  "uv run --no-project --with-editable ./templates wheezy.template templates/_nt2.wz cache/cmd_help.json >data/share/zsh/site-functions/_nt2",
+]
+
 [tasks.test]
 description = "Run all tests"
 run = """\
@@ -83,7 +109,7 @@ run = [
 [tasks.test-all-pythons]
 description = "Run all tests, with and without optional format support enabled, for each supported Python release"
 run = """\
-  for pyver in 3.13 3.12 3.11 3.10 3.9 3.8 3.7; do
+  for pyver in 3.14 3.13 3.12 3.11 3.10 3.9 3.8 3.7; do
 
     mise x python@$pyver -- \
       {{vars.run_with_coverage}} \
@@ -102,7 +128,7 @@ run = """\
 shell = "sh -c -o errexit"
 run_windows = """\
 
-  for pyver in 3.13 3.12 3.11 3.10 3.9 3.8; do
+  for pyver in 3.14 3.13 3.12 3.11 3.10 3.9 3.8; do
 
     mise x python@$pyver -- \
       {{vars.run_with_coverage}} \
@@ -135,3 +161,10 @@ run = [
   "{{vars.run_with_coverage}} coverage combine",
   "{{vars.run_with_coverage}} coverage json"
 ]
+
+[[watch_files]]
+patterns = ["reqs/*"]
+run = '''
+  mise run bump-reqs
+  mise run install
+'''

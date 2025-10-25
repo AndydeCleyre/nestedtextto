@@ -4,161 +4,273 @@ CLI definitions, parsing, and entry points.
 After argument processing, these call into the `dumpers` functions to get the job done.
 """
 
+from __future__ import annotations
+
 import sys
-from json import JSONDecodeError
-from typing import ClassVar, cast
+from importlib import import_module, resources
+from typing import TYPE_CHECKING, cast
 
-from nestedtext import NestedTextError, load as ntload
 from plumbum import local
-from plumbum.cli import Application, ExistingFile, Flag, Range, Set, SwitchAttr
-from plumbum.colors import (
-    blue,  # pyright: ignore [reportAttributeAccessIssue]
-    green,  # pyright: ignore [reportAttributeAccessIssue]
-    magenta,  # pyright: ignore [reportAttributeAccessIssue]
-    yellow,  # pyright: ignore [reportAttributeAccessIssue]
+from plumbum.cli import ExistingFile, Set, SwitchAttr
+
+from .commands import (
+    Command,
+    Subcommand,
+    SubcommandOfToNestedText,
+    SupportsTypes,
+    ToNestedTextBase,
+    get_ntt_stdout,
+    invoke_ntt_command,
 )
-from rich import inspect as _rich_inspect
-from rich.console import Console as RichConsole
-from ruamel.yaml.parser import ParserError as YAMLParserError
-from ruamel.yaml.scanner import ScannerError as YAMLScannerError
+from .exceptions import NTTError, friendly_exceptions
 
-from . import __version__
-from .dumpers import (
-    dump_huml_to_nestedtext,
-    dump_huml_to_schema,
-    dump_json_to_nestedtext,
-    dump_json_to_schema,
-    dump_nestedtext_to_huml,
-    dump_nestedtext_to_json,
-    dump_nestedtext_to_toml,
-    dump_nestedtext_to_yaml,
-    dump_toml_to_nestedtext,
-    dump_toml_to_schema,
-    dump_yaml_to_nestedtext,
-    dump_yaml_to_schema,
-)
+if TYPE_CHECKING:
+    from plumbum import LocalPath
 
-RICH = RichConsole(stderr=True)
+FORMATS = [
+    import_module(f"nt2.formats.{fmt.split('.', 1)[0]}")
+    for fmt in resources.contents('nt2.formats')
+    if (fmt not in 'nestedtext.py' and not fmt.startswith('__'))
+]
+
+SUBCOMMANDS_2NT, SUBCOMMANDS_NT2, SUBCOMMANDS_NT2_NAMES = {}, {}, set()
+for fmt in FORMATS:
+    SUBCOMMANDS_NT2_NAMES.update(fmt.SUBCOMMANDS['nt2']['names'])
+    for ext in fmt.EXTENSIONS:
+        SUBCOMMANDS_2NT[ext] = fmt.SUBCOMMANDS['2nt']['app']
+        SUBCOMMANDS_NT2[ext] = fmt.SUBCOMMANDS['nt2']['app']
+SUBCOMMANDS_NT2_NAMES = sorted(SUBCOMMANDS_NT2_NAMES)
 
 
-def inspect_exception(exc: Exception):  # pragma: no cover
+class WithFromSwitch:
+    """Mixin for adding the -f/--from switch."""
+
+    from_format = SwitchAttr(
+        ('from', 'f'),
+        argtype=Set(*SUBCOMMANDS_2NT.keys(), case_sensitive=False),  # pyright: ignore [reportArgumentType]
+        argname='FROM_FORMAT',
+        help="Format to convert from",
+    )
+
+
+def _determine_2nt_subcommand(
+    from_format: str | None, data_file: LocalPath | None = None
+) -> SubcommandOfToNestedText:
     """
-    Pretty-print an exception to stderr for the user to see.
+    Return the appropriate 2nt subcommand for the input file and from_format switch value.
 
     Args:
-        exc: Any ``Exception``. After printing, it is swallowed, not raised.
+        from_format: The -f/--from switch value.
+        data_file: The input file to determine the 2nt subcommand for.
+
+    Returns:
+        The appropriate 2nt subcommand for the input file and -f/--from switch value.
+
+    Raises:
+        NTTError: If the subcommand cannot be determined.
     """
-    _rich_inspect(exc, console=RICH, value=False)
+    subcommand = (from_format and SUBCOMMANDS_2NT.get(from_format)) or (
+        data_file and SUBCOMMANDS_2NT.get(data_file.suffix.lower().lstrip('.'))
+    )
 
-    if isinstance(exc, (YAMLParserError, YAMLScannerError)):
-        print("This YAML couldn't be parsed", exc, sep='\n', file=sys.stderr)
-        return
-
-    if isinstance(exc, JSONDecodeError):
-        lines = exc.doc.splitlines()
-        print(
-            "This JSON couldn't be parsed",
-            exc,
-            *lines[max(0, exc.lineno - 3) : exc.lineno],
-            f"{'.' * (exc.colno - 1)}▲" | magenta,
-            *lines[exc.lineno : exc.lineno + 2],
-            sep='\n',
-            file=sys.stderr,
+    if not subcommand:
+        raise NTTError(
+            title="Unknown input format",
+            file=str(data_file or "<stdin>"),
+            suggestion=(
+                "Specify the input format with -f/--from, e.g. '-f json', "
+                "or use a subcommand, such as 'json', 'toml', or 'yaml'"
+            ),
+            summary="No format autodetection for stdin, sorry!" if not data_file else None,
         )
-        return
 
-    if isinstance(exc, NestedTextError):
-        print(*filter(None, exc.get_codicil()), sep='\n', file=sys.stderr)
+    return cast('SubcommandOfToNestedText', subcommand)
 
 
-class _ColorApp(Application):
-    PROGNAME = green
-    VERSION = __version__ | blue
-    COLOR_USAGE = green
-    COLOR_GROUPS: ClassVar = {'Meta-switches': magenta, 'Switches': yellow, 'Subcommands': blue}
+class ToNestedText(ToNestedTextBase, WithFromSwitch):
+    """Convert another format to NestedText."""
+
+    DESCRIPTION_MORE = """
+Examples:
+    - 2nt config.json
+    - 2nt config.json --to-schema >config.types.nt
+    - cat config.json | 2nt json
+    - cat config.json | 2nt --from json
+"""
+
+    def propagate_options_to_nested(self) -> None:
+        """Add user-supplied switches to the nested command, unless supplied there already."""
+        if (
+            self.inline_width != 0
+            and '--inline-width' not in cast(tuple, self.nested_command)[1]
+            and '-i' not in cast(tuple, self.nested_command)[1]
+        ):
+            cast(tuple, self.nested_command)[1].extend(('--inline-width', str(self.inline_width)))
+        if (
+            self.to_schema
+            and '--to-schema' not in cast(tuple, self.nested_command)[1]
+            and '-s' not in cast(tuple, self.nested_command)[1]
+        ):
+            cast(tuple, self.nested_command)[1].append('--to-schema')
+
+    @friendly_exceptions  # pyright: ignore [reportCallIssue]
+    def main(self, *DATA_FILE: ExistingFile) -> int | None:  # type: ignore  # noqa: D102,N803
+        if self.nested_command:
+            self.propagate_options_to_nested()
+            return None
+
+        # TODO: https://github.com/tomerfiliba/plumbum/issues/716
+        propagated_kwargs = {'inline_width': self.inline_width}
+        if self.to_schema:
+            propagated_kwargs['to_schema'] = self.to_schema
+
+        error_kwargs = {
+            'title': "Error converting to NestedText",
+            'suggestion': (
+                "Confirm the input format, and specify it with -f/--from, e.g. '-f json', "
+                "or use a subcommand, such as 'json', 'toml', or 'yaml'"
+            ),
+        }
+
+        if not DATA_FILE and not sys.stdin.isatty():
+            subcommand = _determine_2nt_subcommand(cast(str | None, self.from_format))
+            invoke_ntt_command(subcommand, error_kwargs, **propagated_kwargs)
+            return
+        for data_file in DATA_FILE:
+            subcommand = _determine_2nt_subcommand(cast(str | None, self.from_format), data_file)
+            error_kwargs['file'] = str(data_file)
+            invoke_ntt_command(subcommand, error_kwargs, data_file, **propagated_kwargs)
 
 
-class _ColorSubcommand(_ColorApp):
-    ALLOW_ABBREV = True
-
-
-_ColorSubcommand.unbind_switches('help-all')
-
-
-class _TypedFormatToSchema(_ColorSubcommand):
-    to_schema = Flag(('to-schema', 's'), help="Rather than convert the inputs, generate a schema")
-
-
-class _ToNestedText(_TypedFormatToSchema):
-    inline_width = SwitchAttr(
-        ('inline-width', 'i'),
-        argtype=Range(0, 120),  # type: ignore
-        default=0,
-        argname='WIDTH',
-        help="Maximum line width for inline dictionaries and lists",
-    )
-
-
-class _NestedTextToTypedFormat(_ColorSubcommand):
-    schema_files = SwitchAttr(
-        ('schema', 's'),
-        argtype=ExistingFile,  # type: ignore
-        list=True,
-        argname='NESTED_TEXT_FILE',
-        help=(
-            "Cast nodes matching YAML Path queries specified in a NestedText document. "
-            "It must be a map with one or more of the keys: 'null', 'boolean', 'number'. "
-            "Each key's value is a list of YAML Paths"
-        ),
-    )
-    bool_paths = SwitchAttr(
-        ('boolean', 'b'),
-        list=True,
-        argname='YAMLPATH',
-        help="Cast each node matching the given YAML Path query as boolean",
-    )
-    num_paths = SwitchAttr(
-        ('number', 'int', 'float', 'i', 'f'),
-        list=True,
-        argname='YAMLPATH',
-        help="Cast each node matching the given YAML Path query as a number",
-    )
-
-
-class _NestedTextToTypedFormatSupportNull(_ColorSubcommand):
-    null_paths = SwitchAttr(
-        ('null', 'n'),
-        list=True,
-        argname='YAMLPATH',
-        help="Cast each node matching the given YAML Path query as null, if it is an empty string",
-    )
-
-
-class _NestedTextToTypedFormatSupportDate(_ColorSubcommand):
-    date_paths = SwitchAttr(
-        ('date', 'd'),
-        list=True,
-        argname='YAMLPATH',
-        help="Cast each node matching the given YAML Path query as a date, assuming it's ISO 8601",
-    )
-
-
-class NestedTextTo(_ColorApp):
+class NestedTextTo(Command):
     """Convert NestedText to another format."""
 
+    DESCRIPTION_MORE = """
+Examples:
+    - nt2 json config.nt
+    - nt2 json config.nt --number font.size --boolean font.bold
+    - nt2 json config.nt --schema config.types.nt
+    - cat config.nt | nt2 json
+"""
 
+
+for fmt in FORMATS:
+    for name in fmt.SUBCOMMANDS['nt2']['names']:
+        NestedTextTo.subcommand(name, fmt.SUBCOMMANDS['nt2']['app'])
+    for name in fmt.SUBCOMMANDS['2nt']['names']:
+        ToNestedText.subcommand(name, fmt.SUBCOMMANDS['2nt']['app'])
+
+
+def _to_nested_text_to_with_stdin_as_file(from_format: str | None, to_format: str):
+    # raises NTTError if from_format not set and valid:
+    _determine_2nt_subcommand(from_format)
+
+    input_content = sys.stdin.read()
+    with local.tempdir() as tmpdir:
+        input_file = tmpdir / f"input.{from_format}"
+        input_file.write(input_content)
+
+        invoke_ntt_command(
+            cast('Command', ToNestedTextTo),
+            {'title': "Error converting to, then from, NestedText", 'file': "<stdin>"},
+            to_format,
+            input_file,
+            from_format=from_format,
+        )
+
+
+class ToNestedTextTo(Command, WithFromSwitch):
+    """Convert another format to another format, by way of NestedText."""
+
+    DESCRIPTION_MORE = """
+Examples:
+    - 2nt2 json pyproject.toml
+    - cat pyproject.toml | 2nt2 json --from toml
+"""
+
+    # TODO: the generated USAGE is not good enough,
+    #         make a plumbum issue to follow this
+    USAGE = (
+        "    2nt2 [SWITCHES] TO_FORMAT:{{" + ', '.join(SUBCOMMANDS_NT2_NAMES) + "}} DATA_FILE...\n"
+    )
+
+    @friendly_exceptions  # pyright: ignore [reportCallIssue]
+    def main(  # type: ignore  # noqa: D102
+        self,
+        TO_FORMAT: Set(*SUBCOMMANDS_NT2_NAMES, case_sensitive=False),  # type: ignore  # noqa: N803
+        *DATA_FILE: ExistingFile,  # type: ignore  # noqa: N803
+    ) -> int | None:
+        if not DATA_FILE and not sys.stdin.isatty():
+            _to_nested_text_to_with_stdin_as_file(cast(str | None, self.from_format), TO_FORMAT)
+            return
+
+        subcommand_nt2 = SUBCOMMANDS_NT2[TO_FORMAT]
+        provide_schema = issubclass(subcommand_nt2, SupportsTypes)
+
+        for data_file in DATA_FILE:
+            subcommand_2nt = _determine_2nt_subcommand(
+                cast(str | None, self.from_format), data_file
+            )
+            nt_content = get_ntt_stdout(
+                subcommand_2nt,
+                {
+                    'title': "Error converting to NestedText",
+                    'file': str(data_file),
+                    'suggestion': (
+                        "Confirm the input format, and specify it with -f/--from, e.g. '-f json'"
+                    ),
+                },
+                data_file,
+            )
+            if provide_schema:
+                schema_content = get_ntt_stdout(
+                    subcommand_2nt,
+                    {
+                        'title': "Error generating NestedText schema",
+                        'file': str(data_file),
+                        'suggestion': "Report a bug at https://github.com/AndydeCleyre/NestedTextTo/issues",
+                    },
+                    data_file,
+                    to_schema=True,
+                )
+
+            with local.tempdir() as tmpdir:
+                nt_file = tmpdir / 'data.nt'
+                nt_file.write(nt_content)
+
+                nt2_kwargs = {}
+                if provide_schema:
+                    schema_file = tmpdir / 'schema.nt'
+                    schema_file.write(schema_content)  # pyright: ignore [reportPossiblyUnboundVariable]
+                    nt2_kwargs['schema_files'] = [schema_file]
+
+                invoke_ntt_command(
+                    subcommand_nt2,
+                    {
+                        'title': "Error converting from NestedText",
+                        'suggestion': "Report a bug at https://github.com/AndydeCleyre/NestedTextTo/issues",
+                    },
+                    nt_file,
+                    **nt2_kwargs,
+                )
+
+
+ToNestedTextTo.unbind_switches('help-all')
+
+
+@ToNestedText.subcommand('completion')  # pyright: ignore [reportCallIssue]
 @NestedTextTo.subcommand('completion')  # pyright: ignore [reportCallIssue]
-class PrintShellCompletion(_ColorSubcommand):
+class PrintShellCompletion(Subcommand):
     """Print completion code for the given shell."""
 
     DESCRIPTION_MORE = """
 Examples:
-
   - nt2 completion zsh >~/.local/share/zsh/site-functions/_nt2
   - nt2 completion bash >~/.local/share/bash-completion/completions/nt2
   - nt2 completion fish >~/.config/fish/completions/nt2.fish
 """
 
+    @friendly_exceptions  # pyright: ignore [reportCallIssue]
     def main(self, SHELL: Set('zsh', 'bash', 'fish')):  # type: ignore  # noqa: D102,N803
         data_dir = local.path(__file__).up(2) / 'data'
         if not data_dir.exists():
@@ -175,253 +287,8 @@ Examples:
         if comp_file.exists():
             print(comp_file.read())
         else:
-            print(
-                f"{comp_file} not found.\n"
-                "Report @ https://github.com/AndydeCleyre/nestedtextto/issues\n"
-                "Find the file @ https://github.com/AndydeCleyre/nestedtextto/tree/master/data",
-                file=sys.stderr,
+            raise NTTError(
+                title=f"{comp_file} not found.",
+                summary="Find the file at https://github.com/AndydeCleyre/nestedtextto/tree/master/data",
+                suggestion="Report a bug at https://github.com/AndydeCleyre/NestedTextTo/issues",
             )
-            sys.exit(1)
-
-
-NT2_DESCRIPTION_MORE_TMPL = """
-By default, generated {target} values will only contain strings, arrays, and maps,
-but you can cast nodes matching YAML Paths to {types}.
-
-Casting switches may be before or after file arguments.
-
-Examples:
-
-    - nt2 {subcommand} config.nt >config.{extension}
-    - cat config.nt | nt2 {subcommand}
-    - nt2 {subcommand} --schema config.types.nt config.nt >config.{extension}
-    - nt2 {subcommand} --int stats.total --boolean config.enabled data.nt
-"""
-
-
-class ToNestedText(_ColorApp):
-    """Convert another format to NestedText."""
-
-
-@NestedTextTo.subcommand('json')  # pyright: ignore [reportCallIssue]
-class NestedTextToJSON(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportNull):
-    """Read NestedText and output its content as JSON."""
-
-    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
-        target="JSON", types="boolean, null, or number", subcommand="json", extension="json"
-    )
-    DESCRIPTION_MORE += (
-        "\nIt can be invoked as either the subcommand `nt2 json`"
-        " or the single command `nt2json`.\n"
-    )
-
-    def main(self, *NESTED_TEXT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            for schema_file in cast(list, self.schema_files):
-                schema = cast(dict, ntload(schema_file))
-                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
-                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
-                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
-
-            dump_nestedtext_to_json(
-                *NESTED_TEXT_FILE,
-                bool_paths=self.bool_paths,
-                null_paths=self.null_paths,
-                num_paths=self.num_paths,
-            )
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1
-
-
-@NestedTextTo.subcommand('yaml')  # pyright: ignore [reportCallIssue]
-class NestedTextToYAML(
-    _NestedTextToTypedFormat,
-    _NestedTextToTypedFormatSupportNull,
-    _NestedTextToTypedFormatSupportDate,
-):
-    """Read NestedText and output its content as YAML."""
-
-    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
-        target="YAML", types="boolean, null, number, or date", subcommand="yaml", extension="yml"
-    )
-    DESCRIPTION_MORE += (
-        "\nIt can be invoked as either the subcommand `nt2 yaml`"
-        " or the single command `nt2yaml`.\n"
-    )
-
-    def main(self, *NESTED_TEXT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            for schema_file in cast(list, self.schema_files):
-                schema = cast(dict, ntload(schema_file))
-                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
-                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
-                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
-                self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
-
-            dump_nestedtext_to_yaml(
-                *NESTED_TEXT_FILE,
-                bool_paths=self.bool_paths,
-                null_paths=self.null_paths,
-                num_paths=self.num_paths,
-                date_paths=self.date_paths,
-            )
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1
-
-
-@NestedTextTo.subcommand('toml')  # pyright: ignore [reportCallIssue]
-class NestedTextToTOML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportDate):
-    """Read NestedText and output its content as TOML."""
-
-    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
-        target="TOML", types="boolean, number, or date", subcommand="toml", extension="toml"
-    )
-    DESCRIPTION_MORE += (
-        "\nIt can be invoked as either the subcommand `nt2 toml`"
-        " or the single command `nt2toml`.\n"
-    )
-
-    def main(self, *NESTED_TEXT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            for schema_file in cast(list, self.schema_files):
-                schema = cast(dict, ntload(schema_file))
-                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
-                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
-                self.date_paths = [*schema.get('date', ()), *cast(list, self.date_paths)]
-
-            dump_nestedtext_to_toml(
-                *NESTED_TEXT_FILE,
-                bool_paths=self.bool_paths,
-                num_paths=self.num_paths,
-                date_paths=self.date_paths,
-            )
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1
-
-
-@NestedTextTo.subcommand('huml')  # pyright: ignore [reportCallIssue]
-class NestedTextToHUML(_NestedTextToTypedFormat, _NestedTextToTypedFormatSupportNull):
-    """Read NestedText and output its content as HUML."""
-
-    DESCRIPTION_MORE = NT2_DESCRIPTION_MORE_TMPL.format(
-        target="HUML", types="boolean, null, or number", subcommand="huml", extension="huml"
-    )
-
-    def main(self, *NESTED_TEXT_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            for schema_file in cast(list, self.schema_files):
-                schema = cast(dict, ntload(schema_file))
-                self.null_paths = [*schema.get('null', ()), *cast(list, self.null_paths)]
-                self.bool_paths = [*schema.get('boolean', ()), *cast(list, self.bool_paths)]
-                self.num_paths = [*schema.get('number', ()), *cast(list, self.num_paths)]
-
-            dump_nestedtext_to_huml(
-                *NESTED_TEXT_FILE,
-                bool_paths=self.bool_paths,
-                null_paths=self.null_paths,
-                num_paths=self.num_paths,
-            )
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1
-
-
-@ToNestedText.subcommand('json')  # pyright: ignore [reportCallIssue]
-class JSONToNestedText(_ToNestedText):
-    """Read JSON and output its content as NestedText."""
-
-    DESCRIPTION_MORE = """
-Examples:
-
-    - 2nt json data.json >data.nt
-    - curl -s https://api.example.com/data | 2nt json
-    - 2nt json --to-schema data.json >data.types.nt
-
-It can be invoked as either the subcommand `2nt json` or the single command `json2nt`.
-"""
-
-    def main(self, *JSON_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            if not self.to_schema:
-                dump_json_to_nestedtext(*JSON_FILE, inline_width=cast(int, self.inline_width))
-            else:
-                dump_json_to_schema(*JSON_FILE)
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1
-
-
-@ToNestedText.subcommand('yaml')  # pyright: ignore [reportCallIssue]
-class YAMLToNestedText(_ToNestedText):
-    """Read YAML and output its content as NestedText."""
-
-    DESCRIPTION_MORE = """
-Examples:
-
-    - 2nt yaml config.yml >config.nt
-    - kubectl get deployment -o yaml | 2nt yaml
-    - 2nt yaml --to-schema config.yml >config.types.nt
-
-It can be invoked as either the subcommand `2nt yaml` or the single command `yaml2nt`.
-"""
-
-    def main(self, *YAML_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            if not self.to_schema:
-                dump_yaml_to_nestedtext(*YAML_FILE, inline_width=cast(int, self.inline_width))
-            else:
-                dump_yaml_to_schema(*YAML_FILE)
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1
-
-
-@ToNestedText.subcommand('toml')  # pyright: ignore [reportCallIssue]
-class TOMLToNestedText(_ToNestedText):
-    """Read TOML and output its content as NestedText."""
-
-    DESCRIPTION_MORE = """
-Examples:
-
-    - 2nt toml config.toml >config.nt
-    - cat config.toml | 2nt toml
-    - 2nt toml --to-schema config.toml >config.types.nt
-
-It can be invoked as either the subcommand `2nt toml` or the single command `toml2nt`.
-"""
-
-    def main(self, *TOML_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            if not self.to_schema:
-                dump_toml_to_nestedtext(*TOML_FILE, inline_width=cast(int, self.inline_width))
-            else:
-                dump_toml_to_schema(*TOML_FILE)
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1
-
-
-@ToNestedText.subcommand('huml')  # pyright: ignore [reportCallIssue]
-class HUMLToNestedText(_ToNestedText):
-    """Read HUML and output its content as NestedText."""
-
-    DESCRIPTION_MORE = """
-Examples:
-
-    - 2nt huml config.huml >config.nt
-    - cat config.huml | 2nt huml
-    - 2nt huml --to-schema config.huml >config.types.nt
-"""
-
-    def main(self, *HUML_FILE: ExistingFile):  # type: ignore  # noqa: D102,ANN201,N803
-        try:
-            if not self.to_schema:
-                dump_huml_to_nestedtext(*HUML_FILE, inline_width=cast(int, self.inline_width))
-            else:
-                dump_huml_to_schema(*HUML_FILE)
-        except Exception as e:  # pragma: no cover
-            inspect_exception(e)
-            return 1

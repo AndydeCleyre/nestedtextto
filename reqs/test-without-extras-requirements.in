@@ -3,4 +3,5 @@
 
 nestedtext
 plumbum
-ward
+prysk[pytest-plugin]
+ward  # during transition

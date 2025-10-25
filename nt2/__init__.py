@@ -1,3 +1,15 @@
-"""CLI to convert between NestedText and JSON, YAML, HUML, or TOML, with explicit type casting."""
+"""
+CLI to convert between NestedText and other formats, with explicit type casting.
 
-__version__ = '0.2.7'
+Currently supported formats:
+
+- JSON
+- YAML
+- TOML
+- HJSON
+- HUML (inherits known bugs of pyhuml)
+- MAML (inherits known bugs of maml-py)
+- XML (no type casting)
+"""
+
+__version__ = '0.3.0'

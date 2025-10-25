@@ -1,4 +1,4 @@
-[["TOML requires a top-level hash table"]]
+[[root]]
 name = "Twoflower"
 wins = [
     [
@@ -11,7 +11,7 @@ wins = [
     ],
 ]
 
-[["TOML requires a top-level hash table"]]
+[[root]]
 name = "Vorbis"
 wins = [
     [
@@ -24,7 +24,7 @@ wins = [
     ],
 ]
 
-[["TOML requires a top-level hash table"]]
+[[root]]
 name = "Victor"
 wins = [
     [
@@ -33,6 +33,6 @@ wins = [
     ],
 ]
 
-[["TOML requires a top-level hash table"]]
+[[root]]
 name = "One Man Bucket"
 wins = []

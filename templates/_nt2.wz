@@ -1,0 +1,106 @@
+@require(commands)
+#compdef @{' '.join(commands.keys())}
+@(
+  from shlex import quote
+  from template_utils.zsh import (
+      argspecs,
+      break_line,
+      subcommand_spec,
+      positional_spec,
+      guess_action,
+  )
+
+
+  main_completer = f"_{'_'.join(commands.keys())}"
+)
+
+# Usage: Place this file in your $fpath (e.g., ~/.local/share/zsh/site-functions/_@{sorted(commands.keys(), key=len)[0]})
+# and ensure compinit is called in your .zshrc
+
+# -- Main Completer --
+@{main_completer} () {
+  local context state state_descr line
+  typeset -A opt_args
+
+  # -- Top-Level Commands --
+  local -a subcommands
+  case $service {
+    @for top_cmd, top_data in commands.items():
+    @{top_cmd})
+      _message -r @{quote(top_data['description'])}
+@# TODO: don't show this message when we're in a subcommand?
+@# TODO: should this subcommand logic be pushed into zsh.py?
+      @if top_data['subcommands']:
+      @(specs = argspecs(top_data, exclude_positionals=True))
+      subcommands=(
+        @for sub_cmd, sub_data in top_data['subcommands'].items():
+        @{subcommand_spec(sub_cmd, sub_data)}
+        @end  @# top_data['subcommands'].items()
+      )
+      @(specs += ["'1: :->subcommand'", "'*:: :->subcommand_args'"])
+      @else:
+      @(specs = argspecs(top_data))
+      @end  @# top_data['subcommands']
+@#      @(specs[-1] += " && return")
+      _arguments -C \\
+@{break_line(specs, 8)} && return  ;;
+
+    @end  @# commands.items()
+  }
+
+  # -- Route Subcommand Argument Completions --
+  case $state {
+    subcommand)
+      case $service {
+        @for top_cmd, top_data in commands.items():
+        @if top_data['subcommands'] and top_data['arguments']:
+        @{top_cmd})
+          local ret=1
+          _describe -t subcommands subcommands subcommands && ret=0
+          @{' '.join(quote(guess_action(arg['argname'])) for arg in top_data['arguments'])} && ret=0
+          return ret
+        ;;
+        @end  @# top_data['subcommands'] and top_data['arguments']
+        @end  @# commands.items()
+        *)  _describe -t subcommands subcommands subcommands  ;;
+      }
+    ;;
+    subcommand_args)
+      case $service {
+        @for top_cmd, top_data in commands.items():
+        @if top_data['subcommands']:
+
+        @{top_cmd})
+          case $words[1] {
+            @for sub_cmd, sub_data in top_data['subcommands'].items():
+            @{sub_cmd})  _@{top_cmd}_@{sub_cmd}_args  ;;
+            @end  @# top_data['subcommands'].items()
+@# Is this worth anything?
+@#            @if top_data['arguments']:
+@#            *)  _arguments @{' '.join(quote(positional_spec(arg)) for arg in top_data['arguments'])} && return  ;;
+@#            @end  @# top_data['arguments']
+            @# TODO: move more into zsh.py, get positional_spec and generally logic back out of here.
+          }
+        ;;
+        @end  @# top_data['subcommands']
+        @end  @# commands.items()
+
+      }
+
+    ;;
+  }
+}
+
+# -- Define Subcommand Argument Completions --
+@for top_cmd, top_data in commands.items():
+@for sub_cmd, sub_data in top_data['subcommands'].items():
+_@{top_cmd}_@{sub_cmd}_args () {
+  _message -r @{quote(sub_data['description'])}
+  _arguments \\
+@{break_line(argspecs(sub_data), 4)}
+}
+
+@end  @# top_data['subcommands'].items()
+@end  @# commands.items()
+# -- Main --
+@{main_completer} "$@@"

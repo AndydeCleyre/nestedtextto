@@ -39,7 +39,7 @@ def _str_to_bool(informal_bool: str) -> bool:
         return True
     if informal_bool.lower() in ('false', 'f', 'no', 'n', 'off', '0'):
         return False
-    raise ValueError(f"{informal_bool} doesn't look like a boolean")  # pragma: no cover
+    raise ValueError(f"{informal_bool} doesn't look like a boolean")
 
 
 def _str_to_num(informal_num: str) -> int | float:
@@ -62,11 +62,11 @@ def _str_to_num(informal_num: str) -> int | float:
             if re.match(f"[+-]?{prefix}", informal_num, re.IGNORECASE):
                 try:
                     num = int(informal_num, base)
-                except Exception:  # pragma: no cover
+                except Exception:
                     raise ValueError(': '.join(e.args)) from None
                 else:
                     return num
-        raise  # pragma: no cover
+        raise
     return int(num) if num.is_integer() else num
 
 
@@ -94,7 +94,7 @@ def _str_to_datey(informal_datey: str, time_marker: str) -> date | datetime | st
         except ValueError:
             try:
                 val = time.fromisoformat(informal_datey)
-            except Exception as e:  # pragma: no cover
+            except Exception as e:
                 raise ValueError(': '.join(e.args)) from None
             else:
                 return f"{time_marker}{val.isoformat()}"
@@ -128,7 +128,7 @@ def _cast_datey(surgeon: Processor, date_paths: Sequence[str]) -> dict | list:
             continue
         try:
             datey = _str_to_datey(match.node, time_marker)
-        except ValueError as e:  # pragma: no cover
+        except ValueError as e:
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
         else:
             surgeon.set_value(cast('YAMLPath', match.path), datey)
@@ -171,12 +171,12 @@ def cast_stringy_data(
     Raises:
         ValueError: Up-typing a ``str`` failed due to an unexpected format.
     """
-    doc = dict(data) if isinstance(data, dict) else list(data) if isinstance(data, list) else data
+    doc = dict(data) if isinstance(data, dict) else list(data) if isinstance(data, list) else data  # pyright: ignore [reportArgumentType, reportCallIssue]
 
     if not any((bool_paths, null_paths, num_paths, date_paths)):
         return cast('TypedData', doc)
 
-    surgeon = mk_yamlpath_processor(doc)
+    surgeon = mk_yamlpath_processor(doc)  # pyright: ignore [reportArgumentType]
 
     for match in non_null_matches(surgeon, *null_paths):
         if match.node == '':
@@ -187,7 +187,7 @@ def cast_stringy_data(
             continue
         try:
             surgeon.set_value(cast('YAMLPath', match.path), _str_to_bool(match.node))
-        except ValueError as e:  # pragma: no cover
+        except ValueError as e:
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
 
     for match in non_null_matches(surgeon, *num_paths):
@@ -195,7 +195,7 @@ def cast_stringy_data(
             continue
         try:
             surgeon.set_value(cast('YAMLPath', match.path), _str_to_num(match.node))
-        except ValueError as e:  # pragma: no cover
+        except ValueError as e:
             raise ValueError(': '.join((*e.args, str(match.path)))) from e
 
     doc = _cast_datey(surgeon, date_paths)

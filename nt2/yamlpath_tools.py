@@ -87,9 +87,7 @@ def _schema_entry_type(obj: SchemaNative) -> SchemaKey:
         return 'null'
     if isinstance(obj, (datetime, date, time)):
         return 'date'
-    raise ValueError(
-        f"Can't match {type(obj)} ({obj}) to 'number', 'boolean', 'null', or 'date'"
-    )  # pragma: no cover
+    raise ValueError(f"Can't match {type(obj)} ({obj}) to 'number', 'boolean', 'null', or 'date'")
 
 
 def typed_data_to_schema(data: TypedData) -> Schema:
@@ -111,7 +109,7 @@ def typed_data_to_schema(data: TypedData) -> Schema:
     return schema
 
 
-def guess_briefer_schema(schema: Schema) -> dict[str, list[str]]:
+def guess_briefer_schema(schema: Schema) -> Schema:
     """
     Suggest an alternative schema, with low confidence.
 

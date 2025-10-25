@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # /// script
-# requires-python: ">=3.13"
-# dependencies: ["plumbum]
+# requires-python = ">=3.13"
+# dependencies = [
+#   "plumbum",
+# ]
 # ///
 """Parse plumbum application help output to extract properties, subcommands and switches."""
 
@@ -10,9 +12,9 @@ from __future__ import annotations
 import json
 import re
 import sys
+from tomllib import load
 
 from plumbum import local
-from tomllib import load
 
 OVERALL_PATTERN = re.compile(
     r'^(?P<cmd>[^\s].*?) (?P<version>(\d\.?)+)\n\n'
@@ -20,23 +22,27 @@ OVERALL_PATTERN = re.compile(
     r'(?P<description_more>(.*\n)*?)'
     r'Usage:\n(?P<usage>(\s{4}.*\n)+)\n'
     r'Meta-switches:\n(?P<meta_switches>(\s{4}.*\n)+)\n'
-    r'(Switches:\n(?P<switches>(\s{4}.*\n)+))?'
+    r'(Switches:\n(?P<switches>(\s{4}.*\n)+)\n)?'
     r'(Sub-commands:\n(?P<subcommands>(\s{4}.*\n)+))?'
 )
 
 USAGE_PATTERN = re.compile(r'\s{4}([^\s].*)')
+USAGE_POSITIONAL_ARG_SET_PATTERN = re.compile(r'(?P<argname>[^\s:]+):(?P<argtype>\{([^,\s\}]+(,\s)?)+\})')
 USAGE_POSITIONAL_ARG_WITH_DEFAULT_PATTERN = re.compile(r'\[(?P<argname>.+)=(?P<argdefault>.+)\]$')
-USAGE_POSITIONAL_ARG_MULTIPLE_PATTERN = re.compile(r'(?P<argname>.*)...')
+USAGE_POSITIONAL_ARG_MULTIPLE_PATTERN = re.compile(r'(?P<argname>.*)\.\.\.')
+
 
 SWITCH_PATTERN = re.compile(
     r'\s{4}(?P<names>-(,\s|[^\s])*)\s*'
-    r'((?P<argname>[^:\s]+):(?P<argtype>[^\s]+))?\s*'
+    r'((?P<argname>[^:\s]+):(?P<argtype>[^\s].*?)\s{2})?\s*'
     r'(?P<desc>.*(\n\s{5}.*)*)'
 )
+    # r'((?P<argname>[^:\s]+):(?P<argtype>[^\s]+))?\s*'
 SWITCH_DESCRIPTION_MULTIPLE_TAIL = '; may be given multiple times'
 
-SUBCOMMAND_PATTERN = re.compile(r'\s{4}([^\s]+).*')
-
+# SUBCOMMAND_PATTERN = re.compile(r'\s{4}([^\s]+).*')
+SUBCOMMAND_PATTERN = re.compile(r'^\s{4}([^\s]+).*', re.M)
+# TODO: use more re.M for better patterns
 
 def process_usage(s: str) -> str:
     """Process usage string to remove indentation and newlines."""
@@ -73,16 +79,26 @@ def process_subcommands(s: str) -> dict:
 def arguments_from_usage(usage: str) -> list[dict]:
     """Extract arguments from usage string."""
     arguments = []
+    # TODO: more work here, to preserve arg order, and fix up those regex patterns
+    # maybe keep beheading it and matching till it's all gone
     if usage:
         _usage = usage.split(' [SWITCHES] ', 1)
 
-        if len(_usage) == 2:
-            if _usage[1].startswith('[SUBCOMMAND'):
-                return arguments
-
+        if len(_usage) == 2:  # noqa: PLR2004
             if lines := _usage[1].splitlines():
-                argstrs = lines[0].strip().split()
+                line = lines[0].strip()
+
+                for match in re.finditer(USAGE_POSITIONAL_ARG_SET_PATTERN, lines[0]):
+                    line = re.sub(USAGE_POSITIONAL_ARG_SET_PATTERN, '', line)
+                    arg = {'argdefault': None, 'multiple': False}
+                    arg.update(match.groupdict())
+                    arguments.append(arg)
+
+                argstrs = line.strip().split()
+
                 for argstr in argstrs:
+                    if argstr.strip('[]') in ('SUBCOMMAND', 'SWITCHES', 'args...'):
+                        continue
                     arg = {'argdefault': None, 'multiple': False}
                     if match := re.match(USAGE_POSITIONAL_ARG_WITH_DEFAULT_PATTERN, argstr):
                         arg.update(match.groupdict())
@@ -138,6 +154,12 @@ def get_app_info(command: str) -> dict:
     return main_info
 
 
+def get_shipped_commands() -> list[str]:
+    """Get the list of commands that are actually shipped by reading pyproject.toml."""
+    data = load((local.path(__file__).up(2) / 'pyproject.toml').open('rb'))
+    return list(data['project']['scripts'].keys())
+
+
 def get_shipped_commands_info() -> dict:
     """Parse all help data and return structured data."""
     data = {'commands': {}}
@@ -146,12 +168,6 @@ def get_shipped_commands_info() -> dict:
         data['commands'][cmd_name] = get_app_info(cmd_name)
 
     return data
-
-
-def get_shipped_commands() -> list[str]:
-    """Get the list of commands that are actually shipped by reading pyproject.toml."""
-    data = load((local.path(__file__).up(2) / 'pyproject.toml').open('rb'))
-    return list(data['project']['scripts'].keys())
 
 
 if __name__ == '__main__':

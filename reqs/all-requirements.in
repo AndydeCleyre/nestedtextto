@@ -3,3 +3,6 @@
 
 -r toml-requirements.in
 -r huml-requirements.in
+-r maml-requirements.in
+-r hjson-requirements.in
+-r xml-requirements.in

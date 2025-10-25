@@ -1,11 +1,12 @@
-arrow==1.3.0              # via inform, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+arrow==1.4.0              # via inform, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 asttokens==3.0.0          # via stack-data
-attrs==25.3.0             # via pydoctor, twisted, -c reqs/../nt2/requirements.txt
+attrs==25.4.0             # via cattrs, pydoctor, twisted, -c reqs/../nt2/requirements.txt
 automat==25.4.16          # via twisted
 cachecontrol==0.14.3      # via pydoctor
-certifi==2025.8.3         # via requests
-charset-normalizer==3.4.3  # via requests
-click==8.2.1              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+cattrs==25.3.0            # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
+certifi==2025.10.5        # via requests
+charset-normalizer==3.4.4  # via requests
+click==8.3.0              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-default-group==1.2.4  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 configargparse==1.7.1     # via pydoctor
@@ -13,58 +14,68 @@ constantly==23.10.4       # via twisted
 cucumber-tag-expressions==4.1.0  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 darglint==1.8.1           # via -r reqs/fmt-requirements.txt
 decorator==5.2.1          # via ipython
-docutils==0.22            # via pydoctor
+docutils==0.22.2          # via pydoctor
 executing==2.2.1          # via stack-data
-filelock==3.19.1          # via cachecontrol
+filelock==3.20.0          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
+hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/hjson-requirements.in
 hyperlink==21.0.0         # via twisted
-idna==3.10                # via hyperlink, requests
+idna==3.11                # via hyperlink, requests
 incremental==24.7.2       # via twisted
 inform==1.35              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-ipython==9.5.0            # via -r reqs/dev-requirements.in
+iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+ipython==9.6.0            # via -r reqs/dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
 jedi==0.19.2              # via ipython
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 lunr==0.8.0               # via pydoctor
+maml-py==0.1.1            # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/maml-requirements.in
 markdown-it-py==4.0.0     # via rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-markupsafe==3.0.2         # via jinja2, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+markupsafe==3.0.3         # via jinja2, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 matplotlib-inline==0.1.7  # via ipython
 md-toc==9.0.0             # via -r reqs/doc-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-msgpack==1.1.1            # via cachecontrol
-nestedtext==3.7           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
+msgpack==1.1.2            # via cachecontrol
+nestedtext==3.7           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 nodeenv==1.9.1            # via pyright
+packaging==25.0           # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 parso==0.8.5              # via jedi
 pathspec==0.12.1          # via ssort
 pexpect==4.9.0            # via ipython
-platformdirs==4.4.0       # via pydoctor
-pluggy==1.6.0             # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-plumbum==1.9.0            # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/doc-requirements.txt, -r reqs/test-without-extras-requirements.in
+platformdirs==4.5.0       # via pydoctor
+pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+plumbum==1.9.0            # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/doc-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 prompt-toolkit==3.0.52    # via ipython
+prysk==0.11.0             # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.3          # via stack-data
-pydoctor==25.4.0          # via -r reqs/doc-requirements.txt
+pydoctor==25.10.1         # via -r reqs/doc-requirements.txt
 pygments==2.19.2          # via ipython, ipython-pygments-lexers, rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 pyhuml==0.1.0             # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/huml-requirements.in
-pyright==1.1.405          # via -r reqs/fmt-requirements.txt
-python-dateutil==2.9.0.post0  # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+pyright==1.1.406          # via -r reqs/fmt-requirements.txt
+pytest==7.4.4             # via prysk, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+python-dateutil==2.9.0.post0  # via arrow, yamlpath, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 requests==2.32.5          # via cachecontrol, pydoctor
-rich==14.1.0              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-ruff==0.13.0              # via -r reqs/fmt-requirements.txt
-setuptools==80.9.0        # via incremental, zope-interface
+rich==14.2.0              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in
+ruamel-yaml==0.17.21      # via yamlpath, -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
+ruff==0.14.1              # via -r reqs/fmt-requirements.txt
+setuptools==80.9.0        # via incremental
 shellingham==1.5.4        # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ssort==0.15.0             # via -r reqs/fmt-requirements.txt
 stack-data==0.6.3         # via ipython
-tomli==2.2.1              # via ward, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
-tomli-w==1.2.0            # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/toml-requirements.in
+tomli==2.3.0              # via prysk, ward, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
+tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
 twisted==25.5.0           # via pydoctor
-types-python-dateutil==2.9.0.20250822  # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-typing-extensions==4.15.0  # via pyright, twisted, -c reqs/../nt2/requirements.txt
+typing-extensions==4.15.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requirements.txt
+tzdata==2025.2            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 urllib3==2.5.0            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
-wcwidth==0.2.13           # via prompt-toolkit
+wcwidth==0.2.14           # via prompt-toolkit
 wheezy-template==3.2.3    # via -r reqs/doc-requirements.txt
-zope-interface==8.0       # via twisted
+wrapt==2.0.0              # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
+xmltodict==1.0.2          # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/xml-requirements.in
+yamlpath==3.8.2           # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
+zope-interface==8.0.1     # via twisted
