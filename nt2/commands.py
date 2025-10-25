@@ -409,3 +409,40 @@ def get_ntt_stdout(
     if ret:
         raise NTTError(**ntt_error_kwargs)
     return content
+
+
+def propagate_options_to_subcommand(root: Command, option_cli_names: Sequence[str]):
+    """
+    Add user-supplied opts from the root to its nested command, unless supplied there, too.
+
+    Args:
+        root: The root (parent) Command.
+        option_cli_names:
+            The names of the options to propagate as they appear on the command line,
+            but without the leading dashes. For example, ['inline-width'].
+
+    Raises:
+        NTTError: If no subcommand is detected.
+    """
+    if not root.nested_command:
+        raise NTTError(
+            title="No subcommand detected",
+            summary="Tried to propagate options to a subcommand, but none detected.",
+        )
+    subcommand_args = set(root.nested_command[1][1:])
+    for name in option_cli_names:
+        opt = getattr(root.__class__, name.replace('-', '_'))
+        default = opt._default_value  # noqa: SLF001
+        val = getattr(root, name.replace('-', '_'))
+        opt_strings = [
+            (f"--{s}" if len(s) > 1 else f"-{s}")
+            for s in root._switches_by_name[name].names  # noqa: SLF001
+        ]
+
+        # TODO: better than comparing to default would be to detect if it's in the passed args,
+        #       in case subcommand has a different default
+        if val != default and not subcommand_args.intersection(opt_strings):
+            if isinstance(opt, Flag):
+                root.nested_command[1].append(opt_strings[0])
+            else:
+                root.nested_command[1].extend((opt_strings[0], str(val)))

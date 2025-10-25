@@ -21,6 +21,7 @@ from .commands import (
     ToNestedTextBase,
     get_ntt_stdout,
     invoke_ntt_command,
+    propagate_options_to_subcommand,
 )
 from .exceptions import NTTError, friendly_exceptions
 
@@ -98,25 +99,10 @@ Examples:
     - cat config.json | 2nt --from json
 """
 
-    def propagate_options_to_nested(self) -> None:
-        """Add user-supplied switches to the nested command, unless supplied there already."""
-        if (
-            self.inline_width != 0
-            and '--inline-width' not in cast(tuple, self.nested_command)[1]
-            and '-i' not in cast(tuple, self.nested_command)[1]
-        ):
-            cast(tuple, self.nested_command)[1].extend(('--inline-width', str(self.inline_width)))
-        if (
-            self.to_schema
-            and '--to-schema' not in cast(tuple, self.nested_command)[1]
-            and '-s' not in cast(tuple, self.nested_command)[1]
-        ):
-            cast(tuple, self.nested_command)[1].append('--to-schema')
-
     @friendly_exceptions  # pyright: ignore [reportCallIssue]
     def main(self, *DATA_FILE: ExistingFile) -> int | None:  # type: ignore  # noqa: D102,N803
         if self.nested_command:
-            self.propagate_options_to_nested()
+            propagate_options_to_subcommand(self, ('inline-width', 'to-schema'))
             return None
 
         # TODO: https://github.com/tomerfiliba/plumbum/issues/716
