@@ -25,46 +25,26 @@ if TYPE_CHECKING:
     from nt2.types import JSONData, StringyData
 
 
-# nt2 hjson test/samples/json/base.nt -s test/samples/json/typed_all.json
-# ╭─────────────────────── <class 'nestedtext.nestedtext.NestedTextError'> ───────────────────────╮
-# │ The *load* and *dump* functions all raise *NestedTextError* when they                         │
-# │ discover an error. *NestedTextError* subclasses both the Python *ValueError*                  │
-# │ and the *Error* exception from *Inform*.  You can find more documentation on                  │
-# │ what you can do with this exception in the `Inform documentation                              │
-# │ <https://inform.readthedocs.io/en/stable/api.html#exceptions>`_.                              │
-# │                                                                                               │
-# │   args = ()                                                                                   │
-# │ kwargs = {                                                                                    │
-# │              'template': 'line ended without closing delimiter.',                             │
-# │              'culprit': (                                                                     │
-# │                  '/home/andy/Code/nestedtextto/test/samples/json/typed_all.json',             │
-# │                  1                                                                            │
-# │              ),                                                                               │
-# │              'suppress_prev_line': True,                                                      │
-# │              'source': '/home/andy/Code/nestedtextto/test/samples/json/typed_all.json',       │
-# │              'codicil': ('   1 ❬{❭\n       ▲',),                                              │
-# │              'colno': 1,                                                                      │
-# │              'line': '{',                                                                     │
-# │              'lineno': 0                                                                      │
-# │          }                                                                                    │
-# ╰───────────────────────────────────────────────────────────────────────────────────────────────╯
-
-
 @NTTError_from.register
 @docstring_for_NTTError_from
 def NTTError_from_NestedTextError(exc: NestedTextError) -> NTTError:  # noqa: N802, D103
     title = "NestedText"
     summary = "This NestedText couldn't be parsed"
+
     src = exc.source or ""
     if src:
         src_file = local.path(src)
         if src_file.exists():
             src = src_file.relative_to(local.cwd)
         src = f"{src}:{exc.lineno}:{exc.colno}"
+
     content = (exc.line, f"{'.' * (exc.colno - 1)}▲" | magenta, exc.get_message())
     with suppress(AttributeError):
         content = (exc.prev_line, *content)
+    content = tuple(c for c in content if c)
+
     suggestion = "See https://nestedtext.org/en/latest/basic_syntax.html"
+
     return NTTError(
         title=title,
         summary=summary,
