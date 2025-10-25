@@ -6,7 +6,7 @@
   <head>
     
     <title>All Documents</title>
-    <meta name="generator" content="pydoctor 25.4.0"> 
+    <meta name="generator" content="pydoctor 25.10.1"> 
         
     </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -107,7 +107,7 @@
             <div class="type">Package</div>
             <div class="kind">Package</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">CLI to convert between NestedText and JSON, YAML, HUML, or TOML, with explicit type casting.</div>
+            <div class="summary">CLI to convert between NestedText and other formats, with explicit type casting.</div>
           </li><li id="nt2.casters">
             
             <div class="fullName">nt2<wbr></wbr>.casters</div>
@@ -116,6 +116,14 @@
             <div class="kind">Module</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary">Provide any functions for transforming a "stringy" <tt class="rst-docutils rst-literal">dict</tt>/<tt class="rst-docutils rst-literal">list</tt>/value to one with more types.</div>
+          </li><li id="nt2.commands">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands</div>
+            <div class="url">nt2.commands.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Shared CLI objects, used by .ui and .formats.</div>
           </li><li id="nt2.converters">
             
             <div class="fullName">nt2<wbr></wbr>.converters</div>
@@ -132,6 +140,86 @@
             <div class="kind">Module</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary">Main functions to be called by the UI Application classes, after CLI option parsing.</div>
+          </li><li id="nt2.exceptions">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions</div>
+            <div class="url">nt2.exceptions.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Exception definitions and pretty-printing.</div>
+          </li><li id="nt2.formats">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats</div>
+            <div class="url">nt2.formats.html</div>
+            <div class="type">Package</div>
+            <div class="kind">Package</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for various structured data formats.</div>
+          </li><li id="nt2.formats.hjson">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson</div>
+            <div class="url">nt2.formats.hjson.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for Hjson.</div>
+          </li><li id="nt2.formats.huml">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml</div>
+            <div class="url">nt2.formats.huml.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for HUML.</div>
+          </li><li id="nt2.formats.json">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json</div>
+            <div class="url">nt2.formats.json.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for JSON.</div>
+          </li><li id="nt2.formats.maml">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml</div>
+            <div class="url">nt2.formats.maml.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for MAML.</div>
+          </li><li id="nt2.formats.nestedtext">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.nestedtext</div>
+            <div class="url">nt2.formats.nestedtext.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">NestedText format support.</div>
+          </li><li id="nt2.formats.toml">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml</div>
+            <div class="url">nt2.formats.toml.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for TOML.</div>
+          </li><li id="nt2.formats.xml">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml</div>
+            <div class="url">nt2.formats.xml.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for Hjson.</div>
+          </li><li id="nt2.formats.yaml">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml</div>
+            <div class="url">nt2.formats.yaml.html</div>
+            <div class="type">Module</div>
+            <div class="kind">Module</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Support for YAML.</div>
           </li><li id="nt2.types">
             
             <div class="fullName">nt2<wbr></wbr>.types</div>
@@ -380,30 +468,150 @@
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary">Take nested <tt class="rst-docutils rst-literal">StringyData</tt> and return a copy with matching nodes up-typed.</div>
-          </li><li id="nt2.dumpers.TOML_SUPPORT">
+          </li><li id="nt2.exceptions.docstring_for_NTTError_from">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.TOML<wbr></wbr>_SUPPORT</div>
-            <div class="url">nt2.dumpers.html#TOML_SUPPORT</div>
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.docstring_for_<wbr></wbr>NTTError_from</div>
+            <div class="url">nt2.exceptions.html#docstring_for_NTTError_from</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Add a docstring to an NT2Error_from function.</div>
+          </li><li id="nt2.exceptions.NTTError">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError</div>
+            <div class="url">nt2.exceptions.NTTError.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Exception</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">An error class we can control and pretty-print.</div>
+          </li><li id="nt2.exceptions.NTTError.__init__">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError<wbr></wbr>.__init__</div>
+            <div class="url">nt2.exceptions.NTTError.html#__init__</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Return an NTTError, with a pretty __str__ method.</div>
+          </li><li id="nt2.exceptions.NTTError.title">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError<wbr></wbr>.title</div>
+            <div class="url">nt2.exceptions.NTTError.html#title</div>
             <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
+            <div class="kind">Instance Variable</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.dumpers.HUML_SUPPORT">
+          </li><li id="nt2.exceptions.NTTError.summary">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.HUML<wbr></wbr>_SUPPORT</div>
-            <div class="url">nt2.dumpers.html#HUML_SUPPORT</div>
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError<wbr></wbr>.summary</div>
+            <div class="url">nt2.exceptions.NTTError.html#summary</div>
             <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
+            <div class="kind">Instance Variable</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.dumpers.YAML_EDITOR">
+          </li><li id="nt2.exceptions.NTTError.file">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.YAML<wbr></wbr>_EDITOR</div>
-            <div class="url">nt2.dumpers.html#YAML_EDITOR</div>
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError<wbr></wbr>.file</div>
+            <div class="url">nt2.exceptions.NTTError.html#file</div>
             <div class="type">Attribute</div>
-            <div class="kind">Constant</div>
+            <div class="kind">Instance Variable</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.exceptions.NTTError.content">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError<wbr></wbr>.content</div>
+            <div class="url">nt2.exceptions.NTTError.html#content</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Instance Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.exceptions.NTTError.suggestion">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError<wbr></wbr>.suggestion</div>
+            <div class="url">nt2.exceptions.NTTError.html#suggestion</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Instance Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.exceptions.NTTError.__str__">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError<wbr></wbr>.__str__</div>
+            <div class="url">nt2.exceptions.NTTError.html#__str__</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Return a pretty string with all our details.</div>
+          </li><li id="nt2.exceptions.mk_require_support">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.mk<wbr></wbr>_require<wbr></wbr>_support</div>
+            <div class="url">nt2.exceptions.html#mk_require_support</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Return a decorator that raises an exception if format_name support is not installed.</div>
+          </li><li id="nt2.exceptions.NTTError_from">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError_from</div>
+            <div class="url">nt2.exceptions.html#NTTError_from</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Return an NTTError based on the exception if possible.</div>
+          </li><li id="nt2.exceptions.NTTError_from_NTTError">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>NTTError</div>
+            <div class="url">nt2.exceptions.html#NTTError_from_NTTError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Return exc, as-is.</div>
+          </li><li id="nt2.exceptions.inspect_exception">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.inspect<wbr></wbr>_exception</div>
+            <div class="url">nt2.exceptions.html#inspect_exception</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Pretty-print an exception to stderr for the user to see.</div>
+          </li><li id="nt2.exceptions.friendly_exceptions">
+            
+            <div class="fullName">nt2<wbr></wbr>.exceptions<wbr></wbr>.friendly<wbr></wbr>_exceptions</div>
+            <div class="url">nt2.exceptions.html#friendly_exceptions</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Catch and pretty-print any exceptions when calling.</div>
+          </li><li id="nt2.formats.nestedtext.NTTError_from_NestedTextError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.nestedtext<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>Error</div>
+            <div class="url">nt2.formats.nestedtext.html#NTTError_from_NestedTextError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.nestedtext.dump_stdout">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.nestedtext<wbr></wbr>.dump<wbr></wbr>_stdout</div>
+            <div class="url">nt2.formats.nestedtext.html#dump_stdout</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Print the data as NestedText, without color, to stdout.</div>
+          </li><li id="nt2.formats.nestedtext.dump_str">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.nestedtext<wbr></wbr>.dump<wbr></wbr>_str</div>
+            <div class="url">nt2.formats.nestedtext.html#dump_str</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Return a string representation of the data as NestedText, without color.</div>
+          </li><li id="nt2.formats.nestedtext.load">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.nestedtext<wbr></wbr>.load</div>
+            <div class="url">nt2.formats.nestedtext.html#load</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Wrap <tt class="rst-docutils rst-literal">nestedtext.load</tt> with convenient configuration.</div>
           </li><li id="nt2.dumpers.RICH">
             
             <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.RICH</div>
@@ -428,86 +636,22 @@
             <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
             <div class="summary">Return <tt class="rst-docutils rst-literal">True</tt> if it's acceptable to use ANSI escape sequences.</div>
-          </li><li id="nt2.dumpers.ntload">
+          </li><li id="nt2.dumpers.dump_format">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.ntload</div>
-            <div class="url">nt2.dumpers.html#ntload</div>
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_format</div>
+            <div class="url">nt2.dumpers.html#dump_format</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Wrap <tt class="rst-docutils rst-literal">nestedtext.load</tt> with convenient configuration for this module.</div>
-          </li><li id="nt2.dumpers.ntdump">
+            <div class="summary">Pretty-print the data as fmt, with color if interactive, to stdout.</div>
+          </li><li id="nt2.dumpers._dump_to_nestedtext">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.ntdump</div>
-            <div class="url">nt2.dumpers.html#ntdump</div>
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>._dump<wbr></wbr>_to<wbr></wbr>_nestedtext</div>
+            <div class="url">nt2.dumpers.html#_dump_to_nestedtext</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
+            <div class="privacy">PRIVATE</div>
             <div class="summary">Pretty-print the data as NestedText, with color if interactive, to stdout.</div>
-          </li><li id="nt2.dumpers.jdump">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.jdump</div>
-            <div class="url">nt2.dumpers.html#jdump</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Pretty-print the data as JSON, with color if interactive, to stdout.</div>
-          </li><li id="nt2.dumpers.ydump">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.ydump</div>
-            <div class="url">nt2.dumpers.html#ydump</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Pretty-print the data as YAML, with color if interactive, to stdout.</div>
-          </li><li id="nt2.dumpers._require_toml_support">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>._require<wbr></wbr>_toml<wbr></wbr>_support</div>
-            <div class="url">nt2.dumpers.html#_require_toml_support</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PRIVATE</div>
-            <div class="summary">If TOML support is not installed, raise an exception.</div>
-          </li><li id="nt2.dumpers.tdump">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.tdump</div>
-            <div class="url">nt2.dumpers.html#tdump</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Pretty-print the data as TOML, with color if interactive, to stdout.</div>
-          </li><li id="nt2.dumpers._require_huml_support">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>._require<wbr></wbr>_huml<wbr></wbr>_support</div>
-            <div class="url">nt2.dumpers.html#_require_huml_support</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PRIVATE</div>
-            <div class="summary">If HUML support is not installed, raise an exception.</div>
-          </li><li id="nt2.dumpers.huml_dump">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.huml<wbr></wbr>_dump</div>
-            <div class="url">nt2.dumpers.html#huml_dump</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Pretty-print the data as HUML, with color if interactive, to stdout.</div>
-          </li><li id="nt2.dumpers.jloads">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.jloads</div>
-            <div class="url">nt2.dumpers.html#jloads</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Wrap <tt class="rst-docutils rst-literal">json.loads</tt> so that on failure it tries parsing as JSON Lines.</div>
-          </li><li id="nt2.dumpers.dump_json_to_nestedtext">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_json<wbr></wbr>_to<wbr></wbr>_nestedtext</div>
-            <div class="url">nt2.dumpers.html#dump_json_to_nestedtext</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read JSON from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send NestedText to stdout.</div>
           </li><li id="nt2.dumpers._dump_typed_data_to_schema">
             
             <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>._dump<wbr></wbr>_typed<wbr></wbr>_data<wbr></wbr>_to<wbr></wbr>_schema</div>
@@ -516,466 +660,1170 @@
             <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.dumpers.dump_json_to_schema">
+          </li><li id="nt2.dumpers.dump_from_nestedtext">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_json<wbr></wbr>_to<wbr></wbr>_schema</div>
-            <div class="url">nt2.dumpers.html#dump_json_to_schema</div>
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_from<wbr></wbr>_nestedtext</div>
+            <div class="url">nt2.dumpers.html#dump_from_nestedtext</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Read JSON from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send a NestedText schema to stdout.</div>
-          </li><li id="nt2.dumpers.dump_yaml_to_schema">
+            <div class="summary">Read NestedText from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send an up-typed data format to stdout.</div>
+          </li><li id="nt2.dumpers.dump_to_nestedtext">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_yaml<wbr></wbr>_to<wbr></wbr>_schema</div>
-            <div class="url">nt2.dumpers.html#dump_yaml_to_schema</div>
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_to<wbr></wbr>_nestedtext</div>
+            <div class="url">nt2.dumpers.html#dump_to_nestedtext</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Read YAML from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send a NestedText schema to stdout.</div>
-          </li><li id="nt2.dumpers.dump_toml_to_schema">
+            <div class="summary">Read typed data from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send NestedText to stdout.</div>
+          </li><li id="nt2.dumpers.dump_to_schema">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_toml<wbr></wbr>_to<wbr></wbr>_schema</div>
-            <div class="url">nt2.dumpers.html#dump_toml_to_schema</div>
+            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_to<wbr></wbr>_schema</div>
+            <div class="url">nt2.dumpers.html#dump_to_schema</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Read TOML from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send a NestedText schema to stdout.</div>
-          </li><li id="nt2.dumpers.dump_huml_to_schema">
+            <div class="summary">Read typed data from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send a NestedText schema to stdout.</div>
+          </li><li id="nt2.commands.Command">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_huml<wbr></wbr>_to<wbr></wbr>_schema</div>
-            <div class="url">nt2.dumpers.html#dump_huml_to_schema</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Command</div>
+            <div class="url">nt2.commands.Command.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Read HUML from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send a NestedText schema to stdout.</div>
-          </li><li id="nt2.dumpers.dump_yaml_to_nestedtext">
+            <div class="summary">Base class for all commands.</div>
+          </li><li id="nt2.commands.Command.VERSION">
             
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_yaml<wbr></wbr>_to<wbr></wbr>_nestedtext</div>
-            <div class="url">nt2.dumpers.html#dump_yaml_to_nestedtext</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read YAML from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send NestedText to stdout.</div>
-          </li><li id="nt2.dumpers.dump_toml_to_nestedtext">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_toml<wbr></wbr>_to<wbr></wbr>_nestedtext</div>
-            <div class="url">nt2.dumpers.html#dump_toml_to_nestedtext</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read TOML from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send NestedText to stdout.</div>
-          </li><li id="nt2.dumpers.dump_huml_to_nestedtext">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_huml<wbr></wbr>_to<wbr></wbr>_nestedtext</div>
-            <div class="url">nt2.dumpers.html#dump_huml_to_nestedtext</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read HUML from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send NestedText to stdout.</div>
-          </li><li id="nt2.dumpers.dump_nestedtext_to_yaml">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_nestedtext<wbr></wbr>_to<wbr></wbr>_yaml</div>
-            <div class="url">nt2.dumpers.html#dump_nestedtext_to_yaml</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send up-typed YAML to stdout.</div>
-          </li><li id="nt2.dumpers.dump_nestedtext_to_toml">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_nestedtext<wbr></wbr>_to<wbr></wbr>_toml</div>
-            <div class="url">nt2.dumpers.html#dump_nestedtext_to_toml</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send up-typed TOML to stdout.</div>
-          </li><li id="nt2.dumpers.dump_nestedtext_to_json">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_nestedtext<wbr></wbr>_to<wbr></wbr>_json</div>
-            <div class="url">nt2.dumpers.html#dump_nestedtext_to_json</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send up-typed JSON to stdout.</div>
-          </li><li id="nt2.dumpers.dump_nestedtext_to_huml">
-            
-            <div class="fullName">nt2<wbr></wbr>.dumpers<wbr></wbr>.dump<wbr></wbr>_nestedtext<wbr></wbr>_to<wbr></wbr>_huml</div>
-            <div class="url">nt2.dumpers.html#dump_nestedtext_to_huml</div>
-            <div class="type">Function</div>
-            <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send up-typed HUML to stdout.</div>
-          </li><li id="nt2.ui.RICH">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.RICH</div>
-            <div class="url">nt2.ui.html#RICH</div>
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Command<wbr></wbr>.VERSION</div>
+            <div class="url">nt2.commands.Command.html#VERSION</div>
             <div class="type">Attribute</div>
             <div class="kind">Constant</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.inspect_exception">
+          </li><li id="nt2.commands.Command.COLOR_GROUPS">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.inspect<wbr></wbr>_exception</div>
-            <div class="url">nt2.ui.html#inspect_exception</div>
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Command<wbr></wbr>.COLOR<wbr></wbr>_GROUPS</div>
+            <div class="url">nt2.commands.Command.html#COLOR_GROUPS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.Command.SUBCOMMAND_HELPMSG">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Command<wbr></wbr>.SUBCOMMAND<wbr></wbr>_HELPMSG</div>
+            <div class="url">nt2.commands.Command.html#SUBCOMMAND_HELPMSG</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.Subcommand">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand</div>
+            <div class="url">nt2.commands.Subcommand.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Base class for all subcommands.</div>
+          </li><li id="nt2.commands.Subcommand.ALLOW_ABBREV">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>.ALLOW<wbr></wbr>_ABBREV</div>
+            <div class="url">nt2.commands.Subcommand.html#ALLOW_ABBREV</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsNull">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Null</div>
+            <div class="url">nt2.commands.SupportsNull.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Mixin for SubcommandOfNestedTextTo+SupportsTypes commands which support null.</div>
+          </li><li id="nt2.commands.SupportsNull.null_paths">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Null<wbr></wbr>.null<wbr></wbr>_paths</div>
+            <div class="url">nt2.commands.SupportsNull.html#null_paths</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsDate">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Date</div>
+            <div class="url">nt2.commands.SupportsDate.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Mixin for SubcommandOfNestedTextTo+SupportsTypes commands which support dates.</div>
+          </li><li id="nt2.commands.SupportsDate.date_paths">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Date<wbr></wbr>.date<wbr></wbr>_paths</div>
+            <div class="url">nt2.commands.SupportsDate.html#date_paths</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SubcommandOfNestedTextTo">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To</div>
+            <div class="url">nt2.commands.SubcommandOfNestedTextTo.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Base class for all subcommands of NestedTextTo.</div>
+          </li><li id="nt2.commands.SubcommandOfNestedTextTo.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.commands.SubcommandOfNestedTextTo.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SubcommandOfNestedTextTo.DOCSTRING_TMPL">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.DOCSTRING<wbr></wbr>_TMPL</div>
+            <div class="url">nt2.commands.SubcommandOfNestedTextTo.html#DOCSTRING_TMPL</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SubcommandOfNestedTextTo.DESCRIPTION_MORE_TMPL">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.DESCRIPTION<wbr></wbr>_MORE<wbr></wbr>_TMPL</div>
+            <div class="url">nt2.commands.SubcommandOfNestedTextTo.html#DESCRIPTION_MORE_TMPL</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SubcommandOfNestedTextTo.dump">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.dump</div>
+            <div class="url">nt2.commands.SubcommandOfNestedTextTo.html#dump</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Read NestedText from stdin or <tt class="rst-docutils rst-literal">input_files</tt>, and send another format to stdout.</div>
+          </li><li id="nt2.commands.ToNestedTextBase">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>Base</div>
+            <div class="url">nt2.commands.ToNestedTextBase.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Base class for commands that convert to NestedText.</div>
+          </li><li id="nt2.commands.ToNestedTextBase.inline_width">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>Base<wbr></wbr>.inline<wbr></wbr>_width</div>
+            <div class="url">nt2.commands.ToNestedTextBase.html#inline_width</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.ToNestedTextBase.to_schema">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>Base<wbr></wbr>.to<wbr></wbr>_schema</div>
+            <div class="url">nt2.commands.ToNestedTextBase.html#to_schema</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.ToNestedTextBase.dump">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>Base<wbr></wbr>.dump</div>
+            <div class="url">nt2.commands.ToNestedTextBase.html#dump</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Convert inputs to NestedText or NestedText schema and dump to stdout.</div>
+          </li><li id="nt2.commands.SubcommandOfToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.commands.SubcommandOfToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Base class for all subcommands of ToNestedText.</div>
+          </li><li id="nt2.commands.SubcommandOfToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.commands.SubcommandOfToNestedText.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SubcommandOfToNestedText.DOCSTRING_TMPL">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.DOCSTRING<wbr></wbr>_TMPL</div>
+            <div class="url">nt2.commands.SubcommandOfToNestedText.html#DOCSTRING_TMPL</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SubcommandOfToNestedText.DESCRIPTION_MORE_TMPL">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Subcommand<wbr></wbr>Of<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.DESCRIPTION<wbr></wbr>_MORE<wbr></wbr>_TMPL</div>
+            <div class="url">nt2.commands.SubcommandOfToNestedText.html#DESCRIPTION_MORE_TMPL</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types</div>
+            <div class="url">nt2.commands.SupportsTypes.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Mixin for SubcommandOfNestedTextTo commands which support types.</div>
+          </li><li id="nt2.commands.SupportsTypes.DESCRIPTION_MORE_TMPL">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>.DESCRIPTION<wbr></wbr>_MORE<wbr></wbr>_TMPL</div>
+            <div class="url">nt2.commands.SupportsTypes.html#DESCRIPTION_MORE_TMPL</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes.schema_files">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>.schema<wbr></wbr>_files</div>
+            <div class="url">nt2.commands.SupportsTypes.html#schema_files</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes.bool_paths">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>.bool<wbr></wbr>_paths</div>
+            <div class="url">nt2.commands.SupportsTypes.html#bool_paths</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Instance Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes.num_paths">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>.num<wbr></wbr>_paths</div>
+            <div class="url">nt2.commands.SupportsTypes.html#num_paths</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Instance Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes._yamlpaths">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>._yamlpaths</div>
+            <div class="url">nt2.commands.SupportsTypes.html#_yamlpaths</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes._absorb_schema_files">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>._absorb<wbr></wbr>_schema<wbr></wbr>_files</div>
+            <div class="url">nt2.commands.SupportsTypes.html#_absorb_schema_files</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes.null_paths">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>.null<wbr></wbr>_paths</div>
+            <div class="url">nt2.commands.SupportsTypes.html#null_paths</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Instance Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes.date_paths">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>.date<wbr></wbr>_paths</div>
+            <div class="url">nt2.commands.SupportsTypes.html#date_paths</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Instance Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.SupportsTypes.dump">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.<wbr></wbr>Supports<wbr></wbr>Types<wbr></wbr>.dump</div>
+            <div class="url">nt2.commands.SupportsTypes.html#dump</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.commands.description_more_for_supports_types">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.description<wbr></wbr>_more<wbr></wbr>_for<wbr></wbr>_supports<wbr></wbr>_types</div>
+            <div class="url">nt2.commands.html#description_more_for_supports_types</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Pretty-print an exception to stderr for the user to see.</div>
-          </li><li id="nt2.ui._ColorApp">
+            <div class="summary">Add DESCRIPTION_MORE to an nt2 subcommand class.</div>
+          </li><li id="nt2.commands.description_more_for_2nt_subcommand">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Color<wbr></wbr>App</div>
-            <div class="url">nt2.ui._ColorApp.html</div>
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.description<wbr></wbr>_more<wbr></wbr>_for<wbr></wbr>_2nt<wbr></wbr>_subcommand</div>
+            <div class="url">nt2.commands.html#description_more_for_2nt_subcommand</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Add DESCRIPTION_MORE to a 2nt subcommand class.</div>
+          </li><li id="nt2.commands.description_more_for_subcommand">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.description<wbr></wbr>_more<wbr></wbr>_for<wbr></wbr>_subcommand</div>
+            <div class="url">nt2.commands.html#description_more_for_subcommand</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Add DESCRIPTION_MORE to a subcommand class.</div>
+          </li><li id="nt2.commands.docstring_for_subcommand">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.docstring<wbr></wbr>_for<wbr></wbr>_subcommand</div>
+            <div class="url">nt2.commands.html#docstring_for_subcommand</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Add a docstring to a subcommand class, using its <tt class="rst-docutils rst-literal">DOCSTRING_TMPL</tt> and <tt class="rst-docutils rst-literal">OTHER_FORMAT</tt>.</div>
+          </li><li id="nt2.commands.invoke_ntt_command">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.invoke<wbr></wbr>_ntt<wbr></wbr>_command</div>
+            <div class="url">nt2.commands.html#invoke_ntt_command</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Invoke the command with the given arguments.</div>
+          </li><li id="nt2.commands.get_ntt_stdout">
+            
+            <div class="fullName">nt2<wbr></wbr>.commands<wbr></wbr>.get<wbr></wbr>_ntt<wbr></wbr>_stdout</div>
+            <div class="url">nt2.commands.html#get_ntt_stdout</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Return the stdout content from the given command invocation.</div>
+          </li><li id="nt2.formats.hjson.HJSON_SUPPORT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.HJSON<wbr></wbr>_SUPPORT</div>
+            <div class="url">nt2.formats.hjson.html#HJSON_SUPPORT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.hjson.NTTError_from_HjsonDecodeError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>Hjson<wbr></wbr>Decode<wbr></wbr>Error</div>
+            <div class="url">nt2.formats.hjson.html#NTTError_from_HjsonDecodeError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.hjson.require_support">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.require<wbr></wbr>_support</div>
+            <div class="url">nt2.formats.hjson.html#require_support</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.hjson.NestedTextToHjson">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Hjson</div>
+            <div class="url">nt2.formats.hjson.NestedTextToHjson.html</div>
             <div class="type">Class</div>
             <div class="kind">Class</div>
-            <div class="privacy">PRIVATE</div>
+            <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._ColorApp.VERSION">
+          </li><li id="nt2.formats.hjson.NestedTextToHjson.OTHER_FORMAT">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Color<wbr></wbr>App<wbr></wbr>.VERSION</div>
-            <div class="url">nt2.ui._ColorApp.html#VERSION</div>
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Hjson<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.hjson.NestedTextToHjson.html#OTHER_FORMAT</div>
             <div class="type">Attribute</div>
             <div class="kind">Constant</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._ColorApp.COLOR_GROUPS">
+          </li><li id="nt2.formats.hjson.NestedTextToHjson.main">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Color<wbr></wbr>App<wbr></wbr>.COLOR<wbr></wbr>_GROUPS</div>
-            <div class="url">nt2.ui._ColorApp.html#COLOR_GROUPS</div>
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Hjson<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.hjson.NestedTextToHjson.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.hjson.HjsonToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.<wbr></wbr>Hjson<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.formats.hjson.HjsonToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.hjson.HjsonToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.<wbr></wbr>Hjson<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.hjson.HjsonToNestedText.html#OTHER_FORMAT</div>
             <div class="type">Attribute</div>
             <div class="kind">Constant</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._ColorApp.ALLOW_ABBREV">
+          </li><li id="nt2.formats.hjson.HjsonToNestedText.main">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Color<wbr></wbr>App<wbr></wbr>.ALLOW<wbr></wbr>_ABBREV</div>
-            <div class="url">nt2.ui._ColorApp.html#ALLOW_ABBREV</div>
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.<wbr></wbr>Hjson<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.hjson.HjsonToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.hjson.SUBCOMMANDS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.SUBCOMMANDS</div>
+            <div class="url">nt2.formats.hjson.html#SUBCOMMANDS</div>
             <div class="type">Attribute</div>
             <div class="kind">Constant</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._TypedFormatToSchema">
+          </li><li id="nt2.formats.hjson.EXTENSIONS">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>To<wbr></wbr>Schema</div>
-            <div class="url">nt2.ui._TypedFormatToSchema.html</div>
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.hjson<wbr></wbr>.EXTENSIONS</div>
+            <div class="url">nt2.formats.hjson.html#EXTENSIONS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.HUML_SUPPORT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.HUML<wbr></wbr>_SUPPORT</div>
+            <div class="url">nt2.formats.huml.html#HUML_SUPPORT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.NTTError_from_HUMLParseError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>HUMLParse<wbr></wbr>Error</div>
+            <div class="url">nt2.formats.huml.html#NTTError_from_HUMLParseError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.require_support">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.require<wbr></wbr>_support</div>
+            <div class="url">nt2.formats.huml.html#require_support</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.NestedTextToHUML">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML</div>
+            <div class="url">nt2.formats.huml.NestedTextToHUML.html</div>
             <div class="type">Class</div>
             <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.NestedTextToHUML.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.huml.NestedTextToHUML.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.NestedTextToHUML.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.huml.NestedTextToHUML.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.HUMLToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.<wbr></wbr>HUMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.formats.huml.HUMLToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.HUMLToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.<wbr></wbr>HUMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.huml.HUMLToNestedText.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.HUMLToNestedText.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.<wbr></wbr>HUMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.huml.HUMLToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.SUBCOMMANDS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.SUBCOMMANDS</div>
+            <div class="url">nt2.formats.huml.html#SUBCOMMANDS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.huml.EXTENSIONS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.huml<wbr></wbr>.EXTENSIONS</div>
+            <div class="url">nt2.formats.huml.html#EXTENSIONS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.NTTError_from_JSONDecodeError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>JSONDecode<wbr></wbr>Error</div>
+            <div class="url">nt2.formats.json.html#NTTError_from_JSONDecodeError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json._json_loads">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>._json<wbr></wbr>_loads</div>
+            <div class="url">nt2.formats.json.html#_json_loads</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Wrap <tt class="rst-docutils rst-literal">json.loads</tt> so that on failure it tries parsing as JSON Lines.</div>
+          </li><li id="nt2.formats.json.NestedTextToJSON">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON</div>
+            <div class="url">nt2.formats.json.NestedTextToJSON.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.NestedTextToJSON.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.json.NestedTextToJSON.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.NestedTextToJSON.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.json.NestedTextToJSON.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.JSONToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.<wbr></wbr>JSONTo<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.formats.json.JSONToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.JSONToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.<wbr></wbr>JSONTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.json.JSONToNestedText.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.JSONToNestedText.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.<wbr></wbr>JSONTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.json.JSONToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.SUBCOMMANDS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.SUBCOMMANDS</div>
+            <div class="url">nt2.formats.json.html#SUBCOMMANDS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.json.EXTENSIONS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.json<wbr></wbr>.EXTENSIONS</div>
+            <div class="url">nt2.formats.json.html#EXTENSIONS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.MAML_SUPPORT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.MAML<wbr></wbr>_SUPPORT</div>
+            <div class="url">nt2.formats.maml.html#MAML_SUPPORT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.NTTError_from_MAMLSyntaxError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>MAMLSyntax<wbr></wbr>Error</div>
+            <div class="url">nt2.formats.maml.html#NTTError_from_MAMLSyntaxError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.require_support">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.require<wbr></wbr>_support</div>
+            <div class="url">nt2.formats.maml.html#require_support</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.NestedTextToMAML">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>MAML</div>
+            <div class="url">nt2.formats.maml.NestedTextToMAML.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.NestedTextToMAML.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>MAML<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.maml.NestedTextToMAML.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.NestedTextToMAML.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>MAML<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.maml.NestedTextToMAML.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.MAMLToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.<wbr></wbr>MAMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.formats.maml.MAMLToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.MAMLToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.<wbr></wbr>MAMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.maml.MAMLToNestedText.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.MAMLToNestedText.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.<wbr></wbr>MAMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.maml.MAMLToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.SUBCOMMANDS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.SUBCOMMANDS</div>
+            <div class="url">nt2.formats.maml.html#SUBCOMMANDS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.maml.EXTENSIONS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.maml<wbr></wbr>.EXTENSIONS</div>
+            <div class="url">nt2.formats.maml.html#EXTENSIONS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.TOML_SUPPORT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.TOML<wbr></wbr>_SUPPORT</div>
+            <div class="url">nt2.formats.toml.html#TOML_SUPPORT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.NTTError_from_TOMLDecodeError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>TOMLDecode<wbr></wbr>Error</div>
+            <div class="url">nt2.formats.toml.html#NTTError_from_TOMLDecodeError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.require_support">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.require<wbr></wbr>_support</div>
+            <div class="url">nt2.formats.toml.html#require_support</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml._load_file">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>._load<wbr></wbr>_file</div>
+            <div class="url">nt2.formats.toml.html#_load_file</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Read TOML from input_file and return typed data.</div>
+          </li><li id="nt2.formats.toml._fix_data">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>._fix<wbr></wbr>_data</div>
+            <div class="url">nt2.formats.toml.html#_fix_data</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Force the data to be a top-level hash table.</div>
+          </li><li id="nt2.formats.toml.NestedTextToTOML">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML</div>
+            <div class="url">nt2.formats.toml.NestedTextToTOML.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.NestedTextToTOML.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.toml.NestedTextToTOML.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.NestedTextToTOML.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.toml.NestedTextToTOML.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.TOMLToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.<wbr></wbr>TOMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.formats.toml.TOMLToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.TOMLToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.<wbr></wbr>TOMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.toml.TOMLToNestedText.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.TOMLToNestedText.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.<wbr></wbr>TOMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.toml.TOMLToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.SUBCOMMANDS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.SUBCOMMANDS</div>
+            <div class="url">nt2.formats.toml.html#SUBCOMMANDS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.toml.EXTENSIONS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.toml<wbr></wbr>.EXTENSIONS</div>
+            <div class="url">nt2.formats.toml.html#EXTENSIONS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.XML_SUPPORT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.XML<wbr></wbr>_SUPPORT</div>
+            <div class="url">nt2.formats.xml.html#XML_SUPPORT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.NTTError_from_ExpatError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>Expat<wbr></wbr>Error</div>
+            <div class="url">nt2.formats.xml.html#NTTError_from_ExpatError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.require_support">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.require<wbr></wbr>_support</div>
+            <div class="url">nt2.formats.xml.html#require_support</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml._fix_data">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>._fix<wbr></wbr>_data</div>
+            <div class="url">nt2.formats.xml.html#_fix_data</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._TypedFormatToSchema.to_schema">
+          </li><li id="nt2.formats.xml.NestedTextToXML">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>To<wbr></wbr>Schema<wbr></wbr>.to<wbr></wbr>_schema</div>
-            <div class="url">nt2.ui._TypedFormatToSchema.html#to_schema</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Class Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._ToNestedText">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text</div>
-            <div class="url">nt2.ui._ToNestedText.html</div>
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>XML</div>
+            <div class="url">nt2.formats.xml.NestedTextToXML.html</div>
             <div class="type">Class</div>
             <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.NestedTextToXML.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>XML<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.xml.NestedTextToXML.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.NestedTextToXML.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>XML<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.xml.NestedTextToXML.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml._load_file">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>._load<wbr></wbr>_file</div>
+            <div class="url">nt2.formats.xml.html#_load_file</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._ToNestedText.inline_width">
+          </li><li id="nt2.formats.xml._load_stdin">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.inline<wbr></wbr>_width</div>
-            <div class="url">nt2.ui._ToNestedText.html#inline_width</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Class Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormat">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormat.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>._load<wbr></wbr>_stdin</div>
+            <div class="url">nt2.formats.xml.html#_load_stdin</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormat.schema_files">
+          </li><li id="nt2.formats.xml.XMLToNestedText">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>.schema<wbr></wbr>_files</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormat.html#schema_files</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Class Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormat.bool_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>.bool<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormat.html#bool_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Class Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormat.num_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>.num<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormat.html#num_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Class Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormatSupportNull">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>Support<wbr></wbr>Null</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormatSupportNull.html</div>
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.<wbr></wbr>XMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.formats.xml.XMLToNestedText.html</div>
             <div class="type">Class</div>
             <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.XMLToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.<wbr></wbr>XMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.xml.XMLToNestedText.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.XMLToNestedText.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.<wbr></wbr>XMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.xml.XMLToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.SUBCOMMANDS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.SUBCOMMANDS</div>
+            <div class="url">nt2.formats.xml.html#SUBCOMMANDS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.xml.EXTENSIONS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.xml<wbr></wbr>.EXTENSIONS</div>
+            <div class="url">nt2.formats.xml.html#EXTENSIONS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.YAML_EDITOR">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.YAML<wbr></wbr>_EDITOR</div>
+            <div class="url">nt2.formats.yaml.html#YAML_EDITOR</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.NTTError_from_MarkedYAMLError">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.<wbr></wbr>NTTError_from_<wbr></wbr>Marked<wbr></wbr>YAMLError</div>
+            <div class="url">nt2.formats.yaml.html#NTTError_from_MarkedYAMLError</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml._dump_str">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>._dump<wbr></wbr>_str</div>
+            <div class="url">nt2.formats.yaml.html#_dump_str</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Return the data a a YAML string, without color.</div>
+          </li><li id="nt2.formats.yaml._dump_stdout">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>._dump<wbr></wbr>_stdout</div>
+            <div class="url">nt2.formats.yaml.html#_dump_stdout</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Print the data a a YAML string, without color.</div>
+          </li><li id="nt2.formats.yaml._load_file">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>._load<wbr></wbr>_file</div>
+            <div class="url">nt2.formats.yaml.html#_load_file</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Read YAML from input_file and return typed data.</div>
+          </li><li id="nt2.formats.yaml.NestedTextToYAML">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML</div>
+            <div class="url">nt2.formats.yaml.NestedTextToYAML.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.NestedTextToYAML.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.yaml.NestedTextToYAML.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.NestedTextToYAML.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.yaml.NestedTextToYAML.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.YAMLToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.<wbr></wbr>YAMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.formats.yaml.YAMLToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.YAMLToNestedText.OTHER_FORMAT">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.<wbr></wbr>YAMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.OTHER<wbr></wbr>_FORMAT</div>
+            <div class="url">nt2.formats.yaml.YAMLToNestedText.html#OTHER_FORMAT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.YAMLToNestedText.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.<wbr></wbr>YAMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.formats.yaml.YAMLToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.SUBCOMMANDS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.SUBCOMMANDS</div>
+            <div class="url">nt2.formats.yaml.html#SUBCOMMANDS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.formats.yaml.EXTENSIONS">
+            
+            <div class="fullName">nt2<wbr></wbr>.formats<wbr></wbr>.yaml<wbr></wbr>.EXTENSIONS</div>
+            <div class="url">nt2.formats.yaml.html#EXTENSIONS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.FORMATS">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.FORMATS</div>
+            <div class="url">nt2.ui.html#FORMATS</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.SUBCOMMANDS_2NT">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.SUBCOMMANDS<wbr></wbr>_2NT</div>
+            <div class="url">nt2.ui.html#SUBCOMMANDS_2NT</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.SUBCOMMANDS_NT2">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.SUBCOMMANDS<wbr></wbr>_NT2</div>
+            <div class="url">nt2.ui.html#SUBCOMMANDS_NT2</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.SUBCOMMANDS_NT2_NAMES">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.SUBCOMMANDS<wbr></wbr>_NT2<wbr></wbr>_NAMES</div>
+            <div class="url">nt2.ui.html#SUBCOMMANDS_NT2_NAMES</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.WithFromSwitch">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>With<wbr></wbr>From<wbr></wbr>Switch</div>
+            <div class="url">nt2.ui.WithFromSwitch.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Mixin for adding the -f/--from switch.</div>
+          </li><li id="nt2.ui.WithFromSwitch.from_format">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>With<wbr></wbr>From<wbr></wbr>Switch<wbr></wbr>.from<wbr></wbr>_format</div>
+            <div class="url">nt2.ui.WithFromSwitch.html#from_format</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui._determine_2nt_subcommand">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._determine<wbr></wbr>_2nt<wbr></wbr>_subcommand</div>
+            <div class="url">nt2.ui.html#_determine_2nt_subcommand</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Return the appropriate 2nt subcommand for the input file and from_format switch value.</div>
+          </li><li id="nt2.ui.ToNestedText">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text</div>
+            <div class="url">nt2.ui.ToNestedText.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Convert another format to NestedText.</div>
+          </li><li id="nt2.ui.ToNestedText.DESCRIPTION_MORE">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.DESCRIPTION<wbr></wbr>_MORE</div>
+            <div class="url">nt2.ui.ToNestedText.html#DESCRIPTION_MORE</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.ToNestedText.propagate_options_to_nested">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.propagate<wbr></wbr>_options<wbr></wbr>_to<wbr></wbr>_nested</div>
+            <div class="url">nt2.ui.ToNestedText.html#propagate_options_to_nested</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Add user-supplied switches to the nested command, unless supplied there already.</div>
+          </li><li id="nt2.ui.ToNestedText.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
+            <div class="url">nt2.ui.ToNestedText.html#main</div>
+            <div class="type">Function</div>
+            <div class="kind">Method</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.NestedTextTo">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To</div>
+            <div class="url">nt2.ui.NestedTextTo.html</div>
+            <div class="type">Class</div>
+            <div class="kind">Class</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary">Convert NestedText to another format.</div>
+          </li><li id="nt2.ui.NestedTextTo.DESCRIPTION_MORE">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.DESCRIPTION<wbr></wbr>_MORE</div>
+            <div class="url">nt2.ui.NestedTextTo.html#DESCRIPTION_MORE</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui._to_nested_text_to_with_stdin_as_file">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._to<wbr></wbr>_nested<wbr></wbr>_text<wbr></wbr>_to<wbr></wbr>_with<wbr></wbr>_stdin<wbr></wbr>_as<wbr></wbr>_file</div>
+            <div class="url">nt2.ui.html#_to_nested_text_to_with_stdin_as_file</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
             <div class="privacy">PRIVATE</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormatSupportNull.null_paths">
+          </li><li id="nt2.ui.ToNestedTextTo">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>Support<wbr></wbr>Null<wbr></wbr>.null<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormatSupportNull.html#null_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Class Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormatSupportDate">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>Support<wbr></wbr>Date</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormatSupportDate.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
-            <div class="privacy">PRIVATE</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui._NestedTextToTypedFormatSupportDate.date_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>._<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>Typed<wbr></wbr>Format<wbr></wbr>Support<wbr></wbr>Date<wbr></wbr>.date<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui._NestedTextToTypedFormatSupportDate.html#date_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Class Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToJSON">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON</div>
-            <div class="url">nt2.ui.NestedTextToJSON.html</div>
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To</div>
+            <div class="url">nt2.ui.ToNestedTextTo.html</div>
             <div class="type">Class</div>
             <div class="kind">Class</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText and output its content as JSON.</div>
-          </li><li id="nt2.ui.NestedTextToJSON.main">
+            <div class="summary">Convert another format to another format, by way of NestedText.</div>
+          </li><li id="nt2.ui.ToNestedTextTo.DESCRIPTION_MORE">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.NestedTextToJSON.html#main</div>
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.DESCRIPTION<wbr></wbr>_MORE</div>
+            <div class="url">nt2.ui.ToNestedTextTo.html#DESCRIPTION_MORE</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.ToNestedTextTo.USAGE">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.USAGE</div>
+            <div class="url">nt2.ui.ToNestedTextTo.html#USAGE</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="nt2.ui.ToNestedTextTo.main">
+            
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>To<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>.main</div>
+            <div class="url">nt2.ui.ToNestedTextTo.html#main</div>
             <div class="type">Function</div>
             <div class="kind">Method</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToJSON.null_paths">
+          </li><li id="nt2.ui.PrintShellCompletion">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON<wbr></wbr>.null<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToJSON.html#null_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToJSON.bool_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON<wbr></wbr>.bool<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToJSON.html#bool_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToJSON.num_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>JSON<wbr></wbr>.num<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToJSON.html#num_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToYAML">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML</div>
-            <div class="url">nt2.ui.NestedTextToYAML.html</div>
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Print<wbr></wbr>Shell<wbr></wbr>Completion</div>
+            <div class="url">nt2.ui.PrintShellCompletion.html</div>
             <div class="type">Class</div>
             <div class="kind">Class</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText and output its content as YAML.</div>
-          </li><li id="nt2.ui.NestedTextToYAML.main">
+            <div class="summary">Print completion code for the given shell.</div>
+          </li><li id="nt2.ui.PrintShellCompletion.DESCRIPTION_MORE">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.NestedTextToYAML.html#main</div>
-            <div class="type">Function</div>
-            <div class="kind">Method</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToYAML.null_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML<wbr></wbr>.null<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToYAML.html#null_paths</div>
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Print<wbr></wbr>Shell<wbr></wbr>Completion<wbr></wbr>.DESCRIPTION<wbr></wbr>_MORE</div>
+            <div class="url">nt2.ui.PrintShellCompletion.html#DESCRIPTION_MORE</div>
             <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
+            <div class="kind">Constant</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToYAML.bool_paths">
+          </li><li id="nt2.ui.PrintShellCompletion.main">
             
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML<wbr></wbr>.bool<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToYAML.html#bool_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToYAML.num_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML<wbr></wbr>.num<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToYAML.html#num_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToYAML.date_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>YAML<wbr></wbr>.date<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToYAML.html#date_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToTOML">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML</div>
-            <div class="url">nt2.ui.NestedTextToTOML.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText and output its content as TOML.</div>
-          </li><li id="nt2.ui.NestedTextToTOML.main">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.NestedTextToTOML.html#main</div>
-            <div class="type">Function</div>
-            <div class="kind">Method</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToTOML.bool_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML<wbr></wbr>.bool<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToTOML.html#bool_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToTOML.num_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML<wbr></wbr>.num<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToTOML.html#num_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToTOML.date_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>TOML<wbr></wbr>.date<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToTOML.html#date_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToHUML">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML</div>
-            <div class="url">nt2.ui.NestedTextToHUML.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read NestedText and output its content as HUML.</div>
-          </li><li id="nt2.ui.NestedTextToHUML.main">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.NestedTextToHUML.html#main</div>
-            <div class="type">Function</div>
-            <div class="kind">Method</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToHUML.null_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML<wbr></wbr>.null<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToHUML.html#null_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToHUML.bool_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML<wbr></wbr>.bool<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToHUML.html#bool_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.NestedTextToHUML.num_paths">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>To<wbr></wbr>HUML<wbr></wbr>.num<wbr></wbr>_paths</div>
-            <div class="url">nt2.ui.NestedTextToHUML.html#num_paths</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Instance Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.JSONToNestedText">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>JSONTo<wbr></wbr>Nested<wbr></wbr>Text</div>
-            <div class="url">nt2.ui.JSONToNestedText.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read JSON and output its content as NestedText.</div>
-          </li><li id="nt2.ui.JSONToNestedText.main">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>JSONTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.JSONToNestedText.html#main</div>
-            <div class="type">Function</div>
-            <div class="kind">Method</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.YAMLToNestedText">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>YAMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
-            <div class="url">nt2.ui.YAMLToNestedText.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read YAML and output its content as NestedText.</div>
-          </li><li id="nt2.ui.YAMLToNestedText.main">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>YAMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.YAMLToNestedText.html#main</div>
-            <div class="type">Function</div>
-            <div class="kind">Method</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.TOMLToNestedText">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>TOMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
-            <div class="url">nt2.ui.TOMLToNestedText.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read TOML and output its content as NestedText.</div>
-          </li><li id="nt2.ui.TOMLToNestedText.main">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>TOMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.TOMLToNestedText.html#main</div>
-            <div class="type">Function</div>
-            <div class="kind">Method</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="nt2.ui.HUMLToNestedText">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>HUMLTo<wbr></wbr>Nested<wbr></wbr>Text</div>
-            <div class="url">nt2.ui.HUMLToNestedText.html</div>
-            <div class="type">Class</div>
-            <div class="kind">Class</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Read HUML and output its content as NestedText.</div>
-          </li><li id="nt2.ui.HUMLToNestedText.main">
-            
-            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>HUMLTo<wbr></wbr>Nested<wbr></wbr>Text<wbr></wbr>.main</div>
-            <div class="url">nt2.ui.HUMLToNestedText.html#main</div>
+            <div class="fullName">nt2<wbr></wbr>.ui<wbr></wbr>.<wbr></wbr>Print<wbr></wbr>Shell<wbr></wbr>Completion<wbr></wbr>.main</div>
+            <div class="url">nt2.ui.PrintShellCompletion.html#main</div>
             <div class="type">Function</div>
             <div class="kind">Method</div>
             <div class="privacy">PUBLIC</div>
