@@ -14,7 +14,7 @@ constantly==23.10.4       # via twisted
 cucumber-tag-expressions==4.1.0  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 darglint==1.8.1           # via -r reqs/fmt-requirements.txt
 decorator==5.2.1          # via ipython
-docutils==0.22.2          # via pydoctor
+docutils==0.22.3          # via pydoctor
 executing==2.2.1          # via stack-data
 filelock==3.20.0          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
@@ -24,7 +24,7 @@ idna==3.11                # via hyperlink, requests
 incremental==24.7.2       # via twisted
 inform==1.35              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-ipython==9.6.0            # via -r reqs/dev-requirements.in
+ipython==9.7.0            # via -r reqs/dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
 jedi==0.19.2              # via ipython
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
