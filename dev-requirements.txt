@@ -4,7 +4,7 @@ attrs==25.4.0             # via cattrs, pydoctor, twisted, -c reqs/../nt2/requir
 automat==25.4.16          # via twisted
 cachecontrol==0.14.3      # via pydoctor
 cattrs==25.3.0            # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
-certifi==2025.10.5        # via requests
+certifi==2025.11.12       # via requests
 charset-normalizer==3.4.4  # via requests
 click==8.3.0              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
