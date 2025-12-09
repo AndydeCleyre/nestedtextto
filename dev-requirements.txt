@@ -70,7 +70,7 @@ traitlets==5.14.3         # via ipython, matplotlib-inline
 twisted==25.5.0           # via pydoctor
 typing-extensions==4.15.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requirements.txt
 tzdata==2025.2            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-urllib3==2.6.0            # via pydoctor, requests
+urllib3==2.6.1            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 wcwidth==0.2.14           # via prompt-toolkit
 wheezy-template==3.2.3    # via -r reqs/doc-requirements.txt
