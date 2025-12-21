@@ -37,7 +37,7 @@ md-toc==9.0.0             # via -r reqs/doc-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 msgpack==1.1.2            # via cachecontrol
 nestedtext==3.7           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
-nodeenv==1.9.1            # via pyright
+nodeenv==1.10.0           # via pyright
 packaging==25.0           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 parso==0.8.5              # via jedi
 pathspec==0.12.1          # via ssort
