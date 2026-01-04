@@ -4,7 +4,7 @@ attrs==25.4.0             # via cattrs, pydoctor, twisted, -c reqs/../nt2/requir
 automat==25.4.16          # via twisted
 cachecontrol==0.14.4      # via pydoctor
 cattrs==25.3.0            # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
-certifi==2025.11.12       # via requests
+certifi==2026.1.4         # via requests
 charset-normalizer==3.4.4  # via requests
 click==8.3.1              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
@@ -52,7 +52,7 @@ ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.3          # via stack-data
 pydoctor==25.10.1         # via -r reqs/doc-requirements.txt
 pygments==2.19.2          # via ipython, ipython-pygments-lexers, rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-pyhuml==0.1.0             # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/huml-requirements.in
+pyhuml==0.2.0             # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/huml-requirements.in
 pyright==1.1.407          # via -r reqs/fmt-requirements.txt
 pytest==7.4.4             # via prysk, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, yamlpath, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
