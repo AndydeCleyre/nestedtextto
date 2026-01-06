@@ -24,7 +24,7 @@ idna==3.11                # via hyperlink, requests
 incremental==24.11.0      # via twisted
 inform==1.35              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-ipython==9.8.0            # via -r reqs/dev-requirements.in
+ipython==9.9.0            # via -r reqs/dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
 jedi==0.19.2              # via ipython
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
@@ -40,7 +40,7 @@ nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test
 nodeenv==1.10.0           # via pyright
 packaging==25.0           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 parso==0.8.5              # via jedi
-pathspec==0.12.1          # via ssort
+pathspec==1.0.0           # via ssort
 pexpect==4.9.0            # via ipython
 platformdirs==4.5.1       # via pydoctor
 pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
