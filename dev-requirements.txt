@@ -64,7 +64,7 @@ shellingham==1.5.4        # via click-completion, -c reqs/../test/test-requireme
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ssort==0.16.0             # via -r reqs/fmt-requirements.txt
 stack-data==0.6.3         # via ipython
-tomli==2.3.0              # via prysk, ward, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
+tomli==2.4.0              # via prysk, ward, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
 traitlets==5.14.3         # via ipython, matplotlib-inline
 twisted==25.5.0           # via pydoctor

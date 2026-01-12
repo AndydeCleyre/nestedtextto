@@ -1,6 +1,6 @@
 hjson==3.1.0              # via -r reqs/hjson-requirements.in
 maml-py==0.1.1            # via -r reqs/maml-requirements.in
 pyhuml==0.2.0             # via -r reqs/huml-requirements.in
-tomli==2.3.0              # via -r reqs/toml-requirements.in
+tomli==2.4.0              # via -r reqs/toml-requirements.in
 tomli-w==1.2.0            # via -r reqs/toml-requirements.in
 xmltodict==1.0.2          # via -r reqs/xml-requirements.in
