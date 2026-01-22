@@ -38,7 +38,7 @@ mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt,
 msgpack==1.1.2            # via cachecontrol
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 nodeenv==1.10.0           # via pyright
-packaging==25.0           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+packaging==26.0           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 parso==0.8.5              # via jedi
 pathspec==1.0.3           # via ssort
 pexpect==4.9.0            # via ipython
@@ -72,7 +72,7 @@ typing-extensions==4.15.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requir
 tzdata==2025.3            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 urllib3==2.6.3            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
-wcwidth==0.2.14           # via prompt-toolkit
+wcwidth==0.3.0            # via prompt-toolkit
 wheezy-template==3.2.4    # via -r reqs/doc-requirements.txt
 wrapt==2.0.1              # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 xmltodict==1.0.2          # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/xml-requirements.in

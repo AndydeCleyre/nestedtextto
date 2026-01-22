@@ -10,7 +10,7 @@ markdown-it-py==4.0.0     # via rich, -c reqs/../nt2/requirements.txt
 markupsafe==3.0.3         # via jinja2
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -r reqs/test-without-extras-requirements.in
-packaging==25.0           # via pytest
+packaging==26.0           # via pytest
 pluggy==1.6.0             # via pytest, ward
 plumbum==1.10.0           # via -c reqs/../nt2/requirements.txt, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward
