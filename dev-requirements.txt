@@ -24,7 +24,7 @@ idna==3.11                # via hyperlink, requests
 incremental==24.11.0      # via twisted
 inform==1.36              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-ipython==9.9.0            # via -r reqs/dev-requirements.in
+ipython==9.10.0           # via -r reqs/dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
 jedi==0.19.2              # via ipython
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
@@ -74,7 +74,7 @@ urllib3==2.6.3            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 wcwidth==0.5.3            # via prompt-toolkit
 wheezy-template==3.2.4    # via -r reqs/doc-requirements.txt
-wrapt==2.1.0              # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
+wrapt==2.1.1              # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 xmltodict==1.0.2          # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/xml-requirements.in
 yamlpath==3.8.2           # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 zope-interface==8.2       # via twisted
