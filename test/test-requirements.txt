@@ -28,4 +28,4 @@ tomli==2.4.0              # via prysk, ward, -c reqs/../nt2/all-requirements.txt
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
 tzdata==2025.3            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ward==0.68.0b0            # via -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
-xmltodict==1.0.2          # via -c reqs/../nt2/all-requirements.txt, -r reqs/xml-requirements.in
+xmltodict==1.0.3          # via -c reqs/../nt2/all-requirements.txt, -r reqs/xml-requirements.in

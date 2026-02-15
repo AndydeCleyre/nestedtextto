@@ -3,4 +3,4 @@ maml-py==0.1.1            # via -r reqs/maml-requirements.in
 pyhuml==0.2.0             # via -r reqs/huml-requirements.in
 tomli==2.4.0              # via -r reqs/toml-requirements.in
 tomli-w==1.2.0            # via -r reqs/toml-requirements.in
-xmltodict==1.0.2          # via -r reqs/xml-requirements.in
+xmltodict==1.0.3          # via -r reqs/xml-requirements.in
