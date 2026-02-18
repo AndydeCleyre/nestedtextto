@@ -73,7 +73,7 @@ tzdata==2025.3            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/
 urllib3==2.6.3            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 wcwidth==0.6.0            # via prompt-toolkit
-wheezy-template==3.2.4    # via -r reqs/doc-requirements.txt
+wheezy-template==3.2.5    # via -r reqs/doc-requirements.txt
 wrapt==2.1.1              # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 xmltodict==1.0.3          # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/xml-requirements.in
 yamlpath==3.8.2           # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
