@@ -21,7 +21,7 @@ pygments==2.19.2          # via rich, -c reqs/../nt2/requirements.txt, -c reqs/.
 pyhuml==0.2.0             # via -c reqs/../nt2/all-requirements.txt, -r reqs/huml-requirements.in
 pytest==7.4.4             # via prysk, -c reqs/../test/test-without-extras-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-rich==14.3.2              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+rich==14.3.3              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 shellingham==1.5.4        # via click-completion, -c reqs/../test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 tomli==2.4.0              # via prysk, ward, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
