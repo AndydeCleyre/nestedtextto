@@ -75,6 +75,6 @@ ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/.
 wcwidth==0.6.0            # via prompt-toolkit
 wheezy-template==3.2.5    # via -r reqs/doc-requirements.txt
 wrapt==2.1.1              # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
-xmltodict==1.0.3          # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/xml-requirements.in
+xmltodict==1.0.4          # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/xml-requirements.in
 yamlpath==3.8.2           # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 zope-interface==8.2       # via twisted
