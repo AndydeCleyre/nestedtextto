@@ -9,7 +9,7 @@ charset-normalizer==3.4.5  # via requests
 click==8.3.1              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-default-group==1.2.4  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-configargparse==1.7.1     # via pydoctor
+configargparse==1.7.3     # via pydoctor
 constantly==23.10.4       # via twisted
 cucumber-tag-expressions==4.1.0  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 darglint==1.8.1           # via -r reqs/fmt-requirements.txt
