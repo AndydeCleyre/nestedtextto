@@ -24,7 +24,7 @@ idna==3.11                # via hyperlink, requests
 incremental==24.11.0      # via twisted
 inform==1.36              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-ipython==9.11.0           # via -r reqs/dev-requirements.in
+ipython==9.12.0           # via -r reqs/dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
 jedi==0.19.2              # via ipython
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
