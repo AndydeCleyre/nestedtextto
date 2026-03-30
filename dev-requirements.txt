@@ -51,7 +51,7 @@ prysk==0.11.0             # via -c reqs/../test/test-requirements.txt, -c reqs/.
 ptyprocess==0.7.0         # via pexpect
 pure-eval==0.2.3          # via stack-data
 pydoctor==25.10.1         # via -r reqs/doc-requirements.txt
-pygments==2.19.2          # via ipython, ipython-pygments-lexers, rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+pygments==2.20.0          # via ipython, ipython-pygments-lexers, rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 pyhuml==0.2.0             # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/huml-requirements.in
 pyright==1.1.408          # via -r reqs/fmt-requirements.txt
 pytest==7.4.4             # via prysk, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt

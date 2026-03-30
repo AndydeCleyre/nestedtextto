@@ -6,7 +6,7 @@ markdown-it-py==4.0.0     # via rich
 mdurl==0.1.2              # via markdown-it-py
 nestedtext==3.8           # via -r reqs/requirements.in
 plumbum==1.10.0           # via -r reqs/requirements.in
-pygments==2.19.2          # via rich
+pygments==2.20.0          # via rich
 python-dateutil==2.9.0.post0  # via arrow, yamlpath
 rich==14.3.3              # via -r reqs/requirements.in
 ruamel-yaml==0.17.21      # via yamlpath, -r reqs/requirements.in
