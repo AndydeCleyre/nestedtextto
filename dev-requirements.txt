@@ -6,7 +6,7 @@ cachecontrol==0.14.4      # via pydoctor
 cattrs==26.1.0            # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 certifi==2026.2.25        # via requests
 charset-normalizer==3.4.7  # via requests
-click==8.3.1              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+click==8.3.2              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-default-group==1.2.4  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 configargparse==1.7.5     # via pydoctor
@@ -69,7 +69,7 @@ tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c r
 traitlets==5.14.3         # via ipython, matplotlib-inline
 twisted==25.5.0           # via pydoctor
 typing-extensions==4.15.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requirements.txt
-tzdata==2025.3            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+tzdata==2026.1            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 urllib3==2.6.3            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 wcwidth==0.6.0            # via prompt-toolkit

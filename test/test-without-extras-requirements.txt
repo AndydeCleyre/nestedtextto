@@ -1,5 +1,5 @@
 arrow==1.4.0              # via inform, -c reqs/../nt2/requirements.txt
-click==8.3.1              # via click-completion, click-default-group, ward
+click==8.3.2              # via click-completion, click-default-group, ward
 click-completion==0.5.2   # via ward
 click-default-group==1.2.4  # via ward
 cucumber-tag-expressions==4.1.0  # via ward
@@ -23,5 +23,5 @@ shellingham==1.5.4        # via click-completion
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt
 tomli==2.4.1              # via prysk, ward, -c reqs/../nt2/all-requirements.txt
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt
-tzdata==2025.3            # via arrow, -c reqs/../nt2/requirements.txt
+tzdata==2026.1            # via arrow, -c reqs/../nt2/requirements.txt
 ward==0.68.0b0            # via -r reqs/test-without-extras-requirements.in
