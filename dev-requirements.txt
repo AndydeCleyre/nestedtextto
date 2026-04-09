@@ -42,7 +42,7 @@ packaging==26.0           # via incremental, pytest, -c reqs/../test/test-requir
 parso==0.8.6              # via jedi
 pathspec==1.0.4           # via ssort
 pexpect==4.9.0            # via ipython
-platformdirs==4.9.4       # via pydoctor
+platformdirs==4.9.6       # via pydoctor
 pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 plumbum==1.10.0           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/doc-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
