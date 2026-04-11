@@ -57,7 +57,7 @@ pyright==1.1.408          # via -r reqs/fmt-requirements.txt
 pytest==7.4.4             # via prysk, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 python-dateutil==2.9.0.post0  # via arrow, yamlpath, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 requests==2.33.1          # via cachecontrol, pydoctor
-rich==14.3.3              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in
+rich==14.3.4              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in
 ruamel-yaml==0.17.21      # via yamlpath, -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 ruff==0.15.10             # via -r reqs/fmt-requirements.txt
 shellingham==1.5.4        # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
