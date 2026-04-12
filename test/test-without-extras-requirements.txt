@@ -18,7 +18,7 @@ prysk==0.11.0             # via -r reqs/test-without-extras-requirements.in
 pygments==2.20.0          # via rich, -c reqs/../nt2/requirements.txt
 pytest==7.4.4             # via prysk
 python-dateutil==2.9.0.post0  # via arrow, -c reqs/../nt2/requirements.txt
-rich==14.3.4              # via ward, -c reqs/../nt2/requirements.txt
+rich==15.0.0              # via ward, -c reqs/../nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt
 tomli==2.4.1              # via prysk, ward, -c reqs/../nt2/all-requirements.txt
