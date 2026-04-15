@@ -12,7 +12,7 @@ markdown-it-py==4.0.0     # via rich, -c reqs/../nt2/requirements.txt, -c reqs/.
 markupsafe==3.0.3         # via jinja2, -c reqs/../test/test-without-extras-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
-packaging==26.0           # via pytest, -c reqs/../test/test-without-extras-requirements.txt
+packaging==26.1           # via pytest, -c reqs/../test/test-without-extras-requirements.txt
 pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-without-extras-requirements.txt
 plumbum==1.10.0           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward, -c reqs/../test/test-without-extras-requirements.txt
