@@ -40,7 +40,7 @@ nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test
 nodeenv==1.10.0           # via pyright
 packaging==26.2           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 parso==0.8.6              # via jedi
-pathspec==1.1.0           # via ssort
+pathspec==1.1.1           # via ssort
 pexpect==4.9.0            # via ipython
 platformdirs==4.9.6       # via pydoctor
 pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
