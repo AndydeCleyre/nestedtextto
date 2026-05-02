@@ -26,7 +26,7 @@ inform==1.36              # via nestedtext, -c reqs/../nt2/requirements.txt, -c 
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ipython==9.13.0           # via -r reqs/dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
-jedi==0.19.2              # via ipython
+jedi==0.20.0              # via ipython
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 lunr==0.8.0               # via pydoctor
 maml-py==0.1.1            # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/maml-requirements.in
@@ -39,7 +39,7 @@ msgpack==1.1.2            # via cachecontrol
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 nodeenv==1.10.0           # via pyright
 packaging==26.2           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-parso==0.8.6              # via jedi
+parso==0.8.7              # via jedi
 pathspec==1.1.1           # via ssort
 pexpect==4.9.0            # via ipython
 platformdirs==4.9.6       # via pydoctor
