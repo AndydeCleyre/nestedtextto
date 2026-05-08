@@ -2,7 +2,7 @@ arrow==1.4.0              # via inform
 attrs==26.1.0             # via cattrs
 cattrs==26.1.0            # via -r reqs/requirements.in
 inform==1.36              # via nestedtext
-markdown-it-py==4.1.0     # via rich
+markdown-it-py==4.2.0     # via rich
 mdurl==0.1.2              # via markdown-it-py
 nestedtext==3.8           # via -r reqs/requirements.in
 plumbum==1.10.0           # via -r reqs/requirements.in

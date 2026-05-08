@@ -8,7 +8,7 @@ inform==1.36              # via nestedtext, -c reqs/../nt2/requirements.txt, -c 
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-without-extras-requirements.txt
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-without-extras-requirements.txt
 maml-py==0.1.1            # via -c reqs/../nt2/all-requirements.txt, -r reqs/maml-requirements.in
-markdown-it-py==4.1.0     # via rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+markdown-it-py==4.2.0     # via rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 markupsafe==3.0.3         # via jinja2, -c reqs/../test/test-without-extras-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
