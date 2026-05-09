@@ -32,7 +32,7 @@ lunr==0.8.0               # via pydoctor
 maml-py==0.1.1            # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/maml-requirements.in
 markdown-it-py==4.2.0     # via rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 markupsafe==3.0.3         # via jinja2, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-matplotlib-inline==0.2.1  # via ipython
+matplotlib-inline==0.2.2  # via ipython
 md-toc==9.0.0             # via -r reqs/doc-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 msgpack==1.1.2            # via cachecontrol
