@@ -20,7 +20,7 @@ filelock==3.29.0          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/hjson-requirements.in
 hyperlink==21.0.0         # via twisted
-idna==3.17                # via hyperlink, requests
+idna==3.18                # via hyperlink, requests
 incremental==24.11.0      # via twisted
 inform==1.36              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
@@ -67,7 +67,7 @@ ssort==0.16.0             # via -r reqs/fmt-requirements.txt
 stack-data==0.6.3         # via ipython
 tomli==2.4.1              # via prysk, ward, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
-traitlets==5.15.0         # via ipython, matplotlib-inline
+traitlets==5.15.1         # via ipython, matplotlib-inline
 twisted==26.4.0           # via pydoctor
 typing-extensions==4.15.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requirements.txt
 tzdata==2026.2            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
