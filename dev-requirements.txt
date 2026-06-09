@@ -44,7 +44,7 @@ pathspec==1.1.1           # via ssort
 pexpect==4.9.0            # via ipython
 platformdirs==4.10.0      # via pydoctor
 pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-plumbum==2.0.0            # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/doc-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
+plumbum==2.0.1            # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/doc-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 prompt-toolkit==3.0.52    # via ipython
 prysk==0.11.0             # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
