@@ -13,5 +13,5 @@ ruamel-yaml==0.19.1       # via yamlpath, -r reqs/requirements.in
 six==1.17.0               # via inform, python-dateutil
 typing-extensions==4.15.0  # via cattrs
 tzdata==2026.2            # via arrow
-wrapt==2.2.1              # via -r reqs/requirements.in
+wrapt==2.2.2              # via -r reqs/requirements.in
 yamlpath==3.9.1           # via -r reqs/requirements.in
