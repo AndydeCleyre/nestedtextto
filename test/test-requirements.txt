@@ -4,7 +4,7 @@ click-completion==0.5.2   # via ward, -c reqs/../test/test-without-extras-requir
 click-default-group==1.2.4  # via ward, -c reqs/../test/test-without-extras-requirements.txt
 cucumber-tag-expressions==4.1.0  # via ward, -c reqs/../test/test-without-extras-requirements.txt
 hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -r reqs/hjson-requirements.in
-inform==1.36              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+inform==1.37              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-without-extras-requirements.txt
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-without-extras-requirements.txt
 maml-py==0.1.1            # via -c reqs/../nt2/all-requirements.txt, -r reqs/maml-requirements.in
