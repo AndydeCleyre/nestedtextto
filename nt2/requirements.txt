@@ -11,7 +11,7 @@ python-dateutil==2.9.0.post0  # via arrow, yamlpath
 rich==15.0.0              # via -r reqs/requirements.in
 ruamel-yaml==0.19.1       # via yamlpath, -r reqs/requirements.in
 six==1.17.0               # via inform, python-dateutil
-typing-extensions==4.15.0  # via cattrs
+typing-extensions==4.16.0  # via cattrs
 tzdata==2026.2            # via arrow
 wrapt==2.2.2              # via -r reqs/requirements.in
 yamlpath==3.9.1           # via -r reqs/requirements.in

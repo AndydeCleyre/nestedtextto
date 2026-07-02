@@ -69,7 +69,7 @@ tomli==2.4.1              # via prysk, ward, -c reqs/../nt2/all-requirements.txt
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
 traitlets==5.15.1         # via ipython, matplotlib-inline
 twisted==26.4.0           # via pydoctor
-typing-extensions==4.15.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requirements.txt
+typing-extensions==4.16.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requirements.txt
 tzdata==2026.2            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 urllib3==2.7.0            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
