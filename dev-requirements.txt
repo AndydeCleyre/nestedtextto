@@ -5,7 +5,7 @@ automat==25.4.16          # via twisted
 cachecontrol==0.14.4      # via pydoctor
 cattrs==26.1.0            # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 certifi==2026.6.17        # via requests
-charset-normalizer==3.4.8  # via requests
+charset-normalizer==3.4.9  # via requests
 click==8.4.2              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-default-group==1.2.4  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
@@ -16,7 +16,7 @@ darglint==1.8.1           # via -r reqs/fmt-requirements.txt
 decorator==5.3.1          # via ipython
 docutils==0.23            # via pydoctor
 executing==2.2.1          # via stack-data
-filelock==3.29.6          # via cachecontrol
+filelock==3.29.7          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/hjson-requirements.in
 hyperlink==21.0.0         # via twisted
