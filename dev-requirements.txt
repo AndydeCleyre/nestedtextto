@@ -60,7 +60,7 @@ python-dateutil==2.9.0.post0  # via arrow, yamlpath, -c reqs/../nt2/requirements
 requests==2.34.2          # via cachecontrol, pydoctor
 rich==15.0.0              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in
 ruamel-yaml==0.19.1       # via yamlpath, -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
-ruff==0.15.20             # via -r reqs/fmt-requirements.txt
+ruff==0.15.21             # via -r reqs/fmt-requirements.txt
 shellingham==1.5.4        # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ssort==0.16.0             # via -r reqs/fmt-requirements.txt
@@ -70,7 +70,7 @@ tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c r
 traitlets==5.15.1         # via ipython, matplotlib-inline
 twisted==26.4.0           # via pydoctor
 typing-extensions==4.16.0  # via cattrs, pyright, twisted, -c reqs/../nt2/requirements.txt
-tzdata==2026.2            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+tzdata==2026.3            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 urllib3==2.7.0            # via pydoctor, requests
 ward==0.68.0b0            # via -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 wcwidth==0.8.2            # via prompt-toolkit
