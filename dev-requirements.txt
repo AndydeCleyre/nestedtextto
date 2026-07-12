@@ -1,5 +1,5 @@
 arrow==1.4.0              # via inform, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-asttokens==3.0.1          # via stack-data
+asttokens==3.0.2          # via stack-data
 attrs==26.1.0             # via cattrs, pydoctor, twisted, -c reqs/../nt2/requirements.txt
 automat==25.4.16          # via twisted
 cachecontrol==0.14.4      # via pydoctor
