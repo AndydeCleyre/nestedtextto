@@ -16,7 +16,7 @@ darglint==1.8.1           # via -r reqs/fmt-requirements.txt
 decorator==5.3.1          # via ipython
 docutils==0.23            # via pydoctor
 executing==2.2.1          # via stack-data
-filelock==3.30.2          # via cachecontrol
+filelock==3.31.0          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/hjson-requirements.in
 hyperlink==21.0.0         # via twisted
@@ -42,7 +42,7 @@ packaging==26.2           # via incremental, pytest, -c reqs/../test/test-requir
 parso==0.8.7              # via jedi
 pathspec==1.1.1           # via ssort
 pexpect==4.9.0            # via ipython
-platformdirs==4.10.0      # via pydoctor
+platformdirs==4.10.1      # via pydoctor
 pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 plumbum==2.0.1            # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/doc-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
