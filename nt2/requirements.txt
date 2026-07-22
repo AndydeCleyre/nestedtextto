@@ -5,7 +5,7 @@ inform==1.37              # via nestedtext
 markdown-it-py==4.2.0     # via rich
 mdurl==0.1.2              # via markdown-it-py
 nestedtext==3.8           # via -r reqs/requirements.in
-plumbum==2.0.1            # via -r reqs/requirements.in
+plumbum==2.0.2            # via -r reqs/requirements.in
 pygments==2.20.0          # via rich
 python-dateutil==2.9.0.post0  # via arrow, yamlpath
 rich==15.0.0              # via -r reqs/requirements.in

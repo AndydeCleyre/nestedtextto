@@ -14,7 +14,7 @@ mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt,
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 packaging==26.2           # via pytest, -c reqs/../test/test-without-extras-requirements.txt
 pluggy==1.6.0             # via pytest, ward, -c reqs/../test/test-without-extras-requirements.txt
-plumbum==2.0.1            # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
+plumbum==2.0.2            # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 pprintpp==0.4.0           # via ward, -c reqs/../test/test-without-extras-requirements.txt
 prysk==0.11.0             # via -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 pygments==2.20.0          # via rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
