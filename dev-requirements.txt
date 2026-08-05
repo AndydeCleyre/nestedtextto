@@ -37,7 +37,7 @@ mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt,
 msgpack==1.2.1            # via cachecontrol
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
 nodeenv==1.10.0           # via pyright
-packaging==26.2           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+packaging==26.3           # via incremental, pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 parso==0.8.7              # via jedi
 pathspec==1.1.1           # via ssort
 pexpect==4.9.0            # via ipython
