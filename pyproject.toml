@@ -52,7 +52,7 @@ all = ["hjson", "maml-py", "pyhuml", "tomli", "tomli-w", "xmltodict"]
 
 test-without-extras = ["nestedtext", "plumbum", "prysk[pytest-plugin]", "ward"]
 test = ["hjson", "maml-py", "nestedtext", "plumbum", "prysk[pytest-plugin]", "pyhuml", "tomli", "tomli-w", "ward", "xmltodict"]
-dev = ["cattrs", "darglint", "hjson", "ipython", "maml-py", "md-toc", "nestedtext", "plumbum", "prysk[pytest-plugin]", "pydoctor", "pyhuml", "pyright", "rich", "ruamel.yaml", "ruff", "ssort", "tomli", "tomli-w", "typing-extensions; python_version<'3.9'", "ward", "wheezy.template", "wrapt", "xmltodict", "yamlpath>=3.6.9"]
+dev = ["cattrs", "hjson", "ipython", "maml-py", "md-toc", "nestedtext", "plumbum", "prysk[pytest-plugin]", "pydoctor", "pyhuml", "pyright", "rich", "ruamel.yaml", "ruff", "ssort", "tomli", "tomli-w", "typing-extensions; python_version<'3.9'", "ward", "wheezy.template", "wrapt", "xmltodict", "yamlpath>=3.6.9"]
 maml = ["maml-py"]
 hjson = ["hjson"]
 xml = ["xmltodict"]
