@@ -19,7 +19,7 @@ filelock==3.32.3          # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/hjson-requirements.in
 hyperlink==21.0.0         # via twisted
-idna==3.18                # via hyperlink, requests
+idna==3.19                # via hyperlink, requests
 incremental==24.11.0      # via twisted
 inform==1.37              # via nestedtext, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 iniconfig==2.3.0          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
