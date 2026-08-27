@@ -1,5 +1,5 @@
 arrow==1.4.0              # via inform, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
-click==8.4.2              # via click-completion, click-default-group, ward, -c reqs/../test/test-without-extras-requirements.txt
+click==8.5.0              # via click-completion, click-default-group, ward, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-without-extras-requirements.txt
 click-default-group==1.2.4  # via ward, -c reqs/../test/test-without-extras-requirements.txt
 cucumber-tag-expressions==4.1.0  # via ward, -c reqs/../test/test-without-extras-requirements.txt
