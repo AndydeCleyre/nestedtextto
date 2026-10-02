@@ -15,7 +15,7 @@ cucumber-tag-expressions==4.1.0  # via ward, -c reqs/../test/test-requirements.t
 darglint==1.8.1           # via -r reqs/fmt-requirements.txt
 docutils==0.23            # via pydoctor
 executing==2.2.1          # via stack-data
-filelock==4.0.8           # via cachecontrol
+filelock==4.0.9           # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/hjson-requirements.in
 hyperlink==21.0.0         # via twisted
@@ -32,7 +32,7 @@ maml-py==0.1.1            # via -c reqs/../nt2/all-requirements.txt, -c reqs/../
 markdown-it-py==4.2.0     # via rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 markupsafe==3.0.3         # via jinja2, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 matplotlib-inline==0.2.2  # via ipython
-md-toc==9.0.1             # via -r reqs/doc-requirements.txt
+md-toc==9.1.0             # via -r reqs/doc-requirements.txt
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 msgpack==1.2.3            # via cachecontrol
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in, -r reqs/test-without-extras-requirements.in
@@ -59,7 +59,7 @@ python-dateutil==2.9.0.post0  # via arrow, yamlpath, -c reqs/../nt2/requirements
 requests==2.34.2          # via cachecontrol, pydoctor
 rich==15.0.0              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/requirements.in
 ruamel-yaml==0.19.1       # via yamlpath, -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
-ruff==0.16.9              # via -r reqs/fmt-requirements.txt
+ruff==0.16.10             # via -r reqs/fmt-requirements.txt
 shellingham==1.5.4        # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ssort==0.17.0             # via -r reqs/fmt-requirements.txt
