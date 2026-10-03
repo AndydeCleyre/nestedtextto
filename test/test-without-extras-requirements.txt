@@ -7,7 +7,7 @@ inform==1.37              # via nestedtext, -c reqs/../nt2/requirements.txt
 iniconfig==2.3.0          # via pytest
 jinja2==3.1.6             # via click-completion
 markdown-it-py==4.2.0     # via rich, -c reqs/../nt2/requirements.txt
-markupsafe==3.0.3         # via jinja2
+markupsafe==3.0.4         # via jinja2
 mdurl==0.1.2              # via markdown-it-py, -c reqs/../nt2/requirements.txt
 nestedtext==3.8           # via -c reqs/../nt2/requirements.txt, -r reqs/test-without-extras-requirements.in
 packaging==26.3           # via pytest
@@ -23,5 +23,5 @@ shellingham==1.5.4        # via click-completion
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt
 tomli==2.4.1              # via prysk, ward, -c reqs/../nt2/all-requirements.txt
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt
-tzdata==2026.4            # via arrow, -c reqs/../nt2/requirements.txt
+tzdata==2026.5            # via arrow, -c reqs/../nt2/requirements.txt
 ward==0.68.0b0            # via -r reqs/test-without-extras-requirements.in
