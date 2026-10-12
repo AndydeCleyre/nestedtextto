@@ -15,7 +15,7 @@ cucumber-tag-expressions==4.1.0  # via ward, -c reqs/../test/test-requirements.t
 darglint==1.8.1           # via -r reqs/fmt-requirements.txt
 docutils==0.23            # via pydoctor
 executing==2.3.0          # via stack-data
-filelock==4.1.0           # via cachecontrol
+filelock==4.1.1           # via cachecontrol
 fpyutils==4.0.1           # via md-toc
 hjson==3.1.0              # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/hjson-requirements.in
 hyperlink==21.0.0         # via twisted
@@ -25,7 +25,7 @@ inform==1.37              # via nestedtext, -c reqs/../nt2/requirements.txt, -c 
 iniconfig==2.3.1          # via pytest, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ipython==9.17.1           # via -r reqs/dev-requirements.in
 ipython-pygments-lexers==1.1.1  # via ipython
-jedi==0.20.0              # via ipython
+jedi==0.20.1              # via ipython
 jinja2==3.1.6             # via click-completion, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 lunr==0.8.0               # via pydoctor
 maml-py==0.1.1            # via -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-requirements.txt, -r reqs/maml-requirements.in
