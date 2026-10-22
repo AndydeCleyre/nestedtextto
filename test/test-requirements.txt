@@ -20,12 +20,12 @@ prysk==0.11.0             # via -c reqs/../test/test-without-extras-requirements
 pygments==2.21.0          # via rich, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 pyhuml==0.2.0             # via -c reqs/../nt2/all-requirements.txt, -r reqs/huml-requirements.in
 pytest==7.4.4             # via prysk, -c reqs/../test/test-without-extras-requirements.txt
-python-dateutil==2.9.0.post0  # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+python-dateutil==3.0.0    # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 rich==15.0.0              # via ward, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 shellingham==1.5.4        # via click-completion, -c reqs/../test/test-without-extras-requirements.txt
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 tomli==2.5.0              # via prysk, ward, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt, -r reqs/toml-requirements.in
-tzdata==2026.5            # via arrow, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+tzdata==2026.5            # via arrow, python-dateutil, -c reqs/../nt2/requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 ward==0.68.0b0            # via -c reqs/../test/test-without-extras-requirements.txt, -r reqs/test-without-extras-requirements.in
 xmltodict==1.0.4          # via -c reqs/../nt2/all-requirements.txt, -r reqs/xml-requirements.in

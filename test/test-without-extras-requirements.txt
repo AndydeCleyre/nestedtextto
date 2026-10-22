@@ -17,11 +17,11 @@ pprintpp==0.4.0           # via ward
 prysk==0.11.0             # via -r reqs/test-without-extras-requirements.in
 pygments==2.21.0          # via rich, -c reqs/../nt2/requirements.txt
 pytest==7.4.4             # via prysk
-python-dateutil==2.9.0.post0  # via arrow, -c reqs/../nt2/requirements.txt
+python-dateutil==3.0.0    # via arrow, -c reqs/../nt2/requirements.txt
 rich==15.0.0              # via ward, -c reqs/../nt2/requirements.txt
 shellingham==1.5.4        # via click-completion
 six==1.17.0               # via click-completion, inform, python-dateutil, -c reqs/../nt2/requirements.txt
 tomli==2.5.0              # via prysk, ward, -c reqs/../nt2/all-requirements.txt
 tomli-w==1.2.0            # via prysk, -c reqs/../nt2/all-requirements.txt
-tzdata==2026.5            # via arrow, -c reqs/../nt2/requirements.txt
+tzdata==2026.5            # via arrow, python-dateutil, -c reqs/../nt2/requirements.txt
 ward==0.68.0b0            # via -r reqs/test-without-extras-requirements.in
