@@ -6,7 +6,7 @@ cachecontrol==0.14.4      # via pydoctor
 cattrs==26.2.1            # via -c reqs/../nt2/requirements.txt, -r reqs/requirements.in
 certifi==2026.10.23       # via requests
 charset-normalizer==3.5.2  # via requests
-click==8.5.0              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
+click==8.5.1              # via click-completion, click-default-group, ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-completion==0.5.2   # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 click-default-group==1.2.4  # via ward, -c reqs/../test/test-requirements.txt, -c reqs/../test/test-without-extras-requirements.txt
 configargparse==1.9.0     # via pydoctor
