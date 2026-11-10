@@ -71,7 +71,11 @@ def _json_loads(content: str) -> JSONData:
         return json_loads(content)
     except JSONDecodeError as original_e:
         try:
-            return [json_loads(line) for line in content.splitlines()]
+            return [
+                json_loads(line)
+                for line in content.splitlines()
+                if line.strip()
+            ]
         except JSONDecodeError:
             raise original_e from None
 

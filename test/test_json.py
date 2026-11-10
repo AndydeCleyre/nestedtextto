@@ -18,6 +18,22 @@ def _():
     assert_file_content(expected_file, output)
 
 
+@test("JSON Lines with blank lines -> NestedText")
+def _():
+    expected_file = SAMPLES / 'lines.nt'
+    with local.tempdir() as tmp:
+        lines_file = cast(LocalPath, tmp / 'blank_lines.jsonl')
+        lines_file.write(
+            '\n'.join((SAMPLES / 'lines.jsonl').read('utf-8').splitlines()[:2])
+            + '\n\n   \n'
+            + '\n'.join((SAMPLES / 'lines.jsonl').read('utf-8').splitlines()[2:])
+            + '\n',
+            'utf-8',
+        )
+        output = json2nt(lines_file)
+    assert_file_content(expected_file, output)
+
+
 for input_json_name, output_nt_name in {
     'untyped': 'base',
     'typed_all': 'typed_round_trip',
