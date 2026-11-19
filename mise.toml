@@ -21,8 +21,6 @@ run = [
 description = "Format and lint code and docs"
 depends = ["install"]
 run = [
-  "darglint nt2 test",
-
   "ssort nt2 test",
 
   "ruff format nt2 test",
